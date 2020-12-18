@@ -3,7 +3,7 @@ name: Render_ontology
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   Render:

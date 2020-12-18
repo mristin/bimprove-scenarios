@@ -1,0 +1,144 @@
+<html>
+<head><meta charset="utf-8" /><script src="https://livejs.com/live.js"> </script><title>Fall Risk Alert</title><style>body {
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding: 1%;
+    border: 1px solid black;
+}
+
+a {
+    text-decoration: none;
+}
+
+a.anchor {
+    text-decoration: none;
+    font-size: x-small;
+    margin-right: 1em;
+}
+
+span.phase {
+    background-color: #eefbfb;
+}
+
+span.level {
+    background-color: #eefbee;
+}
+
+pre {
+    background-color: #eeeefb;
+    padding: 1em;
+}
+</style></head><body>
+<a href="../ontology.html">Back to ontology</a><h1>Fall Risk Alert</h1><img src="volumetric.png" style="border: 1px solid #EEEEEE; padding: 10px;" /><h2>Summary</h2>
+<img src="summary.png" alt="summary of the scenario" width="400" height="200" />
+<h2>Models</h2>
+<h3><a href="#model-plan/main" class="anchor">🔗<a id="model-plan/main" /></a>plan/main</h3>
+<p>The as-planned BIM model provided after the planning phase and
+updated throughout the construction.</p>
+<p>It is going to be updated as the building grows.</p>
+<p>This is the federated model of all the individual domain models.</p>
+<h3><a href="#model-observed/point_cloud" class="anchor">🔗<a id="model-observed/point_cloud" /></a>observed/point_cloud</h3>
+<p>The point cloud observed with the drones and the ground robots.</p>
+<p>The coordinates are synchronized with the <a href="#model-plan/main" class="modelref">plan/main</a>.</p>
+<h3><a href="#model-observed/pictures" class="anchor">🔗<a id="model-observed/pictures" /></a>observed/pictures</h3>
+<p>The pictures taken by the ground robots, drones and humans.</p>
+<p>The coordinates are synchronized with the <a href="#model-plan/main" class="modelref">plan/main</a>.
+TODO: how is this synchronization done -- address it in as-observed aspect.</p>
+<h3><a href="#model-observed/qr_codes" class="anchor">🔗<a id="model-observed/qr_codes" /></a>observed/qr_codes</h3>
+<p>The observations of the QR codes: (the location, the time, the identifier of the
+<a href="#def-element" class="ref">element</a>).</p>
+<h3><a href="#model-standard/risk_level" class="anchor">🔗<a id="model-standard/risk_level" /></a>standard/risk_level</h3>
+<p>Risk levels defined at the national and internation level.</p>
+<h2>Definitions</h2>
+<h3><a href="#def-installer" class="anchor">🔗<a id="def-installer" /></a>installer</h3>
+<p>The person who installed an <a href="#def-element" class="ref">element</a>.</p>
+<p>Uniquely identifiable by a contact (unstructured, can be e-mail, but also something completely
+arbitrarily such as a phone number or a company name).</p>
+<p>In BIM:</p>
+<pre><code>IfcActor
+</code></pre>
+<h3><a href="#def-alertee" class="anchor">🔗<a id="def-alertee" /></a>alertee</h3>
+<p>A person who needs to be alerted on his/her current risk level. </p>
+<h3><a href="#def-element" class="anchor">🔗<a id="def-element" /></a>element</h3>
+<p>Any relevant building element from the <a href="#model-plan/main" class="modelref">plan/main</a>.
+It can be associated with <a href="#model-observed/point_cloud" class="modelref">observed/point_cloud</a> and
+<a href="#model-observed/pictures" class="modelref">observed/pictures</a>.</p>
+<p>In BIM:</p>
+<pre><code>IfcProduct
+</code></pre>
+<p>Every element needs to have a unique identifier. </p>
+<h3><a href="#def-points_in_the_vicinity" class="anchor">🔗<a id="def-points_in_the_vicinity" /></a>points_in_the_vicinity</h3>
+<p>A subset of the points in the point cloud close to <a href="#def-element" class="ref">element</a>.</p>
+<p>The vicinity is defined as a bounding box.</p>
+<h3><a href="#def-images_of_the_element" class="anchor">🔗<a id="def-images_of_the_element" /></a>images_of_the_element</h3>
+<p>A subset of the images that look at the <a href="#def-element" class="ref">element</a>.</p>
+<p>We can compute their subset based on their coordinates and angle.</p>
+<h3><a href="#def-task" class="anchor">🔗<a id="def-task" /></a>task</h3>
+<p>Any <code>IfcTask</code> in the <a href="#model-plan/main" class="modelref">plan/main</a></p>
+<h3><a href="#def-zone" class="anchor">🔗<a id="def-zone" /></a>zone</h3>
+<p>Any <code>IfcZone</code> in the <a href="#model-plan/main" class="modelref">plan/main</a></p>
+<h3><a href="#def-preventive_resource" class="anchor">🔗<a id="def-preventive_resource" /></a>preventive_resource</h3>
+<p>Preventive resource is person who is in charge of the safety inside.</p>
+<p>The preventive resource is in charge of a set of <a href="#def-task" class="ref">task</a>.</p>
+<p>Depending on the budget, there will be preventive resources in charge of
+one or more <a href="#def-zone" class="ref">zone</a>s or <span class="level" data-text="site">the whole site<a id="level-anchor-053599c7-90b1-4559-88e3-0d7da290f5d7" /><sup>site</sup></span>.</p>
+<h3><a href="#def-health_and_safety_manager" class="anchor">🔗<a id="def-health_and_safety_manager" /></a>health_and_safety_manager</h3>
+<p><span class="level" data-text="site">Health &amp; safety manager is in charge of the issues on the site.
+The person is the boss of the health &amp; safety of the site.<a id="level-anchor-a25224c0-385e-4b04-9367-33b7489e85dc" /><sup>site</sup></span></p>
+<h3><a href="#def-risk_level" class="anchor">🔗<a id="def-risk_level" /></a>risk_level</h3>
+<p>This is the risk level according to different standards.
+Refers to a concrete standard in <a href="#model-standard/risk_level" class="modelref">standard/risk_level</a>.</p>
+<h3><a href="#def-fall_risk" class="anchor">🔗<a id="def-fall_risk" /></a>fall_risk</h3>
+<p>A fall risk is an abstract entity.</p>
+<p>It can be tied to a <a href="#def-zone" class="ref">zone</a> or to an <a href="#def-element" class="ref">element</a>, but it doesn't need to.</p>
+<p>The fall risk has a validity time span (which can also be open-ended).</p>
+<p>The fall risk lives in <a href="#model-plan/main" class="modelref">plan/main</a>.</p>
+<h2>Scenario</h2>
+<h3>As-planned</h3>
+<p>We just use the federated model in <a href="#model-plan/main" class="modelref">plan/main</a>.</p>
+<p><span class="level" data-text="site_office">The <a id="level-anchor-a6e71163-f246-4af3-94c5-cae4e034b3fc" /><a href="#model-plan/main" class="modelref">plan/main</a> data would need to be accessible from
+the office.<sup>site_office</sup></span></p>
+<h3>As-observed</h3>
+<p>All the observed data from <a href="#model-observed/point_cloud" class="modelref">observed/point_cloud</a> and
+<a href="#model-observed/pictures" class="modelref">observed/pictures</a> lives in the same coordinate system as
+the federated model in <a href="#model-plan/main" class="modelref">plan/main</a>.</p>
+<p>Over repeated runs (<em>e.g.,</em> over the days), there will be randomized errors between the
+coordinates in <a href="#model-plan/main" class="modelref">plan/main</a> and
+<a href="#model-observed/point_cloud" class="modelref">observed/point_cloud</a> and
+<a href="#model-observed/pictures" class="modelref">observed/pictures</a>, including the drift and systematic errors. </p>
+<p>We have to see <em>after</em> the experiments whether these errors are tolerable for this
+scenario.</p>
+<p>Usually the error is below 1 meter, rarely 2 meters.</p>
+<p><span class="level" data-text="site_office">The observed data, <a id="level-anchor-a6ae23dc-7919-4374-b0bb-12b02d8373c5" /><a href="#model-observed/point_cloud" class="modelref">observed/point_cloud</a> and
+<a href="#model-observed/pictures" class="modelref">observed/pictures</a>,  would need to be accessible from the office.<sup>site_office</sup></span></p>
+<h3>Divergence</h3>
+<p><strong>Start simple.</strong> The <a href="#def-preventive_resource" class="ref">preventive_resource</a> and <a href="#def-health_and_safety_manager" class="ref">health_and_safety_manager</a>
+manually inspect the <a href="#def-element" class="ref">element</a>s and report absent/ill-placed to the system.</p>
+<p><strong>Next step: QR code.</strong> The QR code references the identifier of the <a href="#def-element" class="ref">element</a>.
+The observations of the QR code are stored in <a href="#model-observed/qr_codes" class="modelref">observed/qr_codes</a>.</p>
+<p>Anybody authorized can add an observation of a QR code.</p>
+<h3>Analytics</h3>
+<p>The overall view of the <a href="#def-fall_risk" class="ref">fall_risk</a>s should be provided in a table.</p>
+<p>The user can manually inspect further the related details such as associated <a href="#def-element" class="ref">element</a>s.</p>
+<h3>Scheduling</h3>
+<p>This section is empty on purpose.</p>
+<h3>Safety</h3>
+<p><strong>Specification of the fall risks</strong>.
+The <a href="#def-preventive_resource" class="ref">preventive_resource</a> links the <a href="#def-element" class="ref">element</a> with the
+<a href="#def-installer" class="ref">installer</a>.</p>
+<p><span class="phase" data-text="planning">The <a id="phase-anchor-27c8439c-66ec-4255-89c3-f21895295d97" /><a href="#def-health_and_safety_manager" class="ref">health_and_safety_manager</a> inputs initially the
+<a href="#def-fall_risk" class="ref">fall_risk</a>s manually.<sup>planning</sup></span></p>
+<p>The <a href="#def-preventive_resource" class="ref">preventive_resource</a> makes notes regarding an unsafe <a href="#def-element" class="ref">element</a>.
+Both the <a href="#def-health_and_safety_manager" class="ref">health_and_safety_manager</a> and <a href="#def-preventive_resource" class="ref">preventive_resource</a> can
+insert new and change existing <a href="#def-fall_risk" class="ref">fall_risk</a>s accordingly.</p>
+<p><strong>Alerts</strong>. The safety status <a href="#def-risk_level" class="ref">risk_level</a> is continuously displayed to
+<a href="#def-alertee" class="ref">alertee</a>s in real-time based on the current <a href="#def-fall_risk" class="ref">fall_risk</a>s and their
+location. </p>
+<p>The location of the actor is not stored in the backend. The update logic is running on the alertee's
+device (<em>i.e</em>., a smart-watch) which sends repeated queries to the backend.
+The backend does not track the alertee.</p>
+
+<h2>Phase Index</h2><ul><li><a href="#phase-anchor-27c8439c-66ec-4255-89c3-f21895295d97">planning</a></li></ul><h2>Level Index</h2><ul><li><a href="#level-anchor-053599c7-90b1-4559-88e3-0d7da290f5d7">site</a></li><li><a href="#level-anchor-a25224c0-385e-4b04-9367-33b7489e85dc">site</a></li><li><a href="#level-anchor-a6e71163-f246-4af3-94c5-cae4e034b3fc">site_office</a></li><li><a href="#level-anchor-a6ae23dc-7919-4374-b0bb-12b02d8373c5">site_office</a></li></ul></body>
+</html>

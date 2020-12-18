@@ -1,0 +1,95 @@
+<html>
+<head><meta charset="utf-8" /><script src="https://livejs.com/live.js"> </script><title>Truck guidance</title><style>body {
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding: 1%;
+    border: 1px solid black;
+}
+
+a {
+    text-decoration: none;
+}
+
+a.anchor {
+    text-decoration: none;
+    font-size: x-small;
+    margin-right: 1em;
+}
+
+span.phase {
+    background-color: #eefbfb;
+}
+
+span.level {
+    background-color: #eefbee;
+}
+
+pre {
+    background-color: #eeeefb;
+    padding: 1em;
+}
+</style></head><body>
+<a href="../ontology.html">Back to ontology</a><h1>Truck guidance</h1><img src="volumetric.png" style="border: 1px solid #EEEEEE; padding: 10px;" /><h2>Summary</h2>
+<p>TODO: Complete this
+<strong>BIM@Vehicle</strong> is targeted to roles (construction workers), which use some vehicle at
+the construction site. Relevant sub-roles in this area are truck drivers and crane
+operators. They can utilise construction related information in their vehicle, which means
+that the device can also be bigger if needed. The possible devices are smartphone and tablet.</p>
+<h2>Models</h2>
+<h3><a href="#model-plan/main" class="anchor">🔗<a id="model-plan/main" /></a>plan/main</h3>
+<p>The as-planned BIM model provided after the planning phase and
+updated throughout the construction.</p>
+<p>It is going to be updated as the building grows.</p>
+<p>This is the federated model of all the individual domain models (core is Site model,
+Structural model and Electrical model).</p>
+<h3><a href="#model-observed/main" class="anchor">🔗<a id="model-observed/main" /></a>observed/main</h3>
+<p>This model contains the real time delivery status.</p>
+<h3><a href="#model-archived/observations" class="anchor">🔗<a id="model-archived/observations" /></a>archived/observations</h3>
+<p>This keeps track of accomplished <a href="#def-delivery" class="ref">delivery</a>s.</p>
+<h2>Definitions</h2>
+<h3><a href="#def-planner_role" class="anchor">🔗<a id="def-planner_role" /></a>planner_role</h3>
+<p>planner_role is for all people who are allowed to change a <a href="#def-delivery" class="ref">delivery</a>.</p>
+<h3><a href="#def-delivery" class="anchor">🔗<a id="def-delivery" /></a>delivery</h3>
+<p>Delivery is an ´IfcTask´, which has a text, a ´ScheduleStart´ and ´ScheduleFinish´ (both ´IfcTaskTime´. It can be associated with
+a location ´IfcZone´. The cargo is a text property of the delivery ("10 windows, 2 doors"). </p>
+<p>The delivery is assigned to a <a href="#def-driver" class="ref">driver</a>, a <a href="#def-entry_point" class="ref">entry_point</a> and
+<a href="#def-exit_point" class="ref">exit_point</a> and a <a href="#def-contact_person" class="ref">contact_person</a>.</p>
+<h3><a href="#def-contact_person" class="anchor">🔗<a id="def-contact_person" /></a>contact_person</h3>
+<p>The person who should be contacted if the <a href="#def-driver" class="ref">driver</a> have questions.</p>
+<h3><a href="#def-pickup_person" class="anchor">🔗<a id="def-pickup_person" /></a>pickup_person</h3>
+<p>The person responsible for picking up the cargo.</p>
+<h3><a href="#def-entry_point" class="anchor">🔗<a id="def-entry_point" /></a>entry_point</h3>
+<p>The ´IfcZone´ where the truck should enter through.</p>
+<h3><a href="#def-exit_point" class="anchor">🔗<a id="def-exit_point" /></a>exit_point</h3>
+<p>The ´IfcZone´ where the truck should leave through.</p>
+<h3><a href="#def-driver" class="anchor">🔗<a id="def-driver" /></a>driver</h3>
+<p>The driver is an ´IfcActor´. </p>
+<h3><a href="#def-delivery_status" class="anchor">🔗<a id="def-delivery_status" /></a>delivery_status</h3>
+<p>Consideration for architecture: we need to introduce a custom class to represent the
+delivery status (label and depending on the label, last_location and last_observed_time).</p>
+<h3><a href="#def-notifiee" class="anchor">🔗<a id="def-notifiee" /></a>notifiee</h3>
+<p>The notifiee is an ´IfcActor´ that is notified when the delivery status is updated. </p>
+<h2>Scenario</h2>
+<h3>As-planned</h3>
+<p>The <a href="#def-planner_role" class="ref">planner_role</a> creates and updates the <a href="#def-delivery" class="ref">delivery</a>s. </p>
+<h3>As-observed</h3>
+<p>The <a href="#def-driver" class="ref">driver</a>'s device tracks the gps location, but does not send it to the system.</p>
+<h3>Divergence</h3>
+<p>The  device will guide the <a href="#def-driver" class="ref">driver</a> to the location on the site where the
+<a href="#def-delivery" class="ref">delivery</a> should take place. The <a href="#def-driver" class="ref">driver</a> updates the status of
+the delivery. </p>
+<p>The <a href="#def-notifiee" class="ref">notifiee</a>s are notified when the status of the delivery is updated.</p>
+<h3>Analytics</h3>
+<p>The KPI for delivery-in-time is updated, both delivery in number per week and variance. This is based
+on date from <a href="#model-archived/observations" class="modelref">archived/observations</a>.</p>
+<p>The <a href="#def-planner_role" class="ref">planner_role</a> decides under which status to archive the delivery (for KPI).</p>
+<h3>Scheduling</h3>
+<p>Notify the <a href="#def-notifiee" class="ref">notifiee</a>s if the <a href="#def-delivery" class="ref">delivery</a> is not ready when the pickup-time
+has passed.</p>
+<h3>Safety</h3>
+<p>Intentionally left empty.</p>
+
+</body>
+</html>

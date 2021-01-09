@@ -1,0 +1,83 @@
+<html>
+<body>
+<h2>Summary</h2>
+<p>This scenario concerns truck drivers arriving at the construction site to deliver cargo.</p>
+<h2>Models</h2>
+<model name="plan/main">
+<p>The as-planned BIM model provided after the planning phase and
+updated throughout the construction.</p>
+<p>It is going to be updated as the building grows.</p>
+<p>This is the federated model of all the individual domain models (core is Site model,
+Structural model and Electrical model).</p>
+</model>
+<model name="observed/main">
+<p>This model contains the real time delivery status.</p>
+</model>
+<model name="archived/observations">
+<p>This keeps track of accomplished <ref name="delivery" />s.</p>
+</model>
+<h2>Definitions</h2>
+<def name="planner_role">
+<p>Planner role is for all people who are allowed to change a <ref name="delivery"/>.</p>
+</def>
+<def name="delivery">
+<p>Delivery is an <code>IfcTask</code>, which has a text, a <code>ScheduleStart</code> and <code>ScheduleFinish</code> (both <code>IfcTaskTime</code>. It can be associated with
+a location <code>IfcZone</code>. The cargo is a text property of the delivery (&quot;10 windows, 2 doors&quot;).</p>
+<p>The delivery is assigned to a <ref name="driver"/>, a <ref name="entry_point" /> and
+<ref name="exit_point" /> and a <ref name="contact_person" />.</p>
+</def>
+<def name="contact_person">
+<p>The person who should be contacted if the <ref name="driver" /> have questions.</p>
+</def>
+<def name="pickup_person">
+<p>The person responsible for picking up the cargo.</p>
+</def>
+<def name="entry_point">
+<p>The <code>IfcZone</code> where the truck should enter through.</p>
+</def>
+<def name="exit_point">
+<p>The <code>IfcZone</code> where the truck should leave through.</p>
+</def>
+<def name="driver">
+<p>The driver is an <code>IfcActor</code>.</p>
+</def>
+<def name="delivery_status">
+<p>Consideration for architecture: we need to introduce a custom class to represent the
+delivery status (label and depending on the label, last_location and last_observed_time).</p>
+</def>
+<def name="notifiee">
+<p>The notifiee is an <code>IfcActor</code> that is notified when the delivery status is updated.</p>
+</def>
+<h2>Scenario</h2>
+<h3>As-planned</h3>
+<p>The <ref name="planner_role"/> creates and updates the <ref name="delivery"/>s.</p>
+<h3>As-observed</h3>
+<p>The <ref name="driver"/>'s device tracks the gps location, but does not send it to the system.</p>
+<h3>Divergence</h3>
+<p>The  device will guide the <ref name="driver" /> to the location on the site where the
+<ref name="delivery" /> should take place. The <ref name="driver" /> updates the status of
+the delivery.</p>
+<p>The <ref name="notifiee" />s are notified when the status of the delivery is updated.</p>
+<h3>Analytics</h3>
+<p>The KPI for delivery-in-time is updated, both delivery in number per week and variance. This is based
+on date from <modelref name="archived/observations" />.</p>
+<p>The <ref name="planner_role" /> decides under which status to archive the delivery (for KPI).</p>
+<h3>Scheduling</h3>
+<p>Notify the <ref name="notifiee" />s if the <ref name="delivery" /> is not ready when the pickup-time
+has passed.</p>
+<h3>Safety</h3>
+<p>Intentionally left empty.</p>
+<h2>Test Cases</h2>
+<test name="navigation_correct_on_examples">
+<p>TODO: discuss with Dag. What is the easiest way to record a couple of scenarios so that we can
+repeatedly and automatically test them?</p>
+</test>
+<h2>Acceptance Criteria</h2>
+<p>TODO: discuss with Dag: what are the practically accepted refresh rates for the navigation?
+How much polling will be involved -- how many requests per second will the system face
+in low, normal and high usage?</p>
+<p>What is the acceptable delay with sending out the messages? Can this be a bottleneck? How many
+messages per second in low, normal and high usage?</p>
+
+</body>
+</html>

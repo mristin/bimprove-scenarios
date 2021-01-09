@@ -1,0 +1,153 @@
+<html>
+<body>
+<h2>Summary</h2>
+<img src='summary.png' alt="summary of the scenario" width="400" height="200" />
+<h2>Models</h2>
+<model name="plan/main">
+<p>The as-planned BIM model provided after the planning phase and
+updated throughout the construction.</p>
+<p>It is going to be updated as the building grows.</p>
+<p>This is the federated model of all the individual domain models.</p>
+</model>
+<model name="observed/point_cloud">
+<p>The point cloud observed with the drones and the ground robots.</p>
+<p>The coordinates are synchronized with the <modelref name="plan/main" />.</p>
+</model>
+<model name="observed/pictures">
+<p>The pictures taken by the ground robots, drones and humans.</p>
+<p>The coordinates are synchronized with the <modelref name="plan/main" />.
+TODO: how is this synchronization done -- address it in as-observed aspect.</p>
+</model>
+<model name="observed/qr_codes">
+<p>The observations of the QR codes: (the location, the time, the identifier of the
+<ref name="element"/>).</p>
+</model>
+<model name="standard/risk_level">
+<p>Risk levels defined at the national and internation level.</p>
+</model>
+<h2>Definitions</h2>
+<def name="installer">
+<p>The person who installed an <ref name="element"/>.</p>
+<p>Uniquely identifiable by a contact (unstructured, can be e-mail, but also something completely
+arbitrarily such as a phone number or a company name).</p>
+<p>In BIM:</p>
+<pre><code>IfcActor
+</code></pre>
+</def>
+<def name="alertee">
+<p>A person who needs to be alerted on his/her current risk level. </p>
+</def>
+<def name="element">
+<p>Any relevant building element from the <modelref name="plan/main"/>.
+It can be associated with <modelref name="observed/point_cloud" /> and
+<modelref name="observed/pictures" />.</p>
+<p>In BIM:</p>
+<pre><code>IfcProduct
+</code></pre>
+<p>Every element needs to have a unique identifier. </p>
+</def>
+<def name="points_in_the_vicinity">
+<p>A subset of the points in the point cloud close to <ref name="element" />.</p>
+<p>The vicinity is defined as a bounding box.</p>
+</def>
+<def name="images_of_the_element">
+<p>A subset of the images that look at the <ref name="element" />.</p>
+<p>We can compute their subset based on their coordinates and angle.</p>
+</def>
+<def name="task">
+<p>Any <code>IfcTask</code> in the <modelref name="plan/main"/></p>
+</def>
+<def name="zone">
+<p>Any <code>IfcZone</code> in the <modelref name="plan/main"/></p>
+</def>
+<def name="preventive_resource">
+<p>Preventive resource is person who is in charge of the safety inside.</p>
+<p>The preventive resource is in charge of a set of <ref name="task"/>.</p>
+<p>Depending on the budget, there will be preventive resources in charge of
+one or more <ref name="zone" />s or <level name="site">the whole site</level>.</p>
+</def>
+<def name="health_and_safety_manager">
+<p><level name="site">Health &amp; safety manager is in charge of the issues on the site.
+The person is the boss of the health &amp; safety of the site.</level></p>
+</def>
+<def name="risk_level">
+<p>This is the risk level according to different standards.
+Refers to a concrete standard in <modelref name="standard/risk_level" />.</p>
+</def>
+<def name="fall_risk">
+<p>A fall risk is an abstract entity.</p>
+<p>It can be tied to a <ref name="zone"/> or to an <ref name="element"/>, but it doesn't need to.</p>
+<p>The fall risk has a validity time span (which can also be open-ended).</p>
+<p>The fall risk lives in <modelref name="plan/main" />.</p>
+</def>
+<h2>Scenario</h2>
+<h3>As-planned</h3>
+<p>We just use the federated model in <modelref name="plan/main" />.</p>
+<p><level name="site_office">The <modelref name="plan/main" /> data would need to be accessible from
+the office.</level></p>
+<h3>As-observed</h3>
+<p>All the observed data from <modelref name="observed/point_cloud" /> and
+<modelref name="observed/pictures" /> lives in the same coordinate system as
+the federated model in <modelref name="plan/main" />. The mismatch errors between the coordinates
+are possible (see the acceptance criterion <acceptanceref name="coordinate_error" />).</p>
+<p><level name="site_office">The observed data, <modelref name="observed/point_cloud" /> and
+<modelref name="observed/pictures" />,  would need to be accessible from the office.</level></p>
+<h3>Divergence</h3>
+<p><strong>Start simple.</strong> The <ref name="preventive_resource"/> and <ref name="health_and_safety_manager" />
+manually inspect the <ref name="element"/>s and report absent/ill-placed to the system.</p>
+<p><strong>Next step: QR code.</strong> The QR code references the identifier of the <ref name="element"/>.
+The observations of the QR code are stored in <modelref name="observed/qr_codes"/>.</p>
+<p>Anybody authorized can add an observation of a QR code.</p>
+<h3>Analytics</h3>
+<p>The overall view of the <ref name="fall_risk"/>s should be provided in a table.</p>
+<p>The user can manually inspect further the related details such as associated <ref name="element"/>s.</p>
+<h3>Scheduling</h3>
+<p><em>This section is empty on purpose.</em></p>
+<h3>Safety</h3>
+<p><strong>Specification of the fall risks</strong>.
+The <ref name="preventive_resource"/> links the <ref name="element"/> with the
+<ref name="installer"/>.</p>
+<p><phase name="planning">The <ref name="health_and_safety_manager"/> inputs initially the
+<ref name="fall_risk"/>s manually.</phase></p>
+<p>The <ref name="preventive_resource"/> makes notes regarding an unsafe <ref name="element" />.
+Both the <ref name="health_and_safety_manager"/> and <ref name="preventive_resource"/> can
+insert new and change existing <ref name="fall_risk"/>s accordingly.</p>
+<p><strong>Alerts</strong>. The safety status <ref name="risk_level" /> is continuously displayed to
+<ref name="alertee"/>s in real-time based on the current <ref name="fall_risk"/>s and their
+location. </p>
+<p>The location of the actor is not stored in the backend. The update logic is running on the alertee's
+device (<em>i.e</em>., a smart-watch) which sends repeated queries to the backend.
+The backend does not track the alertee.</p>
+<h2>Test Cases</h2>
+<test name="safely_test_proximity_to_danger">
+<p>We mount an user device on a long stick and come closer and closer to the danger zone.
+We observe the distance to the danger zone and verify that the alarm is triggered on an appropriate
+proximity (judged by the <ref name="health_and_safety_manager"/>).</p>
+<p>The system states as well as the device data are recorded and re-used for repeated automatic
+testing. </p>
+</test>
+<test name="blind_test_removed_item">
+<p>Remove a safety item and inform the workers. Check that the responsible person could find out
+that it is missing using the system. </p>
+</test> 
+<test name="analytics_correct_on_an_example">
+<p>Record 3 complete states of the whole system and freeze them. Manually compute the expected
+analytics. Check that the output of the system coincides with the manually computed analytics.</p>
+</test>
+<h2>Acceptance Criteria</h2>
+<acceptance name="coordinate_error">
+<p>Over repeated runs (<em>e.g.,</em> over the days), there will be randomized errors between the
+coordinates in <modelref name="plan/main" /> and
+<modelref name="observed/point_cloud" /> and
+<modelref name="observed/pictures" />, including the drift and systematic errors. </p>
+<p>We have to see <em>after</em> the experiments whether these errors are tolerable for this
+scenario.</p>
+<p>Our expectation is that the error is below 1 meter, rarely 2 meters.
+We do not have precise statistics at the moment (2021-01-09).</p>
+</acceptance>
+<p>TODO: how fast should the safety status change?
+TODO: how many queries per second will the system actually need to handle (3 scenarios: small construction site, medium construction side, large construction site)
+TODO: --&gt; polling can be expensive. </p>
+
+</body>
+</html>

@@ -1,7 +1,7 @@
 <rasaeco-meta>
 {
-    "identifier": "fall_risk_alert",
     "title": "Fall Risk Alert",
+    "contact": "Dag Fjeld Edvardsen <dag.fjeld.edvardsen@catenda.no>, Miquel Cantero <mcantero@robotnik.es>, Manuel Menendez <manuel.menendez@vias.es>, Marko Ristin <rist@zhaw.ch>",
     "relations": [
     ],
     "volumetric": [
@@ -25,7 +25,7 @@
 
 ## Models
 
-### plan/main
+<model name="plan/main">
 
 The as-planned BIM model provided after the planning phase and
 updated throughout the construction.
@@ -34,31 +34,41 @@ It is going to be updated as the building grows.
 
 This is the federated model of all the individual domain models.
 
-### observed/point_cloud
+</model>
+
+<model name="observed/point_cloud">
 
 The point cloud observed with the drones and the ground robots.
 
 The coordinates are synchronized with the <modelref name="plan/main" />.
 
-### observed/pictures
+</model>
+
+<model name="observed/pictures">
 
 The pictures taken by the ground robots, drones and humans.
 
 The coordinates are synchronized with the <modelref name="plan/main" />.
 TODO: how is this synchronization done -- address it in as-observed aspect.
 
-### observed/qr_codes
+</model>
+
+<model name="observed/qr_codes">
 
 The observations of the QR codes: (the location, the time, the identifier of the 
 <ref name="element"/>).
 
-### standard/risk_level
+</model>
+
+<model name="standard/risk_level">
 
 Risk levels defined at the national and internation level.
 
+</model>
+
 ## Definitions
 
-### installer
+<def name="installer">
 
 The person who installed an <ref name="element"/>.
 
@@ -71,11 +81,15 @@ In BIM:
 IfcActor
 ```
 
-### alertee
+</def>
+
+<def name="alertee">
 
 A person who needs to be alerted on his/her current risk level. 
 
-### element
+</def>
+
+<def name="element">
 
 Any relevant building element from the <modelref name="plan/main"/>. 
 It can be associated with <modelref name="observed/point_cloud" /> and 
@@ -89,27 +103,37 @@ IfcProduct
 
 Every element needs to have a unique identifier. 
 
-### points_in_the_vicinity
+</def>
+
+<def name="points_in_the_vicinity">
 
 A subset of the points in the point cloud close to <ref name="element" />.
 
 The vicinity is defined as a bounding box.
 
-### images_of_the_element
+</def>
+
+<def name="images_of_the_element">
 
 A subset of the images that look at the <ref name="element" />.
 
 We can compute their subset based on their coordinates and angle.
 
-### task
+</def>
+
+<def name="task">
 
 Any `IfcTask` in the <modelref name="plan/main"/>
 
-### zone
+</def>
+
+<def name="zone">
 
 Any `IfcZone` in the <modelref name="plan/main"/>
 
-### preventive_resource
+</def>
+
+<def name="preventive_resource">
 
 Preventive resource is person who is in charge of the safety inside.
 
@@ -118,17 +142,24 @@ The preventive resource is in charge of a set of <ref name="task"/>.
 Depending on the budget, there will be preventive resources in charge of 
 one or more <ref name="zone" />s or <level name="site">the whole site</level>.
 
-### health_and_safety_manager
+</def>
+
+<def name="health_and_safety_manager">
 
 <level name="site">Health & safety manager is in charge of the issues on the site.
 The person is the boss of the health & safety of the site.</level>
 
-### risk_level
+</def>
+
+<def name="risk_level">
 
 This is the risk level according to different standards.
 Refers to a concrete standard in <modelref name="standard/risk_level" />.
 
-### fall_risk
+</def>
+
+<def name="fall_risk">
+
 A fall risk is an abstract entity.
 
 It can be tied to a <ref name="zone"/> or to an <ref name="element"/>, but it doesn't need to.
@@ -136,6 +167,8 @@ It can be tied to a <ref name="zone"/> or to an <ref name="element"/>, but it do
 The fall risk has a validity time span (which can also be open-ended).
 
 The fall risk lives in <modelref name="plan/main" />.
+
+</def>
 
 ## Scenario
 
@@ -150,17 +183,8 @@ the office.</level>
 
 All the observed data from <modelref name="observed/point_cloud" /> and
 <modelref name="observed/pictures" /> lives in the same coordinate system as 
-the federated model in <modelref name="plan/main" />.
-
-Over repeated runs (*e.g.,* over the days), there will be randomized errors between the
-coordinates in <modelref name="plan/main" /> and
-<modelref name="observed/point_cloud" /> and
-<modelref name="observed/pictures" />, including the drift and systematic errors. 
-
-We have to see *after* the experiments whether these errors are tolerable for this
-scenario.
-
-Usually the error is below 1 meter, rarely 2 meters.
+the federated model in <modelref name="plan/main" />. The mismatch errors between the coordinates
+are possible (see the acceptance criterion <acceptanceref name="coordinate_error" />).
 
 <level name="site_office">The observed data, <modelref name="observed/point_cloud" /> and
 <modelref name="observed/pictures" />,  would need to be accessible from the office.</level>
@@ -183,7 +207,7 @@ The user can manually inspect further the related details such as associated <re
 
 ### Scheduling
 
-This section is empty on purpose.
+*This section is empty on purpose.*
 
 ### Safety
 
@@ -205,3 +229,51 @@ location.
 The location of the actor is not stored in the backend. The update logic is running on the alertee's
 device (*i.e*., a smart-watch) which sends repeated queries to the backend. 
 The backend does not track the alertee.
+
+## Test Cases
+
+<test name="safely_test_proximity_to_danger">
+
+We mount an user device on a long stick and come closer and closer to the danger zone.
+We observe the distance to the danger zone and verify that the alarm is triggered on an appropriate
+proximity (judged by the <ref name="health_and_safety_manager"/>).
+
+The system states as well as the device data are recorded and re-used for repeated automatic 
+testing. 
+
+</test>
+
+<test name="blind_test_removed_item">
+
+Remove a safety item and inform the workers. Check that the responsible person could find out
+that it is missing using the system. 
+
+</test> 
+
+<test name="analytics_correct_on_an_example">
+
+Record 3 complete states of the whole system and freeze them. Manually compute the expected
+analytics. Check that the output of the system coincides with the manually computed analytics.
+
+</test>
+
+## Acceptance Criteria
+
+<acceptance name="coordinate_error">
+
+Over repeated runs (*e.g.,* over the days), there will be randomized errors between the
+coordinates in <modelref name="plan/main" /> and
+<modelref name="observed/point_cloud" /> and
+<modelref name="observed/pictures" />, including the drift and systematic errors. 
+
+We have to see *after* the experiments whether these errors are tolerable for this
+scenario.
+
+Our expectation is that the error is below 1 meter, rarely 2 meters. 
+We do not have precise statistics at the moment (2021-01-09).
+
+</acceptance>
+
+TODO: how fast should the safety status change?
+TODO: how many queries per second will the system actually need to handle (3 scenarios: small construction site, medium construction side, large construction site)
+TODO: --> polling can be expensive. 

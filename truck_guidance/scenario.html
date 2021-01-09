@@ -1,21 +1,53 @@
 <html>
 <head><meta charset="utf-8" /><script src="https://livejs.com/live.js"> </script><title>Truck guidance</title><style>body {
-    margin-right: 5%;
-    margin-left: 5%;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    padding: 1%;
+    margin-top: 2em;
+    padding: 0px;
+}
+
+#main {
+    float: left;
+    width: 50em;
+    margin-left: 3%;
     border: 1px solid black;
+    padding: 2em;
+}
+
+#index {
+    float: left;
+    width: 30%;
+    border: 1px solid black;
+    padding: 1em;
+}
+
+ul.toc {
+    list-style-type: none;
+}
+
+ul.toc li {
+    margin-bottom: 0.5em;
 }
 
 a {
     text-decoration: none;
+    color: blue;
 }
 
-a.anchor {
+a:visited {
+    color: blue;
+}
+
+a.section-anchor {
     text-decoration: none;
+    color: black;
+}
+
+.chain-symbol {
+    display: none;
     font-size: x-small;
-    margin-right: 1em;
+    margin-left: 0.5em;
+}
+a.section-anchor:hover + .chain-symbol {
+    display: inline-block;
 }
 
 span.phase {
@@ -31,11 +63,12 @@ pre {
     padding: 1em;
 }
 </style></head><body>
-<a href="../ontology.html">Back to ontology</a><h1>Truck guidance</h1><p>Dag Fjeld Edvardsen &lt;dag.fjeld.edvardsen@catenda.no&gt;, Marko Ristin &lt;rist@zhaw.ch&gt;</p><img src="volumetric.png" style="border: 1px solid #EEEEEE; padding: 10px;" /><h2>Summary</h2>
+<div id="index"><a href="../ontology.html">Back to ontology</a><img src="volumetric.png" style="border: 1px solid #EEEEEE; padding: 10px;" /><h2>Table of Contents</h2><ul class="toc"><li style="padding-left: 0.00em"><a href="#section-Summary">Summary</a></li><li style="padding-left: 0.00em"><a href="#section-Models">Models</a></li><li style="padding-left: 2.20em"><a href="#model-plan/main">plan/main</a></li><li style="padding-left: 2.20em"><a href="#model-observed/main">observed/main</a></li><li style="padding-left: 2.20em"><a href="#model-archived/observations">archived/observations</a></li><li style="padding-left: 0.00em"><a href="#section-Definitions">Definitions</a></li><li style="padding-left: 2.20em"><a href="#def-planner_role">planner role</a></li><li style="padding-left: 2.20em"><a href="#def-delivery">delivery</a></li><li style="padding-left: 2.20em"><a href="#def-contact_person">contact person</a></li><li style="padding-left: 2.20em"><a href="#def-pickup_person">pickup person</a></li><li style="padding-left: 2.20em"><a href="#def-entry_point">entry point</a></li><li style="padding-left: 2.20em"><a href="#def-exit_point">exit point</a></li><li style="padding-left: 2.20em"><a href="#def-driver">driver</a></li><li style="padding-left: 2.20em"><a href="#def-delivery_status">delivery status</a></li><li style="padding-left: 2.20em"><a href="#def-notifiee">notifiee</a></li><li style="padding-left: 0.00em"><a href="#section-Scenario">Scenario</a></li><li style="padding-left: 2.20em"><a href="#section-As-planned">As-planned</a></li><li style="padding-left: 2.20em"><a href="#section-As-observed">As-observed</a></li><li style="padding-left: 2.20em"><a href="#section-Divergence">Divergence</a></li><li style="padding-left: 2.20em"><a href="#section-Analytics">Analytics</a></li><li style="padding-left: 2.20em"><a href="#section-Scheduling">Scheduling</a></li><li style="padding-left: 2.20em"><a href="#section-Safety">Safety</a></li><li style="padding-left: 0.00em"><a href="#section-Test_Cases">Test Cases</a></li><li style="padding-left: 2.20em"><a href="#test-navigation_correct_on_examples">navigation correct on examples</a></li><li style="padding-left: 0.00em"><a href="#section-Acceptance_Criteria">Acceptance Criteria</a></li></ul></div>
+<div id="main"><h1>Truck guidance</h1><h2 data-anchor="section-Summary"><a name="section-Summary" /><a class="section-anchor" href="#section-Summary">Summary</a><span class="chain-symbol">🔗</span></h2>
 <p>This scenario concerns truck drivers arriving at the construction site to deliver cargo.</p>
-<h2>Models</h2>
+<h2 data-anchor="section-Models"><a name="section-Models" /><a class="section-anchor" href="#section-Models">Models</a><span class="chain-symbol">🔗</span></h2>
 <div class="model">
-<h3><a href="#model-plan/main" class="anchor">🔗</a>plan/main<a name="model-plan/main"> </a></h3>
+<h3 data-anchor="model-plan/main"><a name="model-plan/main" /><a class="section-anchor" href="#model-plan/main">plan/main</a><span class="chain-symbol">🔗</span></h3>
 <p>The as-planned BIM model provided after the planning phase and
 updated throughout the construction.</p>
 <p>It is going to be updated as the building grows.</p>
@@ -43,85 +76,85 @@ updated throughout the construction.</p>
 Structural model and Electrical model).</p>
 </div>
 <div class="model">
-<h3><a href="#model-observed/main" class="anchor">🔗</a>observed/main<a name="model-observed/main"> </a></h3>
+<h3 data-anchor="model-observed/main"><a name="model-observed/main" /><a class="section-anchor" href="#model-observed/main">observed/main</a><span class="chain-symbol">🔗</span></h3>
 <p>This model contains the real time delivery status.</p>
 </div>
 <div class="model">
-<h3><a href="#model-archived/observations" class="anchor">🔗</a>archived/observations<a name="model-archived/observations"> </a></h3>
+<h3 data-anchor="model-archived/observations"><a name="model-archived/observations" /><a class="section-anchor" href="#model-archived/observations">archived/observations</a><span class="chain-symbol">🔗</span></h3>
 <p>This keeps track of accomplished <a href="#def-delivery" class="ref">deliveries</a>.</p>
 </div>
-<h2>Definitions</h2>
+<h2 data-anchor="section-Definitions"><a name="section-Definitions" /><a class="section-anchor" href="#section-Definitions">Definitions</a><span class="chain-symbol">🔗</span></h2>
 <div class="def">
-<h3><a href="#def-planner_role" class="anchor">🔗</a>planner role<a name="def-planner_role"> </a></h3>
+<h3 data-anchor="def-planner_role"><a name="def-planner_role" /><a class="section-anchor" href="#def-planner_role">planner role</a><span class="chain-symbol">🔗</span></h3>
 <p>Planner role is for all people who are allowed to change a <a href="#def-delivery" class="ref">delivery</a>.</p>
 </div>
 <div class="def">
-<h3><a href="#def-delivery" class="anchor">🔗</a>delivery<a name="def-delivery"> </a></h3>
+<h3 data-anchor="def-delivery"><a name="def-delivery" /><a class="section-anchor" href="#def-delivery">delivery</a><span class="chain-symbol">🔗</span></h3>
 <p>Delivery is an <code>IfcTask</code>, which has a text, a <code>ScheduleStart</code> and <code>ScheduleFinish</code> (both <code>IfcTaskTime</code>. It can be associated with
 a location <code>IfcZone</code>. The cargo is a text property of the delivery ("10 windows, 2 doors").</p>
 <p>The delivery is assigned to a <a href="#def-driver" class="ref">driver</a>, a <a href="#def-entry_point" class="ref">entry point</a> and
 <a href="#def-exit_point" class="ref">exit point</a> and a <a href="#def-contact_person" class="ref">contact person</a>.</p>
 </div>
 <div class="def">
-<h3><a href="#def-contact_person" class="anchor">🔗</a>contact person<a name="def-contact_person"> </a></h3>
+<h3 data-anchor="def-contact_person"><a name="def-contact_person" /><a class="section-anchor" href="#def-contact_person">contact person</a><span class="chain-symbol">🔗</span></h3>
 <p>The person who should be contacted if the <a href="#def-driver" class="ref">driver</a> have questions.</p>
 </div>
 <div class="def">
-<h3><a href="#def-pickup_person" class="anchor">🔗</a>pickup person<a name="def-pickup_person"> </a></h3>
+<h3 data-anchor="def-pickup_person"><a name="def-pickup_person" /><a class="section-anchor" href="#def-pickup_person">pickup person</a><span class="chain-symbol">🔗</span></h3>
 <p>The person responsible for picking up the cargo.</p>
 </div>
 <div class="def">
-<h3><a href="#def-entry_point" class="anchor">🔗</a>entry point<a name="def-entry_point"> </a></h3>
+<h3 data-anchor="def-entry_point"><a name="def-entry_point" /><a class="section-anchor" href="#def-entry_point">entry point</a><span class="chain-symbol">🔗</span></h3>
 <p>The <code>IfcZone</code> where the truck should enter through.</p>
 </div>
 <div class="def">
-<h3><a href="#def-exit_point" class="anchor">🔗</a>exit point<a name="def-exit_point"> </a></h3>
+<h3 data-anchor="def-exit_point"><a name="def-exit_point" /><a class="section-anchor" href="#def-exit_point">exit point</a><span class="chain-symbol">🔗</span></h3>
 <p>The <code>IfcZone</code> where the truck should leave through.</p>
 </div>
 <div class="def">
-<h3><a href="#def-driver" class="anchor">🔗</a>driver<a name="def-driver"> </a></h3>
+<h3 data-anchor="def-driver"><a name="def-driver" /><a class="section-anchor" href="#def-driver">driver</a><span class="chain-symbol">🔗</span></h3>
 <p>The driver is an <code>IfcActor</code>.</p>
 </div>
 <div class="def">
-<h3><a href="#def-delivery_status" class="anchor">🔗</a>delivery status<a name="def-delivery_status"> </a></h3>
+<h3 data-anchor="def-delivery_status"><a name="def-delivery_status" /><a class="section-anchor" href="#def-delivery_status">delivery status</a><span class="chain-symbol">🔗</span></h3>
 <p>Consideration for architecture: we need to introduce a custom class to represent the
 delivery status (label and depending on the label, last_location and last_observed_time).</p>
 </div>
 <div class="def">
-<h3><a href="#def-notifiee" class="anchor">🔗</a>notifiee<a name="def-notifiee"> </a></h3>
+<h3 data-anchor="def-notifiee"><a name="def-notifiee" /><a class="section-anchor" href="#def-notifiee">notifiee</a><span class="chain-symbol">🔗</span></h3>
 <p>The notifiee is an <code>IfcActor</code> that is notified when the delivery status is updated.</p>
 </div>
-<h2>Scenario</h2>
-<h3>As-planned</h3>
+<h2 data-anchor="section-Scenario"><a name="section-Scenario" /><a class="section-anchor" href="#section-Scenario">Scenario</a><span class="chain-symbol">🔗</span></h2>
+<h3 data-anchor="section-As-planned"><a name="section-As-planned" /><a class="section-anchor" href="#section-As-planned">As-planned</a><span class="chain-symbol">🔗</span></h3>
 <p>The <a href="#def-planner_role" class="ref">planner role</a> creates and updates the <a href="#def-delivery" class="ref">deliveries</a>.</p>
-<h3>As-observed</h3>
+<h3 data-anchor="section-As-observed"><a name="section-As-observed" /><a class="section-anchor" href="#section-As-observed">As-observed</a><span class="chain-symbol">🔗</span></h3>
 <p>The <a href="#def-driver" class="ref">driver</a>'s device tracks the gps location, but does not send it to the system.</p>
-<h3>Divergence</h3>
+<h3 data-anchor="section-Divergence"><a name="section-Divergence" /><a class="section-anchor" href="#section-Divergence">Divergence</a><span class="chain-symbol">🔗</span></h3>
 <p>The  device will guide the <a href="#def-driver" class="ref">driver</a> to the location on the site where the
 <a href="#def-delivery" class="ref">delivery</a> should take place. The <a href="#def-driver" class="ref">driver</a> updates the status of
 the delivery.</p>
 <p>The <a href="#def-notifiee" class="ref">notifiees</a> are notified when the status of the delivery is updated.</p>
-<h3>Analytics</h3>
+<h3 data-anchor="section-Analytics"><a name="section-Analytics" /><a class="section-anchor" href="#section-Analytics">Analytics</a><span class="chain-symbol">🔗</span></h3>
 <p>The KPI for delivery-in-time is updated, both delivery in number per week and variance. This is based
 on date from <a href="#model-archived/observations" class="modelref">archived/observations</a>.</p>
 <p>The <a href="#def-planner_role" class="ref">planner role</a> decides under which status to archive the delivery (for KPI).</p>
-<h3>Scheduling</h3>
+<h3 data-anchor="section-Scheduling"><a name="section-Scheduling" /><a class="section-anchor" href="#section-Scheduling">Scheduling</a><span class="chain-symbol">🔗</span></h3>
 <p>Notify the <a href="#def-notifiee" class="ref">notifiees</a> if the <a href="#def-delivery" class="ref">delivery</a> is not ready when the pickup-time
 has passed.</p>
-<h3>Safety</h3>
+<h3 data-anchor="section-Safety"><a name="section-Safety" /><a class="section-anchor" href="#section-Safety">Safety</a><span class="chain-symbol">🔗</span></h3>
 <p>Intentionally left empty.</p>
-<h2>Test Cases</h2>
+<h2 data-anchor="section-Test_Cases"><a name="section-Test_Cases" /><a class="section-anchor" href="#section-Test_Cases">Test Cases</a><span class="chain-symbol">🔗</span></h2>
 <div class="test">
-<h3><a href="#test-navigation_correct_on_examples" class="anchor">🔗</a>navigation correct on examples<a name="test-navigation_correct_on_examples"> </a></h3>
+<h3 data-anchor="test-navigation_correct_on_examples"><a name="test-navigation_correct_on_examples" /><a class="section-anchor" href="#test-navigation_correct_on_examples">navigation correct on examples</a><span class="chain-symbol">🔗</span></h3>
 <p>TODO: discuss with Dag. What is the easiest way to record a couple of scenarios so that we can
 repeatedly and automatically test them?</p>
 </div>
-<h2>Acceptance Criteria</h2>
+<h2 data-anchor="section-Acceptance_Criteria"><a name="section-Acceptance_Criteria" /><a class="section-anchor" href="#section-Acceptance_Criteria">Acceptance Criteria</a><span class="chain-symbol">🔗</span></h2>
 <p>TODO: discuss with Dag: what are the practically accepted refresh rates for the navigation?
 How much polling will be involved -- how many requests per second will the system face
 in low, normal and high usage?</p>
 <p>What is the acceptable delay with sending out the messages? Can this be a bottleneck? How many
 messages per second in low, normal and high usage?</p>
-
+</div>
 </body>
 </html>

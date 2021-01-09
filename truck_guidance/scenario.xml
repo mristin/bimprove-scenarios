@@ -1,6 +1,7 @@
 <html>
 <body>
-<h2>Summary</h2>
+<div id='index'></div>
+<div id='main'><h2>Summary</h2>
 <p>This scenario concerns truck drivers arriving at the construction site to deliver cargo.</p>
 <h2>Models</h2>
 <model name="plan/main">
@@ -78,6 +79,6 @@ How much polling will be involved -- how many requests per second will the syste
 in low, normal and high usage?</p>
 <p>What is the acceptable delay with sending out the messages? Can this be a bottleneck? How many
 messages per second in low, normal and high usage?</p>
-
+</div>
 </body>
 </html>

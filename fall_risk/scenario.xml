@@ -1,6 +1,7 @@
 <html>
 <body>
-<h2>Summary</h2>
+<div id='index'></div>
+<div id='main'><h2>Summary</h2>
 <img src='summary.png' alt="summary of the scenario" width="400" height="200" />
 <h2>Models</h2>
 <model name="plan/main">
@@ -148,6 +149,6 @@ We do not have precise statistics at the moment (2021-01-09).</p>
 <p>TODO: how fast should the safety status change?
 TODO: how many queries per second will the system actually need to handle (3 scenarios: small construction site, medium construction side, large construction site)
 TODO: --&gt; polling can be expensive. </p>
-
+</div>
 </body>
 </html>

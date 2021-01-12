@@ -30,7 +30,7 @@ As far as I can tell, it's about a general IfcElement, not a particular IfcColum
 ((NB: To be specific, we use a column in this example - but it can be almost any
 building element and task conceptually.))
 
-The Costing column scenario is about calculating the cost of an <ref name="IfcColumn" />. 
+The Costing column scenario is about calculating the cost of an IfcColumn. 
 Materials can be prefab concrete, steel (maybe length would need to be cut), possibly on-site fabrication, mass-timber, 
 laminated timber.  The materials are available in the BIM-model, and this is stored in the 
 IFC-file (In line with the standardized schema) together with its properties / quantities. An estimate in the tendering phase, the more 
@@ -63,7 +63,7 @@ Check the cost objective at least every month.
 
 ## Models
 
-### plan/main
+<model name="plan/main">
 
 The as-planned BIM model provided after the planning phase and
 updated throughout the construction.
@@ -73,19 +73,63 @@ It is going to be updated as the building grows.
 This is the federated model of all the individual domain models (core is Site model, 
 Structural model and Electrical model).
 
-### observed/main
+</model>
+
+<model name="observed/main">
+
 This model contains the actual cost status, captured in real time.
 (NB: It is not given that this will be stored in an actual IFC model, but conceptually
 it could be done like this)
 
-### archived/observations
-This keeps track of actual <ref name="cost" />s having taken place.
+</model>
+
+<model name="archived/observations">
+
+This model keeps track of actual <ref name="cost" />s having taken place.
+
+</model>
 
 ## Definitions
 
-### cost_estimator_role
+<def name="cost_estimator">
+
 This role does the cost estimating.
 
+TODO: is it one person or multiple?
+
+</def>
+
+<def name="cost">
+
+TODO: needs to be defined
+
+</def>
+
+<def name="notifiee">
+
+TODO: needs to be defined
+
+</def>
+
+<def name="actual_cost">
+
+TODO: needs to be defined
+
+</def>
+
+<def name="cost_estimate">
+
+TODO: needs to be defined
+
+</def>
+
+<def name="tolerance">
+
+TODO: needs to be defined
+
+TODO: One for all costs? Or defined per cost? As a percentage? --> Alert: scope creep! 
+
+</def>
 
 ## Scenario
 
@@ -93,7 +137,7 @@ This role does the cost estimating.
 The <ref name="cost_estimator"/> creates and updates the <ref name="cost_estimate"/>s.
 
 ### As-observed
-The <ref name="cost_estimator"/>'s data captures the actual costs based on agreements
+The <ref name="cost_estimator"/>s data captures the actual costs based on agreements
 and invoices.
 
 ### Divergence
@@ -117,7 +161,7 @@ on date from <modelref name="archived/observations" />.
 
 ### Scheduling
 Notify the <ref name="notifiee" />s if the <ref name="actual_cost" /> is not within
-the estimate + tolerance when this is known.
+the <ref name="cost_estimate" /> +- <ref name="tolerance" /> when this is known.
 
 
 ### Safety

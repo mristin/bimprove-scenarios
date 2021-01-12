@@ -24,23 +24,24 @@ Actions: view, comment, create issue (linked to none, one or more elements)
 
 Nobody can edit! Edits are done *via* continuous_plan_update.
 
-
 ### Versioning
 Important: the virtual inspection can take time range/versions into account 
 (both for plans and for observed images and point cloud!)
 
 Are point clouds grouped by atomic recordings?
 
-Are there manually recorded point clouds? 
+Are there manually recorded point clouds?
 
 What about images? The UAV recordings probably give videos (tied to a single atomic recording), 
 while manual images are captured by a phone at an arbitrary time point.
 
-Should we be able to visualize BFC as well? And how?
+Should we be able to visualize BCF as well? And how?
 
 Should we visualize multiple versions of BIM?
 Should they be compared on-the-fly?
 (See also below as-digitally-reconstructed vs as-planned!)
+
+Repercussions for time & space complexity!! (O(n^2) if we need to pre-compute all the possible diffs.)
 
 ### Information about elements
 
@@ -67,16 +68,13 @@ So far, these are the relations we collected so far:
   We need to notify the electrical company to adjust it."
 
 Many of the actors and tasks in the logs are probably not captured in BIM!
---> maybe we need just a free-form log?
+--> maybe we need just a free-form log? With individual access levels per nugget of information?
 
 ### As-digitally-reconstructed vs as-planned
 
-How to compute these differences? Overlap somehow? Animation?
-Are there codified rules to automatize such divergence?
-(There are many papers on this topic -- can we just use an external solution?)
-
 How do we visualize as-digitally-reconstructed vs as-planned? 
-Highlight the differences?
+How to highlight the differences? Animation (show one, show the other)?
+Over the point cloud & images?
 
 Can we have an external solution compare as-digitally-reconstructed and as-planned and export
 a BFC which can be imported and applied *via* continuous_plan_update?

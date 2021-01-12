@@ -1,6 +1,6 @@
 <rasaeco-meta>
 {
-    "title": "TODO",
+    "title": "Actor Management TODO",
     "contact": "Dag Fjeld Edvardsen <dag.fjeld.edvardsen@catenda.no>, Marko Ristin <rist@zhaw.ch>",
     "relations": [
     ],

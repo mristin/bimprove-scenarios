@@ -1,0 +1,26 @@
+<html>
+<body>
+<div id='index'></div>
+<div id='main'><h2>TODO</h2>
+<p>Are all actors included in BIM? </p>
+<p>Or is it a separate model? If it is a separate model, how do we link with BIM?</p>
+<p>Ex: you want to link workers to an element, and then reschedule their tasks.</p>
+<p>So far, we just assumed that it &quot;works somehow&quot;.</p>
+<p>How do we link user accounts to BIM? (If all actors are in BIM)?
+It is not a complete match -- some users are not actors and many actors are not users.
+But we need to specify how to handle the intersection.</p>
+<h2>Summary</h2>
+<h2>Models</h2>
+<h2>Definitions</h2>
+<h2>Scenario</h2>
+<h3>As-planned</h3>
+<h3>As-observed</h3>
+<h3>Divergence</h3>
+<h3>Analytics</h3>
+<h3>Scheduling</h3>
+<h3>Safety</h3>
+<h2>Test Cases</h2>
+<h2>Acceptance Criteria</h2>
+</div>
+</body>
+</html>

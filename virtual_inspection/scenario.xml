@@ -1,0 +1,92 @@
+<html>
+<body>
+<div id='index'></div>
+<div id='main'><h2>TODO</h2>
+<p>gather it first, then possibly break it up.</p>
+<h3>General overview</h3>
+<p>Different viewers (as applications!)</p>
+<ul>
+<li>Property owner inspection</li>
+<li>Civil engineer inspection</li>
+<li>BIM Manager inspection</li>
+<li>Site Manager inspection</li>
+</ul>
+<p>Actions: view, comment, create issue (linked to none, one or more elements)</p>
+<p>Nobody can edit! Edits are done <em>via</em> continuous_plan_update.</p>
+<h3>Versioning</h3>
+<p>Important: the virtual inspection can take time range/versions into account
+(both for plans and for observed images and point cloud!)</p>
+<p>Are point clouds grouped by atomic recordings?</p>
+<p>Are there manually recorded point clouds?</p>
+<p>What about images? The UAV recordings probably give videos (tied to a single atomic recording),
+while manual images are captured by a phone at an arbitrary time point.</p>
+<p>Should we be able to visualize BCF as well? And how?</p>
+<p>Should we visualize multiple versions of BIM?
+Should they be compared on-the-fly?
+(See also below as-digitally-reconstructed vs as-planned!)</p>
+<p>Repercussions for time &amp; space complexity!! (O(n^2) if we need to pre-compute all the possible diffs.)</p>
+<h3>Information about elements</h3>
+<p>Specify which general information should be displayed
+(manufacturer, company/people who built it, company/people who installed it, <em>etc.</em>)
+--&gt; log of an element</p>
+<p>So far, these are the relations we collected so far:</p>
+<ul>
+<li>
+<p>relations to tasks (and, transitively, tasks related to workers, installers and other actors)
+&quot;According to today's plan, the wall segment on 1st floor should be finished.
+The workers were there, but they have not finished.
+Tomorrow they are working on another site.&quot;</p>
+</li>
+<li>
+<p>relations to manufacturer
+&quot;The quality survey shows, that the window on the 1st floor at this position is 5 cm larger.
+We will need to order larger windows if the whole remains the same size.&quot;</p>
+</li>
+<li>
+<p>relations to contractors
+&quot;There are 5 pipes instead of 4 on the 2nd floor, it is not an approved change from
+the contractor. This was detected by the automated quality survey.&quot; </p>
+</li>
+<li>
+<p>relation to installer
+&quot;The power outlet on the 2ns floor in the given room are 10 cm lower, than it should be.
+We need to notify the electrical company to adjust it.&quot;</p>
+</li>
+</ul>
+<p>Many of the actors and tasks in the logs are probably not captured in BIM!
+--&gt; maybe we need just a free-form log? With individual access levels per nugget of information?</p>
+<h3>As-digitally-reconstructed vs as-planned</h3>
+<p>How do we visualize as-digitally-reconstructed vs as-planned?
+How to highlight the differences? Animation (show one, show the other)?
+Over the point cloud &amp; images?</p>
+<p>Can we have an external solution compare as-digitally-reconstructed and as-planned and export
+a BFC which can be imported and applied <em>via</em> continuous_plan_update?</p>
+<p>Visualization is one thing (achievable), while computing divergence seems to me (Marko)
+unachievable in this project.</p>
+<h3>Visualization of notes</h3>
+<p>How do we visualize the issues? With an icon displayed on elements linked to an issue?</p>
+<p>How is an issue captured in BIM? Or are issues kept in a separate model and linked to BIM elements?</p>
+<p>The issues are probably more dynamic than the official BIM update <em>via</em> BCF!
+--&gt; We need to specify this well!</p>
+<p>Or there might be different levels of notes:</p>
+<ul>
+<li>Official issues, need to be officially signed off</li>
+<li>Important notes</li>
+<li>Comments</li>
+</ul>
+<p>--&gt; Get feedback from the professionals!</p>
+<h2>Summary</h2>
+<h2>Models</h2>
+<h2>Definitions</h2>
+<h2>Scenario</h2>
+<h3>As-planned</h3>
+<h3>As-observed</h3>
+<h3>Divergence</h3>
+<h3>Analytics</h3>
+<h3>Scheduling</h3>
+<h3>Safety</h3>
+<h2>Test Cases</h2>
+<h2>Acceptance Criteria</h2>
+</div>
+</body>
+</html>

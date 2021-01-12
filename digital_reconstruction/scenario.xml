@@ -1,0 +1,28 @@
+<html>
+<body>
+<div id='index'></div>
+<div id='main'><h2>TODO</h2>
+<p>There are multiple stages:</p>
+<ul>
+<li>images, laser recordings -&gt; point cloud (most important!)</li>
+<li>point cloud + existing BIM -&gt; digitally reconstructed BIM (not in focus for us?)</li>
+</ul>
+<p>External software?</p>
+<p>Expected errors, formats, images with location and angle etc.</p>
+<p>How do we link individual BIM elements to point cloud and images?
+By querying over geometry?</p>
+<h2>Summary</h2>
+<h2>Models</h2>
+<h2>Definitions</h2>
+<h2>Scenario</h2>
+<h3>As-planned</h3>
+<h3>As-observed</h3>
+<h3>Divergence</h3>
+<h3>Analytics</h3>
+<h3>Scheduling</h3>
+<h3>Safety</h3>
+<h2>Test Cases</h2>
+<h2>Acceptance Criteria</h2>
+</div>
+</body>
+</html>

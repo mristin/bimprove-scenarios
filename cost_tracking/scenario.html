@@ -1,0 +1,176 @@
+<html>
+<head><meta charset="utf-8" /><script src="https://livejs.com/live.js"> </script><title>Cost Tracking TODO</title><style>body {
+    margin-top: 2em;
+    padding: 0px;
+}
+
+#main {
+    float: left;
+    width: 50em;
+    margin-left: 3%;
+    border: 1px solid black;
+    padding: 2em;
+}
+
+#index {
+    float: left;
+    width: 30%;
+    border: 1px solid black;
+    padding: 1em;
+}
+
+ul.toc {
+    list-style-type: none;
+}
+
+ul.toc li {
+    margin-bottom: 0.5em;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+a:visited {
+    color: blue;
+}
+
+a.section-anchor {
+    text-decoration: none;
+    color: black;
+}
+
+.chain-symbol {
+    display: none;
+    font-size: x-small;
+    margin-left: 0.5em;
+}
+a.section-anchor:hover + .chain-symbol {
+    display: inline-block;
+}
+
+span.phase {
+    background-color: #eefbfb;
+}
+
+span.level {
+    background-color: #eefbee;
+}
+
+pre {
+    background-color: #eeeefb;
+    padding: 1em;
+}
+</style></head><body>
+<div id="index"><a href="../ontology.html">Back to ontology</a><img src="volumetric.png" style="border: 1px solid #EEEEEE; padding: 10px;" /><h2>Table of Contents</h2><ul class="toc"><li style="padding-left: 0.00em"><a href="#section-TODO">TODO</a></li><li style="padding-left: 0.00em"><a href="#section-Summary">Summary</a></li><li style="padding-left: 0.00em"><a href="#section-Models">Models</a></li><li style="padding-left: 2.20em"><a href="#model-plan/main">plan/main</a></li><li style="padding-left: 2.20em"><a href="#model-observed/main">observed/main</a></li><li style="padding-left: 2.20em"><a href="#model-archived/observations">archived/observations</a></li><li style="padding-left: 0.00em"><a href="#section-Definitions">Definitions</a></li><li style="padding-left: 2.20em"><a href="#def-cost_estimator">cost estimator</a></li><li style="padding-left: 2.20em"><a href="#def-cost">cost</a></li><li style="padding-left: 2.20em"><a href="#def-notifiee">notifiee</a></li><li style="padding-left: 2.20em"><a href="#def-actual_cost">actual cost</a></li><li style="padding-left: 2.20em"><a href="#def-cost_estimate">cost estimate</a></li><li style="padding-left: 2.20em"><a href="#def-tolerance">tolerance</a></li><li style="padding-left: 0.00em"><a href="#section-Scenario">Scenario</a></li><li style="padding-left: 2.20em"><a href="#section-As-planned">As-planned</a></li><li style="padding-left: 2.20em"><a href="#section-As-observed">As-observed</a></li><li style="padding-left: 2.20em"><a href="#section-Divergence">Divergence</a></li><li style="padding-left: 2.20em"><a href="#section-Analytics">Analytics</a></li><li style="padding-left: 2.20em"><a href="#section-Scheduling">Scheduling</a></li><li style="padding-left: 2.20em"><a href="#section-Safety">Safety</a></li><li style="padding-left: 0.00em"><a href="#section-External_references">External references</a></li></ul></div>
+<div id="main"><h1>Cost Tracking TODO</h1><h2 data-anchor="section-TODO"><a name="section-TODO" /><a class="section-anchor" href="#section-TODO">TODO</a><span class="chain-symbol">🔗</span></h2>
+<p>Rewrite the scenario to make it more general.</p>
+<p>Add contact.</p>
+<p>For example, one salient point is the "IFC File" (in the summary), where I would have preferred that the scenario talks about the model "plan/main". Whether this model is stored as a file or not is in my opinion not relevant (it can be exported to a file if needed, but the "fileness" is not essential for this scenario).</p>
+<p>I also have some questions about the "observed/main" model. For example, isn't the cost data actually part of the "plan/main"? Or the "plan/main" contains the estimates, while the observed model contains the actual costs? Shouldn't we archive the costs and forget about the "observed/main" as the latest costs can be always derived from "archived/observations"?</p>
+<p>As far as I can tell, it's about a general IfcElement, not a particular IfcColumn?</p>
+<h2 data-anchor="section-Summary"><a name="section-Summary" /><a class="section-anchor" href="#section-Summary">Summary</a><span class="chain-symbol">🔗</span></h2>
+<p>((NB: To be specific, we use a column in this example - but it can be almost any
+building element and task conceptually.))</p>
+<p>The Costing column scenario is about calculating the cost of an IfcColumn.
+Materials can be prefab concrete, steel (maybe length would need to be cut), possibly on-site fabrication, mass-timber,
+laminated timber.  The materials are available in the BIM-model, and this is stored in the
+IFC-file (In line with the standardized schema) together with its properties / quantities. An estimate in the tendering phase, the more
+detailed budget for the project contains info. Could be changes to the solution, for instance
+from in-situ (onsite) to prefab columns. In the end the actual costs for each element (cost and
+hours) will be captured. The costs would be known (?) at the subcontract-level where one
+single column. Important to be certain that the cost estimate for the column is at the accepted
+certainty level - for instance 90% or 95%. </p>
+<p>We can assume that you will know the cost for each element at the end.</p>
+<p>Total cost for a column will include: Purchase of column or materials+production costs.
+Installation of the column, fire protection, insolation, added materials, covering, finish,
+paint. In-situ: rebaring, creating the form, pouring concrete, hardening, Removing the forms,
+finish. </p>
+<p>If there are changes, this would then involve the main contractor, the sub-contractor and
+the client. Changes could be based on unforseen curcomstances or by not having taking
+everything into consideration from the start.</p>
+<p>Interfaces: Main contractor talks with client, and talks with subcontractors. Sometimes
+the client hires an expert company to do the day-to-day communication with the
+construction company - only major things are handled by the client themselves.</p>
+<p>All of these interactions are regulated by a contract.</p>
+<p>For every unit, the site manager (supported by the production manager) has a cost objective. Asks for different offers, but knows what
+it typically should cost, but choose the best. Often balance between cost and quality.
+Check the cost objective at least every month.</p>
+<h2 data-anchor="section-Models"><a name="section-Models" /><a class="section-anchor" href="#section-Models">Models</a><span class="chain-symbol">🔗</span></h2>
+<div class="model">
+<h3 data-anchor="model-plan/main"><a name="model-plan/main" /><a class="section-anchor" href="#model-plan/main">plan/main</a><span class="chain-symbol">🔗</span></h3>
+<p>The as-planned BIM model provided after the planning phase and
+updated throughout the construction.</p>
+<p>It is going to be updated as the building grows.</p>
+<p>This is the federated model of all the individual domain models (core is Site model,
+Structural model and Electrical model).</p>
+</div>
+<div class="model">
+<h3 data-anchor="model-observed/main"><a name="model-observed/main" /><a class="section-anchor" href="#model-observed/main">observed/main</a><span class="chain-symbol">🔗</span></h3>
+<p>This model contains the actual cost status, captured in real time.
+(NB: It is not given that this will be stored in an actual IFC model, but conceptually
+it could be done like this)</p>
+</div>
+<div class="model">
+<h3 data-anchor="model-archived/observations"><a name="model-archived/observations" /><a class="section-anchor" href="#model-archived/observations">archived/observations</a><span class="chain-symbol">🔗</span></h3>
+<p>This model keeps track of actual <a href="#def-cost" class="ref">costs</a> having taken place.</p>
+</div>
+<h2 data-anchor="section-Definitions"><a name="section-Definitions" /><a class="section-anchor" href="#section-Definitions">Definitions</a><span class="chain-symbol">🔗</span></h2>
+<div class="def">
+<h3 data-anchor="def-cost_estimator"><a name="def-cost_estimator" /><a class="section-anchor" href="#def-cost_estimator">cost estimator</a><span class="chain-symbol">🔗</span></h3>
+<p>This role does the cost estimating.</p>
+<p>TODO: is it one person or multiple?</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-cost"><a name="def-cost" /><a class="section-anchor" href="#def-cost">cost</a><span class="chain-symbol">🔗</span></h3>
+<p>TODO: needs to be defined</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-notifiee"><a name="def-notifiee" /><a class="section-anchor" href="#def-notifiee">notifiee</a><span class="chain-symbol">🔗</span></h3>
+<p>TODO: needs to be defined</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-actual_cost"><a name="def-actual_cost" /><a class="section-anchor" href="#def-actual_cost">actual cost</a><span class="chain-symbol">🔗</span></h3>
+<p>TODO: needs to be defined</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-cost_estimate"><a name="def-cost_estimate" /><a class="section-anchor" href="#def-cost_estimate">cost estimate</a><span class="chain-symbol">🔗</span></h3>
+<p>TODO: needs to be defined</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-tolerance"><a name="def-tolerance" /><a class="section-anchor" href="#def-tolerance">tolerance</a><span class="chain-symbol">🔗</span></h3>
+<p>TODO: needs to be defined</p>
+<p>TODO: One for all costs? Or defined per cost? As a percentage? --&gt; Alert: scope creep! </p>
+</div>
+<h2 data-anchor="section-Scenario"><a name="section-Scenario" /><a class="section-anchor" href="#section-Scenario">Scenario</a><span class="chain-symbol">🔗</span></h2>
+<h3 data-anchor="section-As-planned"><a name="section-As-planned" /><a class="section-anchor" href="#section-As-planned">As-planned</a><span class="chain-symbol">🔗</span></h3>
+<p>The <a href="#def-cost_estimator" class="ref">cost estimator</a> creates and updates the <a href="#def-cost_estimate" class="ref">cost estimates</a>.</p>
+<h3 data-anchor="section-As-observed"><a name="section-As-observed" /><a class="section-anchor" href="#section-As-observed">As-observed</a><span class="chain-symbol">🔗</span></h3>
+<p>The <a href="#def-cost_estimator" class="ref">cost estimators</a> data captures the actual costs based on agreements
+and invoices.</p>
+<h3 data-anchor="section-Divergence"><a name="section-Divergence" /><a class="section-anchor" href="#section-Divergence">Divergence</a><span class="chain-symbol">🔗</span></h3>
+<p>The BIMprove system will keep track of estimated cost of a column, and will notify the Site manager
+if the updated expected cost is significantly different. Then the site manager can consider
+and action based on this (ask for more prices, or if very big difference consider redesign ... but this
+is very seldom). The steel cost can change a lot, and that can make a big impact on prices.
+Also subcontractors often change prices once a year, and that can also influence costs a lot.</p>
+<p>Some subcontractors gets paid based on how much they have produced
+in a time interval, for instance digging a hole for the building .. they then can get
+paid for the number of m3 that is dug out in that interval. Other times the subcontractors
+are paid per hour, but most of the time (80%) the pay is per delivered quantity (m2, m3 etc).</p>
+<p>The quicker a cost-deviation is detected, the easier it will be to adjust based on that.</p>
+<h3 data-anchor="section-Analytics"><a name="section-Analytics" /><a class="section-anchor" href="#section-Analytics">Analytics</a><span class="chain-symbol">🔗</span></h3>
+<p>A good KPI can be if the actual costs is in line with the estimated costs. The KPI for
+cost-deviations is updated, both cost-deviation per week and variance. This is based
+on date from <a href="#model-archived/observations" class="modelref">archived/observations</a>.</p>
+<h3 data-anchor="section-Scheduling"><a name="section-Scheduling" /><a class="section-anchor" href="#section-Scheduling">Scheduling</a><span class="chain-symbol">🔗</span></h3>
+<p>Notify the <a href="#def-notifiee" class="ref">notifiees</a> if the <a href="#def-actual_cost" class="ref">actual cost</a> is not within
+the <a href="#def-cost_estimate" class="ref">cost estimate</a> +- <a href="#def-tolerance" class="ref">tolerance</a> when this is known.</p>
+<h3 data-anchor="section-Safety"><a name="section-Safety" /><a class="section-anchor" href="#section-Safety">Safety</a><span class="chain-symbol">🔗</span></h3>
+<p>Intentionally left empty.</p>
+<h2 data-anchor="section-External_references"><a name="section-External_references" /><a class="section-anchor" href="#section-External_references">External references</a><span class="chain-symbol">🔗</span></h2>
+<p>IFCcolumn: https://standards.buildingsmart.org/IFC/RELEASE/IFC2x3/FINAL/HTML/ifcsharedbldgelements/lexical/ifccolumn.htm</p>
+</div>
+</body>
+</html>

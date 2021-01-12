@@ -1,6 +1,6 @@
 <rasaeco-meta>
 {
-    "title": "TODO",
+    "title": "Safety Status TODO",
     "contact": "TODO",
     "relations": [
     ],

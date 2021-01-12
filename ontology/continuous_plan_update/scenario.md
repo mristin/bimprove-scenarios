@@ -10,24 +10,21 @@
 
 ## TODO
 
-Use external software, feed in only a BFC.
+Use external software, feed in only a BCF.
 
-Is it really _only_ BFC? 
+Is it really _only_ BCF?
 
 What about a complete overwrite of the model? 
-
-What about the consistency with observed data?
-
-There can be more data than captured in a single BIM! For example, deliveries or actors. 
-But this scenario is only focuses on BIM as the official, legally binding data.
 
 This has repercussions on uav path planning! 
 If BIM updates are official over BCF, these updates will be at low rate. 
 But UAVs need to record at much faster rate!
 We probably need parallel models: the official one and one for UAVs and other applications.
 
-What happens with consistency? 
+What happens with consistency with other non-BIM data? 
 Ex: Actor deleted, but referenced in extra structures such as delivery and actors.
+There can be more data than captured in a single BIM! For example, deliveries or actors. 
+But this scenario is only focuses on BIM as the official, legally binding data.
 
 TODO: copy/paste the summary from the confluence, link to the confluence article
 
@@ -39,7 +36,9 @@ there are two actions:
 2) compare the two plans (reconstructed plan and original plan) 
    --> this is part of visual inspection!
    
-So multiple plans are possible: as-digitally-reconstructed and as-planned. 
+So multiple plans are possible: as-digitally-reconstructed and as-planned.
+
+--> This is directly related to digital_reconstruction scenario!!! 
 
 ## Summary
 

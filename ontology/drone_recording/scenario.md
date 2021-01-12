@@ -10,6 +10,9 @@
 
 ## TODO
 What about safety measures?
+--> The recordings happen with no people on the site.
+--> The people should not be notified in advance / a smartwatch app is out-of-scope 
+(to be confirmed). User interaction with the drone is out-of-scope.
 
 What about the recordings (atomic recordings or continuous recordings?)
 --> What about changes *while* recording?
@@ -25,17 +28,18 @@ Automatic BIM recognition so that we have more frequent plans?
 
 Alignment of coordinate systems
 
-Localization (GPS, drift etc.)
+Localization (GPS, drift, indoor etc.)
 
 data formats for point clouds and images
 
 boxed device / boxed hardware
 
-how are we supposed to transfer the data? ethernet? wifi?
+how are we supposed to transfer the data? ethernet? wifi? 
+how is the data transferred to the backend?
 
-when the drone lands?
+when the drone lands / safety?
 
-charging station needs to be measured as well!
+charging station needs to be measured as well / located precisely!
 
 ## Summary
 

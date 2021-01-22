@@ -1,0 +1,30 @@
+<html>
+<body>
+<div id='index'></div>
+<div id='main'><h2>Summary</h2>
+<p>This scenario specifies the details of <scenarioref name="risk_management" /> for
+<ref name="fall_risk" />s.</p>
+<h2>Models</h2>
+<p><em>Intentionally left empty.</em></p>
+<h2>Definitions</h2>
+<def name="health_and_safety_manager">
+<p>Health and safety manager is a <ref name="risk_management#risk_manager" /> that takes care
+of the fall risks on a construction site.</p>
+</def>
+<def name="fall_risk">
+<p>Fall risk is a <ref name="risk_management#risk" /> where a person risks falling and getting hurt.</p>
+<p>It is a <ref name="risk_management#risk_type" /> &quot;fall risk&quot;. </p>
+</def>
+<h2>Scenario</h2>
+<p>The <ref name="health_and_safety_manager" /> uses <scenarioref name="risk_management" /> to
+define <ref name="fall_risk" />s.</p>
+<p><em>The preceding aspect sections intentionally left empty.</em></p>
+<h3>Analytics</h3>
+<p>The <ref name="health_and_safety_manager" /> should be able to get an overview of
+the <ref name="fall_risk" />s in a table.</p>
+<p>A table is not free-form, but follows a widely used structured for capturing and organizing
+<ref name="fall_risk" />s. </p>
+<p><em>The remaining sections intentionally left empty.</em></p>
+</div>
+</body>
+</html>

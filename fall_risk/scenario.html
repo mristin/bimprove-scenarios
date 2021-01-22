@@ -1,0 +1,96 @@
+<html>
+<head><meta charset="utf-8" /><script src="https://livejs.com/live.js"> </script><title>Fall Risk</title><style>body {
+    margin-top: 2em;
+    padding: 0px;
+}
+
+#main {
+    float: left;
+    width: 50em;
+    margin-left: 3%;
+    border: 1px solid black;
+    padding: 2em;
+}
+
+#index {
+    float: left;
+    width: 30%;
+    border: 1px solid black;
+    padding: 1em;
+}
+
+ul.toc {
+    list-style-type: none;
+}
+
+ul.toc li {
+    margin-bottom: 0.5em;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+a:visited {
+    color: blue;
+}
+
+a.section-anchor {
+    text-decoration: none;
+    color: black;
+}
+
+.chain-symbol {
+    display: none;
+    font-size: x-small;
+    margin-left: 0.5em;
+}
+a.section-anchor:hover + .chain-symbol {
+    display: inline-block;
+}
+
+span.phase {
+    background-color: #eefbfb;
+}
+
+span.level {
+    background-color: #eefbee;
+}
+
+pre {
+    background-color: #eeeefb;
+    padding: 1em;
+}
+</style></head><body>
+<div id="index"><a href="../ontology.html">Back to ontology</a><img src="volumetric.png" style="border: 1px solid #EEEEEE; padding: 10px;" /><h2>Table of Contents</h2><ul class="toc"><li style="padding-left: 0.00em"><a href="#section-Summary">Summary</a></li><li style="padding-left: 0.00em"><a href="#section-Models">Models</a></li><li style="padding-left: 0.00em"><a href="#section-Definitions">Definitions</a></li><li style="padding-left: 2.20em"><a href="#def-health_and_safety_manager">health and safety manager</a></li><li style="padding-left: 2.20em"><a href="#def-fall_risk">fall risk</a></li><li style="padding-left: 0.00em"><a href="#section-Scenario">Scenario</a></li><li style="padding-left: 2.20em"><a href="#section-Analytics">Analytics</a></li></ul></div>
+<div id="main"><h1>Fall Risk</h1><h2>Relations from Other Scenarios</h2><ul><li><span>Fall Risk specific </span><a href="../risk_management/scenario.html">Risk Management</a></li></ul>
+<h2 data-anchor="section-Summary"><a name="section-Summary" /><a class="section-anchor" href="#section-Summary">Summary</a><span class="chain-symbol">🔗</span></h2>
+<p>This scenario specifies the details of <scenarioref name="risk_management" /> for
+<a href="#def-fall_risk" class="ref">fall risks</a>.</p>
+<h2 data-anchor="section-Models"><a name="section-Models" /><a class="section-anchor" href="#section-Models">Models</a><span class="chain-symbol">🔗</span></h2>
+<p><em>Intentionally left empty.</em></p>
+<h2 data-anchor="section-Definitions"><a name="section-Definitions" /><a class="section-anchor" href="#section-Definitions">Definitions</a><span class="chain-symbol">🔗</span></h2>
+<div class="def">
+<h3 data-anchor="def-health_and_safety_manager"><a name="def-health_and_safety_manager" /><a class="section-anchor" href="#def-health_and_safety_manager">health and safety manager</a><span class="chain-symbol">🔗</span></h3>
+<p>Health and safety manager is a <a href="../risk_management/scenario.html#def-risk_manager" class="ref">risk manager (from risk_management)</a> that takes care
+of the fall risks on a construction site.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-fall_risk"><a name="def-fall_risk" /><a class="section-anchor" href="#def-fall_risk">fall risk</a><span class="chain-symbol">🔗</span></h3>
+<p>Fall risk is a <a href="../risk_management/scenario.html#def-risk" class="ref">risk (from risk_management)</a> where a person risks falling and getting hurt.</p>
+<p>It is a <a href="../risk_management/scenario.html#def-risk_type" class="ref">risk type (from risk_management)</a> "fall risk". </p>
+</div>
+<h2 data-anchor="section-Scenario"><a name="section-Scenario" /><a class="section-anchor" href="#section-Scenario">Scenario</a><span class="chain-symbol">🔗</span></h2>
+<p>The <a href="#def-health_and_safety_manager" class="ref">health and safety manager</a> uses <scenarioref name="risk_management" /> to
+define <a href="#def-fall_risk" class="ref">fall risks</a>.</p>
+<p><em>The preceding aspect sections intentionally left empty.</em></p>
+<h3 data-anchor="section-Analytics"><a name="section-Analytics" /><a class="section-anchor" href="#section-Analytics">Analytics</a><span class="chain-symbol">🔗</span></h3>
+<p>The <a href="#def-health_and_safety_manager" class="ref">health and safety manager</a> should be able to get an overview of
+the <a href="#def-fall_risk" class="ref">fall risks</a> in a table.</p>
+<p>A table is not free-form, but follows a widely used structured for capturing and organizing
+<a href="#def-fall_risk" class="ref">fall risks</a>. </p>
+<p><em>The remaining sections intentionally left empty.</em></p>
+</div>
+</body>
+</html>

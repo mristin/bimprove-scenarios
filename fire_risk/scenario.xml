@@ -1,0 +1,56 @@
+<html>
+<body>
+<div id='index'></div>
+<div id='main'><h2>Summary</h2>
+<p>This scenario specifies the details of <scenarioref name="risk_management" /> for
+<ref name="fire_risk" />s.</p>
+<h2>Models</h2>
+<model name="fire_risks">
+<p>This model captures all the <ref name="fire_risk" />s.</p>
+</model>
+<h2>Definitions</h2>
+<def name="site_protection_manager">
+<p>Site protection manager is a <ref name="risk_management#risk_manager" /> that takes care
+of various safety risks (including <ref name="fire_risk" />s) on a construction site.</p>
+</def>
+<def name="fire_risk">
+<p>Fire risk is a <ref name="risk_management#risk" /> where there is a probability of fire breaking
+out.</p>
+<p>It is a <ref name="risk_management#risk_type" /> &quot;fire risk&quot;.</p>
+<p>The fire risk is extended with the optional information about the <ref name="cool-down_period" />. </p>
+</def>
+<def name="hot_spot">
+<p>A hot spot is a spot on the construction site where there is a <ref name="fire_risk" /> at a given
+time point.</p>
+</def>
+<def name="cool-down_period">
+<p>This is a period indicating the period before the end of the work day that is necessary for the
+equipment and material to cool down (and avoid fire).</p>
+</def>
+<h2>Scenario</h2>
+<p>The <ref name="site_protection_manager" /> uses <scenarioref name="risk_management" /> to
+define <ref name="fire_risk" />s.</p>
+<p><em>The preceding aspect sections intentionally left empty.</em></p>
+<h3>As-planned</h3>
+<p>Certain <ref name="scheduling#task" />s require a <ref name="cool-down_period" /> (<em>e.g.</em>, 2 hours).
+The <ref name="cool-down_period" /> can be either indicated by structured text in the body of a
+<ref name="scheduling#task" /> or added manually to <ref name="fire_risk" /> when the
+<ref name="scheduling#task" /> is converted to a <ref name="fire_risk" /> (see
+<scenarioref name="risk_management" />).</p>
+<h3>As-observed</h3>
+<p>The <ref name="site_protection_manager" /> defines <ref name="hot_spot" />s as
+<ref name="uxv_recording#focus_spot" />s when there is a <ref name="fire_risk" />.</p>
+<p>The <ref name="hot_spot" />s are inferred from the <ref name="scheduling#task" />s or based on
+common practices (<em>e.g.</em>, inspect certain areas where heating might be stil on after the work
+day).</p>
+<p><em>The aspect sections intentionally left empty.</em></p>
+<h3>Scheduling</h3>
+<p>The report is generated to show all the <ref name="scheduling#task" />s related to <ref name="fire_risk" />s for
+which the <ref name="cool-down_period" /> is not respected.</p>
+<h3>Safety</h3>
+<p>The <ref name="site_protection_manager" /> uses <scenarioref name="thermal_inspection" /> to
+inspect the temperature of the <ref name="hot_spot" />s.</p>
+<p><em>The remaining sections intentionally left empty.</em></p>
+</div>
+</body>
+</html>

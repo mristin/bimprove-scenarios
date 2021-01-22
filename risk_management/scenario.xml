@@ -18,9 +18,10 @@ for the new <ref name="risk" />s, checking the state of the installations <em>et
 <def name="risk_manager">
 <p><level name="site">This is an <ref name="actor_management#role" /> that manages certain kinds
 of <ref name="risk" />s.</level></p>
-<p>For example, this can be a health &amp; safety manager monitoring the fall risks or
-site protection manager monitoring the fire risks, but can also be a
-construction engineer responsible for curing the concrete <em>etc.</em></p>
+<p>For example, this can be a <ref name="fall_risk#health_and_safety_manager" /> monitoring
+the <ref name="fall_risk#fall_risk" />s or <ref name="fire_risk#site_protection_manager" />
+monitoring the <ref name="fire_risk#fire_risk" />, but can also be a construction engineer
+responsible for curing the concrete <em>etc.</em></p>
 </def>
 <def name="preventive_resource">
 <p><level name="zone">This is an <ref name="actor_management#role" /> that is responsible for

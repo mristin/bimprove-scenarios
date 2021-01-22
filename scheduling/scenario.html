@@ -1,0 +1,269 @@
+<html>
+<head><meta charset="utf-8" /><script src="https://livejs.com/live.js"> </script><title>Scheduling</title><style>body {
+    margin-top: 2em;
+    padding: 0px;
+}
+
+#main {
+    float: left;
+    width: 50em;
+    margin-left: 3%;
+    border: 1px solid black;
+    padding: 2em;
+}
+
+#index {
+    float: left;
+    width: 30%;
+    border: 1px solid black;
+    padding: 1em;
+}
+
+ul.toc {
+    list-style-type: none;
+}
+
+ul.toc li {
+    margin-bottom: 0.5em;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+a:visited {
+    color: blue;
+}
+
+a.section-anchor {
+    text-decoration: none;
+    color: black;
+}
+
+.chain-symbol {
+    display: none;
+    font-size: x-small;
+    margin-left: 0.5em;
+}
+a.section-anchor:hover + .chain-symbol {
+    display: inline-block;
+}
+
+span.phase {
+    background-color: #eefbfb;
+}
+
+span.level {
+    background-color: #eefbee;
+}
+
+pre {
+    background-color: #eeeefb;
+    padding: 1em;
+}
+</style></head><body>
+<div id="index"><a href="../ontology.html">Back to ontology</a><img src="volumetric.png" style="border: 1px solid #EEEEEE; padding: 10px;" /><h2>Table of Contents</h2><ul class="toc"><li style="padding-left: 0.00em"><a href="#section-Summary">Summary</a></li><li style="padding-left: 0.00em"><a href="#section-Models">Models</a></li><li style="padding-left: 2.20em"><a href="#model-last_planner_data">last_planner_data</a></li><li style="padding-left: 0.00em"><a href="#section-Definitions">Definitions</a></li><li style="padding-left: 2.20em"><a href="#def-scheduler">scheduler</a></li><li style="padding-left: 2.20em"><a href="#def-phase_plan">phase plan</a></li><li style="padding-left: 2.20em"><a href="#def-last_planner_system">last planner system</a></li><li style="padding-left: 2.20em"><a href="#def-task">task</a></li><li style="padding-left: 2.20em"><a href="#def-last_planner_task">last planner task</a></li><li style="padding-left: 2.20em"><a href="#def-task_shadow">task shadow</a></li><li style="padding-left: 0.00em"><a href="#section-Scenario">Scenario</a></li><li style="padding-left: 2.20em"><a href="#section-Scheduling">Scheduling</a></li><li style="padding-left: 0.00em"><a href="#section-Test_Cases">Test Cases</a></li><li style="padding-left: 2.20em"><a href="#test-manual_import">manual import</a></li><li style="padding-left: 2.20em"><a href="#test-live_import">live import</a></li><li style="padding-left: 2.20em"><a href="#test-magnitude">magnitude</a></li><li style="padding-left: 0.00em"><a href="#section-Acceptance_Criteria">Acceptance Criteria</a></li><li style="padding-left: 2.20em"><a href="#acceptance-magnitude">magnitude</a></li></ul></div>
+<div id="main"><h1>Scheduling</h1><h2>Relations from Other Scenarios</h2><ul><li><span>Scheduling task shadows </span><a href="../evolving_plan/scenario.html">Evolving Plan</a></li></ul>
+<h2 data-anchor="section-Summary"><a name="section-Summary" /><a class="section-anchor" href="#section-Summary">Summary</a><span class="chain-symbol">🔗</span></h2>
+<p>The <a href="#def-scheduler" class="ref">schedulers</a> do not want to use BIMprove system for scheduling and planning.
+This scenario therefore looks into how we integrate with the external solutions.</p>
+<h2 data-anchor="section-Models"><a name="section-Models" /><a class="section-anchor" href="#section-Models">Models</a><span class="chain-symbol">🔗</span></h2>
+<div class="model">
+<h3 data-anchor="model-last_planner_data"><a name="model-last_planner_data" /><a class="section-anchor" href="#model-last_planner_data">last_planner_data</a><span class="chain-symbol">🔗</span></h3>
+<p>This is the model containing all the <a href="#def-last_planner_task" class="ref">last planner tasks</a> accessible
+through the external <a href="#def-last_planner_system" class="ref">last planner system</a>. </p>
+</div>
+<h2 data-anchor="section-Definitions"><a name="section-Definitions" /><a class="section-anchor" href="#section-Definitions">Definitions</a><span class="chain-symbol">🔗</span></h2>
+<div class="def">
+<h3 data-anchor="def-scheduler"><a name="def-scheduler" /><a class="section-anchor" href="#def-scheduler">scheduler</a><span class="chain-symbol">🔗</span></h3>
+<p>The scheduler plans the construction.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-phase_plan"><a name="def-phase_plan" /><a class="section-anchor" href="#def-phase_plan">phase plan</a><span class="chain-symbol">🔗</span></h3>
+<p>A legally binding coarse long-term plan.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-last_planner_system"><a name="def-last_planner_system" /><a class="section-anchor" href="#def-last_planner_system">last planner system</a><span class="chain-symbol">🔗</span></h3>
+<p>The software solution for managing lean construction.</p>
+<p>Note that the <a href="https://en.wikipedia.org/wiki/Lean_construction#Last_Planner_System">last planner system</a>
+can also refer to a planning system.
+In this document, we use the term to refer to a <em>software system</em>, not a planning system.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-task"><a name="def-task" /><a class="section-anchor" href="#def-task">task</a><span class="chain-symbol">🔗</span></h3>
+<p>Piece of work that needs to be scheduled.</p>
+<p>It is represented as <a href="#def-last_planner_task" class="ref">last planner task</a> in <a href="#model-last_planner_data" class="modelref">last_planner_data</a>, and
+as a <a href="#def-task_shadow" class="ref">task shadow</a> in <a href="../evolving_plan/scenario.html#model-bim_extended" class="modelref">bim_extended (from evolving_plan)</a>.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-last_planner_task"><a name="def-last_planner_task" /><a class="section-anchor" href="#def-last_planner_task">last planner task</a><span class="chain-symbol">🔗</span></h3>
+<p>A <a href="#def-task" class="ref">task</a> managed by a <a href="#def-last_planner_system" class="ref">last planner system</a> and living in
+<a href="#model-last_planner_data" class="modelref">last_planner_data</a>.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-task_shadow"><a name="def-task_shadow" /><a class="section-anchor" href="#def-task_shadow">task shadow</a><span class="chain-symbol">🔗</span></h3>
+<p>Task shadow is a <code>IfcTask</code> living in the <a href="../evolving_plan/scenario.html#model-bim_extended" class="modelref">bim_extended (from evolving_plan)</a> shadowing
+the <a href="#def-last_planner_task" class="ref">last planner task</a>.</p>
+</div>
+<h2 data-anchor="section-Scenario"><a name="section-Scenario" /><a class="section-anchor" href="#section-Scenario">Scenario</a><span class="chain-symbol">🔗</span></h2>
+<p><em>The preceding aspect sections intentionally left empty.</em></p>
+<h3 data-anchor="section-Scheduling"><a name="section-Scheduling" /><a class="section-anchor" href="#section-Scheduling">Scheduling</a><span class="chain-symbol">🔗</span></h3>
+<p>The <a href="#def-scheduler" class="ref">schedulers</a> do not want to use BIMprove system for scheduling and explicitly
+want to rely on external tools.
+This scenario therefore looks into how we integrate with the external solutions.</p>
+<p>Notably, we do not aim to integrate with solutions for long-term coarse planning
+(a.k.a. <a href="#def-phase_plan" class="ref">phase plan</a>).
+Such solutions include <a href="https://www.youtube.com/watch?v=sX0NUKDJ3b4">Synchro</a>,
+Microsoft Project, Primavera and others.
+The <a href="#def-phase_plan" class="ref">phase plans</a> are legally binding and change only very infrequently,
+if ever, during the project.
+As they are not updated frequently enough, we can not use them as a reliable source for the time
+dimension.</p>
+<p>Instead of <a href="#def-phase_plan" class="ref">phase plans</a>, we focus on the short-term plans managed by the
+<a href="#def-last_planner_system" class="ref">last planner systems</a>.</p>
+<p>We focus only on a single <a href="#def-last_planner_system" class="ref">last planner system</a>, <a href="http://www.visilean.com">Visilean</a>,
+but we can integrate with other solutions later (<em>e.g.</em>, Synchro, Microsoft Project, Houly and
+TouchPlan).</p>
+<p>As the scheduling is done outside of BIMprove, we explicitly do <em>not</em> provide re-scheduling
+functionality.
+It is a non-goal to develop a last planner system.
+In the same line, we do not develop analytics and obstacle and delay analysis for the
+<a href="#def-task" class="ref">tasks</a>.
+This is part of the external <a href="#def-last_planner_system" class="ref">last planner system</a>.</p>
+<p><strong>Importing</strong>.
+We only help the progress monitoring and import the scheduling information from the external
+parties to link it with the elements in <a href="../evolving_plan/scenario.html#model-bim3d" class="modelref">bim3d (from evolving_plan)</a> and
+<a href="../evolving_plan/scenario.html#model-bim_extended" class="modelref">bim_extended (from evolving_plan)</a>.</p>
+<p>In order to model the <a href="#def-task" class="ref">tasks</a>, we have to create <a href="#def-task_shadow" class="ref">task shadows</a> and
+their relationships, as well as map the references to actors and building elements from the
+<a href="#def-last_planner_system" class="ref">last planner system</a> to <a href="../evolving_plan/scenario.html#model-bim_extended" class="modelref">bim_extended (from evolving_plan)</a>.   </p>
+<p>The data in <a href="#model-last_planner_data" class="modelref">last_planner_data</a> needs to be imported continuously into
+<a href="../evolving_plan/scenario.html#model-bim_extended" class="modelref">bim_extended (from evolving_plan)</a> (<em>via</em> triggers, polling or manual export/import,
+depending on what is available).</p>
+<p>The import workflow from <a href="#model-last_planner_data" class="modelref">last_planner_data</a> to
+<a href="../evolving_plan/scenario.html#model-bim_extended" class="modelref">bim_extended (from evolving_plan)</a> follows the steps:</p>
+<ul>
+<li>
+Create/update the <a href="#def-task_shadow" class="ref">task shadows</a> for all the <a href="#def-last_planner_task" class="ref">last planner tasks</a>   <ul>
+<li>Parse the <a href="#def-last_planner_task" class="ref">last planner task</a> either directly (if possible,
+depending on the export format) or using structured text in the body </li>
+</ul>
+</li>
+<li>Map the <a href="../actor_management/scenario.html#def-actor" class="ref">actors (from actor_management)</a></li>
+<li>Map the references to building elements</li>
+<li>Create/update the shadows for all the relationships between the <a href="#def-task" class="ref">tasks</a> and
+<a href="../actor_management/scenario.html#def-actor" class="ref">actors (from actor_management)</a> </li>
+</ul>
+<p>Mind that the system should not completely overwrite the relevant data in
+<a href="../evolving_plan/scenario.html#model-bim_extended" class="modelref">bim_extended (from evolving_plan)</a>, but extend it.
+This means that we assume the <a href="../evolving_plan/scenario.html#def-guid" class="ref">guids (from evolving_plan)</a> to be stable throughout the
+project. (It is also tricky to handle the deletions, which is left as an important implementation
+detail.) </p>
+<p>If the <a href="#def-last_planner_system" class="ref">last planner system</a> does not provide a mechanism to explicitly link to
+building elements, <a href="../actor_management/scenario.html#def-actor" class="ref">actor (from actor_management)</a> and the relationships, we extract this
+information from the structured text of the <a href="#def-last_planner_task" class="ref">last planner task</a> body
+(<em>e.g.</em>, from the footer, similar to
+<a href="https://git.wiki.kernel.org/index.php/CommitMessageConventions">git trailers</a>).</p>
+<p>For example, we can use <a href="../evolving_plan/scenario.html#def-guid" class="ref">guid (from evolving_plan)</a> and <code>Related elements:</code> to structure
+the references to the building elements:</p>
+<pre><code>Related elements:
+f6b569e9-beb8-42e7-a44e-4213b92ffb22,
+b5e9a2b8-687e-4f5e-a34f-c0fd42768672,
+f0ee91a0-d423-4c65-8c01-0c5ba842f9a6
+</code></pre>
+<p>(Alternatively, we might use URLs, URIs <em>etc.</em> We leave the representation as an important
+implementation detail.)</p>
+<p>We can also specify some of the properties of a <a href="#def-task" class="ref">task</a>.
+For example, to specify the task type (<code>PredefinedType</code>), we can write in
+the body of the <a href="#def-last_planner_task" class="ref">last planner task</a>:</p>
+<pre><code>PredefinedType: CONSTRUCTION
+</code></pre>
+<p><strong>Visualization</strong>.
+As the planning is done by the external <a href="#def-last_planner_system" class="ref">last planner system</a>, we do not aim for
+a sophisticated visualization.</p>
+<p>The system should provide basic browsing experience so that other parts of the system can
+link to the <a href="#def-task" class="ref">task</a> to show further details.</p>
+<p>BIMprove system should be able to:</p>
+<ul>
+<li>Show the list of the <a href="#def-task" class="ref">tasks</a>,</li>
+<li>Show the detail information about the <a href="#def-task" class="ref">task</a> and its relationships to actors and
+elements, and</li>
+<li>Display the timeline (nice-to-have)</li>
+</ul>
+<p>For example, showing the detailed information is important so that the user can get the detailed
+information about a <a href="#def-task" class="ref">task</a> coming from <scenarioref name="virtual_inspection" />.</p>
+<p><strong>Risks</strong>.
+We need to visualize the <a href="../risk_management/scenario.html#def-risk" class="ref">risks (from risk_management)</a> (such as fall or fire risks)
+related to the <a href="#def-task" class="ref">tasks</a>.</p>
+<p>The user should be able to follow through to examine the risk in more detail in the
+specific application through a <a href="../unique_resource_identification/scenario.html#def-identifier" class="ref">identifier (from unique_resource_identification)</a>.  </p>
+<p><strong>Task to topic</strong>.
+The user should be provided the interface to translate a <a href="#def-task_shadow" class="ref">task shadow</a> to a
+<a href="../topic_management/scenario.html#def-topic" class="ref">topic (from topic_management)</a>.
+Since the <a href="#def-task_shadow" class="ref">task shadows</a> are read-only, the additional information (such as
+references to BIMprove-specific entities) about the <a href="#def-task" class="ref">task</a> can only be included in
+the <a href="../topic_management/scenario.html#def-topic" class="ref">topic (from topic_management)</a>, but can not be fed back
+to the <a href="#def-last_planner_system" class="ref">last planner system</a>.</p>
+<p>There are also more structured options available in the system.
+For example, a delivery task can be automatically converted to
+<a href="../truck_guidance/scenario.html#def-delivery" class="ref">delivery (from truck_guidance)</a> as a <a href="../topic_management/scenario.html#def-topic" class="ref">topic (from topic_management)</a>
+(see <scenarioref name="truck_guidance" />).</p>
+<p><strong>Closing of <a href="#def-task" class="ref">tasks</a></strong>.
+Since we do not control the <a href="#def-last_planner_task" class="ref">last planner tasks</a> (we only import them),
+we can not close the <a href="#def-task" class="ref">tasks</a> automatically. </p>
+<p>The user or the system should be able to convert a <a href="#def-last_planner_task" class="ref">last planner task</a> into a
+<a href="../topic_management/scenario.html#def-topic" class="ref">topic (from topic_management)</a> and keep track of its status using<br />
+<a href="../topic_management/scenario.html#def-comment" class="ref">comments (from topic_management)</a>.</p>
+<p>In many cases, if the system is tracking the status and not the user, we use structured
+<a href="../topic_management/scenario.html#def-comment" class="ref">comments (from topic_management)</a>.
+For example, the task corresponding to a <a href="../truck_guidance/scenario.html#def-delivery" class="ref">delivery (from truck_guidance)</a> is converted to a
+<a href="../topic_management/scenario.html#def-topic" class="ref">topic (from topic_management)</a>.
+So when the delivery is terminated, we can close the <a href="../topic_management/scenario.html#def-topic" class="ref">topic (from topic_management)</a>
+(which we control), but we can only notify the <a href="#def-scheduler" class="ref">scheduler</a>.
+The <a href="#def-scheduler" class="ref">scheduler</a> needs to close the corresponding <a href="#def-last_planner_task" class="ref">last planner task</a>
+in the <a href="#def-last_planner_system" class="ref">last planner system</a> manually.</p>
+<p>We emphasize here that there is only a
+<a href="https://en.wikipedia.org/wiki/Unidirectional_Data_Flow_(computer_science)">unidirectional data flow</a>: </p>
+<ol>
+<li><a href="#def-last_planner_task" class="ref">last planner task</a> to</li>
+<li><a href="#def-task_shadow" class="ref">task shadow</a> (<em>via</em> synchronization) to</li>
+<li><a href="../truck_guidance/scenario.html#def-delivery" class="ref">delivery (from truck_guidance)</a> (<em>via</em> conversion) to</li>
+<li>delivery closed (<em>via</em> <a href="../truck_guidance/scenario.html#def-delivery_update" class="ref">delivery update (from truck_guidance)</a>) to</li>
+<li><a href="#def-last_planner_task" class="ref">last planner task</a> closed (manually <em>via</em> <a href="#def-last_planner_system" class="ref">last planner system</a>) to</li>
+<li><a href="#def-task_shadow" class="ref">task shadow</a> closed (<em>via</em> synchronization).</li>
+</ol>
+<p>Perhaps we can have special <a href="../topic_management/scenario.html#def-topic" class="ref">topics (from topic_management)</a> which we can directly link to
+closing of the tasks and feed-back the closing to the last planner system, but this remains to be
+seen at the implementation.</p>
+<p><em>The remaining aspect sections intentionally left empty.</em></p>
+<h2 data-anchor="section-Test_Cases"><a name="section-Test_Cases" /><a class="section-anchor" href="#section-Test_Cases">Test Cases</a><span class="chain-symbol">🔗</span></h2>
+<div class="test">
+<h3 data-anchor="test-manual_import"><a name="test-manual_import" /><a class="section-anchor" href="#test-manual_import">manual import</a><span class="chain-symbol">🔗</span></h3>
+<p>The system can import a sample file as exported by a <a href="#def-last_planner_system" class="ref">last planner system</a>.</p>
+</div>
+<div class="test">
+<h3 data-anchor="test-live_import"><a name="test-live_import" /><a class="section-anchor" href="#test-live_import">live import</a><span class="chain-symbol">🔗</span></h3>
+<p>We create a dummy account on the <a href="#def-last_planner_system" class="ref">last planner system</a>.</p>
+<p>We script the <a href="#def-last_planner_system" class="ref">last planner system</a> actions
+(<em>e.g.</em> using <a href="https://www.selenium.dev/">Selenium</a>) to create a couple of tasks.</p>
+<p>The system should import them as <a href="#def-task_shadow" class="ref">task shadows</a>.</p>
+<p>We script the deletion and addition of a couple of more tasks.</p>
+<p>The <a href="#def-last_planner_task" class="ref">last planner tasks</a> should be shadowed appropriately.</p>
+</div>
+<div class="test">
+<h3 data-anchor="test-magnitude"><a name="test-magnitude" /><a class="section-anchor" href="#test-magnitude">magnitude</a><span class="chain-symbol">🔗</span></h3>
+<p>Similar to <a href="#test-live_import" class="testref">live_import</a>, we create a dummy account on the
+<a href="#def-last_planner_system" class="ref">last planner system</a>.</p>
+<p>We script the <a href="#def-last_planner_system" class="ref">last planner system</a> to create the <a href="#def-last_planner_task" class="ref">last planner tasks</a> of
+the magnitude in <a href="#acceptance-magnitude" class="acceptanceref">magnitude</a>.</p>
+</div>
+<h2 data-anchor="section-Acceptance_Criteria"><a name="section-Acceptance_Criteria" /><a class="section-anchor" href="#section-Acceptance_Criteria">Acceptance Criteria</a><span class="chain-symbol">🔗</span></h2>
+<div class="acceptance">
+<h3 data-anchor="acceptance-magnitude"><a name="acceptance-magnitude" /><a class="section-anchor" href="#acceptance-magnitude">magnitude</a><span class="chain-symbol">🔗</span></h3>
+<p>We need to handle thousands of <a href="#def-last_planner_task" class="ref">last planner tasks</a> and thousands of
+<a href="../actor_management/scenario.html#def-actor" class="ref">actors (from actor_management)</a>. </p>
+</div>
+</div>
+</body>
+</html>

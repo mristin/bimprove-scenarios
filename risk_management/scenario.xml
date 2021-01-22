@@ -1,0 +1,177 @@
+<html>
+<body>
+<div id='index'></div>
+<div id='main'><h2>Summary</h2>
+<p>This scenarios examines how the <ref name="risk" />s should be managed on a construction site.</p>
+<p>This involves both keeping track of the existing <ref name="risk" />s as well as inspecting the site
+for the new <ref name="risk" />s, checking the state of the installations <em>etc.</em></p>
+<h2>Models</h2>
+<model name="standard/risk_level">
+<p>Risk levels defined at the national and international level.</p>
+</model>
+<model name="risks">
+<p>This model captures all the <ref name="risk" />s.</p>
+<p>As <ref name="risk" /> is a non-IFC entity, it does not live in
+<modelref name="evolving_plan#bim_extended" />.</p>
+</model>
+<h2>Definitions</h2>
+<def name="risk_manager">
+<p><level name="site">This is an <ref name="actor_management#role" /> that manages certain kinds
+of <ref name="risk" />s.</level></p>
+<p>For example, this can be a health &amp; safety manager monitoring the fall risks or
+site protection manager monitoring the fire risks, but can also be a
+construction engineer responsible for curing the concrete <em>etc.</em></p>
+</def>
+<def name="preventive_resource">
+<p><level name="zone">This is an <ref name="actor_management#role" /> that is responsible for
+one or more <ref name="responsibility_zone" />s on the construction site to keep track and mitigate
+the <ref name="risk" />s.</level></p>
+<p>(Mind that a preventive resource and the <ref name="risk_manager" /> can be one and the same
+person in certain sites, <em>e.g.</em>, when the site is small.)</p>
+</def>
+<def name="responsibility_zone">
+<p>A responsibility zone as an <code>IfcZone</code> living in the <modelref name="evolving_plan#bim_extended"/>.</p>
+</def>
+<def name="assignment">
+<p>Responsibility assignment of a <ref name="preventive_resource" />.</p>
+<p>The assignment is a non-IFC data structure and relates the <ref name="risk" />s and
+the <ref name="preventive_resource" />s.</p>
+</def>
+<def name="risk_level">
+<p>This is the risk level according to different standards.</p>
+<p>The risk level refers to a concrete standard in <modelref name="standard/risk_level" />.</p>
+</def>
+<def name="risk_zone">
+<p>This is an <code>IfcZone</code> living in <modelref name="evolving_plan#bim_extended" /> that demarcates a zone
+of a specific <ref name="risk" />.</p>
+</def>
+<def name="risk_type">
+<p>The risk type is a more general type of a risk (&quot;fall&quot;, &quot;fire&quot; <em>etc.</em>).</p>
+</def>
+<def name="risk">
+<p>A risk is a custom, non-IFC entity representing a safety or an economic risk.</p>
+<p>A risk is of a <ref name="risk_type" />.</p>
+<p>It is tied to zero, one or multiple <ref name="responsibility_zone"/>s.</p>
+<p>The risk can be associated with zero, one or multiple <ref name="risk_zone" />s.
+If there are no <ref name="risk_zone" />s defined, the risk is considered unconfined.
+If there is one or more <ref name="risk_zone" />s defined, the risk applies only to these zones.</p>
+<p>The risk is also associated with zero, one or more <ref name="scheduling#task" />s. </p>
+<p>The risk must have a validity time span (which can also be open-ended).
+There should be a special flag to indicate that the temporal validity of a risk is directly
+tied to its corresponding <ref name="scheduling#task" />s.
+For example, this is important if the <ref name="scheduling#task" />s are re-scheduled and the risk
+temporal validity needs to reflect that.</p>
+<p>The risk is assigned a <ref name="risk_level" />.</p>
+<p>The risk can be related to one or multiple <ref name="topic_management#topic" />s (<em>e.g.</em>,
+when a safety-relevant element is missing or damaged).</p>
+<p>The risk lives in <modelref name="risks" />s and have
+<ref name="unique_resource_identification#identifier" />.</p>
+</def>
+<h2>Scenario</h2>
+<p>In this scenario, we look into how to manage the <ref name="risk" />s with the system.</p>
+<p>The <ref name="risk" /> in the context of this scenario does not refer strictly to a safety
+risk (such as fall risk or fire risk), but encompasses a much broader family of risks (such as
+concrete cracking, which is an economic risk, but not necessarily a safety risk).</p>
+<h3>As-planned</h3>
+<p><level name="office">We assume that the data from <modelref name="evolving_plan#bim3d" /> and
+<modelref name="evolving_plan#bim_extended" /> is accessible from the office.</level></p>
+<p><strong>Specification of the <ref name="risk" />s</strong>.
+There should be an application so that the <ref name="risk_manager" /> can easily convert
+a <ref name="scheduling#task" /> to a <ref name="risk" /> and capture the additional
+information such as the <ref name="risk_zone" />.</p>
+<p>There should be also a <ref name="risk" /> management application so that
+the <ref name="risk_manager" /> can also create, list and modify the <ref name="risk" />s (
+together with the <ref name="risk_zone" />s, time span <em>etc.</em>).</p>
+<p>Mind that a <ref name="risk" /> needs not be necessarily associated with a
+<ref name="scheduling#task" />.</p>
+<p><phase name="planning">The <ref name="risk_manager"/> inputs the initial set of
+<ref name="risk"/>s already known during the planning.</phase></p>
+<p><phase name="construction">Both the <ref name="risk_manager"/> and
+the <ref name="preventive_resource"/> can insert new and change existing
+<ref name="risk"/>s accordingly.</phase></p>
+<p><strong>Specification of the <ref name="assignment" />s</strong>.
+There needs to be a separate application so that the <ref name="risk_manager" /> can create, list
+and modify <ref name="assignment" />s of the <ref name="risk" />s to
+the <ref name="preventive_resource" />s.</p>
+<p>Though some <ref name="risk" />s are not necessarily spatially confined
+(<em>e.g.</em>, some risks can be abstract, such as &quot;the workers are wearing safety helmets&quot;),
+they are still part of an <ref name="assignment" />.
+In these cases, the <ref name="assignment" /> means that a <ref name="preventive_resource" /> is
+responsible for the unconfined <ref name="risk" /> in the given zone (<em>e.g</em>, that all workers wear a
+helmet in the given zone).</p>
+<h3>As-observed</h3>
+<p>The <ref name="risk_manager" /> needs to create <ref name="uxv_recording#focus_spot" />s in order
+to observe the necessary spots for potential new or changed risks.</p>
+<p>The <ref name="uxv_recording#focus_spot" />s are observable through
+<ref name="digital_reconstruction#recording" />s and taken into account during the
+<ref name="uxv_recording#mission" />s.</p>
+<h3>Divergence</h3>
+<p>Depending on the <ref name="risk" />, we can use <scenarioref name="thermal_inspection" /> and/or
+<scenarioref name="virtual_inspection" /> to inspect whether the risk is present or absent.</p>
+<p>For example, the <ref name="preventive_resource" /> can check if the safety nets are still there and
+not damaged using <scenarioref name="virtual_inspection" />.
+The absent, ill-placed or damaged elements are reported as a
+<ref name="topic_management#topic" /> using <scenarioref name="topic_management" />.</p>
+<p>This is different to assessing or discovering a new risk (please see the
+<a href="#section-Safety">Safety section</a>).</p>
+<h3>Analytics</h3>
+<p>The system allows the <ref name="risk_manager" /> to track the following indicators:</p>
+<ul>
+<li>Number of <ref name="topic_management#topic" />s related to escalated <ref name="risk" />s of a
+certain <ref name="risk_type" /> (<em>e.g.</em>, as a pre-defined <ref name="topic_management#label" />).</li>
+</ul>
+<p>The <ref name="assignment" />s should be visualized separately (<em>e.g.</em>, as a 3D or 2D geometry).</p>
+<h3>Scheduling</h3>
+<p>The <ref name="risk_manager" /> needs to inspect the <ref name="scheduling#task" />s
+in <scenarioref name="scheduling" /> as the <ref name="scheduling#task_shadow" />s are
+linked to the <ref name="risk" />s.</p>
+<h3>Safety</h3>
+<p><strong>Virtual inspection.</strong>
+The <ref name="risk_manager" /> filters the <ref name="scheduling#task" />s with
+an elevated risk in <scenarioref name="virtual_inspection" />.</p>
+<p>The spatial and temporal relations between the <ref name="risk_zone" />s are then automatically
+visualized in <scenarioref name="virtual_inspection" /> (<em>e.g.</em>, using the temporal validity
+of the <ref name="risk" />).</p>
+<p><strong>Reporting.</strong>
+The system needs to report an overview of all the <ref name="risk" />s.</p>
+<p>The <ref name="risk" />s need to be displayed together with their  related
+<ref name="scheduling#task" />s, if any, as a time table.</p>
+<p>For example, we can display the <ref name="risk" />s as a Gantt diagram.
+The <ref name="risk" />s would be represented with thick bars, while the related
+<ref name="scheduling#task" />s would be visualized inside these bigger bars as thin bars.
+(Mind that this is just an idea and needs to be experimented with during the implementation.)</p>
+<p>The user should filter by:</p>
+<ul>
+<li><ref name="risk_type" /> (<em>e.g.</em>, show only fire risks),</li>
+<li>time range, and</li>
+<li>spatially (by a bounding box, super-zones <em>etc.</em>; the spatial filtering takes
+<ref name="risk_zone" />s into account; there should be a special flag to include/exclude
+unconfined <ref name="risk_zone" />s).</li>
+</ul>
+<p><strong>Escalation.</strong>
+If there is a problematic <ref name="scheduling#task" />,
+the <ref name="risk_manager" /> should create a <ref name="topic_management#topic" />.</p>
+<h2>Test Cases</h2>
+<test name="test_for_magnitude">
+<p>We write a script to generate automatically dummy tasks.</p>
+<p>We also use generated images from <testref name="thermal_inspection#test_for_magnitude" />
+to randomly assign them to the dummy tasks.</p>
+</test>
+<test name="blind_test_removed_item">
+<p>(This is a blind experiment and might not be legally possible.)</p>
+<p>Remove a safety item and inform the workers.</p>
+<p>Check that the responsible person could find out that it is missing using the system. </p>
+</test> 
+<test name="analytics_correct_on_an_example">
+<p>Record 3 complete states of the whole system and freeze them. </p>
+<p>Manually compute the expected analytics. </p>
+<p>Check that the output of the system coincides with the manually computed analytics.</p>
+</test>
+<h2>Acceptance Criteria</h2>
+<acceptance name="magnitude">
+<p>The system needs to handle the risk related <ref name="scheduling#task" />s in the
+order of thousands.</p>
+</acceptance>
+</div>
+</body>
+</html>

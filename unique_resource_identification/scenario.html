@@ -1,0 +1,122 @@
+<html>
+<head><meta charset="utf-8" /><script src="https://livejs.com/live.js"> </script><title>Unique Resource Identification</title><style>body {
+    margin-top: 2em;
+    padding: 0px;
+}
+
+#main {
+    float: left;
+    width: 50em;
+    margin-left: 3%;
+    border: 1px solid black;
+    padding: 2em;
+}
+
+#index {
+    float: left;
+    width: 30%;
+    border: 1px solid black;
+    padding: 1em;
+}
+
+ul.toc {
+    list-style-type: none;
+}
+
+ul.toc li {
+    margin-bottom: 0.5em;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+a:visited {
+    color: blue;
+}
+
+a.section-anchor {
+    text-decoration: none;
+    color: black;
+}
+
+.chain-symbol {
+    display: none;
+    font-size: x-small;
+    margin-left: 0.5em;
+}
+a.section-anchor:hover + .chain-symbol {
+    display: inline-block;
+}
+
+span.phase {
+    background-color: #eefbfb;
+}
+
+span.level {
+    background-color: #eefbee;
+}
+
+pre {
+    background-color: #eeeefb;
+    padding: 1em;
+}
+</style></head><body>
+<div id="index"><a href="../ontology.html">Back to ontology</a><img src="volumetric.png" style="border: 1px solid #EEEEEE; padding: 10px;" /><h2>Table of Contents</h2><ul class="toc"><li style="padding-left: 0.00em"><a href="#section-Summary">Summary</a></li><li style="padding-left: 0.00em"><a href="#section-Models">Models</a></li><li style="padding-left: 0.00em"><a href="#section-Definitions">Definitions</a></li><li style="padding-left: 2.20em"><a href="#def-identifier">identifier</a></li><li style="padding-left: 0.00em"><a href="#section-Scenario">Scenario</a></li></ul></div>
+<div id="main"><h1>Unique Resource Identification</h1><h2 data-anchor="section-Summary"><a name="section-Summary" /><a class="section-anchor" href="#section-Summary">Summary</a><span class="chain-symbol">🔗</span></h2>
+<p>This scenario examines how we can uniquely identify the instances of all the entities in our system.</p>
+<h2 data-anchor="section-Models"><a name="section-Models" /><a class="section-anchor" href="#section-Models">Models</a><span class="chain-symbol">🔗</span></h2>
+<p><em>Intentionally left empty.</em></p>
+<h2 data-anchor="section-Definitions"><a name="section-Definitions" /><a class="section-anchor" href="#section-Definitions">Definitions</a><span class="chain-symbol">🔗</span></h2>
+<div class="def">
+<h3 data-anchor="def-identifier"><a name="def-identifier" /><a class="section-anchor" href="#def-identifier">identifier</a><span class="chain-symbol">🔗</span></h3>
+<p>From <a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier">Wikipedia</a>:</p>
+<p>A Uniform Resource Identifier (URI) is a unique identifier used by web technologies.
+URIs may be used to identify anything, including real-world objects, such as people and places,
+concepts, or information resources such web pages and books.</p>
+</div>
+<h2 data-anchor="section-Scenario"><a name="section-Scenario" /><a class="section-anchor" href="#section-Scenario">Scenario</a><span class="chain-symbol">🔗</span></h2>
+<p>Our system supports many non-IFC entities (such as <a href="../risk_management/scenario.html#def-risk" class="ref">risk (from risk_management)</a> and
+<a href="../truck_guidance/scenario.html#def-delivery_update" class="ref">delivery update (from truck_guidance)</a>).</p>
+<p>Since we shadow these entities as references in BIM through
+<a href="../evolving_plan/scenario.html#def-non_ifc_entity" class="ref">non ifc entity (from evolving_plan)</a>, they need an <a href="#def-identifier" class="ref">identifier</a>.</p>
+<p>We propose the following schema for identification:</p>
+<pre><code>bimprove://{entity}/{identifier}
+</code></pre>
+<p>The <code>identifier</code> in the <a href="#def-identifier" class="ref">identifier</a> does not have to match the
+<a href="../evolving_plan/scenario.html#def-guid" class="ref">guid (from evolving_plan)</a>. This is important as one part of the system might
+not control the other part (or a dependency) so it can not control the identification conflicts.</p>
+<p>Here are a couple examples of the <a href="#def-identifier" class="ref">identifier</a>:</p>
+<ul>
+<li><code>bimprove://risk/123e4567-e89b-12d3-a456-426614174000</code> </li>
+<li><code>bimprove://delivery/d67e5a7d-a77c-44bd-b8f7-b860b370c4db</code></li>
+</ul>
+<p>For example, the fall risk with URI <code>bimprove://risk/123e4567-e89b-12d3-a456-426614174000</code>
+can be shadowed by <code>IfcExternalReference</code> in <a href="../evolving_plan/scenario.html#model-bim_extended" class="modelref">bim_extended (from evolving_plan)</a>
+with a <a href="../evolving_plan/scenario.html#def-guid" class="ref">guid (from evolving_plan)</a> set to <code>52a844ac-3f37-456c-9e86-9e1b905600a7</code>. </p>
+<p><strong>Abstraction</strong>.
+We abstract the links to these entities from the storage. </p>
+<p>For example, the fall risk might have an REST API accessible through a URL
+<code>http://some-server.com/risk/123e4567-e89b-12d3-a456-426614174000</code>.
+However, it could also provide a GraphQL interface, direct SQL interface
+(<em>e.g.</em>, <code>sql://risk/123e4567-e89b-12d3-a456-426614174000</code>) or some other interface.</p>
+<p>We consider this to be an implementation detail so that we intentionally decouple how the backend
+retrieves or modifies the information about the entity from its identification.</p>
+<p><strong>Recordings</strong>.
+The <a href="../digital_reconstruction/scenario.html#def-recording" class="ref">recording (from digital_reconstruction)</a> needs to specify the source and the sensor and
+the accuracy of the sensor:</p>
+<pre><code>recording://{type of the device}/{identifier of the device}/{identifier of the sensor of the device}/{identifier of the recording}
+</code></pre>
+<p>Examples:</p>
+<pre><code>recording://uxv/ruprechts-uav-3/photo-odometry/7f0d4cad-4a22-4a6d-8f00-10ca08d3e4d4
+</code></pre>
+<pre><code>recording://manual/some-body/smartphone-camera/89dd9240-d11d-4f79-a7e1-0fe9a5af4d46
+</code></pre>
+<p>(Note that we still need to figure this out.
+This is just a first sketch of how we could identify the
+<a href="../digital_reconstruction/scenario.html#def-recording" class="ref">recordings (from digital_reconstruction)</a>.)</p>
+<p><em>The remaining sections intentionally left empty.</em></p>
+</div>
+</body>
+</html>

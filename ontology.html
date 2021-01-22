@@ -20,63 +20,125 @@
     var dataset = {
       "nodes": [
         {
-          "name": "Actor Management TODO",
+          "name": "Actor Management",
           "url": "actor_management/scenario.html"
         },
         {
-          "name": "Continuous Plan Update TODO",
-          "url": "continuous_plan_update/scenario.html"
-        },
-        {
-          "name": "Cost Tracking TODO",
-          "url": "cost_tracking/scenario.html"
-        },
-        {
-          "name": "Crane Guidance TODO",
-          "url": "crane_guidance/scenario.html"
-        },
-        {
-          "name": "Digital Reconstruction TODO",
+          "name": "Digital Reconstruction",
           "url": "digital_reconstruction/scenario.html"
         },
         {
-          "name": "Drone Recording TODO",
-          "url": "drone_recording/scenario.html"
+          "name": "Evolving Plan",
+          "url": "evolving_plan/scenario.html"
         },
         {
-          "name": "Fall Risk Alert",
-          "url": "fall_risk/scenario.html"
+          "name": "Manual Snapshots",
+          "url": "manual_snapshots/scenario.html"
         },
         {
-          "name": "Fire Alert TODO",
-          "url": "fire_alert/scenario.html"
+          "name": "Risk Management",
+          "url": "risk_management/scenario.html"
         },
         {
-          "name": "Health Alert TODO",
-          "url": "health_alert/scenario.html"
-        },
-        {
-          "name": "Rescheduling TODO",
-          "url": "rescheduling/scenario.html"
-        },
-        {
-          "name": "Robot Recording TODO",
-          "url": "robot_recording/scenario.html"
-        },
-        {
-          "name": "Safety Status TODO",
+          "name": "Safety Status",
           "url": "safety_status/scenario.html"
+        },
+        {
+          "name": "Scheduling",
+          "url": "scheduling/scenario.html"
+        },
+        {
+          "name": "Thermal Inspection",
+          "url": "thermal_inspection/scenario.html"
+        },
+        {
+          "name": "Topic Management",
+          "url": "topic_management/scenario.html"
         },
         {
           "name": "Truck guidance",
           "url": "truck_guidance/scenario.html"
         },
         {
-          "name": "Virtual Inspection TODO",
+          "name": "Unique Resource Identification",
+          "url": "unique_resource_identification/scenario.html"
+        },
+        {
+          "name": "UXV Recording",
+          "url": "uxv_recording/scenario.html"
+        },
+        {
+          "name": "Virtual Inspection",
           "url": "virtual_inspection/scenario.html"
         }
       ],
-      "edges": []
+      "edges": [
+        {
+          "source": 0,
+          "target": 2,
+          "label": "actors"
+        },
+        {
+          "source": 1,
+          "target": 12,
+          "label": "observations"
+        },
+        {
+          "source": 1,
+          "target": 7,
+          "label": "observations"
+        },
+        {
+          "source": 2,
+          "target": 12,
+          "label": "BIM"
+        },
+        {
+          "source": 3,
+          "target": 1,
+          "label": "images"
+        },
+        {
+          "source": 4,
+          "target": 11,
+          "label": "focus spots"
+        },
+        {
+          "source": 4,
+          "target": 8,
+          "label": "issues"
+        },
+        {
+          "source": 4,
+          "target": 5,
+          "label": "risk status"
+        },
+        {
+          "source": 6,
+          "target": 2,
+          "label": "task shadows"
+        },
+        {
+          "source": 8,
+          "target": 11,
+          "label": "focus spots"
+        },
+        {
+          "source": 9,
+          "target": 8,
+          "label": "deliveries"
+        },
+        {
+          "source": 11,
+          "target": 1,
+          "label": "observations"
+        },
+        {
+          "source": 12,
+          "target": 8,
+          "label": "issues"
+        }
+      ]
     };
 
     var svg = d3.select("body").append("svg").attr({"width":w,"height":h});

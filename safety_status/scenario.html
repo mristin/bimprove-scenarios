@@ -1,5 +1,5 @@
 <html>
-<head><meta charset="utf-8" /><script src="https://livejs.com/live.js"> </script><title>Safety Status TODO</title><style>body {
+<head><meta charset="utf-8" /><script src="https://livejs.com/live.js"> </script><title>Safety Status</title><style>body {
     margin-top: 2em;
     padding: 0px;
 }
@@ -63,24 +63,39 @@ pre {
     padding: 1em;
 }
 </style></head><body>
-<div id="index"><a href="../ontology.html">Back to ontology</a><img src="volumetric.png" style="border: 1px solid #EEEEEE; padding: 10px;" /><h2>Table of Contents</h2><ul class="toc"><li style="padding-left: 0.00em"><a href="#section-TODO">TODO</a></li><li style="padding-left: 0.00em"><a href="#section-Summary">Summary</a></li><li style="padding-left: 0.00em"><a href="#section-Models">Models</a></li><li style="padding-left: 0.00em"><a href="#section-Definitions">Definitions</a></li><li style="padding-left: 0.00em"><a href="#section-Scenario">Scenario</a></li><li style="padding-left: 2.20em"><a href="#section-As-planned">As-planned</a></li><li style="padding-left: 2.20em"><a href="#section-As-observed">As-observed</a></li><li style="padding-left: 2.20em"><a href="#section-Divergence">Divergence</a></li><li style="padding-left: 2.20em"><a href="#section-Analytics">Analytics</a></li><li style="padding-left: 2.20em"><a href="#section-Scheduling">Scheduling</a></li><li style="padding-left: 2.20em"><a href="#section-Safety">Safety</a></li><li style="padding-left: 0.00em"><a href="#section-Test_Cases">Test Cases</a></li><li style="padding-left: 0.00em"><a href="#section-Acceptance_Criteria">Acceptance Criteria</a></li></ul></div>
-<div id="main"><h1>Safety Status TODO</h1><h2 data-anchor="section-TODO"><a name="section-TODO" /><a class="section-anchor" href="#section-TODO">TODO</a><span class="chain-symbol">🔗</span></h2>
-<p>Used by *_alert scenarios to display the safety status to the wearer of the device.</p>
-<p>Summarize what all the *_alert scenarios need.</p>
-<p>What do we do if there is no connection to the server?</p>
-<p>No data should be transmitted back to the server. </p>
-<h2 data-anchor="section-Summary"><a name="section-Summary" /><a class="section-anchor" href="#section-Summary">Summary</a><span class="chain-symbol">🔗</span></h2>
+<div id="index"><a href="../ontology.html">Back to ontology</a><img src="volumetric.png" style="border: 1px solid #EEEEEE; padding: 10px;" /><h2>Table of Contents</h2><ul class="toc"><li style="padding-left: 0.00em"><a href="#section-Summary">Summary</a></li><li style="padding-left: 0.00em"><a href="#section-Models">Models</a></li><li style="padding-left: 0.00em"><a href="#section-Definitions">Definitions</a></li><li style="padding-left: 2.20em"><a href="#def-alertee">alertee</a></li><li style="padding-left: 2.20em"><a href="#def-smart_device">smart device</a></li><li style="padding-left: 2.20em"><a href="#def-risk_status">risk status</a></li><li style="padding-left: 0.00em"><a href="#section-Scenario">Scenario</a></li><li style="padding-left: 2.20em"><a href="#section-Safety">Safety</a></li></ul><h2>Level Index</h2><ul><li><a href="#level-anchor-a29c3f77-52a0-4fcf-95fc-c70fb77cb411">device</a></li></ul></div>
+<div id="main"><h1>Safety Status</h1><h2>Relations to Other Scenarios</h2><ul><li><a href="../risk_management/scenario.html">Risk Management</a><span> risk status Safety Status</span></li></ul><h2 data-anchor="section-Summary"><a name="section-Summary" /><a class="section-anchor" href="#section-Summary">Summary</a><span class="chain-symbol">🔗</span></h2>
+<p>This scenario covers the display of the <a href="#def-risk_status" class="ref">risk status</a> based on various
+<a href="../risk_management/scenario.html#def-risk" class="ref">risks (from risk_management)</a> (such as fall risks, fire risks <em>etc.</em>). </p>
 <h2 data-anchor="section-Models"><a name="section-Models" /><a class="section-anchor" href="#section-Models">Models</a><span class="chain-symbol">🔗</span></h2>
+<p><em>Intentionally left empty.</em></p>
 <h2 data-anchor="section-Definitions"><a name="section-Definitions" /><a class="section-anchor" href="#section-Definitions">Definitions</a><span class="chain-symbol">🔗</span></h2>
+<div class="def">
+<h3 data-anchor="def-alertee"><a name="def-alertee" /><a class="section-anchor" href="#def-alertee">alertee</a><span class="chain-symbol">🔗</span></h3>
+<p>A person who needs to be alerted on his/her current risk level through the
+<a href="#def-smart_device" class="ref">smart device</a>.</p>
+<p>Modeled as an <a href="../actor_management/scenario.html#def-actor" class="ref">actor (from actor_management)</a>.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-smart_device"><a name="def-smart_device" /><a class="section-anchor" href="#def-smart_device">smart device</a><span class="chain-symbol">🔗</span></h3>
+<p><span class="level" data-text="device">A device such as a smart watch or a smartphone informing the
+<a id="level-anchor-a29c3f77-52a0-4fcf-95fc-c70fb77cb411" /><a href="#def-alertee" class="ref">alertee</a> about the risk status.<sup>device</sup></span></p>
+</div>
+<div class="def">
+<h3 data-anchor="def-risk_status"><a name="def-risk_status" /><a class="section-anchor" href="#def-risk_status">risk status</a><span class="chain-symbol">🔗</span></h3>
+<p>The risk status represents the various <a href="../risk_management/scenario.html#def-risk" class="ref">risks (from risk_management)</a> in conjunction with
+the location of the <a href="#def-alertee" class="ref">alertee</a>.</p>
+</div>
 <h2 data-anchor="section-Scenario"><a name="section-Scenario" /><a class="section-anchor" href="#section-Scenario">Scenario</a><span class="chain-symbol">🔗</span></h2>
-<h3 data-anchor="section-As-planned"><a name="section-As-planned" /><a class="section-anchor" href="#section-As-planned">As-planned</a><span class="chain-symbol">🔗</span></h3>
-<h3 data-anchor="section-As-observed"><a name="section-As-observed" /><a class="section-anchor" href="#section-As-observed">As-observed</a><span class="chain-symbol">🔗</span></h3>
-<h3 data-anchor="section-Divergence"><a name="section-Divergence" /><a class="section-anchor" href="#section-Divergence">Divergence</a><span class="chain-symbol">🔗</span></h3>
-<h3 data-anchor="section-Analytics"><a name="section-Analytics" /><a class="section-anchor" href="#section-Analytics">Analytics</a><span class="chain-symbol">🔗</span></h3>
-<h3 data-anchor="section-Scheduling"><a name="section-Scheduling" /><a class="section-anchor" href="#section-Scheduling">Scheduling</a><span class="chain-symbol">🔗</span></h3>
+<p>This is an experimental scenario.</p>
+<p>The ideas presented here <em>should not</em> be used in safety-critical situations.</p>
 <h3 data-anchor="section-Safety"><a name="section-Safety" /><a class="section-anchor" href="#section-Safety">Safety</a><span class="chain-symbol">🔗</span></h3>
-<h2 data-anchor="section-Test_Cases"><a name="section-Test_Cases" /><a class="section-anchor" href="#section-Test_Cases">Test Cases</a><span class="chain-symbol">🔗</span></h2>
-<h2 data-anchor="section-Acceptance_Criteria"><a name="section-Acceptance_Criteria" /><a class="section-anchor" href="#section-Acceptance_Criteria">Acceptance Criteria</a><span class="chain-symbol">🔗</span></h2>
+<p>The program running on the <a href="#def-smart_device" class="ref">smart device</a> keeps track of the <a href="#def-alertee" class="ref">alertee</a>'s
+location and queries whether the location is contained in one or more currently valid
+<a href="../risk_management/scenario.html#def-risk_zone" class="ref">risk zones (from risk_management)</a>.</p>
+<p>Depending on the results of the query, the <a href="#def-risk_status" class="ref">risk status</a> is updated and displayed to
+the user.</p>
+<p><em>The remaining sections intentionally left empty.</em></p>
 </div>
 </body>
 </html>

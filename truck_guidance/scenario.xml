@@ -4,28 +4,35 @@
 <div id='main'><h2>Summary</h2>
 <p>This scenario concerns truck drivers arriving at the construction site to deliver cargo.</p>
 <h2>Models</h2>
-<model name="plan/main">
-<p>The as-planned BIM model provided after the planning phase and
-updated throughout the construction.</p>
-<p>It is going to be updated as the building grows.</p>
-<p>This is the federated model of all the individual domain models (core is Site model,
-Structural model and Electrical model).</p>
+<model name="logs">
+<p>These are the <ref name="topic_management#topic" />s corresponding to the
+<ref name="delivery" />s.</p>
+<p>The <ref name="delivery_update" />s are converted to structured
+<ref name="topic_management#comment" />s.</p>
+<p>The <ref name="topic_management#comment" />s are appended to the
+<ref name="topic_management#topic" /> corresponding to a <ref name="delivery" />.</p>
 </model>
-<model name="observed/main">
-<p>This model contains the real time delivery status.</p>
-</model>
-<model name="archived/observations">
-<p>This keeps track of accomplished <ref name="delivery" />s.</p>
+<model name="status_labels">
+<p>The list of possible labels for a delivery status.</p>
 </model>
 <h2>Definitions</h2>
 <def name="planner_role">
-<p>Planner role is for all people who are allowed to change a <ref name="delivery"/>.</p>
+<p>Planner <ref name="actor_management#role" /> is for all people who are allowed to change a
+<ref name="delivery"/>.</p>
+</def>
+<def name="delivery_location" >
+<p>The delivery location is the <code>IfcZone</code> where the cargo should be delivered.</p>
 </def>
 <def name="delivery">
-<p>Delivery is an <code>IfcTask</code>, which has a text, a <code>ScheduleStart</code> and <code>ScheduleFinish</code> (both <code>IfcTaskTime</code>. It can be associated with
-a location <code>IfcZone</code>. The cargo is a text property of the delivery (&quot;10 windows, 2 doors&quot;).</p>
-<p>The delivery is assigned to a <ref name="driver"/>, a <ref name="entry_point" /> and
+<p>Delivery is a <ref name="topic_management#topic" /> which has a description, a <code>Deadline</code> and a
+<code>Priority</code>. </p>
+<p>The delivery can be associated optionally with a <ref name="delivery_location" />.</p>
+<p>The cargo is described as a text property of the delivery (&quot;10 windows, 2 doors&quot;).</p>
+<p>The delivery is assigned to a <ref name="driver"/> and associated with an
+<ref name="entry_point" />, <ref name="delivery_location" />,
 <ref name="exit_point" /> and a <ref name="contact_person" />.</p>
+<p>The <ref name="topic_management#topic" /> follows a pre-defined format.</p>
+<p>The deliveries live in a semantically pre-defined <ref name="topic_management#topic_board" />.</p>
 </def>
 <def name="contact_person">
 <p>The person who should be contacted if the <ref name="driver" /> have questions.</p>
@@ -40,34 +47,69 @@ a location <code>IfcZone</code>. The cargo is a text property of the delivery (&
 <p>The <code>IfcZone</code> where the truck should leave through.</p>
 </def>
 <def name="driver">
-<p>The driver is an <code>IfcActor</code>.</p>
+<p>The driver is an <ref name="actor_management#actor" /> who executes the <ref name="delivery" />.</p>
 </def>
-<def name="delivery_status">
-<p>Consideration for architecture: we need to introduce a custom class to represent the
-delivery status (label and depending on the label, last_location and last_observed_time).</p>
-</def>
-<def name="notifiee">
-<p>The notifiee is an <code>IfcActor</code> that is notified when the delivery status is updated.</p>
+<def name="delivery_update">
+<p>A structured <ref name="topic_management#comment" /> representing the update of the delivery status:</p>
+<ul>
+<li>label (as an enum string, referring to <modelref name="status_labels" />),</li>
+<li>datetime, and</li>
+<li>an optional field <code>location</code> (as a GPS location).</li>
+</ul>
+<p>The delivery updates live in <modelref name="logs" />.</p>
+<p>The system should not allow the user to change the corresponding comment in
+the <ref name="topic_management#topic" />.</p>
 </def>
 <h2>Scenario</h2>
+<p>The labels for a <ref name="delivery_update" /> are pre-defined during the system configuration
+in <modelref name="status_labels" />.</p>
 <h3>As-planned</h3>
-<p>The <ref name="planner_role"/> creates and updates the <ref name="delivery"/>s.</p>
+<p>The tasks are imported from external &lt;<ref name="scheduling#last_planner_system" /> such as Visilean
+(see <scenarioref name="scheduling" />).</p>
+<p>Since it is too difficult to enrich the task information with the delivery-relevant information
+(such as selecting the <ref name="driver" /> and the <ref name="entry_point" />), we have to provide
+an application that allows the user to add this extra information.</p>
+<p>The <ref name="planner_role"/> converts the corresponding task into a <ref name="delivery"/>
+(a structured <ref name="topic_management#topic" />) and enriches it with the extra information.</p>
+<p>The <ref name="planner_role"/> can also update manually the status of the delivery (<em>e.g.</em>, to
+cancel it) by adding <ref name="delivery_update" />s (as structured
+<ref name="topic_management#comment" />).</p>
+<p>The updates of the delivery status are kept track in the <modelref name="logs" />.</p>
 <h3>As-observed</h3>
-<p>The <ref name="driver"/>'s device tracks the gps location, but does not send it to the system.</p>
+<level name="machine">
+<p>The <ref name="driver"/>'s device tracks the GPS location, but does not send
+it to the system.</p>
+<p>The location is only used to navigate the driver.</p>
+</level>
 <h3>Divergence</h3>
-<p>The  device will guide the <ref name="driver" /> to the location on the site where the
-<ref name="delivery" /> should take place. The <ref name="driver" /> updates the status of
-the delivery.</p>
-<p>The <ref name="notifiee" />s are notified when the status of the delivery is updated.</p>
+<p><level name="machine">The  device will guide the <ref name="driver" /> to the
+<ref name="delivery_location" />.</level> </p>
+<level name="machine">
+<p>The <ref name="topic_management#topic" /> body includes a link
+(authorized for the whole internet) that the <ref name="driver" /> can click on to update
+the current location of the delivery and another link to signal that
+the <ref name="delivery" /> arrived.</p>
+<p>The <ref name="driver" /> can choose to include his/her current GPS location
+in the <ref name="delivery_update" /> (<em>e.g.</em>, when following the link for the arrival).  </p>
+<p>The updates of the delivery status are kept track in the
+<modelref name="logs" />.</p>
+</level>
 <h3>Analytics</h3>
-<p>The KPI for delivery-in-time is updated, both delivery in number per week and variance. This is based
-on date from <modelref name="archived/observations" />.</p>
-<p>The <ref name="planner_role" /> decides under which status to archive the delivery (for KPI).</p>
+<level name="site">
+<p>The KPI for delivery-in-time is updated, both delivery in number per week and variance. </p>
+<p>The KPIs are based on the data from the <modelref name="logs" />.</p>
+<p>Since <ref name="delivery" /> is a <ref name="topic_management#topic" />, many messages are
+structured as <ref name="delivery_update" />. However, unstructured messages are also possible.
+The unstructured messages should be ignored when computing the KPIs. </p>
+<p>The <ref name="planner_role" /> usually sets the last status of the delivery which is then used
+to determine how the <ref name="delivery" /> is counted in the KPIs (<em>e.g.</em>, &quot;on time&quot;, &quot;delayed&quot;
+<em>etc.</em>).</p>
+</level>
 <h3>Scheduling</h3>
-<p>Notify the <ref name="notifiee" />s if the <ref name="delivery" /> is not ready when the pickup-time
-has passed.</p>
+<p>The notifications regarding the unmet deadlines are handled by the
+<scenarioref name="topic_management" />.</p>
 <h3>Safety</h3>
-<p>Intentionally left empty.</p>
+<p><em>Intentionally left empty.</em></p>
 <h2>Test Cases</h2>
 <test name="navigation_correct_on_examples">
 <p>TODO: discuss with Dag. What is the easiest way to record a couple of scenarios so that we can

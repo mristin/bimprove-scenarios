@@ -1,28 +1,184 @@
 <html>
 <body>
 <div id='index'></div>
-<div id='main'><h2>TODO</h2>
-<p>There are multiple stages:</p>
-<ul>
-<li>images, laser recordings -&gt; point cloud (most important!)</li>
-<li>point cloud + existing BIM -&gt; digitally reconstructed BIM (not in focus for us?)</li>
-</ul>
-<p>External software?</p>
-<p>Expected errors, formats, images with location and angle etc.</p>
-<p>How do we link individual BIM elements to point cloud and images?
-By querying over geometry?</p>
-<h2>Summary</h2>
+<div id='main'><h2>Summary</h2>
+<p>This scenario covers the digital representation of the physical world evolving over the time. </p>
+<p>The digital representation includes <modelref name="images" />,
+<modelref name="point_cloud" />,
+<modelref name="voxel_cloud" />,
+<modelref name="reconstructed_geometry" />,
+and <modelref name="as-built" />.</p>
+<p>The <ref name="object_recognition" /> is intentionally left out as out-of-scope from the
+BIMprove project as well as semantic interpretation of <ref name="point" />s and
+<ref name="surface" />s.</p>
 <h2>Models</h2>
+<model name="images">
+<p>This model contain all the <ref name="image" />s recorded manually (<em>e.g.</em>, by a smartphone) or
+automatically (<em>e.g.</em>, by an UAV or statically installed cameras through
+a <ref name="recording" />) over time.</p>
+<p>We expect the images in JPEGs.
+The meta-data such as orientation, position and sensor range
+(<em>e.g.</em>, for <ref name="thermal_inspection#thermal_image" />s) is expected in
+<a href="https://en.wikipedia.org/wiki/Exif">EXIF</a>.</p>
+</model>
+<model name="point_cloud">
+<p>This model encompasses all the <ref name="point" />s of the physical building over time. </p>
+<p>The expected format of the point cloud is <a href="http://www.libe57.org/">E57</a>.
+Our system will use <a href="http://www.libe57.org/">E57</a> as an exchange format (<em>e.g.</em>, for import/export).
+The backend can use arbitrary format for storage and manipulation. </p>
+</model>
+<model name="voxel_cloud">
+<p>This model includes all the <ref name="voxel" />s over time.</p>
+</model>
+<model name="reconstructed_geometry">
+<p>This model captures all the reconstructed <ref name="surface" />s.</p>
+</model>
+<model name="as-built">
+<p>The as-built model is obtained by combining <ref name="point" /> cloud
+and the latest version of <modelref name="evolving_plan#bim3d" />.</p>
+<p>The model is updated continuously by a <ref name="bimmer" />.</p>
+<p>Unlike <modelref name="evolving_plan#bim3d" />, this model is not <em>official</em>.</p>
+<p>The entity identifiers from this model should match the identifiers from
+<modelref name="evolving_plan#bim3d" />.</p>
+</model>
 <h2>Definitions</h2>
+<def name="recording">
+<p>The recording is a sequence of <ref name="image" />s and <ref name="point" />s recorded by an
+<ref name="uxv_recording#UXV" /> (with different <ref name="uxv_recording#sensor" />s such as
+photo cameras, FARO lasers, LiDARs, thermal cameras <em>etc.</em>).</p>
+<p>The recording is assumed atomic (<em>i.e.</em> &quot;discrete&quot;, as opposed to <em>continuous</em> recording from, say,
+a static camera observing a scene).</p>
+<p>We also assume that the relevant objects <em>do not</em> move during the recording.
+However, some movement is possible, though (<em>e.g.</em>, workers and vehicles on the site,
+other <ref name="uxv_recording#UXV" />s <em>etc.</em>).</p>
+<p>The <ref name="uxv_recording#sensor" /> as well as the <ref name="uxv_recording#spatial_accuracy" />
+of the sensor should be defined in the recording.</p>
+<p>For example, lasers might have the <ref name="uxv_recording#spatial_accuracy" /> in millimeters, while
+the <ref name="uxv_recording#spatial_accuracy" /> of the photo odometry can be in low-digit
+centimeters (depending on the texture, lighting conditions <em>etc.</em>).</p>
+</def>
+<def name="image">
+<p>An image is a picture taken by a camera.</p>
+<p>The camera can be a photo camera (taking RGB images), but can also be a thermal camera (taking
+<ref name="thermal_inspection#thermal_image" />s).</p>
+</def>
+<def name="point">
+<p>A point is a 3D representation of a physical building.</p>
+<p>Each point is:</p>
+<ul>
+<li>given a color.</li>
+<li>associated with its source (<em>e.g.</em>, unique identifier of an <ref name="uxv_recording#UXV" />
+as well as the <ref name="uxv_recording#sensor" />), and</li>
+<li>attributed with the time stamp corresponding to the moment of the observation (as opposed
+to the moment of the reconstruction).</li>
+</ul>
+</def>
+<def name="voxel">
+<p>Voxel is a small cube or union of cubes abstracting the individual <ref name="point" />s.</p>
+<p>Voxel cloud is stiched together from <ref name="point" /> cloud
+by binning points to pre-defined cubes and unions of cubes.</p>
+<p>It is a poor man's reconstructed geometry.</p>
+<p>Each volumetric shape is also associated a time stamp based on the underlying points.</p>
+<p>The color of a shape is determined by inferring it from the underlying points.
+(We might consider color spaces like CIE, LAB <em>etc.</em> Vector average of RGB is perceptually wrong.)</p>
+<p>The color gives you the similarity of the points (in addition to their mutual proximity) so that
+cubes with different colors should not be merged.</p>
+<p>Analogously, the time stamp of the voxel is given by the average over the corresponding points.</p>
+</def>
+<def name="surface" >
+<p>A surface is a 3D shape given as surface.</p>
+<p>The surface is reconstructed based on the <ref name="point" /> cloud.</p>
+<p>Reconstructed surfaces are not semantically interpretable.
+The main purpose of the geometry is visualization, not semantic recognition.
+Hence there is no link to BIM models and this is intentionally left out-of-scope. </p>
+<p>The time stamp of a surface is computed based on the average of the time stamps of its points. </p>
+</def>
+<def name="object_recognition" >
+<p>Recognized objects (based on images or point cloud) are not part of the BIM model.</p>
+<p>Such objects include tools, debris, safety nets <em>etc.</em></p>
+<p>Some objects, such as safety nets, can not be detected with a point cloud and need to rely
+on images for texture.</p>
+<p>This is a non-goal, as we lack the resources (foremost data, but also time, qualifications, focus).
+However, we should keep in mind that the system should prepare the data for recognition in a
+future project.</p>
+</def>
+<def name="bimmer" >
+<p>This person updates the geometry of <modelref name="as-built" /> on a continuous basis.</p>
+</def>
 <h2>Scenario</h2>
 <h3>As-planned</h3>
+<p>The as-planned data is coming from <modelref name="evolving_plan#bim3d" />. </p>
 <h3>As-observed</h3>
+<p><strong>Raw</strong>.
+The &quot;raw&quot; observations come from the <ref name="image" />s (manual snapshots or recorded by
+an UAV in a <ref name="recording" />) and are kept in <modelref name="images" />.</p>
+<p><strong>Point cloud</strong>.
+The <ref name="point" /> cloud is reconstructed by external software from the
+<modelref name="images" /> and stored to <modelref name="point_cloud" />.
+(The external software is not part of the BIMprove development efforts.)</p>
+<p>Additionally, <modelref name="point_cloud" /> includes also the <ref name="point" />s
+that are recorded by lasers (in case there is a <ref name="uxv_recording#sensor" />
+during a <ref name="recording" />).</p>
+<p>Finally, the BIMprove system should provide an import end-point so that arbitrarily point clouds
+can be imported.
+For example, the crew could use external smartphone apps to record a point cloud,
+special hand-held lidars <em>etc.</em>
+We do not want to constrict the range of recording devices.
+The source as well as the sensor accuracy need to be specified accordingly. </p>
+<p><strong>Visualizable abstractions.</strong>
+We further abstract <ref name="point" />s from the <modelref name="point_cloud" />
+into:</p>
+<ul>
+<li><ref name="voxel" />s of <modelref name="voxel_cloud" />
+using binning and aggregation of bins, and </li>
+<li><ref name="surface" />s using geometry reconstruction.</li>
+</ul>
+<p>The main aim of both the <ref name="voxel" />s and <ref name="surface" />s is easier visualization
+of the physical world.</p>
+<p>(We will probably not have time to implement the geometry reconstruction in BIMprove system.
+There might be perhaps libraries to easily reconstruct it from the point cloud on the backend
+side.
+As we don't know that at this point (2021-01-20), we leave it here as a nice-to-have.)</p>
+<p><strong>As-built plan.</strong></p>
+<p>In addition to semantically uninterpretable observations (such as <ref name="image" />s and
+<ref name="point" />s), our system needs the interpretable observation.</p>
+<p>This is given in the model <modelref name="as-built" />. This model is continuously
+updated (<em>e.g.</em>, daily) by the <ref name="bimmer" /> using external software to
+model the current state of the physical building digitally using as base the official plans
+<modelref name="evolving_plan#bim3d" />, previous version of
+<modelref name="as-built" /> (if available) and
+<modelref name="point_cloud" />.</p>
+<p>The external software for BIM reconstruction (and adaptation to observed data) is not part of the
+BIMprove development efforts. Some software solutions include:</p>
+<ul>
+<li>https://bimandscan.com/autocorr/</li>
+<li>https://www.clearedge3d.com/products/verity/</li>
+<li>https://www.imerso.com/ </li>
+</ul>
+<p>TODO: add link here to divergence_detection -- this depends how we compute the divergence,
+manually or based on as-built bim.</p>
+<img src="diagram.svg" />
 <h3>Divergence</h3>
-<h3>Analytics</h3>
-<h3>Scheduling</h3>
-<h3>Safety</h3>
+<p>All the observations (like <ref name="image" />s and <ref name="point" /> cloud) need to be
+converted to our main <ref name="evolving_plan#site_coordinate_system" />.</p>
+<p>Whatever data comes into the backend needs to be pre-processed appropriately to conform to
+<ref name="evolving_plan#site_coordinate_system" />.</p>
+<p><em>The remaining aspect sections intentionally left empty.</em></p>
 <h2>Test Cases</h2>
 <h2>Acceptance Criteria</h2>
+<acceptance name="timestamps_of_points_manageable">
+<p>The timestamps for individual <ref name="point" />s of the point clouds should be appropriately
+compressed so that we add only a word (2-bytes) or attach a timestamp to a group of points <em>etc.</em></p>
+</acceptance>
+<acceptance name="granularity_of_timestamps">
+<p>As <ref name="point" />s of the point cloud are attributed a time stamp, the time stamp
+does not need to be extremely precise. For example, if we take 50 images of a single point,
+the time stamp of the point can be the average (or minimum or maximum) over the corresponding
+timestamps of the images.</p>
+</acceptance>
+<acceptance name="visual_veracity_of_geometry">
+<p>The geometry might look &quot;melted&quot; as we lack points from all the viewpoints.</p>
+</acceptance>
 </div>
 </body>
 </html>

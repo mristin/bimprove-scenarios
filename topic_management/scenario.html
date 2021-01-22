@@ -1,0 +1,262 @@
+<html>
+<head><meta charset="utf-8" /><script src="https://livejs.com/live.js"> </script><title>Topic Management</title><style>body {
+    margin-top: 2em;
+    padding: 0px;
+}
+
+#main {
+    float: left;
+    width: 50em;
+    margin-left: 3%;
+    border: 1px solid black;
+    padding: 2em;
+}
+
+#index {
+    float: left;
+    width: 30%;
+    border: 1px solid black;
+    padding: 1em;
+}
+
+ul.toc {
+    list-style-type: none;
+}
+
+ul.toc li {
+    margin-bottom: 0.5em;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+a:visited {
+    color: blue;
+}
+
+a.section-anchor {
+    text-decoration: none;
+    color: black;
+}
+
+.chain-symbol {
+    display: none;
+    font-size: x-small;
+    margin-left: 0.5em;
+}
+a.section-anchor:hover + .chain-symbol {
+    display: inline-block;
+}
+
+span.phase {
+    background-color: #eefbfb;
+}
+
+span.level {
+    background-color: #eefbee;
+}
+
+pre {
+    background-color: #eeeefb;
+    padding: 1em;
+}
+</style></head><body>
+<div id="index"><a href="../ontology.html">Back to ontology</a><img src="volumetric.png" style="border: 1px solid #EEEEEE; padding: 10px;" /><h2>Table of Contents</h2><ul class="toc"><li style="padding-left: 0.00em"><a href="#section-Summary">Summary</a></li><li style="padding-left: 0.00em"><a href="#section-Models">Models</a></li><li style="padding-left: 2.20em"><a href="#model-topics">topics</a></li><li style="padding-left: 2.20em"><a href="#model-notification_protocols">notification_protocols</a></li><li style="padding-left: 0.00em"><a href="#section-Definitions">Definitions</a></li><li style="padding-left: 2.20em"><a href="#def-topic">topic</a></li><li style="padding-left: 2.20em"><a href="#def-topic_board">topic board</a></li><li style="padding-left: 2.20em"><a href="#def-requester">requester</a></li><li style="padding-left: 2.20em"><a href="#def-assignee">assignee</a></li><li style="padding-left: 2.20em"><a href="#def-stage">stage</a></li><li style="padding-left: 2.20em"><a href="#def-label">label</a></li><li style="padding-left: 2.20em"><a href="#def-comment">comment</a></li><li style="padding-left: 2.20em"><a href="#def-viewquery">viewquery</a></li><li style="padding-left: 2.20em"><a href="#def-BCF_viewpoint">BCF viewpoint</a></li><li style="padding-left: 2.20em"><a href="#def-BCF">BCF</a></li><li style="padding-left: 2.20em"><a href="#def-notifiee">notifiee</a></li><li style="padding-left: 2.20em"><a href="#def-notification_protocol">notification protocol</a></li><li style="padding-left: 0.00em"><a href="#section-Scenario">Scenario</a></li><li style="padding-left: 0.00em"><a href="#section-Test_Cases">Test Cases</a></li><li style="padding-left: 2.20em"><a href="#test-property-based_test">property-based test</a></li><li style="padding-left: 0.00em"><a href="#section-Acceptance_Criteria">Acceptance Criteria</a></li><li style="padding-left: 2.20em"><a href="#acceptance-magnitude">magnitude</a></li></ul></div>
+<div id="main"><h1>Topic Management</h1><h2>Relations to Other Scenarios</h2><ul><li><a href="../risk_management/scenario.html">Risk Management</a><span> issues Topic Management</span></li><li><a href="../truck_guidance/scenario.html">Truck guidance</a><span> deliveries Topic Management</span></li><li><a href="../virtual_inspection/scenario.html">Virtual Inspection</a><span> issues Topic Management</span></li></ul><h2>Relations from Other Scenarios</h2><ul><li><span>Topic Management focus spots </span><a href="../uxv_recording/scenario.html">UXV Recording</a></li></ul>
+<h2 data-anchor="section-Summary"><a name="section-Summary" /><a class="section-anchor" href="#section-Summary">Summary</a><span class="chain-symbol">🔗</span></h2>
+<p>This scenario is about providing a communication platform for BIMprove system.</p>
+<h2 data-anchor="section-Models"><a name="section-Models" /><a class="section-anchor" href="#section-Models">Models</a><span class="chain-symbol">🔗</span></h2>
+<div class="model">
+<h3 data-anchor="model-topics"><a name="model-topics" /><a class="section-anchor" href="#model-topics">topics</a><span class="chain-symbol">🔗</span></h3>
+<p>This model lists all the available <a href="#def-topic" class="ref">topics</a>, <a href="#def-topic_board" class="ref">topic boards</a> and
+<a href="#def-comment" class="ref">comments</a>.</p>
+</div>
+<div class="model">
+<h3 data-anchor="model-notification_protocols"><a name="model-notification_protocols" /><a class="section-anchor" href="#model-notification_protocols">notification_protocols</a><span class="chain-symbol">🔗</span></h3>
+<p>This model comprises all the defined and pre-defined <a href="#def-notification_protocol" class="ref">notification protocols</a>.</p>
+</div>
+<h2 data-anchor="section-Definitions"><a name="section-Definitions" /><a class="section-anchor" href="#section-Definitions">Definitions</a><span class="chain-symbol">🔗</span></h2>
+<div class="def">
+<h3 data-anchor="def-topic"><a name="def-topic" /><a class="section-anchor" href="#def-topic">topic</a><span class="chain-symbol">🔗</span></h3>
+<p>A topic is an issue, a problem or a communication thread.</p>
+<p>It consists of a subject, a description and the <a href="#def-comment" class="ref">comments</a>.</p>
+<p>A topic is associated with:</p>
+<ul>
+<li>exactly one <a href="#def-requester" class="ref">requester</a>, </li>
+<li>zero or one <a href="#def-assignee" class="ref">assignee</a>,</li>
+<li>the creation time stamp, </li>
+<li>the dead line (as a time stamp), </li>
+<li><a href="#def-stage" class="ref">stage</a> and</li>
+<li>zero, one or more <a href="#def-label" class="ref">labels</a>. </li>
+</ul>
+<p>A topic is accompanied with <a href="#def-comment" class="ref">comments</a>.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-topic_board"><a name="def-topic_board" /><a class="section-anchor" href="#def-topic_board">topic board</a><span class="chain-symbol">🔗</span></h3>
+<p>A topic board (called "project" in <a href="#def-BCF" class="ref">BCF</a>) is a collection of <a href="#def-topic" class="ref">topics</a>.</p>
+<p>A topic board can have different access rights as well as different semantics.</p>
+<p>For example, there is a special topic board for <a href="../truck_guidance/scenario.html#def-delivery" class="ref">deliveries (from truck_guidance)</a>.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-requester"><a name="def-requester" /><a class="section-anchor" href="#def-requester">requester</a><span class="chain-symbol">🔗</span></h3>
+<p>The <a href="../actor_management/scenario.html#def-actor" class="ref">actor (from actor_management)</a> who created/requested a <a href="#def-topic" class="ref">topic</a> to be
+focused on.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-assignee"><a name="def-assignee" /><a class="section-anchor" href="#def-assignee">assignee</a><span class="chain-symbol">🔗</span></h3>
+<p>The <a href="../actor_management/scenario.html#def-actor" class="ref">actor (from actor_management)</a> who is responsible for a <a href="#def-topic" class="ref">topic</a>.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-stage"><a name="def-stage" /><a class="section-anchor" href="#def-stage">stage</a><span class="chain-symbol">🔗</span></h3>
+<p>The stage is a phase or a milestone of a <a href="#def-topic" class="ref">topic</a>.</p>
+<p>This is usually a stage in the building life cycle.</p>
+<p>For example, "planning", "construction" or more fine-grained like a phase in the
+<a href="../scheduling/scenario.html#def-phase_plan" class="ref">phase plan (from scheduling)</a>. </p>
+</div>
+<div class="def">
+<h3 data-anchor="def-label"><a name="def-label" /><a class="section-anchor" href="#def-label">label</a><span class="chain-symbol">🔗</span></h3>
+<p>A label is a free-form category of a <a href="#def-topic" class="ref">topic</a>.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-comment"><a name="def-comment" /><a class="section-anchor" href="#def-comment">comment</a><span class="chain-symbol">🔗</span></h3>
+<p>A comment introduces additional information about a topic.</p>
+<p>A <a href="#def-viewquery" class="ref">viewquery</a> can be optionally attached to a comment.</p>
+<p>Comments are usually free-form.</p>
+<p>There are also specially structured comments.
+For example, we use comments to represent the status change of a
+<a href="../truck_guidance/scenario.html#def-delivery" class="ref">delivery (from truck_guidance)</a>.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-viewquery"><a name="def-viewquery" /><a class="section-anchor" href="#def-viewquery">viewquery</a><span class="chain-symbol">🔗</span></h3>
+<p>A viewquery is an encoding of the camera position, the view angle and the query from
+<scenarioref name="virtual_inspection" />.</p>
+<p>Note that the viewquery as we refer to here is <em>not</em> the <a href="#def-BCF_viewpoint" class="ref">BCF viewpoint</a> as
+usually exported in a <a href="#def-BCF" class="ref">BCF</a>.
+The <a href="#def-BCF_viewpoint" class="ref">BCF viewpoint</a> is much sparser than <a href="#def-viewquery" class="ref">viewquery</a>.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-BCF_viewpoint"><a name="def-BCF_viewpoint" /><a class="section-anchor" href="#def-BCF_viewpoint">BCF viewpoint</a><span class="chain-symbol">🔗</span></h3>
+<p>This is the viewpoint as exported in a <a href="#def-BCF" class="ref">BCF</a>.</p>
+<p>This includes:</p>
+<ul>
+<li>camera position,</li>
+<li>selected objects (from <a href="../evolving_plan/scenario.html#model-bim3d" class="modelref">bim3d (from evolving_plan)</a>), and</li>
+<li>visible objects (from <a href="../evolving_plan/scenario.html#model-bim3d" class="modelref">bim3d (from evolving_plan)</a>).</li>
+</ul>
+</div>
+<div class="def">
+<h3 data-anchor="def-BCF"><a name="def-BCF" /><a class="section-anchor" href="#def-BCF">BCF</a><span class="chain-symbol">🔗</span></h3>
+<p>The BCF is a format for structuring <a href="#def-topic" class="ref">topics</a> as defined by building Smart:
+https://www.buildingsmart.org/standards/bsi-standards/bim-collaboration-format-bcf/</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-notifiee"><a name="def-notifiee" /><a class="section-anchor" href="#def-notifiee">notifiee</a><span class="chain-symbol">🔗</span></h3>
+<p>The notifiee is an <a href="../actor_management/scenario.html#def-actor" class="ref">actor (from actor_management)</a> that is notified when there are new
+<a href="#def-comment" class="ref">comments</a> on a <a href="#def-topic" class="ref">topic</a>.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-notification_protocol"><a name="def-notification_protocol" /><a class="section-anchor" href="#def-notification_protocol">notification protocol</a><span class="chain-symbol">🔗</span></h3>
+<p>The notification protocol specifies the <a href="#def-notifiee" class="ref">notifiee</a> as well as the channels used
+for the notification.</p>
+<p>For example, notify person <code>A</code> over <code>e-mail</code> with severity <code>high</code>.
+The protocol can also include an optional trigger (<code>if late</code> <em>etc.</em>).</p>
+<p>The notification protocol is associated with a single delivery.</p>
+<p>This is a non-IFC entity and lives in <a href="#model-notification_protocols" class="modelref">notification_protocols</a>.</p>
+</div>
+<h2 data-anchor="section-Scenario"><a name="section-Scenario" /><a class="section-anchor" href="#section-Scenario">Scenario</a><span class="chain-symbol">🔗</span></h2>
+<p>We use <scenarioref name="virtual_inspection" />, <scenarioref name="scheduling" />,
+<scenarioref name="truck_guidance" />,
+<scenarioref name="risk_management" /> and other scenarios
+as "explorers" (or "browsers").</p>
+<p>These "explorers" give us links to the instances and entities as
+<a href="../unique_resource_identification/scenario.html#def-identifier" class="ref">identifiers (from unique_resource_identification)</a>.</p>
+<p><strong>References</strong>.
+We link the <a href="../unique_resource_identification/scenario.html#def-identifier" class="ref">identifiers (from unique_resource_identification)</a> through <a href="#def-topic" class="ref">topics</a>
+to structure the communication.
+This includes both the elements from <a href="../evolving_plan/scenario.html#model-bim3d" class="modelref">bim3d (from evolving_plan)</a> and
+<a href="../evolving_plan/scenario.html#model-bim_extended" class="modelref">bim_extended (from evolving_plan)</a> as well as our BIMprove-specific entities such as
+<a href="../risk_management/scenario.html#def-risk" class="ref">risk (from risk_management)</a>.</p>
+<p>For example, if there is a problem with a <a href="../uxv_recording/scenario.html#def-UXV" class="ref">UXV (from uxv_recording)</a>, we can reference
+it with a  <a href="../unique_resource_identification/scenario.html#def-identifier" class="ref">identifier (from unique_resource_identification)</a> in the <a href="#def-topic" class="ref">topic</a>'s
+subject, description of a <a href="#def-comment" class="ref">comment</a>.</p>
+<p><strong>Management</strong>.
+BIMprove system provides an application for creating and managing the <a href="#def-topic" class="ref">topics</a> and
+adding the <a href="#def-comment" class="ref">comments</a>.</p>
+<p>If a comment is attached a <a href="#def-viewquery" class="ref">viewquery</a>, the user should be able to follow it through
+to <scenarioref name="virtual_inspection" />.</p>
+<p>The topic management does not provide the modification of a <a href="#def-viewquery" class="ref">viewquery</a>.
+If you need to modify a <a href="#def-viewquery" class="ref">viewquery</a>, you have to use
+<scenarioref name="virtual_inspection" />.
+For example, you can use an existing <a href="#def-viewquery" class="ref">viewquery</a> as the starting point.</p>
+<p>The <a href="#def-topic" class="ref">topic</a> is assigned access rights based on individual
+<a href="../actor_management/scenario.html#def-actor" class="ref">actors (from actor_management)</a> and/or <a href="../actor_management/scenario.html#def-role" class="ref">roles (from actor_management)</a>.</p>
+<p>The <a href="#def-topic" class="ref">topic</a> is also optionally assigned a <a href="#def-notification_protocol" class="ref">notification protocol</a>. </p>
+<p>The management of <a href="#model-notification_protocols" class="modelref">notification_protocols</a> is part of a separate application and
+the <a href="#def-notification_protocol" class="ref">notification protocols</a> can be referenced through
+<a href="../unique_resource_identification/scenario.html#def-identifier" class="ref">identifier (from unique_resource_identification)</a>.</p>
+<p><strong>Topic from a task</strong>.
+The user can create a <a href="#def-topic" class="ref">topic</a> from an arbitrary <a href="../scheduling/scenario.html#def-task_shadow" class="ref">task shadow (from scheduling)</a>
+using <scenarioref name="scheduling" />.</p>
+<p>There is also a more structured task-to-topic translation for specific tasks such as
+<a href="../truck_guidance/scenario.html#def-delivery" class="ref">deliveries (from truck_guidance)</a>.</p>
+<p><strong>Export to <a href="#def-BCF" class="ref">BCF</a></strong>.
+The <a href="#def-topic" class="ref">topics</a> are exportable to <a href="#def-BCF" class="ref">BCF</a>.</p>
+<p>The export can be either to:</p>
+<ul>
+<li>a BCF file, or</li>
+<li>directly to a <a href="https://github.com/buildingSMART/BCF-API">BCF API</a>.</li>
+</ul>
+<p>Special care has to be taken to convert <a href="#def-viewquery" class="ref">viewqueries</a> to <a href="#def-BCF_viewpoint" class="ref">BCF viewpoints</a>.
+For example, the query itself can be left as a string in the comment though it can not be
+included as-is in the <a href="#def-BCF_viewpoint" class="ref">BCF viewpoint</a>.
+Additionally, the elements selected by the <a href="#def-viewquery" class="ref">viewquery</a> need to be converted to an
+explicit list in the <a href="#def-BCF_viewpoint" class="ref">BCF viewpoint</a>.</p>
+<p><strong>Ingress of <a href="#def-comment" class="ref">comments</a></strong>.
+If time permits, a nice-to-have: when a <a href="#def-notifiee" class="ref">notifiee</a> is notified,
+the <a href="#def-notifiee" class="ref">notifiee</a> can respond to a notification and the reply should be imported
+directly as a <a href="#def-comment" class="ref">comment</a>.</p>
+<p>This is easy for e-mails (<em>e.g.</em> by including special fields in the e-mail header referencing the
+<a href="#def-topic" class="ref">topic</a>), and a bit more involving for SMS and other channels.</p>
+<p><strong>An example workflow with a <a href="#def-viewquery" class="ref">viewquery</a></strong>.
+An example workflow for creating a <a href="#def-topic" class="ref">topic</a> involves:</p>
+<ol>
+<li>
+<p>Create the <a href="#def-topic" class="ref">topic</a>, write the subject and the description.</p>
+<p>The subject and the description can include arbitrary references as
+<a href="../unique_resource_identification/scenario.html#def-identifier" class="ref">identifiers (from unique_resource_identification)</a>.</p>
+</li>
+<li>
+<p>Go to <scenarioref name="virtual_inspection" /> and select the relevant elements.</p>
+<p>Use <scenarioref name="virtual_inspection" /> to create a <a href="#def-viewquery" class="ref">viewquery</a> and
+attach it automatically to the <a href="#def-topic" class="ref">topic</a>.</p>
+</li>
+</ol>
+<p><em>The aspect sections intentionally left empty.</em></p>
+<h2 data-anchor="section-Test_Cases"><a name="section-Test_Cases" /><a class="section-anchor" href="#section-Test_Cases">Test Cases</a><span class="chain-symbol">🔗</span></h2>
+<div class="test">
+<h3 data-anchor="test-property-based_test"><a name="test-property-based_test" /><a class="section-anchor" href="#test-property-based_test">property-based test</a><span class="chain-symbol">🔗</span></h3>
+<p>We automatically generate <a href="#def-topic" class="ref">topics</a> and assign them to
+<a href="../actor_management/scenario.html#def-actor" class="ref">actors (from actor_management)</a> randomly.</p>
+<p>We also randomly generate <a href="#def-comment" class="ref">comments</a>.
+Some of the generated <a href="#def-comment" class="ref">comments</a> have <a href="#def-viewquery" class="ref">viewqueries</a> attached.</p>
+<p>The generated data should be of expected <a href="#acceptance-magnitude" class="acceptanceref">magnitude</a>. </p>
+<p>The generated data is frozen prior to ingress (<em>e.g.</em>, before the API calls), so that we can
+reproduce the test.</p>
+<p>We test that we can:</p>
+<ul>
+<li>list the <a href="../scheduling/scenario.html#def-task" class="ref">tasks (from scheduling)</a>,</li>
+<li>list the <a href="#def-comment" class="ref">comments</a>,</li>
+<li>view the <a href="#def-viewquery" class="ref">viewqueries</a> <em>etc.</em></li>
+</ul>
+</div>
+<h2 data-anchor="section-Acceptance_Criteria"><a name="section-Acceptance_Criteria" /><a class="section-anchor" href="#section-Acceptance_Criteria">Acceptance Criteria</a><span class="chain-symbol">🔗</span></h2>
+<div class="acceptance">
+<h3 data-anchor="acceptance-magnitude"><a name="acceptance-magnitude" /><a class="section-anchor" href="#acceptance-magnitude">magnitude</a><span class="chain-symbol">🔗</span></h3>
+<p>We need to handle thousands of <a href="#def-topic" class="ref">topics</a> and hundreds of
+<a href="#def-comment" class="ref">comments</a> per <a href="#def-topic" class="ref">topic</a>. </p>
+</div>
+</div>
+</body>
+</html>

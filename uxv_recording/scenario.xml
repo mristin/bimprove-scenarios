@@ -1,0 +1,226 @@
+<html>
+<body>
+<div id='index'></div>
+<div id='main'><h2>Summary</h2>
+<p>This scenario concerns the recording of the construction site by the <ref name="UXV" />s.</p>
+<h2>Models</h2>
+<model name="UXVs">
+<p>This model captures the list of available <ref name="UXV" />s including the details such as
+available sensors.</p>
+</model>
+<model name="sensors">
+<p>This model lists the <ref name="sensor" />s mounted on the <ref name="UXV" />s.</p>
+</model>
+<model name="missions">
+<p>This is a model storing all the defined <ref name="mission" />s over all the <ref name="UXV" />s.</p>
+</model>
+<h2>Definitions</h2>
+<def name="UXV">
+<p><level name="machine">This is an unmanned vehicle (both aerial, UAV, and ground, UGV) recording
+the environment.</level>  </p>
+</def>
+<def name="spatial_accuracy">
+<p>The spatial accuracy indicates the error between the measurement and the physical world in terms
+of space.</p>
+<p>It is defined as a scalar and associated with a unit.</p>
+<p>For example, &quot;3mm&quot;.</p>
+<p>(We have to see during the implementation whether the accuracy refers to one sigma, two sigma
+<em>etc</em>.)</p>
+</def>
+<def name="sensor">
+<p><level name="device">A sensor is a device mounted on a <ref name="UXV" /> used to record the
+environment.</level></p>
+<p>Each sensor has a unique identifier.</p>
+<p>The <ref name="spatial_accuracy" /> of the sensor is also defined.</p>
+<p>The sensor specs live in <modelref name="sensors" />. </p>
+</def>
+<def name="station">
+<p><level name="machine">A station is a separate computational unit that receives the data from the
+<ref name="UXV" /></level>.</p>
+</def>
+<def name="UXV_frame">
+<p><level name="site">The UXV frame is the coordinate system of the <ref name="UXV" />.</level></p>
+</def>
+<def name="reference_point">
+<p>A reference point is a point for which we know with certainty the position in
+<ref name="evolving_plan#site_coordinate_system" /> and in the <ref name="UXV_frame" />.</p>
+<p><level name="site">It is important that the reference point is measured with the highest precision
+possible as the remainder of the system will rely on it.</level></p>
+</def>
+<def name="marker">
+<p>Markers are specific objects (<em>e.g.</em>, a printed picture glued to a wall or a floor) representing
+a specific <ref name="reference_point" />.</p>
+</def>
+<def name="localization">
+<p><level name="machine">This is the process of determining the position of the <ref name="UXV" />
+in terms of <ref name="UXV_frame" />.</level></p>
+<p>Note that the <ref name="UXV_frame" /> is defined at the beginning of the
+<ref name="digital_reconstruction#recording" />.
+This is not necessarily the <ref name="evolving_plan#site_coordinate_system" />,
+but the observed points need to be consistent to <ref name="UXV_frame" />. </p>
+</def>
+<def name="coordinate_conversion">
+<p>This is the conversion of <ref name="digital_reconstruction#point" />s and
+<ref name="digital_reconstruction#image" />s by mapping from <ref name="UXV_frame" /> to the
+<ref name="evolving_plan#site_coordinate_system" /> based on observations of
+the <ref name="reference_point" />s.</p>
+<p>For example, the <ref name="UXV" /> needs to observe <ref name="reference_point" />s and
+infer the mapping between the same <ref name="reference_point" /> in <ref name="UXV_frame" /> and
+<ref name="evolving_plan#site_coordinate_system" />.</p>
+<p>Note that this conversion is not referring to geo-coordinates (<em>e.g.</em>, global world coordinates),
+but the conversion between <ref name="UXV_frame" /> and
+<ref name="evolving_plan#site_coordinate_system" />.
+This confusion often comes up in the discussion with the construction engineers.</p>
+</def>
+<def name="operator">
+<p>This is a person operating the <ref name="UXV" /> for the safety reasons.</p>
+<p>If something goes wrong, the operator is supposed to take over.</p>
+</def>
+<def name="point_of_interest">
+<p>The point of interest is a point in <ref name="evolving_plan#site_coordinate_system" />
+that needs to be particularly recorded.</p>
+<p>The point of interest can include the field of view.</p>
+</def>
+<def name="object_of_interest">
+<p>The object of interest that requires a special focus during the
+<ref name="digital_reconstruction#recording" />.</p>
+<p>The object of interest can include the field of view.
+If the field of view is not defined, the field of view needs to be automatically inferred by the
+<ref name="UXV" />.</p>
+</def>
+<def name="volume_of_interest">
+<p>The volume of interest is a cube defined in <ref name="evolving_plan#site_coordinate_system" />
+that we want an <ref name="UXV" /> to explore.</p>
+<p>This helps the navigation of the <ref name="UXV" /> so that it can plan the trajectory.</p>
+<p>For example, define the important zones such as rooms or floors.</p>
+<p>This is different to <ref name="point_of_interest" /> in way that the robot just records everything
+in the volume of interest without any specific focus.</p>
+</def>
+<def name="mission">
+<p>A mission is an execution of a <ref name="digital_reconstruction#recording" /> based on a
+specific <ref name="UXV" /> and given the list of <ref name="volume_of_interest" />s.</p>
+<p>The mission is also given the start time point and an optional end time point.</p>
+<p>The <ref name="sensor" />s need to be specified per a <ref name="volume_of_interest" />.</p>
+<p>For each <ref name="volume_of_interest" />, we specify the length the recording (<em>e.g.</em>, record this
+point for 30 seconds).</p>
+</def>
+<def name="live_streaming">
+<p>A live streaming is a real-time transmission of the sensor data to the <ref name="station" />.</p>
+</def>
+<def name="navigation_map">
+<p>The navigation map is a 2D representation of the environment.</p>
+<p>It is recorded by the navigation tools of the <ref name="UXV" /> (which are not necessarily
+the same tools used for the recording!).</p>
+<p>The navigation map is taken care of by the robot system (include the <ref name="station" />),
+not by the BIMprove backend.</p>
+<p>Here is an example of a navigation map visualized as an image:</p>
+<img src="example_of_a_navigation_map.png" />
+</def>
+<def name="focus_spot">
+<p>A focus spot is a structured <ref name="topic_management#topic" /> signaling to the
+<ref name="operator" /> what relevant spots in the construction sites need to be recorded.</p>
+<p>For example, this can be a particular spot that the <ref name="risk_management#risk_manager" />
+needs to have examined.</p>
+<p>The necessary <ref name="sensor" />s need to be indicated in the
+<ref name="topic_management#comment" />s.
+For example, it can be that we need photo cameras, very precise lasers and/or thermal camera.</p>
+<p>(We have to see in the implementation if the <ref name="topic_management#comment" />s should be
+free form or structured.) </p>
+</def>
+<h2>Scenario</h2>
+<h3>As-observed</h3>
+<p><strong>Process</strong>.</p>
+<level name="machine">
+<ul>
+<li><ref name="UXV" /> needs to perform the <ref name="localization" />.</li>
+<li>The <ref name="mission" /> is specified by the <ref name="operator" /></li>
+<li><ref name="UXV" /> drives or flies around and records the data.</li>
+<li>The data is sent to the <ref name="station" />.</li>
+<li>The <ref name="station" /> post-processes the data (<em>e.g.</em>, reconstructs the images to point
+clouds if necessary, and perform the <ref name="coordinate_conversion" />).</li>
+<li>The <ref name="station" /> sends the post-processed data to the backend.</li>
+</ul>
+</level>
+<p><strong>Route planning</strong>.
+There is always an <ref name="operator" /> supervising the
+<ref name="digital_reconstruction#recording" />.</p>
+<level name="site">
+<p>Users indicate indicate in the system which elements or positions need to be recorded in the
+<modelref name="evolving_plan#bim3d" /> through <ref name="focus_spot" />s.</p>
+<p>For example, a <ref name="digital_reconstruction#bimmer" /> can specify parts of the site that
+need special attention or a <ref name="risk_management#risk_manager" /> can request a recording
+of a specific dangerous spot.</p>
+<p>Mind that these <ref name="focus_spot" />s are a bit more abstract than
+<ref name="point_of_interest" />.
+We assume that the <ref name="operator" /> has much better skills to define fine-grained points.
+Hence the general users <em>describe</em> through <ref name="focus_spot" />s what they want to have
+recorded, while the <ref name="operator" /> plans the <ref name="mission" /> in more detail
+according to these <ref name="focus_spot" />s. </p>
+</level>
+<p><level name="machine">The <ref name="operator" /> selects the available
+<ref name="UXV" /> from <modelref name="UXVs" /> and defines a <ref name="mission" />.</level></p>
+<p>The mission is defined by specifying:</p>
+<ul>
+<li><ref name="point_of_interest" />s,</li>
+<li><ref name="volume_of_interest" />s, </li>
+<li><ref name="object_of_interest" />s,</li>
+<li>assigning the <ref name="sensor" />s to these points,</li>
+<li>time allocation <em>etc.</em></li>
+</ul>
+<level name="machine">
+<p>The <ref name="UXV" /> is supposed to automatically navigate the <ref name="mission" /> based on
+the <ref name="navigation_map" />.
+The <ref name="navigation_map" /> does not rely on <modelref name="evolving_plan#bim3d" />
+as it might not be trustworthy.
+Instead, the <ref name="navigation_map" /> is inferred from the
+<modelref name="digital_reconstruction#as-built" />.</p>
+</level>
+<p>(Note that the navigation based on <modelref name="digital_reconstruction#as-built" /> is still
+experimental.
+If this navigation does not work automatically, the <ref name="operator" /> is going to drive
+manually the robot in order to obtain the <ref name="navigation_map" /> using the
+<ref name="station" />.) </p>
+<p>There are two applications: <level name="site">one for specifying the <ref name="mission" />
+(and managing the <ref name="UXV" />s)</level> and <level name="machine">another one for operating
+the <ref name="mission" /></level>.</p>
+<p>The missions are defined using the backend, while the operation of the <ref name="mission" /> is
+performed on the <ref name="station" />.</p>
+<p>The <ref name="station" /> needs to obtain the data from the backend.</p>
+<p><em>The other aspect sections intentionally left empty.</em></p>
+<h3>Safety</h3>
+<p><strong>Protection <em>from</em> the <ref name="UXV" /></strong>.
+If the <ref name="mission" /> can not be automatically accomplished, the <ref name="operator" />
+needs to take over and finish the recording manually.</p>
+<p>For example, the obstacles are automatically detected by the <ref name="sensor" />s and
+the <ref name="operator" /> is notified.
+A common example is that there might be a door closed and the <ref name="UXV" /> can not continue.</p>
+<p><strong>Live supervision</strong>.
+In certain construction scenarios, the building operation needs to be supervised live.</p>
+<p>If the bandwidth allows, the <ref name="UXV" /> can be manually navigated by the
+<ref name="operator" /> to the relevant point of view and the streamed data is displayed on the
+<ref name="station" />.</p>
+<p>Please mind the strong limitations:</p>
+<ul>
+<li>bandwidth limit,</li>
+<li>short battery life (~20 minutes!), and</li>
+<li>safety issues (as <ref name="UXV" /> floats around the people).</li>
+</ul>
+<p>Mind that this is a very special nice-to-have use case for <ref name="UXV" /> and is not in
+the main focus of the BIMprove project.</p>
+<p><em>The other aspect sections intentionally left empty.</em></p>
+<h3>Test cases</h3>
+<p>We are continuously experimenting with <ref name="UXV" />s in our labs.</p>
+<p>There will be unstructured free-form tests on the construction site.</p>
+<h3>Acceptance criteria</h3>
+<acceptance name="accuracy">
+<p>We expect the accuracy errors to be in the range of centimeters.</p>
+<p>In some parts we won't be able to provide this accuracy.
+One issue are the outliers, but there are also systematic sources of errors.</p>
+<p>We still need to figure out the actual accuracy in the field.</p>
+<p>It would good if we could include the uncertainty in the data.
+Unfortunately, the external software does not support it.</p>
+<p>We do not have precise statistics at the moment (2021-01-22).</p>
+</acceptance>
+</div>
+</body>
+</html>

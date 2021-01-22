@@ -1,5 +1,5 @@
 <html>
-<head><meta charset="utf-8" /><script src="https://livejs.com/live.js"> </script><title>Actor Management TODO</title><style>body {
+<head><meta charset="utf-8" /><script src="https://livejs.com/live.js"> </script><title>Actor Management</title><style>body {
     margin-top: 2em;
     padding: 0px;
 }
@@ -63,27 +63,136 @@ pre {
     padding: 1em;
 }
 </style></head><body>
-<div id="index"><a href="../ontology.html">Back to ontology</a><img src="volumetric.png" style="border: 1px solid #EEEEEE; padding: 10px;" /><h2>Table of Contents</h2><ul class="toc"><li style="padding-left: 0.00em"><a href="#section-TODO">TODO</a></li><li style="padding-left: 0.00em"><a href="#section-Summary">Summary</a></li><li style="padding-left: 0.00em"><a href="#section-Models">Models</a></li><li style="padding-left: 0.00em"><a href="#section-Definitions">Definitions</a></li><li style="padding-left: 0.00em"><a href="#section-Scenario">Scenario</a></li><li style="padding-left: 2.20em"><a href="#section-As-planned">As-planned</a></li><li style="padding-left: 2.20em"><a href="#section-As-observed">As-observed</a></li><li style="padding-left: 2.20em"><a href="#section-Divergence">Divergence</a></li><li style="padding-left: 2.20em"><a href="#section-Analytics">Analytics</a></li><li style="padding-left: 2.20em"><a href="#section-Scheduling">Scheduling</a></li><li style="padding-left: 2.20em"><a href="#section-Safety">Safety</a></li><li style="padding-left: 0.00em"><a href="#section-Test_Cases">Test Cases</a></li><li style="padding-left: 0.00em"><a href="#section-Acceptance_Criteria">Acceptance Criteria</a></li></ul></div>
-<div id="main"><h1>Actor Management TODO</h1><h2 data-anchor="section-TODO"><a name="section-TODO" /><a class="section-anchor" href="#section-TODO">TODO</a><span class="chain-symbol">🔗</span></h2>
-<p>Are all actors included in BIM? </p>
-<p>Or is it a separate model? If it is a separate model, how do we link with BIM?</p>
-<p>Ex: you want to link workers to an element, and then reschedule their tasks.</p>
-<p>So far, we just assumed that it "works somehow".</p>
-<p>How do we link user accounts to BIM? (If all actors are in BIM)?
-It is not a complete match -- some users are not actors and many actors are not users.
-But we need to specify how to handle the intersection.</p>
+<div id="index"><a href="../ontology.html">Back to ontology</a><img src="volumetric.png" style="border: 1px solid #EEEEEE; padding: 10px;" /><h2>Table of Contents</h2><ul class="toc"><li style="padding-left: 0.00em"><a href="#section-Summary">Summary</a></li><li style="padding-left: 0.00em"><a href="#section-Models">Models</a></li><li style="padding-left: 0.00em"><a href="#section-Definitions">Definitions</a></li><li style="padding-left: 2.20em"><a href="#def-actor">actor</a></li><li style="padding-left: 2.20em"><a href="#def-relationship">relationship</a></li><li style="padding-left: 2.20em"><a href="#def-role">role</a></li><li style="padding-left: 0.00em"><a href="#section-Scenario">Scenario</a></li><li style="padding-left: 2.20em"><a href="#section-As-planned">As-planned</a></li><li style="padding-left: 0.00em"><a href="#section-Test_Cases">Test Cases</a></li><li style="padding-left: 2.20em"><a href="#test-blank_state">blank state</a></li><li style="padding-left: 2.20em"><a href="#test-recorded_state">recorded state</a></li><li style="padding-left: 2.20em"><a href="#test-big_data">big data</a></li><li style="padding-left: 0.00em"><a href="#section-Acceptance_Criteria">Acceptance Criteria</a></li><li style="padding-left: 2.20em"><a href="#acceptance-magintude">magintude</a></li></ul></div>
+<div id="main"><h1>Actor Management</h1><h2>Relations from Other Scenarios</h2><ul><li><span>Actor Management actors </span><a href="../evolving_plan/scenario.html">Evolving Plan</a></li></ul>
 <h2 data-anchor="section-Summary"><a name="section-Summary" /><a class="section-anchor" href="#section-Summary">Summary</a><span class="chain-symbol">🔗</span></h2>
+<p>This scenarios covers how the actors are managed in the system, their <a href="#def-role" class="ref">roles</a> and
+their relationships to other entities.</p>
 <h2 data-anchor="section-Models"><a name="section-Models" /><a class="section-anchor" href="#section-Models">Models</a><span class="chain-symbol">🔗</span></h2>
+<p><em>Intentionally left empty.</em></p>
 <h2 data-anchor="section-Definitions"><a name="section-Definitions" /><a class="section-anchor" href="#section-Definitions">Definitions</a><span class="chain-symbol">🔗</span></h2>
+<div class="def">
+<h3 data-anchor="def-actor"><a name="def-actor" /><a class="section-anchor" href="#def-actor">actor</a><span class="chain-symbol">🔗</span></h3>
+<p>Actors are entities corresponding to people and organizations (legal, non-legal, imagined <em>etc.</em>).</p>
+<p>The granularity of an actor is variable:</p>
+<ul>
+<li>a single person,</li>
+<li>a team of persons,</li>
+<li>an informal organization (such as a GitHub organization),</li>
+<li>a legal (formal) organization <em>etc.</em></li>
+</ul>
+<p>Some common actors include:</p>
+<ul>
+<li>Workers,</li>
+<li>Engineers,</li>
+<li>Installers,</li>
+<li>Manufacturers <em>etc.</em></li>
+</ul>
+<p>The actors are represented using corresponding IFC entities such as:</p>
+<ul>
+<li><code>IfcActor</code>,</li>
+<li><code>IfcPerson</code>,</li>
+<li><code>IfcOrganization</code> <em>etc.</em></li>
+</ul>
+<p>The contact information about the actor is modeled as <code>IfcTelecomAddress</code> in <code>Addresses</code> property.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-relationship"><a name="def-relationship" /><a class="section-anchor" href="#def-relationship">relationship</a><span class="chain-symbol">🔗</span></h3>
+<p>An actor can be linked to many other entities in <a href="../evolving_plan/scenario.html#model-bim3d" class="modelref">bim3d (from evolving_plan)</a> and
+<a href="../evolving_plan/scenario.html#model-bim_extended" class="modelref">bim_extended (from evolving_plan)</a>.</p>
+<p>The relationships are modeled by using corresponding IFC entities such as:</p>
+<ul>
+<li><code>IfcRelAssignsToActor</code>,</li>
+<li><code>IfcRelAssignsToProduct</code>,</li>
+<li><code>IfcOrganizationRelationship</code></li>
+<li>... and many others.</li>
+</ul>
+</div>
+<div class="def">
+<h3 data-anchor="def-role"><a name="def-role" /><a class="section-anchor" href="#def-role">role</a><span class="chain-symbol">🔗</span></h3>
+<p>The role of an <a href="#def-actor" class="ref">actor</a> in an arbitrary context, not necessarily information security
+context.</p>
+</div>
 <h2 data-anchor="section-Scenario"><a name="section-Scenario" /><a class="section-anchor" href="#section-Scenario">Scenario</a><span class="chain-symbol">🔗</span></h2>
 <h3 data-anchor="section-As-planned"><a name="section-As-planned" /><a class="section-anchor" href="#section-As-planned">As-planned</a><span class="chain-symbol">🔗</span></h3>
-<h3 data-anchor="section-As-observed"><a name="section-As-observed" /><a class="section-anchor" href="#section-As-observed">As-observed</a><span class="chain-symbol">🔗</span></h3>
-<h3 data-anchor="section-Divergence"><a name="section-Divergence" /><a class="section-anchor" href="#section-Divergence">Divergence</a><span class="chain-symbol">🔗</span></h3>
-<h3 data-anchor="section-Analytics"><a name="section-Analytics" /><a class="section-anchor" href="#section-Analytics">Analytics</a><span class="chain-symbol">🔗</span></h3>
-<h3 data-anchor="section-Scheduling"><a name="section-Scheduling" /><a class="section-anchor" href="#section-Scheduling">Scheduling</a><span class="chain-symbol">🔗</span></h3>
-<h3 data-anchor="section-Safety"><a name="section-Safety" /><a class="section-anchor" href="#section-Safety">Safety</a><span class="chain-symbol">🔗</span></h3>
+<p>The <a href="#def-actor" class="ref">actors</a> and their <a href="#def-relationship" class="ref">relationships</a>
+(as well as relationships between the <a href="#def-actor" class="ref">actors</a> to other entities) are captured in
+<a href="../evolving_plan/scenario.html#model-bim_extended" class="modelref">bim_extended (from evolving_plan)</a>.</p>
+<p>The system provides an application that allows the user to manage the <a href="#def-actor" class="ref">actors</a> and
+their <a href="#def-relationship" class="ref">relationships</a>.</p>
+<p>This application should allow creating and viewing <em>arbitrary</em> relationships and actor
+<name ref="role" />s.</p>
+<p>In contrast, more specific applications, such as those implemented for
+<scenarioref name="risk_management" /> and <scenarioref name="truck_guidance" />, should allow
+creating and viewing of the relationships in the manner more appropriate for the context of the
+application.</p>
+<p>Additionally, this application is <em>not</em> a replacement for a much more low-level tool like
+<a href="../evolving_plan/scenario.html#def-explorer" class="ref">explorer (from evolving_plan)</a>.</p>
+<p>(Note for implementation. For example, we can use Express or XSD to generate the code and the
+relevant part of user interface automatically. See
+<a href="https://technical.buildingsmart.org/standards/ifc/ifc-schema-specifications/">this buildingsmart table</a>
+.)</p>
+<p>(Note about the relationships: We need to decide how we structure them. We might allow free-form
+relationships, but they should not conflict with our internal relationships such as
+<a href="../risk_management/scenario.html#def-assignment" class="ref">assignment (from risk_management)</a>. This is something that needs to evolve during the
+implementation and iterations of the system.)</p>
+<p>(Note about the <a href="#def-role" class="ref">roles</a>: there are special pre-defined <a href="#def-role" class="ref">roles</a>, such as
+<a href="../risk_management/scenario.html#def-preventive_resource" class="ref">preventive resource (from risk_management)</a>, that have consequences in terms of information
+security.</p>
+<p>How we handle this pre-defined set of these <a href="#def-role" class="ref">roles</a> with special semantic is left out as an
+<em>important</em> implementation detail. We could not decide right now, 2021-01-15, how it should be
+handled.</p>
+<p>For example, there might be a separate application, "role management", where you can add new
+<a href="#def-role" class="ref">roles</a>, but a certain set of pre-defined <a href="#def-role" class="ref">roles</a> can not be
+changed/removed.
+Additionally, the user should be warned if she creates a <a href="#def-role" class="ref">role</a> with a similar name
+to the existing one (<em>e.g.</em>, with or without underscore).</p>
+<p>The system might provide a set of common, frequently-used <a href="#def-role" class="ref">roles</a> at instantiation
+time of the system. These common <a href="#def-role" class="ref">roles</a>, however, <em>can</em> be modified/removed.</p>
+<p>Check also <a href="https://digitalconstruction.github.io/Agents/#overv">DICO agents</a> for an example of
+pre-defined <a href="#def-role" class="ref">roles</a> and relationships, capabilities <em>etc.</em>
+Perhaps we can map the interesting bits to IFC classes and use them to initialize the system.</p>
+<p>Additionally, we can introduce these entities in <a href="../evolving_plan/scenario.html#model-bim_extended" class="modelref">bim_extended (from evolving_plan)</a> as
+IFC "shadows" where we lock them and do not allow a user to modify them, similar how we plan to
+deal with <a href="#def-role" class="ref">roles</a> conveying special semantic.)</p>
+<p><strong>Actor list import</strong>.
+The system should provide an import of the complete list of <a href="#def-actor" class="ref">actors</a> from external
+sources. (For example, an excel table or from Visilean.)  </p>
+<p>This import is not a complete overwrite, but an extension to the existing <a href="#def-actor" class="ref">actors</a>.</p>
+<p>The mapping of <a href="#def-actor" class="ref">actor</a> identifiers to the existing identifiers is the responsibility
+of the individual import tool.</p>
+<p><em>The remaining aspect sections intentionally left empty.</em></p>
 <h2 data-anchor="section-Test_Cases"><a name="section-Test_Cases" /><a class="section-anchor" href="#section-Test_Cases">Test Cases</a><span class="chain-symbol">🔗</span></h2>
+<div class="test">
+<h3 data-anchor="test-blank_state"><a name="test-blank_state" /><a class="section-anchor" href="#test-blank_state">blank state</a><span class="chain-symbol">🔗</span></h3>
+<p>We test that the actor management works on empty data.</p>
+<p>We install the system and do not populate anything.</p>
+</div>
+<div class="test">
+<h3 data-anchor="test-recorded_state"><a name="test-recorded_state" /><a class="section-anchor" href="#test-recorded_state">recorded state</a><span class="chain-symbol">🔗</span></h3>
+<p>We record the data of a toy project.</p>
+<p>We freeze the data.</p>
+<p>We pre-define a set of actions (such as insert a new <a href="#def-actor" class="ref">actor</a>,
+create a new <a href="#def-role" class="ref">role</a>, assign an <a href="#def-actor" class="ref">actor</a> to a <a href="#def-role" class="ref">role</a> or
+to an organization <em>etc.</em>).</p>
+<p>We record the effects, so that we can repeatedly test the behavior of the system in automatic way. </p>
+</div>
+<div class="test">
+<h3 data-anchor="test-big_data"><a name="test-big_data" /><a class="section-anchor" href="#test-big_data">big data</a><span class="chain-symbol">🔗</span></h3>
+<p>We generate automatically the data of a toy project to test that the system can handle the
+<a href="#acceptance-magintude" class="acceptanceref">magintude</a>.</p>
+<p>We only check if nothing crashes and perform a set of pre-defined actions.</p>
+<p>(Implementation note: use a tool for property-based testing to generate data such as
+<a href="QuickCheck">https://en.wikipedia.org/wiki/QuickCheck</a>) </p>
+</div>
 <h2 data-anchor="section-Acceptance_Criteria"><a name="section-Acceptance_Criteria" /><a class="section-anchor" href="#section-Acceptance_Criteria">Acceptance Criteria</a><span class="chain-symbol">🔗</span></h2>
+<div class="acceptance">
+<h3 data-anchor="acceptance-magintude"><a name="acceptance-magintude" /><a class="section-anchor" href="#acceptance-magintude">magintude</a><span class="chain-symbol">🔗</span></h3>
+<p>We expect the system to handle the number of <a href="#def-actor" class="ref">actors</a> in the order of thousands
+(not millions).</p>
+<p>We also expect the number of relationships to be in the order of tens of thousands
+(not in millions).</p>
+</div>
 </div>
 </body>
 </html>

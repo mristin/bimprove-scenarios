@@ -1,0 +1,141 @@
+<html>
+<head><meta charset="utf-8" /><script src="https://livejs.com/live.js"> </script><title>Thermal Inspection</title><style>body {
+    margin-top: 2em;
+    padding: 0px;
+}
+
+#main {
+    float: left;
+    width: 50em;
+    margin-left: 3%;
+    border: 1px solid black;
+    padding: 2em;
+}
+
+#index {
+    float: left;
+    width: 30%;
+    border: 1px solid black;
+    padding: 1em;
+}
+
+ul.toc {
+    list-style-type: none;
+}
+
+ul.toc li {
+    margin-bottom: 0.5em;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+a:visited {
+    color: blue;
+}
+
+a.section-anchor {
+    text-decoration: none;
+    color: black;
+}
+
+.chain-symbol {
+    display: none;
+    font-size: x-small;
+    margin-left: 0.5em;
+}
+a.section-anchor:hover + .chain-symbol {
+    display: inline-block;
+}
+
+span.phase {
+    background-color: #eefbfb;
+}
+
+span.level {
+    background-color: #eefbee;
+}
+
+pre {
+    background-color: #eeeefb;
+    padding: 1em;
+}
+</style></head><body>
+<div id="index"><a href="../ontology.html">Back to ontology</a><img src="volumetric.png" style="border: 1px solid #EEEEEE; padding: 10px;" /><h2>Table of Contents</h2><ul class="toc"><li style="padding-left: 0.00em"><a href="#section-Summary">Summary</a></li><li style="padding-left: 0.00em"><a href="#section-Models">Models</a></li><li style="padding-left: 0.00em"><a href="#section-Definitions">Definitions</a></li><li style="padding-left: 2.20em"><a href="#def-thermal_spot">thermal spot</a></li><li style="padding-left: 2.20em"><a href="#def-thermal_image">thermal image</a></li><li style="padding-left: 0.00em"><a href="#section-Scenario">Scenario</a></li><li style="padding-left: 2.20em"><a href="#section-As-planned">As-planned</a></li><li style="padding-left: 2.20em"><a href="#section-As-observed">As-observed</a></li><li style="padding-left: 2.20em"><a href="#section-Analytics">Analytics</a></li><li style="padding-left: 0.00em"><a href="#section-Test_Cases">Test Cases</a></li><li style="padding-left: 2.20em"><a href="#test-test_for_magnitude">test for magnitude</a></li><li style="padding-left: 0.00em"><a href="#section-Acceptance_Criteria">Acceptance Criteria</a></li><li style="padding-left: 2.20em"><a href="#acceptance-magnitude">magnitude</a></li></ul></div>
+<div id="main"><h1>Thermal Inspection</h1><h2>Relations to Other Scenarios</h2><ul><li><a href="../digital_reconstruction/scenario.html">Digital Reconstruction</a><span> observations Thermal Inspection</span></li></ul><h2 data-anchor="section-Summary"><a name="section-Summary" /><a class="section-anchor" href="#section-Summary">Summary</a><span class="chain-symbol">🔗</span></h2>
+<p>This scenario explores how we can observe the thermal state of the construction site.</p>
+<h2 data-anchor="section-Models"><a name="section-Models" /><a class="section-anchor" href="#section-Models">Models</a><span class="chain-symbol">🔗</span></h2>
+<p><em>Intentionally left empty.</em></p>
+<h2 data-anchor="section-Definitions"><a name="section-Definitions" /><a class="section-anchor" href="#section-Definitions">Definitions</a><span class="chain-symbol">🔗</span></h2>
+<div class="def">
+<h3 data-anchor="def-thermal_spot"><a name="def-thermal_spot" /><a class="section-anchor" href="#def-thermal_spot">thermal spot</a><span class="chain-symbol">🔗</span></h3>
+<p>This is a spot for which we would like to record the temperature.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-thermal_image"><a name="def-thermal_image" /><a class="section-anchor" href="#def-thermal_image">thermal image</a><span class="chain-symbol">🔗</span></h3>
+<p>A thermal image is an captured by a
+<a href="https://en.wikipedia.org/wiki/Thermography">thermographical sensor</a>.</p>
+<p>The image is stored as a JPEG with the sensor range as additional meta-data in the
+<a href="https://en.wikipedia.org/wiki/Exif">EXIF</a> (see
+<a href="../digital_reconstruction/scenario.html#model-images" class="modelref">images (from digital_reconstruction)</a>).</p>
+</div>
+<h2 data-anchor="section-Scenario"><a name="section-Scenario" /><a class="section-anchor" href="#section-Scenario">Scenario</a><span class="chain-symbol">🔗</span></h2>
+<h3 data-anchor="section-As-planned"><a name="section-As-planned" /><a class="section-anchor" href="#section-As-planned">As-planned</a><span class="chain-symbol">🔗</span></h3>
+<p>The user defines the <a href="#def-thermal_spot" class="ref">thermal spot</a> as a <a href="../uxv_recording/scenario.html#def-focus_spot" class="ref">focus spot (from uxv_recording)</a>.</p>
+<p>As <a href="../uxv_recording/scenario.html#def-focus_spot" class="ref">focus spot (from uxv_recording)</a> is a <a href="../topic_management/scenario.html#def-topic" class="ref">topic (from topic_management)</a>, special
+information about the <a href="#def-thermal_spot" class="ref">thermal spot</a> are indicated as
+<a href="../topic_management/scenario.html#def-comment" class="ref">comments (from topic_management)</a>.</p>
+<h3 data-anchor="section-As-observed"><a name="section-As-observed" /><a class="section-anchor" href="#section-As-observed">As-observed</a><span class="chain-symbol">🔗</span></h3>
+<p><strong>Capturing</strong>.
+The <a href="../uxv_recording/scenario.html#def-operator" class="ref">operator (from uxv_recording)</a> takes into account the <a href="#def-thermal_spot" class="ref">thermal spots</a> when
+planning a <a href="../uxv_recording/scenario.html#def-mission" class="ref">mission (from uxv_recording)</a>.</p>
+<p>Apart from specifying the <a href="#def-thermal_spot" class="ref">thermal spot</a> as a
+<a href="../uxv_recording/scenario.html#def-point_of_interest" class="ref">point of interest (from uxv_recording)</a>, the <a href="../uxv_recording/scenario.html#def-operator" class="ref">operator (from uxv_recording)</a> should
+also include thermal cameras in the list of desired <a href="../uxv_recording/scenario.html#def-sensor" class="ref">sensors (from uxv_recording)</a>. </p>
+<p>We assume that we use a dual camera that records both the <a href="#def-thermal_image" class="ref">thermal images</a> as well
+as RGB <a href="../digital_reconstruction/scenario.html#def-image" class="ref">images (from digital_reconstruction)</a>.</p>
+<p>The thermal images are stored in <a href="../digital_reconstruction/scenario.html#model-images" class="modelref">images (from digital_reconstruction)</a> .</p>
+<p><strong>Inspection</strong>.
+We inspect the <a href="../thermal_inspection/scenario.html#def-thermal_image" class="ref">thermal images (from thermal_inspection)</a> of the <a href="#def-thermal_spot" class="ref">thermal spots</a>:</p>
+<ul>
+<li>Pick a time range,</li>
+<li>Pick a spatial filter (zone, bounding box and other spatial filters,
+see <scenarioref name="virtual_inspection" />); these spatial filters refer to the location where
+the image was taken and <em>not</em> of where the temperature was observed,</li>
+<li>Pick a temperature threshold (above, below <em>etc.</em>; the complexity of these threshold queries is
+to be discussed during the implementation).</li>
+</ul>
+<p>The relevant <a href="../thermal_inspection/scenario.html#def-thermal_image" class="ref">thermal images (from thermal_inspection)</a> are presented in a list of triples:</p>
+<ul>
+<li><a href="#def-thermal_image" class="ref">thermal image</a>,</li>
+<li>the corresponding <a href="../digital_reconstruction/scenario.html#def-image" class="ref">image (from digital_reconstruction)</a>, and</li>
+<li>the location and the view angle where the image has been taken.</li>
+</ul>
+<p>(If time permits, we also present an overlay of the <a href="#def-thermal_image" class="ref">thermal image</a> over
+a RGB <a href="../digital_reconstruction/scenario.html#def-image" class="ref">image (from digital_reconstruction)</a>.)</p>
+<p>The user can jump straight to <scenarioref name="virtual_inspection" /> to inspect the position
+and the view angle further.</p>
+<p><em>The other aspect sections intentionally left empty.</em></p>
+<h3 data-anchor="section-Analytics"><a name="section-Analytics" /><a class="section-anchor" href="#section-Analytics">Analytics</a><span class="chain-symbol">🔗</span></h3>
+<p>For the filtered images, we provide summary statistics:</p>
+<ul>
+<li>Number of images above threshold </li>
+</ul>
+<h2 data-anchor="section-Test_Cases"><a name="section-Test_Cases" /><a class="section-anchor" href="#section-Test_Cases">Test Cases</a><span class="chain-symbol">🔗</span></h2>
+<div class="test">
+<h3 data-anchor="test-test_for_magnitude"><a name="test-test_for_magnitude" /><a class="section-anchor" href="#test-test_for_magnitude">test for magnitude</a><span class="chain-symbol">🔗</span></h3>
+<p>We automatically generate dummy RGB and <a href="#def-thermal_image" class="ref">thermal images</a>.</p>
+<p>They are randomly spread over the time and space.</p>
+<p>We make random queries (spatial and temporal) and test that the retrieval time
+is on the order of 10s of seconds.</p>
+</div>
+<h2 data-anchor="section-Acceptance_Criteria"><a name="section-Acceptance_Criteria" /><a class="section-anchor" href="#section-Acceptance_Criteria">Acceptance Criteria</a><span class="chain-symbol">🔗</span></h2>
+<div class="acceptance">
+<h3 data-anchor="acceptance-magnitude"><a name="acceptance-magnitude" /><a class="section-anchor" href="#acceptance-magnitude">magnitude</a><span class="chain-symbol">🔗</span></h3>
+<p>The system needs to handle the a lower-digit millions of the <a href="#def-thermal_image" class="ref">thermal images</a>.</p>
+</div>
+</div>
+</body>
+</html>

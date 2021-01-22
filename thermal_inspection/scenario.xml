@@ -1,0 +1,74 @@
+<html>
+<body>
+<div id='index'></div>
+<div id='main'><h2>Summary</h2>
+<p>This scenario explores how we can observe the thermal state of the construction site.</p>
+<h2>Models</h2>
+<p><em>Intentionally left empty.</em></p>
+<h2>Definitions</h2>
+<def name="thermal_spot">
+<p>This is a spot for which we would like to record the temperature.</p>
+</def>
+<def name="thermal_image">
+<p>A thermal image is an captured by a
+<a href="https://en.wikipedia.org/wiki/Thermography">thermographical sensor</a>.</p>
+<p>The image is stored as a JPEG with the sensor range as additional meta-data in the
+<a href="https://en.wikipedia.org/wiki/Exif">EXIF</a> (see
+<modelref name="digital_reconstruction#images" />).</p>
+</def>
+<h2>Scenario</h2>
+<h3>As-planned</h3>
+<p>The user defines the <ref name="thermal_spot" /> as a <ref name="uxv_recording#focus_spot" />.</p>
+<p>As <ref name="uxv_recording#focus_spot" /> is a <ref name="topic_management#topic" />, special
+information about the <ref name="thermal_spot" /> are indicated as
+<ref name="topic_management#comment" />s.</p>
+<h3>As-observed</h3>
+<p><strong>Capturing</strong>.
+The <ref name="uxv_recording#operator" /> takes into account the <ref name="thermal_spot" />s when
+planning a <ref name="uxv_recording#mission" />.</p>
+<p>Apart from specifying the <ref name="thermal_spot" /> as a
+<ref name="uxv_recording#point_of_interest" />, the <ref name="uxv_recording#operator" /> should
+also include thermal cameras in the list of desired <ref name="uxv_recording#sensor" />s. </p>
+<p>We assume that we use a dual camera that records both the <ref name="thermal_image" />s as well
+as RGB <ref name="digital_reconstruction#image" />s.</p>
+<p>The thermal images are stored in <modelref name="digital_reconstruction#images" /> .</p>
+<p><strong>Inspection</strong>.
+We inspect the <ref name="thermal_inspection#thermal_image" />s of the <ref name="thermal_spot" />s:</p>
+<ul>
+<li>Pick a time range,</li>
+<li>Pick a spatial filter (zone, bounding box and other spatial filters,
+see <scenarioref name="virtual_inspection" />); these spatial filters refer to the location where
+the image was taken and <em>not</em> of where the temperature was observed,</li>
+<li>Pick a temperature threshold (above, below <em>etc.</em>; the complexity of these threshold queries is
+to be discussed during the implementation).</li>
+</ul>
+<p>The relevant <ref name="thermal_inspection#thermal_image" />s are presented in a list of triples:</p>
+<ul>
+<li><ref name="thermal_image" />,</li>
+<li>the corresponding <ref name="digital_reconstruction#image" />, and</li>
+<li>the location and the view angle where the image has been taken.</li>
+</ul>
+<p>(If time permits, we also present an overlay of the <ref name="thermal_image" /> over
+a RGB <ref name="digital_reconstruction#image" />.)</p>
+<p>The user can jump straight to <scenarioref name="virtual_inspection" /> to inspect the position
+and the view angle further.</p>
+<p><em>The other aspect sections intentionally left empty.</em></p>
+<h3>Analytics</h3>
+<p>For the filtered images, we provide summary statistics:</p>
+<ul>
+<li>Number of images above threshold </li>
+</ul>
+<h2>Test Cases</h2>
+<test name="test_for_magnitude">
+<p>We automatically generate dummy RGB and <ref name="thermal_image" />s.</p>
+<p>They are randomly spread over the time and space.</p>
+<p>We make random queries (spatial and temporal) and test that the retrieval time
+is on the order of 10s of seconds.</p>
+</test>
+<h2>Acceptance Criteria</h2>
+<acceptance name="magnitude">
+<p>The system needs to handle the a lower-digit millions of the <ref name="thermal_image" />s.</p>
+</acceptance>
+</div>
+</body>
+</html>

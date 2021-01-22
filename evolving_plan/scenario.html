@@ -1,0 +1,213 @@
+<html>
+<head><meta charset="utf-8" /><script src="https://livejs.com/live.js"> </script><title>Evolving Plan</title><style>body {
+    margin-top: 2em;
+    padding: 0px;
+}
+
+#main {
+    float: left;
+    width: 50em;
+    margin-left: 3%;
+    border: 1px solid black;
+    padding: 2em;
+}
+
+#index {
+    float: left;
+    width: 30%;
+    border: 1px solid black;
+    padding: 1em;
+}
+
+ul.toc {
+    list-style-type: none;
+}
+
+ul.toc li {
+    margin-bottom: 0.5em;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+a:visited {
+    color: blue;
+}
+
+a.section-anchor {
+    text-decoration: none;
+    color: black;
+}
+
+.chain-symbol {
+    display: none;
+    font-size: x-small;
+    margin-left: 0.5em;
+}
+a.section-anchor:hover + .chain-symbol {
+    display: inline-block;
+}
+
+span.phase {
+    background-color: #eefbfb;
+}
+
+span.level {
+    background-color: #eefbee;
+}
+
+pre {
+    background-color: #eeeefb;
+    padding: 1em;
+}
+</style></head><body>
+<div id="index"><a href="../ontology.html">Back to ontology</a><img src="volumetric.png" style="border: 1px solid #EEEEEE; padding: 10px;" /><h2>Table of Contents</h2><ul class="toc"><li style="padding-left: 0.00em"><a href="#section-Summary">Summary</a></li><li style="padding-left: 0.00em"><a href="#section-Models">Models</a></li><li style="padding-left: 2.20em"><a href="#model-bim3d">bim3d</a></li><li style="padding-left: 2.20em"><a href="#model-bim_extended">bim_extended</a></li><li style="padding-left: 0.00em"><a href="#section-Definitions">Definitions</a></li><li style="padding-left: 2.20em"><a href="#def-guid">guid</a></li><li style="padding-left: 2.20em"><a href="#def-revision">revision</a></li><li style="padding-left: 2.20em"><a href="#def-extension_update">extension update</a></li><li style="padding-left: 2.20em"><a href="#def-inconsistency">inconsistency</a></li><li style="padding-left: 2.20em"><a href="#def-non_ifc_entity">non ifc entity</a></li><li style="padding-left: 2.20em"><a href="#def-explorer">explorer</a></li><li style="padding-left: 2.20em"><a href="#def-site_coordinate_system">site coordinate system</a></li><li style="padding-left: 0.00em"><a href="#section-Scenario">Scenario</a></li><li style="padding-left: 2.20em"><a href="#section-As-planned">As-planned</a></li><li style="padding-left: 2.20em"><a href="#section-As-observed">As-observed</a></li><li style="padding-left: 0.00em"><a href="#section-Test_Cases">Test Cases</a></li><li style="padding-left: 2.20em"><a href="#test-inconsistent_model">inconsistent model</a></li><li style="padding-left: 0.00em"><a href="#section-Acceptance_Criteria">Acceptance Criteria</a></li><li style="padding-left: 2.20em"><a href="#acceptance-inconsistencies_dealt_with_gracefully">inconsistencies dealt with gracefully</a></li></ul><h2>Phase Index</h2><ul><li><a href="#phase-anchor-b800b2db-3b40-4107-b06b-3d2492045138">planning</a></li><li><a href="#phase-anchor-b562ecdd-bca3-4004-b7f7-09c4e212849e">construction</a></li><li><a href="#phase-anchor-298067b0-8a8d-4329-8e3f-1637c2f99c0c">construction</a></li><li><a href="#phase-anchor-fd6850ff-8264-4c14-b70c-e9526a3e4bd3">planning</a></li><li><a href="#phase-anchor-5f5b8c7b-7f85-478e-8cae-0eca74992766">construction</a></li></ul><h2>Level Index</h2><ul><li><a href="#level-anchor-d756b8ea-6c88-433e-bf89-8a048fbd21c9">site</a></li></ul></div>
+<div id="main"><h1>Evolving Plan</h1><h2>Relations to Other Scenarios</h2><ul><li><a href="../actor_management/scenario.html">Actor Management</a><span> actors Evolving Plan</span></li><li><a href="../scheduling/scenario.html">Scheduling</a><span> task shadows Evolving Plan</span></li></ul><h2>Relations from Other Scenarios</h2><ul><li><span>Evolving Plan BIM </span><a href="../virtual_inspection/scenario.html">Virtual Inspection</a></li></ul>
+<h2 data-anchor="section-Summary"><a name="section-Summary" /><a class="section-anchor" href="#section-Summary">Summary</a><span class="chain-symbol">🔗</span></h2>
+<p>This scenario examines how the BIM plans evolve over time.</p>
+<p>This scenario does not talk about the updates based on the observed data (such as images, point
+clouds and voxel clouds).</p>
+<p>It is about the updates of the federated BIM model.</p>
+<h2 data-anchor="section-Models"><a name="section-Models" /><a class="section-anchor" href="#section-Models">Models</a><span class="chain-symbol">🔗</span></h2>
+<div class="model">
+<h3 data-anchor="model-bim3d"><a name="model-bim3d" /><a class="section-anchor" href="#model-bim3d">bim3d</a><span class="chain-symbol">🔗</span></h3>
+<p><span class="phase" data-text="planning">This BIM model is provided after the planning phase<a id="phase-anchor-b800b2db-3b40-4107-b06b-3d2492045138" /><sup>planning</sup></span> and
+<span class="phase" data-text="construction">updated throughout the construction<a id="phase-anchor-b562ecdd-bca3-4004-b7f7-09c4e212849e" /><sup>construction</sup></span>.</p>
+<p>The plan is updated as the building grows.</p>
+<p>This is the federated model of all the individual domain models.</p>
+<p>We assume that the model <em>excludes</em> the time, schedule, the tasks, the costs, the actors <em>etc.</em></p>
+<p>It only <em>includes</em> the geometry (3D).</p>
+</div>
+<div class="model">
+<h3 data-anchor="model-bim_extended"><a name="model-bim_extended" /><a class="section-anchor" href="#model-bim_extended">bim_extended</a><span class="chain-symbol">🔗</span></h3>
+<p>This model extends <a href="#model-bim3d" class="modelref">bim3d</a> by including additional entities which
+were not provided in the official plan.</p>
+<p>These entities include:</p>
+<ul>
+<li>additional zones (<em>e.g.</em>, for deliveries),</li>
+<li>actors,</li>
+<li>tasks,</li>
+<li>costs,</li>
+<li>... and more.</li>
+</ul>
+<p>These additional entities are linked to the entities in <a href="#model-bim3d" class="modelref">bim3d</a>.</p>
+</div>
+<h2 data-anchor="section-Definitions"><a name="section-Definitions" /><a class="section-anchor" href="#section-Definitions">Definitions</a><span class="chain-symbol">🔗</span></h2>
+<div class="def">
+<h3 data-anchor="def-guid"><a name="def-guid" /><a class="section-anchor" href="#def-guid">guid</a><span class="chain-symbol">🔗</span></h3>
+<p>A guid is a <strong>g</strong>lobally <strong>u</strong>nique <strong>id</strong>entifier.</p>
+<p>It is <a href="https://technical.buildingsmart.org/resources/ifcimplementationguidance/ifc-guid/">specified by building smart</a>.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-revision"><a name="def-revision" /><a class="section-anchor" href="#def-revision">revision</a><span class="chain-symbol">🔗</span></h3>
+<p><span class="phase" data-text="construction">The revision is an official version of
+a <a id="phase-anchor-298067b0-8a8d-4329-8e3f-1637c2f99c0c" /><a href="#model-bim3d" class="modelref">bim3d</a> at different stages of construction.<sup>construction</sup></span></p>
+<p>It happens maybe once a week per an important model.</p>
+<p>These changes are <em>official</em> and they have to be signed-off (by a civil engineer, construction
+engineer <em>etc.</em>) and are <em>legally binding</em>.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-extension_update"><a name="def-extension_update" /><a class="section-anchor" href="#def-extension_update">extension update</a><span class="chain-symbol">🔗</span></h3>
+<p>The entities of the <a href="#model-bim_extended" class="modelref">bim_extended</a> are changed internally by our system.</p>
+<p>The updates are not officially binding and can happen arbitrary often (<em>e.g.</em>, multiple times a
+day).</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-inconsistency"><a name="def-inconsistency" /><a class="section-anchor" href="#def-inconsistency">inconsistency</a><span class="chain-symbol">🔗</span></h3>
+<p>An inconsistency is a dangling link between  </p>
+</div>
+<div class="def">
+<h3 data-anchor="def-non_ifc_entity"><a name="def-non_ifc_entity" /><a class="section-anchor" href="#def-non_ifc_entity">non ifc entity</a><span class="chain-symbol">🔗</span></h3>
+<p>Non-IFC entity is an entity of our system that can not be modeled as an IFC class.</p>
+<p>The non-IFC entities are shadowed in <a href="#model-bim_extended" class="modelref">bim_extended</a> by <code>IfcExternalReference</code>.</p>
+<p>Though <code>IfcExternalReference</code> is usually used for documents, we use it here in the sense of
+<a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REpresentational State Transfer (REST)</a>
+where everything is considered a "resource".</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-explorer"><a name="def-explorer" /><a class="section-anchor" href="#def-explorer">explorer</a><span class="chain-symbol">🔗</span></h3>
+<p>The explorer allows us to view instances in <a href="#model-bim3d" class="modelref">bim3d</a> and
+<a href="#model-bim_extended" class="modelref">bim_extended</a> in a browser.</p>
+<p>This is a very low-level tool (not for visualizing 3D geometry!) and
+should not allow any modifications to the models as these are gate-kept
+by the system (and could break it).</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-site_coordinate_system"><a name="def-site_coordinate_system" /><a class="section-anchor" href="#def-site_coordinate_system">site coordinate system</a><span class="chain-symbol">🔗</span></h3>
+<p>This is the coordinate system of the building site.</p>
+<p>All the elements from <a href="#model-bim3d" class="modelref">bim3d</a> live in this coordinate system.</p>
+<p>The unit is always a <a href="https://en.wikipedia.org/wiki/Metre">meter</a>.</p>
+</div>
+<h2 data-anchor="section-Scenario"><a name="section-Scenario" /><a class="section-anchor" href="#section-Scenario">Scenario</a><span class="chain-symbol">🔗</span></h2>
+<h3 data-anchor="section-As-planned"><a name="section-As-planned" /><a class="section-anchor" href="#section-As-planned">As-planned</a><span class="chain-symbol">🔗</span></h3>
+<p><strong>Plans.</strong></p>
+<span class="level" data-text="site">
+<a id="level-anchor-d756b8ea-6c88-433e-bf89-8a048fbd21c9" /><p>The planning of a construction site consist of two models:</p>
+<ul>
+<li>an official plan <a href="#model-bim3d" class="modelref">bim3d</a> (only 3D geometry, officially signed off), and</li>
+<li>an internal, extended plan <a href="#model-bim_extended" class="modelref">bim_extended</a>
+(changed more frequently, covering abstract entities such as tasks, actors, costs,
+more dynamic zones <em>etc.</em>, not officially signed off).</li>
+</ul>
+<sup>site</sup></span>
+<p>The official <a href="#model-bim3d" class="modelref">bim3d</a> is updated through <a href="#def-revision" class="ref">revisions</a>.
+As these revisions are costly and official, they are not frequently done.</p>
+<p>The <a href="#def-extension_update" class="ref">extension update</a> of the internal <a href="#model-bim_extended" class="modelref">bim_extended</a>
+occurs much more frequently than the official <a href="#def-revision" class="ref">revisions</a>.
+For example, when a new <a href="../truck_guidance/scenario.html#def-delivery" class="ref">delivery (from truck_guidance)</a> is inserted into the system.</p>
+<p><strong>Inconsistencies.</strong>
+On every <a href="#def-revision" class="ref">revision</a>, there might be inconsistency introduced between
+<a href="#model-bim_extended" class="modelref">bim_extended</a> and <a href="#model-bim3d" class="modelref">bim3d</a>.</p>
+<p><span class="phase" data-text="planning">For example, during planning, we might refer to entities which have not
+been designed yet<a id="phase-anchor-fd6850ff-8264-4c14-b70c-e9526a3e4bd3" /><sup>planning</sup></span>.</p>
+<p><span class="phase" data-text="construction">An another example. An entity of <a id="phase-anchor-5f5b8c7b-7f85-478e-8cae-0eca74992766" /><a href="#model-bim3d" class="modelref">bim3d</a> is
+deleted in a <a href="#def-revision" class="ref">revision</a> because it should not be eventually built, but it is
+referred to by a task entity in <a href="#model-bim_extended" class="modelref">bim_extended</a>.<sup>construction</sup></span> </p>
+<p>We consciously expect these two models to be actually inconsistent. </p>
+<p>The system should provide an application to highlight the inconsistencies.</p>
+<p><strong>Globally unique identification</strong>.
+We expect entities in <a href="#model-bim3d" class="modelref">bim3d</a> and <a href="#model-bim_extended" class="modelref">bim_extended</a> to have
+<a href="#def-guid" class="ref">guids</a> globally unique with the respect to their union.
+A <a href="#def-guid" class="ref">guid</a> in <a href="#model-bim_extended" class="modelref">bim_extended</a> should not conflict with a
+<a href="#def-guid" class="ref">guid</a> in <a href="#model-bim3d" class="modelref">bim3d</a>, but mean the same entity.</p>
+<p>For example, you should not give the same <a href="#def-guid" class="ref">guid</a> to a wall and to an organization. </p>
+<p><strong>Non-IFC entities</strong>.
+Our system supports many non-IFC entities (such as <a href="../risk_management/scenario.html#def-risk" class="ref">risk (from risk_management)</a> and
+<a href="../truck_guidance/scenario.html#def-delivery_update" class="ref">delivery update (from truck_guidance)</a>).</p>
+<p>In order to make these entities referencable by IFC entities, every <a href="#def-non_ifc_entity" class="ref">non ifc entity</a>
+needs to be shadowed in <a href="#model-bim_extended" class="modelref">bim_extended</a> as an <code>IfcExternalReference</code>.</p>
+<p><strong>Visualization of entities</strong>.
+The system should provide a viewer of the entities.</p>
+<p>This viewer is not meant for visualization of 3D geometry, but for exploration of existing entities
+and their links to non-IFC entities. This viewer is more like a database viewer
+(kind of a "PhpMyAdmin" for BIM).</p>
+<p>We might use a tool such as https://ifcwebserver.org/
+(Section "Innovative Graph database data management"). In case we want to support the links to
+<a href="#def-non_ifc_entity" class="ref">non ifc entities</a>, we might need to implement an explorer on our own (<em>e.g.</em>, using
+a simple viewer in a browser based on <a href="../unique_resource_identification/scenario.html#def-identifier" class="ref">identifiers (from unique_resource_identification)</a>). </p>
+<p><strong>Overview diagram</strong>.
+<img src="diagram.svg" /></p>
+<h3 data-anchor="section-As-observed"><a name="section-As-observed" /><a class="section-anchor" href="#section-As-observed">As-observed</a><span class="chain-symbol">🔗</span></h3>
+<p>We adapt <a href="#model-bim3d" class="modelref">bim3d</a> to
+<a href="../digital_reconstruction/scenario.html#model-as-built" class="modelref">as-built (from digital_reconstruction)</a> in parallel to have a semantically
+interpretable representation of the physical world.</p>
+<p>However, <a href="../digital_reconstruction/scenario.html#model-as-built" class="modelref">as-built (from digital_reconstruction)</a> is not considered a "plan",
+but an "observation".</p>
+<p><em>The remaining aspect sections intentionally left empty.</em></p>
+<h2 data-anchor="section-Test_Cases"><a name="section-Test_Cases" /><a class="section-anchor" href="#section-Test_Cases">Test Cases</a><span class="chain-symbol">🔗</span></h2>
+<div class="test">
+<h3 data-anchor="test-inconsistent_model"><a name="test-inconsistent_model" /><a class="section-anchor" href="#test-inconsistent_model">inconsistent model</a><span class="chain-symbol">🔗</span></h3>
+<p>We test the system with manually designed <a href="#model-bim3d" class="modelref">bim3d</a> and
+<a href="#model-bim_extended" class="modelref">bim_extended</a> with inconsistencies introduced on purpose.</p>
+</div>
+<h2 data-anchor="section-Acceptance_Criteria"><a name="section-Acceptance_Criteria" /><a class="section-anchor" href="#section-Acceptance_Criteria">Acceptance Criteria</a><span class="chain-symbol">🔗</span></h2>
+<div class="acceptance">
+<h3 data-anchor="acceptance-inconsistencies_dealt_with_gracefully"><a name="acceptance-inconsistencies_dealt_with_gracefully" /><a class="section-anchor" href="#acceptance-inconsistencies_dealt_with_gracefully">inconsistencies dealt with gracefully</a><span class="chain-symbol">🔗</span></h3>
+<p>The system needs to deal with the <a href="#def-inconsistency" class="ref">inconsistencies</a> in a graceful manner.
+For example, dangling references should be checked and should not raise an exception or break
+down the system.</p>
+</div></div>
+</body>
+</html>

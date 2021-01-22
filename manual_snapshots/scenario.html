@@ -1,0 +1,91 @@
+<html>
+<head><meta charset="utf-8" /><script src="https://livejs.com/live.js"> </script><title>Manual Snapshots</title><style>body {
+    margin-top: 2em;
+    padding: 0px;
+}
+
+#main {
+    float: left;
+    width: 50em;
+    margin-left: 3%;
+    border: 1px solid black;
+    padding: 2em;
+}
+
+#index {
+    float: left;
+    width: 30%;
+    border: 1px solid black;
+    padding: 1em;
+}
+
+ul.toc {
+    list-style-type: none;
+}
+
+ul.toc li {
+    margin-bottom: 0.5em;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+a:visited {
+    color: blue;
+}
+
+a.section-anchor {
+    text-decoration: none;
+    color: black;
+}
+
+.chain-symbol {
+    display: none;
+    font-size: x-small;
+    margin-left: 0.5em;
+}
+a.section-anchor:hover + .chain-symbol {
+    display: inline-block;
+}
+
+span.phase {
+    background-color: #eefbfb;
+}
+
+span.level {
+    background-color: #eefbee;
+}
+
+pre {
+    background-color: #eeeefb;
+    padding: 1em;
+}
+</style></head><body>
+<div id="index"><a href="../ontology.html">Back to ontology</a><img src="volumetric.png" style="border: 1px solid #EEEEEE; padding: 10px;" /><h2>Table of Contents</h2><ul class="toc"><li style="padding-left: 0.00em"><a href="#section-Summary">Summary</a></li><li style="padding-left: 2.20em"><a href="#section-Definitions">Definitions</a></li><li style="padding-left: 2.20em"><a href="#def-GPS_location">GPS location</a></li><li style="padding-left: 0.00em"><a href="#section-Scenario">Scenario</a></li><li style="padding-left: 2.20em"><a href="#section-As-observed">As-observed</a></li></ul></div>
+<div id="main"><h1>Manual Snapshots</h1><h2>Relations from Other Scenarios</h2><ul><li><span>Manual Snapshots images </span><a href="../digital_reconstruction/scenario.html">Digital Reconstruction</a></li></ul>
+<h2 data-anchor="section-Summary"><a name="section-Summary" /><a class="section-anchor" href="#section-Summary">Summary</a><span class="chain-symbol">🔗</span></h2>
+<p>This scenario covers the case when an <a href="../actor_management/scenario.html#def-actor" class="ref">actor (from actor_management)</a> manually captures
+an <a href="../digital_reconstruction/scenario.html#def-image" class="ref">image (from digital_reconstruction)</a> to document the state of the construction site.</p>
+<h3 data-anchor="section-Definitions"><a name="section-Definitions" /><a class="section-anchor" href="#section-Definitions">Definitions</a><span class="chain-symbol">🔗</span></h3>
+<div class="def">
+<h3 data-anchor="def-GPS_location"><a name="def-GPS_location" /><a class="section-anchor" href="#def-GPS_location">GPS location</a><span class="chain-symbol">🔗</span></h3>
+<p>This is the 3D location of a world as measured by the
+<a href="https://en.wikipedia.org/wiki/Global_Positioning_System">GPS</a> of the user's device. </p>
+</div>
+<h2 data-anchor="section-Scenario"><a name="section-Scenario" /><a class="section-anchor" href="#section-Scenario">Scenario</a><span class="chain-symbol">🔗</span></h2>
+<h3 data-anchor="section-As-observed"><a name="section-As-observed" /><a class="section-anchor" href="#section-As-observed">As-observed</a><span class="chain-symbol">🔗</span></h3>
+<p>We provide a web page that the user can update the image to.</p>
+<p>We rely on the timestamp and the <a href="#def-GPS_location" class="ref">GPS location</a> embedded in the image.</p>
+<p>We convert the <a href="#def-GPS_location" class="ref">GPS location</a> to <a href="../evolving_plan/scenario.html#def-site_coordinate_system" class="ref">site coordinate system (from evolving_plan)</a>.
+We assume that we pinned down the mapping between the <a href="#def-GPS_location" class="ref">GPS locations</a> and
+<a href="../evolving_plan/scenario.html#def-site_coordinate_system" class="ref">site coordinate system (from evolving_plan)</a> during the configuration of the system.</p>
+<p>The source of the <a href="../digital_reconstruction/scenario.html#def-image" class="ref">images (from digital_reconstruction)</a> are related to the
+<a href="../actor_management/scenario.html#def-actor" class="ref">actor (from actor_management)</a> who made the <a href="../digital_reconstruction/scenario.html#def-image" class="ref">images (from digital_reconstruction)</a>.</p>
+<p>(There is some need for tuning in <scenarioref name="unique_resource_identification" />, but this
+is as good as it gets for a first sketch.)</p>
+<p><em>The remaining sections intentionally left empty.</em></p>
+</div>
+</body>
+</html>

@@ -1,5 +1,5 @@
 <html>
-<head><meta charset="utf-8" /><script src="https://livejs.com/live.js"> </script><title>Digital Reconstruction TODO</title><style>body {
+<head><meta charset="utf-8" /><script src="https://livejs.com/live.js"> </script><title>Digital Reconstruction</title><style>body {
     margin-top: 2em;
     padding: 0px;
 }
@@ -63,29 +63,201 @@ pre {
     padding: 1em;
 }
 </style></head><body>
-<div id="index"><a href="../ontology.html">Back to ontology</a><img src="volumetric.png" style="border: 1px solid #EEEEEE; padding: 10px;" /><h2>Table of Contents</h2><ul class="toc"><li style="padding-left: 0.00em"><a href="#section-TODO">TODO</a></li><li style="padding-left: 0.00em"><a href="#section-Summary">Summary</a></li><li style="padding-left: 0.00em"><a href="#section-Models">Models</a></li><li style="padding-left: 0.00em"><a href="#section-Definitions">Definitions</a></li><li style="padding-left: 0.00em"><a href="#section-Scenario">Scenario</a></li><li style="padding-left: 2.20em"><a href="#section-As-planned">As-planned</a></li><li style="padding-left: 2.20em"><a href="#section-As-observed">As-observed</a></li><li style="padding-left: 2.20em"><a href="#section-Divergence">Divergence</a></li><li style="padding-left: 2.20em"><a href="#section-Analytics">Analytics</a></li><li style="padding-left: 2.20em"><a href="#section-Scheduling">Scheduling</a></li><li style="padding-left: 2.20em"><a href="#section-Safety">Safety</a></li><li style="padding-left: 0.00em"><a href="#section-Test_Cases">Test Cases</a></li><li style="padding-left: 0.00em"><a href="#section-Acceptance_Criteria">Acceptance Criteria</a></li></ul></div>
-<div id="main"><h1>Digital Reconstruction TODO</h1><h2 data-anchor="section-TODO"><a name="section-TODO" /><a class="section-anchor" href="#section-TODO">TODO</a><span class="chain-symbol">🔗</span></h2>
-<p>There are multiple stages:</p>
-<ul>
-<li>images, laser recordings -&gt; point cloud (most important!)</li>
-<li>point cloud + existing BIM -&gt; digitally reconstructed BIM (not in focus for us?)</li>
-</ul>
-<p>External software?</p>
-<p>Expected errors, formats, images with location and angle etc.</p>
-<p>How do we link individual BIM elements to point cloud and images?
-By querying over geometry?</p>
+<div id="index"><a href="../ontology.html">Back to ontology</a><img src="volumetric.png" style="border: 1px solid #EEEEEE; padding: 10px;" /><h2>Table of Contents</h2><ul class="toc"><li style="padding-left: 0.00em"><a href="#section-Summary">Summary</a></li><li style="padding-left: 0.00em"><a href="#section-Models">Models</a></li><li style="padding-left: 2.20em"><a href="#model-images">images</a></li><li style="padding-left: 2.20em"><a href="#model-point_cloud">point_cloud</a></li><li style="padding-left: 2.20em"><a href="#model-voxel_cloud">voxel_cloud</a></li><li style="padding-left: 2.20em"><a href="#model-reconstructed_geometry">reconstructed_geometry</a></li><li style="padding-left: 2.20em"><a href="#model-as-built">as-built</a></li><li style="padding-left: 0.00em"><a href="#section-Definitions">Definitions</a></li><li style="padding-left: 2.20em"><a href="#def-recording">recording</a></li><li style="padding-left: 2.20em"><a href="#def-image">image</a></li><li style="padding-left: 2.20em"><a href="#def-point">point</a></li><li style="padding-left: 2.20em"><a href="#def-voxel">voxel</a></li><li style="padding-left: 2.20em"><a href="#def-surface">surface</a></li><li style="padding-left: 2.20em"><a href="#def-object_recognition">object recognition</a></li><li style="padding-left: 2.20em"><a href="#def-bimmer">bimmer</a></li><li style="padding-left: 0.00em"><a href="#section-Scenario">Scenario</a></li><li style="padding-left: 2.20em"><a href="#section-As-planned">As-planned</a></li><li style="padding-left: 2.20em"><a href="#section-As-observed">As-observed</a></li><li style="padding-left: 2.20em"><a href="#section-Divergence">Divergence</a></li><li style="padding-left: 0.00em"><a href="#section-Test_Cases">Test Cases</a></li><li style="padding-left: 0.00em"><a href="#section-Acceptance_Criteria">Acceptance Criteria</a></li><li style="padding-left: 2.20em"><a href="#acceptance-timestamps_of_points_manageable">timestamps of points manageable</a></li><li style="padding-left: 2.20em"><a href="#acceptance-granularity_of_timestamps">granularity of timestamps</a></li><li style="padding-left: 2.20em"><a href="#acceptance-visual_veracity_of_geometry">visual veracity of geometry</a></li></ul></div>
+<div id="main"><h1>Digital Reconstruction</h1><h2>Relations to Other Scenarios</h2><ul><li><a href="../manual_snapshots/scenario.html">Manual Snapshots</a><span> images Digital Reconstruction</span></li><li><a href="../uxv_recording/scenario.html">UXV Recording</a><span> observations Digital Reconstruction</span></li></ul><h2>Relations from Other Scenarios</h2><ul><li><span>Digital Reconstruction observations </span><a href="../virtual_inspection/scenario.html">Virtual Inspection</a></li><li><span>Digital Reconstruction observations </span><a href="../thermal_inspection/scenario.html">Thermal Inspection</a></li></ul>
 <h2 data-anchor="section-Summary"><a name="section-Summary" /><a class="section-anchor" href="#section-Summary">Summary</a><span class="chain-symbol">🔗</span></h2>
+<p>This scenario covers the digital representation of the physical world evolving over the time. </p>
+<p>The digital representation includes <a href="#model-images" class="modelref">images</a>,
+<a href="#model-point_cloud" class="modelref">point_cloud</a>,
+<a href="#model-voxel_cloud" class="modelref">voxel_cloud</a>,
+<a href="#model-reconstructed_geometry" class="modelref">reconstructed_geometry</a>,
+and <a href="#model-as-built" class="modelref">as-built</a>.</p>
+<p>The <a href="#def-object_recognition" class="ref">object recognition</a> is intentionally left out as out-of-scope from the
+BIMprove project as well as semantic interpretation of <a href="#def-point" class="ref">points</a> and
+<a href="#def-surface" class="ref">surfaces</a>.</p>
 <h2 data-anchor="section-Models"><a name="section-Models" /><a class="section-anchor" href="#section-Models">Models</a><span class="chain-symbol">🔗</span></h2>
+<div class="model">
+<h3 data-anchor="model-images"><a name="model-images" /><a class="section-anchor" href="#model-images">images</a><span class="chain-symbol">🔗</span></h3>
+<p>This model contain all the <a href="#def-image" class="ref">images</a> recorded manually (<em>e.g.</em>, by a smartphone) or
+automatically (<em>e.g.</em>, by an UAV or statically installed cameras through
+a <a href="#def-recording" class="ref">recording</a>) over time.</p>
+<p>We expect the images in JPEGs.
+The meta-data such as orientation, position and sensor range
+(<em>e.g.</em>, for <a href="../thermal_inspection/scenario.html#def-thermal_image" class="ref">thermal images (from thermal_inspection)</a>) is expected in
+<a href="https://en.wikipedia.org/wiki/Exif">EXIF</a>.</p>
+</div>
+<div class="model">
+<h3 data-anchor="model-point_cloud"><a name="model-point_cloud" /><a class="section-anchor" href="#model-point_cloud">point_cloud</a><span class="chain-symbol">🔗</span></h3>
+<p>This model encompasses all the <a href="#def-point" class="ref">points</a> of the physical building over time. </p>
+<p>The expected format of the point cloud is <a href="http://www.libe57.org/">E57</a>.
+Our system will use <a href="http://www.libe57.org/">E57</a> as an exchange format (<em>e.g.</em>, for import/export).
+The backend can use arbitrary format for storage and manipulation. </p>
+</div>
+<div class="model">
+<h3 data-anchor="model-voxel_cloud"><a name="model-voxel_cloud" /><a class="section-anchor" href="#model-voxel_cloud">voxel_cloud</a><span class="chain-symbol">🔗</span></h3>
+<p>This model includes all the <a href="#def-voxel" class="ref">voxels</a> over time.</p>
+</div>
+<div class="model">
+<h3 data-anchor="model-reconstructed_geometry"><a name="model-reconstructed_geometry" /><a class="section-anchor" href="#model-reconstructed_geometry">reconstructed_geometry</a><span class="chain-symbol">🔗</span></h3>
+<p>This model captures all the reconstructed <a href="#def-surface" class="ref">surfaces</a>.</p>
+</div>
+<div class="model">
+<h3 data-anchor="model-as-built"><a name="model-as-built" /><a class="section-anchor" href="#model-as-built">as-built</a><span class="chain-symbol">🔗</span></h3>
+<p>The as-built model is obtained by combining <a href="#def-point" class="ref">point</a> cloud
+and the latest version of <a href="../evolving_plan/scenario.html#model-bim3d" class="modelref">bim3d (from evolving_plan)</a>.</p>
+<p>The model is updated continuously by a <a href="#def-bimmer" class="ref">bimmer</a>.</p>
+<p>Unlike <a href="../evolving_plan/scenario.html#model-bim3d" class="modelref">bim3d (from evolving_plan)</a>, this model is not <em>official</em>.</p>
+<p>The entity identifiers from this model should match the identifiers from
+<a href="../evolving_plan/scenario.html#model-bim3d" class="modelref">bim3d (from evolving_plan)</a>.</p>
+</div>
 <h2 data-anchor="section-Definitions"><a name="section-Definitions" /><a class="section-anchor" href="#section-Definitions">Definitions</a><span class="chain-symbol">🔗</span></h2>
+<div class="def">
+<h3 data-anchor="def-recording"><a name="def-recording" /><a class="section-anchor" href="#def-recording">recording</a><span class="chain-symbol">🔗</span></h3>
+<p>The recording is a sequence of <a href="#def-image" class="ref">images</a> and <a href="#def-point" class="ref">points</a> recorded by an
+<a href="../uxv_recording/scenario.html#def-UXV" class="ref">UXV (from uxv_recording)</a> (with different <a href="../uxv_recording/scenario.html#def-sensor" class="ref">sensors (from uxv_recording)</a> such as
+photo cameras, FARO lasers, LiDARs, thermal cameras <em>etc.</em>).</p>
+<p>The recording is assumed atomic (<em>i.e.</em> "discrete", as opposed to <em>continuous</em> recording from, say,
+a static camera observing a scene).</p>
+<p>We also assume that the relevant objects <em>do not</em> move during the recording.
+However, some movement is possible, though (<em>e.g.</em>, workers and vehicles on the site,
+other <a href="../uxv_recording/scenario.html#def-UXV" class="ref">UXVS (from uxv_recording)</a> <em>etc.</em>).</p>
+<p>The <a href="../uxv_recording/scenario.html#def-sensor" class="ref">sensor (from uxv_recording)</a> as well as the <a href="../uxv_recording/scenario.html#def-spatial_accuracy" class="ref">spatial accuracy (from uxv_recording)</a>
+of the sensor should be defined in the recording.</p>
+<p>For example, lasers might have the <a href="../uxv_recording/scenario.html#def-spatial_accuracy" class="ref">spatial accuracy (from uxv_recording)</a> in millimeters, while
+the <a href="../uxv_recording/scenario.html#def-spatial_accuracy" class="ref">spatial accuracy (from uxv_recording)</a> of the photo odometry can be in low-digit
+centimeters (depending on the texture, lighting conditions <em>etc.</em>).</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-image"><a name="def-image" /><a class="section-anchor" href="#def-image">image</a><span class="chain-symbol">🔗</span></h3>
+<p>An image is a picture taken by a camera.</p>
+<p>The camera can be a photo camera (taking RGB images), but can also be a thermal camera (taking
+<a href="../thermal_inspection/scenario.html#def-thermal_image" class="ref">thermal images (from thermal_inspection)</a>).</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-point"><a name="def-point" /><a class="section-anchor" href="#def-point">point</a><span class="chain-symbol">🔗</span></h3>
+<p>A point is a 3D representation of a physical building.</p>
+<p>Each point is:</p>
+<ul>
+<li>given a color.</li>
+<li>associated with its source (<em>e.g.</em>, unique identifier of an <a href="../uxv_recording/scenario.html#def-UXV" class="ref">UXV (from uxv_recording)</a>
+as well as the <a href="../uxv_recording/scenario.html#def-sensor" class="ref">sensor (from uxv_recording)</a>), and</li>
+<li>attributed with the time stamp corresponding to the moment of the observation (as opposed
+to the moment of the reconstruction).</li>
+</ul>
+</div>
+<div class="def">
+<h3 data-anchor="def-voxel"><a name="def-voxel" /><a class="section-anchor" href="#def-voxel">voxel</a><span class="chain-symbol">🔗</span></h3>
+<p>Voxel is a small cube or union of cubes abstracting the individual <a href="#def-point" class="ref">points</a>.</p>
+<p>Voxel cloud is stiched together from <a href="#def-point" class="ref">point</a> cloud
+by binning points to pre-defined cubes and unions of cubes.</p>
+<p>It is a poor man's reconstructed geometry.</p>
+<p>Each volumetric shape is also associated a time stamp based on the underlying points.</p>
+<p>The color of a shape is determined by inferring it from the underlying points.
+(We might consider color spaces like CIE, LAB <em>etc.</em> Vector average of RGB is perceptually wrong.)</p>
+<p>The color gives you the similarity of the points (in addition to their mutual proximity) so that
+cubes with different colors should not be merged.</p>
+<p>Analogously, the time stamp of the voxel is given by the average over the corresponding points.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-surface"><a name="def-surface" /><a class="section-anchor" href="#def-surface">surface</a><span class="chain-symbol">🔗</span></h3>
+<p>A surface is a 3D shape given as surface.</p>
+<p>The surface is reconstructed based on the <a href="#def-point" class="ref">point</a> cloud.</p>
+<p>Reconstructed surfaces are not semantically interpretable.
+The main purpose of the geometry is visualization, not semantic recognition.
+Hence there is no link to BIM models and this is intentionally left out-of-scope. </p>
+<p>The time stamp of a surface is computed based on the average of the time stamps of its points. </p>
+</div>
+<div class="def">
+<h3 data-anchor="def-object_recognition"><a name="def-object_recognition" /><a class="section-anchor" href="#def-object_recognition">object recognition</a><span class="chain-symbol">🔗</span></h3>
+<p>Recognized objects (based on images or point cloud) are not part of the BIM model.</p>
+<p>Such objects include tools, debris, safety nets <em>etc.</em></p>
+<p>Some objects, such as safety nets, can not be detected with a point cloud and need to rely
+on images for texture.</p>
+<p>This is a non-goal, as we lack the resources (foremost data, but also time, qualifications, focus).
+However, we should keep in mind that the system should prepare the data for recognition in a
+future project.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-bimmer"><a name="def-bimmer" /><a class="section-anchor" href="#def-bimmer">bimmer</a><span class="chain-symbol">🔗</span></h3>
+<p>This person updates the geometry of <a href="#model-as-built" class="modelref">as-built</a> on a continuous basis.</p>
+</div>
 <h2 data-anchor="section-Scenario"><a name="section-Scenario" /><a class="section-anchor" href="#section-Scenario">Scenario</a><span class="chain-symbol">🔗</span></h2>
 <h3 data-anchor="section-As-planned"><a name="section-As-planned" /><a class="section-anchor" href="#section-As-planned">As-planned</a><span class="chain-symbol">🔗</span></h3>
+<p>The as-planned data is coming from <a href="../evolving_plan/scenario.html#model-bim3d" class="modelref">bim3d (from evolving_plan)</a>. </p>
 <h3 data-anchor="section-As-observed"><a name="section-As-observed" /><a class="section-anchor" href="#section-As-observed">As-observed</a><span class="chain-symbol">🔗</span></h3>
+<p><strong>Raw</strong>.
+The "raw" observations come from the <a href="#def-image" class="ref">images</a> (manual snapshots or recorded by
+an UAV in a <a href="#def-recording" class="ref">recording</a>) and are kept in <a href="#model-images" class="modelref">images</a>.</p>
+<p><strong>Point cloud</strong>.
+The <a href="#def-point" class="ref">point</a> cloud is reconstructed by external software from the
+<a href="#model-images" class="modelref">images</a> and stored to <a href="#model-point_cloud" class="modelref">point_cloud</a>.
+(The external software is not part of the BIMprove development efforts.)</p>
+<p>Additionally, <a href="#model-point_cloud" class="modelref">point_cloud</a> includes also the <a href="#def-point" class="ref">points</a>
+that are recorded by lasers (in case there is a <a href="../uxv_recording/scenario.html#def-sensor" class="ref">sensor (from uxv_recording)</a>
+during a <a href="#def-recording" class="ref">recording</a>).</p>
+<p>Finally, the BIMprove system should provide an import end-point so that arbitrarily point clouds
+can be imported.
+For example, the crew could use external smartphone apps to record a point cloud,
+special hand-held lidars <em>etc.</em>
+We do not want to constrict the range of recording devices.
+The source as well as the sensor accuracy need to be specified accordingly. </p>
+<p><strong>Visualizable abstractions.</strong>
+We further abstract <a href="#def-point" class="ref">points</a> from the <a href="#model-point_cloud" class="modelref">point_cloud</a>
+into:</p>
+<ul>
+<li><a href="#def-voxel" class="ref">voxels</a> of <a href="#model-voxel_cloud" class="modelref">voxel_cloud</a>
+using binning and aggregation of bins, and </li>
+<li><a href="#def-surface" class="ref">surfaces</a> using geometry reconstruction.</li>
+</ul>
+<p>The main aim of both the <a href="#def-voxel" class="ref">voxels</a> and <a href="#def-surface" class="ref">surfaces</a> is easier visualization
+of the physical world.</p>
+<p>(We will probably not have time to implement the geometry reconstruction in BIMprove system.
+There might be perhaps libraries to easily reconstruct it from the point cloud on the backend
+side.
+As we don't know that at this point (2021-01-20), we leave it here as a nice-to-have.)</p>
+<p><strong>As-built plan.</strong></p>
+<p>In addition to semantically uninterpretable observations (such as <a href="#def-image" class="ref">images</a> and
+<a href="#def-point" class="ref">points</a>), our system needs the interpretable observation.</p>
+<p>This is given in the model <a href="#model-as-built" class="modelref">as-built</a>. This model is continuously
+updated (<em>e.g.</em>, daily) by the <a href="#def-bimmer" class="ref">bimmer</a> using external software to
+model the current state of the physical building digitally using as base the official plans
+<a href="../evolving_plan/scenario.html#model-bim3d" class="modelref">bim3d (from evolving_plan)</a>, previous version of
+<a href="#model-as-built" class="modelref">as-built</a> (if available) and
+<a href="#model-point_cloud" class="modelref">point_cloud</a>.</p>
+<p>The external software for BIM reconstruction (and adaptation to observed data) is not part of the
+BIMprove development efforts. Some software solutions include:</p>
+<ul>
+<li>https://bimandscan.com/autocorr/</li>
+<li>https://www.clearedge3d.com/products/verity/</li>
+<li>https://www.imerso.com/ </li>
+</ul>
+<p>TODO: add link here to divergence_detection -- this depends how we compute the divergence,
+manually or based on as-built bim.</p>
+<img src="diagram.svg" />
 <h3 data-anchor="section-Divergence"><a name="section-Divergence" /><a class="section-anchor" href="#section-Divergence">Divergence</a><span class="chain-symbol">🔗</span></h3>
-<h3 data-anchor="section-Analytics"><a name="section-Analytics" /><a class="section-anchor" href="#section-Analytics">Analytics</a><span class="chain-symbol">🔗</span></h3>
-<h3 data-anchor="section-Scheduling"><a name="section-Scheduling" /><a class="section-anchor" href="#section-Scheduling">Scheduling</a><span class="chain-symbol">🔗</span></h3>
-<h3 data-anchor="section-Safety"><a name="section-Safety" /><a class="section-anchor" href="#section-Safety">Safety</a><span class="chain-symbol">🔗</span></h3>
+<p>All the observations (like <a href="#def-image" class="ref">images</a> and <a href="#def-point" class="ref">point</a> cloud) need to be
+converted to our main <a href="../evolving_plan/scenario.html#def-site_coordinate_system" class="ref">site coordinate system (from evolving_plan)</a>.</p>
+<p>Whatever data comes into the backend needs to be pre-processed appropriately to conform to
+<a href="../evolving_plan/scenario.html#def-site_coordinate_system" class="ref">site coordinate system (from evolving_plan)</a>.</p>
+<p><em>The remaining aspect sections intentionally left empty.</em></p>
 <h2 data-anchor="section-Test_Cases"><a name="section-Test_Cases" /><a class="section-anchor" href="#section-Test_Cases">Test Cases</a><span class="chain-symbol">🔗</span></h2>
 <h2 data-anchor="section-Acceptance_Criteria"><a name="section-Acceptance_Criteria" /><a class="section-anchor" href="#section-Acceptance_Criteria">Acceptance Criteria</a><span class="chain-symbol">🔗</span></h2>
+<div class="acceptance">
+<h3 data-anchor="acceptance-timestamps_of_points_manageable"><a name="acceptance-timestamps_of_points_manageable" /><a class="section-anchor" href="#acceptance-timestamps_of_points_manageable">timestamps of points manageable</a><span class="chain-symbol">🔗</span></h3>
+<p>The timestamps for individual <a href="#def-point" class="ref">points</a> of the point clouds should be appropriately
+compressed so that we add only a word (2-bytes) or attach a timestamp to a group of points <em>etc.</em></p>
+</div>
+<div class="acceptance">
+<h3 data-anchor="acceptance-granularity_of_timestamps"><a name="acceptance-granularity_of_timestamps" /><a class="section-anchor" href="#acceptance-granularity_of_timestamps">granularity of timestamps</a><span class="chain-symbol">🔗</span></h3>
+<p>As <a href="#def-point" class="ref">points</a> of the point cloud are attributed a time stamp, the time stamp
+does not need to be extremely precise. For example, if we take 50 images of a single point,
+the time stamp of the point can be the average (or minimum or maximum) over the corresponding
+timestamps of the images.</p>
+</div>
+<div class="acceptance">
+<h3 data-anchor="acceptance-visual_veracity_of_geometry"><a name="acceptance-visual_veracity_of_geometry" /><a class="section-anchor" href="#acceptance-visual_veracity_of_geometry">visual veracity of geometry</a><span class="chain-symbol">🔗</span></h3>
+<p>The geometry might look "melted" as we lack points from all the viewpoints.</p>
+</div>
 </div>
 </body>
 </html>

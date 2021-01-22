@@ -1,0 +1,194 @@
+<html>
+<body>
+<div id='index'></div>
+<div id='main'><h2>Summary</h2>
+<p>The <ref name="scheduler" />s do not want to use BIMprove system for scheduling and planning.
+This scenario therefore looks into how we integrate with the external solutions.</p>
+<h2>Models</h2>
+<model name="last_planner_data">
+<p>This is the model containing all the <ref name="last_planner_task" />s accessible
+through the external <ref name="last_planner_system" />. </p>
+</model>
+<h2>Definitions</h2>
+<def name="scheduler">
+<p>The scheduler plans the construction.</p>
+</def>
+<def name="phase_plan">
+<p>A legally binding coarse long-term plan.</p>
+</def>
+<def name="last_planner_system">
+<p>The software solution for managing lean construction.</p>
+<p>Note that the <a href="https://en.wikipedia.org/wiki/Lean_construction#Last_Planner_System">last planner system</a>
+can also refer to a planning system.
+In this document, we use the term to refer to a <em>software system</em>, not a planning system.</p>
+</def>
+<def name="task">
+<p>Piece of work that needs to be scheduled.</p>
+<p>It is represented as <ref name="last_planner_task" /> in <modelref name="last_planner_data" />, and
+as a <ref name="task_shadow" /> in <modelref name="evolving_plan#bim_extended" />.</p>
+</def>
+<def name="last_planner_task">
+<p>A <ref name="task" /> managed by a <ref name="last_planner_system" /> and living in
+<modelref name="last_planner_data" />.</p>
+</def>
+<def name="task_shadow">
+<p>Task shadow is a <code>IfcTask</code> living in the <modelref name="evolving_plan#bim_extended" /> shadowing
+the <ref name="last_planner_task" />.</p>
+</def>
+<h2>Scenario</h2>
+<p><em>The preceding aspect sections intentionally left empty.</em></p>
+<h3>Scheduling</h3>
+<p>The <ref name="scheduler" />s do not want to use BIMprove system for scheduling and explicitly
+want to rely on external tools.
+This scenario therefore looks into how we integrate with the external solutions.</p>
+<p>Notably, we do not aim to integrate with solutions for long-term coarse planning
+(a.k.a. <ref name="phase_plan" />).
+Such solutions include <a href="https://www.youtube.com/watch?v=sX0NUKDJ3b4">Synchro</a>,
+Microsoft Project, Primavera and others.
+The <ref name="phase_plan" />s are legally binding and change only very infrequently,
+if ever, during the project.
+As they are not updated frequently enough, we can not use them as a reliable source for the time
+dimension.</p>
+<p>Instead of <ref name="phase_plan" />s, we focus on the short-term plans managed by the
+<ref name="last_planner_system" />s.</p>
+<p>We focus only on a single <ref name="last_planner_system" />, <a href="http://www.visilean.com">Visilean</a>,
+but we can integrate with other solutions later (<em>e.g.</em>, Synchro, Microsoft Project, Houly and
+TouchPlan).</p>
+<p>As the scheduling is done outside of BIMprove, we explicitly do <em>not</em> provide re-scheduling
+functionality.
+It is a non-goal to develop a last planner system.
+In the same line, we do not develop analytics and obstacle and delay analysis for the
+<ref name="task" />s.
+This is part of the external <ref name="last_planner_system" />.</p>
+<p><strong>Importing</strong>.
+We only help the progress monitoring and import the scheduling information from the external
+parties to link it with the elements in <modelref name="evolving_plan#bim3d" /> and
+<modelref name="evolving_plan#bim_extended" />.</p>
+<p>In order to model the <ref name="task" />s, we have to create <ref name="task_shadow" />s and
+their relationships, as well as map the references to actors and building elements from the
+<ref name="last_planner_system" /> to <modelref name="evolving_plan#bim_extended" />.   </p>
+<p>The data in <modelref name="last_planner_data" /> needs to be imported continuously into
+<modelref name="evolving_plan#bim_extended" /> (<em>via</em> triggers, polling or manual export/import,
+depending on what is available).</p>
+<p>The import workflow from <modelref name="last_planner_data" /> to
+<modelref name="evolving_plan#bim_extended" /> follows the steps:</p>
+<ul>
+<li>
+Create/update the <ref name="task_shadow" />s for all the <ref name="last_planner_task" />s   <ul>
+<li>Parse the <ref name="last_planner_task" /> either directly (if possible,
+depending on the export format) or using structured text in the body </li>
+</ul>
+</li>
+<li>Map the <ref name="actor_management#actor" />s</li>
+<li>Map the references to building elements</li>
+<li>Create/update the shadows for all the relationships between the <ref name="task" />s and
+<ref name="actor_management#actor" />s </li>
+</ul>
+<p>Mind that the system should not completely overwrite the relevant data in
+<modelref name="evolving_plan#bim_extended" />, but extend it.
+This means that we assume the <ref name="evolving_plan#guid" />s to be stable throughout the
+project. (It is also tricky to handle the deletions, which is left as an important implementation
+detail.) </p>
+<p>If the <ref name="last_planner_system" /> does not provide a mechanism to explicitly link to
+building elements, <ref name="actor_management#actor" /> and the relationships, we extract this
+information from the structured text of the <ref name="last_planner_task" /> body
+(<em>e.g.</em>, from the footer, similar to
+<a href="https://git.wiki.kernel.org/index.php/CommitMessageConventions">git trailers</a>).</p>
+<p>For example, we can use <ref name="evolving_plan#guid" /> and <code>Related elements:</code> to structure
+the references to the building elements:</p>
+<pre><code>Related elements:
+f6b569e9-beb8-42e7-a44e-4213b92ffb22,
+b5e9a2b8-687e-4f5e-a34f-c0fd42768672,
+f0ee91a0-d423-4c65-8c01-0c5ba842f9a6
+</code></pre>
+<p>(Alternatively, we might use URLs, URIs <em>etc.</em> We leave the representation as an important
+implementation detail.)</p>
+<p>We can also specify some of the properties of a <ref name="task" />.
+For example, to specify the task type (<code>PredefinedType</code>), we can write in
+the body of the <ref name="last_planner_task" />:</p>
+<pre><code>PredefinedType: CONSTRUCTION
+</code></pre>
+<p><strong>Visualization</strong>.
+As the planning is done by the external <ref name="last_planner_system" />, we do not aim for
+a sophisticated visualization.</p>
+<p>The system should provide basic browsing experience so that other parts of the system can
+link to the <ref name="task" /> to show further details.</p>
+<p>BIMprove system should be able to:</p>
+<ul>
+<li>Show the list of the <ref name="task" />s,</li>
+<li>Show the detail information about the <ref name="task" /> and its relationships to actors and
+elements, and</li>
+<li>Display the timeline (nice-to-have)</li>
+</ul>
+<p>For example, showing the detailed information is important so that the user can get the detailed
+information about a <ref name="task" /> coming from <scenarioref name="virtual_inspection" />.</p>
+<p><strong>Risks</strong>.
+We need to visualize the <ref name="risk_management#risk" />s (such as fall or fire risks)
+related to the <ref name="task" />s.</p>
+<p>The user should be able to follow through to examine the risk in more detail in the
+specific application through a <ref name="unique_resource_identification#identifier" />.  </p>
+<p><strong>Task to topic</strong>.
+The user should be provided the interface to translate a <ref name="task_shadow" /> to a
+<ref name="topic_management#topic" />.
+Since the <ref name="task_shadow" />s are read-only, the additional information (such as
+references to BIMprove-specific entities) about the <ref name="task" /> can only be included in
+the <ref name="topic_management#topic" />, but can not be fed back
+to the <ref name="last_planner_system" />.</p>
+<p>There are also more structured options available in the system.
+For example, a delivery task can be automatically converted to
+<ref name="truck_guidance#delivery" /> as a <ref name="topic_management#topic" />
+(see <scenarioref name="truck_guidance" />).</p>
+<p><strong>Closing of <ref name="task" />s</strong>.
+Since we do not control the <ref name="last_planner_task" />s (we only import them),
+we can not close the <ref name="task" />s automatically. </p>
+<p>The user or the system should be able to convert a <ref name="last_planner_task" /> into a
+<ref name="topic_management#topic" /> and keep track of its status using<br />
+<ref name="topic_management#comment" />s.</p>
+<p>In many cases, if the system is tracking the status and not the user, we use structured
+<ref name="topic_management#comment" />s.
+For example, the task corresponding to a <ref name="truck_guidance#delivery" /> is converted to a
+<ref name="topic_management#topic" />.
+So when the delivery is terminated, we can close the <ref name="topic_management#topic" />
+(which we control), but we can only notify the <ref name="scheduler" />.
+The <ref name="scheduler" /> needs to close the corresponding <ref name="last_planner_task" />
+in the <ref name="last_planner_system" /> manually.</p>
+<p>We emphasize here that there is only a
+<a href="https://en.wikipedia.org/wiki/Unidirectional_Data_Flow_(computer_science)">unidirectional data flow</a>: </p>
+<ol>
+<li><ref name="last_planner_task" /> to</li>
+<li><ref name="task_shadow" /> (<em>via</em> synchronization) to</li>
+<li><ref name="truck_guidance#delivery" /> (<em>via</em> conversion) to</li>
+<li>delivery closed (<em>via</em> <ref name="truck_guidance#delivery_update" />) to</li>
+<li><ref name="last_planner_task" /> closed (manually <em>via</em> <ref name="last_planner_system" />) to</li>
+<li><ref name="task_shadow" /> closed (<em>via</em> synchronization).</li>
+</ol>
+<p>Perhaps we can have special <ref name="topic_management#topic" />s which we can directly link to
+closing of the tasks and feed-back the closing to the last planner system, but this remains to be
+seen at the implementation.</p>
+<p><em>The remaining aspect sections intentionally left empty.</em></p>
+<h2>Test Cases</h2>
+<test name="manual_import">
+<p>The system can import a sample file as exported by a <ref name="last_planner_system" />.</p>
+</test>
+<test name="live_import">
+<p>We create a dummy account on the <ref name="last_planner_system" />.</p>
+<p>We script the <ref name="last_planner_system" /> actions
+(<em>e.g.</em> using <a href="https://www.selenium.dev/">Selenium</a>) to create a couple of tasks.</p>
+<p>The system should import them as <ref name="task_shadow" />s.</p>
+<p>We script the deletion and addition of a couple of more tasks.</p>
+<p>The <ref name="last_planner_task" />s should be shadowed appropriately.</p>
+</test>
+<test name="magnitude">
+<p>Similar to <testref name="live_import" />, we create a dummy account on the
+<ref name="last_planner_system" />.</p>
+<p>We script the <ref name="last_planner_system" /> to create the <ref name="last_planner_task" />s of
+the magnitude in <acceptanceref name="magnitude" />.</p>
+</test>
+<h2>Acceptance Criteria</h2>
+<acceptance name="magnitude">
+<p>We need to handle thousands of <ref name="last_planner_task" />s and thousands of
+<ref name="actor_management#actor" />s. </p>
+</acceptance>
+</div>
+</body>
+</html>

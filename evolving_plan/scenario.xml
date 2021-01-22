@@ -1,0 +1,138 @@
+<html>
+<body>
+<div id='index'></div>
+<div id='main'><h2>Summary</h2>
+<p>This scenario examines how the BIM plans evolve over time.</p>
+<p>This scenario does not talk about the updates based on the observed data (such as images, point
+clouds and voxel clouds).</p>
+<p>It is about the updates of the federated BIM model.</p>
+<h2>Models</h2>
+<model name="bim3d">
+<p><phase name="planning">This BIM model is provided after the planning phase</phase> and
+<phase name="construction">updated throughout the construction</phase>.</p>
+<p>The plan is updated as the building grows.</p>
+<p>This is the federated model of all the individual domain models.</p>
+<p>We assume that the model <em>excludes</em> the time, schedule, the tasks, the costs, the actors <em>etc.</em></p>
+<p>It only <em>includes</em> the geometry (3D).</p>
+</model>
+<model name="bim_extended">
+<p>This model extends <modelref name="bim3d" /> by including additional entities which
+were not provided in the official plan.</p>
+<p>These entities include:</p>
+<ul>
+<li>additional zones (<em>e.g.</em>, for deliveries),</li>
+<li>actors,</li>
+<li>tasks,</li>
+<li>costs,</li>
+<li>... and more.</li>
+</ul>
+<p>These additional entities are linked to the entities in <modelref name="bim3d" />.</p>
+</model>
+<h2>Definitions</h2>
+<def name="guid">
+<p>A guid is a <strong>g</strong>lobally <strong>u</strong>nique <strong>id</strong>entifier.</p>
+<p>It is <a href="https://technical.buildingsmart.org/resources/ifcimplementationguidance/ifc-guid/">specified by building smart</a>.</p>
+</def>
+<def name="revision">
+<p><phase name="construction">The revision is an official version of
+a <modelref name="bim3d" /> at different stages of construction.</phase></p>
+<p>It happens maybe once a week per an important model.</p>
+<p>These changes are <em>official</em> and they have to be signed-off (by a civil engineer, construction
+engineer <em>etc.</em>) and are <em>legally binding</em>.</p>
+</def>
+<def name="extension_update">
+<p>The entities of the <modelref name="bim_extended" /> are changed internally by our system.</p>
+<p>The updates are not officially binding and can happen arbitrary often (<em>e.g.</em>, multiple times a
+day).</p>
+</def>
+<def name="inconsistency">
+<p>An inconsistency is a dangling link between  </p>
+</def>
+<def name="non_ifc_entity">
+<p>Non-IFC entity is an entity of our system that can not be modeled as an IFC class.</p>
+<p>The non-IFC entities are shadowed in <modelref name="bim_extended" /> by <code>IfcExternalReference</code>.</p>
+<p>Though <code>IfcExternalReference</code> is usually used for documents, we use it here in the sense of
+<a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REpresentational State Transfer (REST)</a>
+where everything is considered a &quot;resource&quot;.</p>
+</def>
+<def name="explorer">
+<p>The explorer allows us to view instances in <modelref name="bim3d" /> and
+<modelref name="bim_extended" /> in a browser.</p>
+<p>This is a very low-level tool (not for visualizing 3D geometry!) and
+should not allow any modifications to the models as these are gate-kept
+by the system (and could break it).</p>
+</def>
+<def name="site_coordinate_system">
+<p>This is the coordinate system of the building site.</p>
+<p>All the elements from <modelref name="bim3d" /> live in this coordinate system.</p>
+<p>The unit is always a <a href="https://en.wikipedia.org/wiki/Metre">meter</a>.</p>
+</def>
+<h2>Scenario</h2>
+<h3>As-planned</h3>
+<p><strong>Plans.</strong></p>
+<level name="site">
+<p>The planning of a construction site consist of two models:</p>
+<ul>
+<li>an official plan <modelref name="bim3d" /> (only 3D geometry, officially signed off), and</li>
+<li>an internal, extended plan <modelref name="bim_extended" />
+(changed more frequently, covering abstract entities such as tasks, actors, costs,
+more dynamic zones <em>etc.</em>, not officially signed off).</li>
+</ul>
+</level>
+<p>The official <modelref name="bim3d" /> is updated through <ref name="revision" />s.
+As these revisions are costly and official, they are not frequently done.</p>
+<p>The <ref name="extension_update" /> of the internal <modelref name="bim_extended" />
+occurs much more frequently than the official <ref name="revision" />s.
+For example, when a new <ref name="truck_guidance#delivery" /> is inserted into the system.</p>
+<p><strong>Inconsistencies.</strong>
+On every <ref name="revision" />, there might be inconsistency introduced between
+<modelref name="bim_extended" /> and <modelref name="bim3d" />.</p>
+<p><phase name="planning">For example, during planning, we might refer to entities which have not
+been designed yet</phase>.</p>
+<p><phase name="construction">An another example. An entity of <modelref name="bim3d" /> is
+deleted in a <ref name="revision" /> because it should not be eventually built, but it is
+referred to by a task entity in <modelref name="bim_extended" />.</phase> </p>
+<p>We consciously expect these two models to be actually inconsistent. </p>
+<p>The system should provide an application to highlight the inconsistencies.</p>
+<p><strong>Globally unique identification</strong>.
+We expect entities in <modelref name="bim3d" /> and <modelref name="bim_extended" /> to have
+<ref name="guid" />s globally unique with the respect to their union.
+A <ref name="guid" /> in <modelref name="bim_extended" /> should not conflict with a
+<ref name="guid" /> in <modelref name="bim3d" />, but mean the same entity.</p>
+<p>For example, you should not give the same <ref name="guid" /> to a wall and to an organization. </p>
+<p><strong>Non-IFC entities</strong>.
+Our system supports many non-IFC entities (such as <ref name="risk_management#risk" /> and
+<ref name="truck_guidance#delivery_update" />).</p>
+<p>In order to make these entities referencable by IFC entities, every <ref name="non_ifc_entity" />
+needs to be shadowed in <modelref name="bim_extended" /> as an <code>IfcExternalReference</code>.</p>
+<p><strong>Visualization of entities</strong>.
+The system should provide a viewer of the entities.</p>
+<p>This viewer is not meant for visualization of 3D geometry, but for exploration of existing entities
+and their links to non-IFC entities. This viewer is more like a database viewer
+(kind of a &quot;PhpMyAdmin&quot; for BIM).</p>
+<p>We might use a tool such as https://ifcwebserver.org/
+(Section &quot;Innovative Graph database data management&quot;). In case we want to support the links to
+<ref name="non_ifc_entity" />s, we might need to implement an explorer on our own (<em>e.g.</em>, using
+a simple viewer in a browser based on <ref name="unique_resource_identification#identifier" />s). </p>
+<p><strong>Overview diagram</strong>.
+<img src="diagram.svg" /></p>
+<h3>As-observed</h3>
+<p>We adapt <modelref name="bim3d" /> to
+<modelref name="digital_reconstruction#as-built" /> in parallel to have a semantically
+interpretable representation of the physical world.</p>
+<p>However, <modelref name="digital_reconstruction#as-built" /> is not considered a &quot;plan&quot;,
+but an &quot;observation&quot;.</p>
+<p><em>The remaining aspect sections intentionally left empty.</em></p>
+<h2>Test Cases</h2>
+<test name="inconsistent_model">
+<p>We test the system with manually designed <modelref name="bim3d" /> and
+<modelref name="bim_extended" /> with inconsistencies introduced on purpose.</p>
+</test>
+<h2>Acceptance Criteria</h2>
+<acceptance name="inconsistencies_dealt_with_gracefully">
+<p>The system needs to deal with the <ref name="inconsistency" />s in a graceful manner.
+For example, dangling references should be checked and should not raise an exception or break
+down the system.</p>
+</acceptance></div>
+</body>
+</html>

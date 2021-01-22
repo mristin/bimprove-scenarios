@@ -1,0 +1,182 @@
+<html>
+<body>
+<div id='index'></div>
+<div id='main'><h2>Summary</h2>
+<p>This scenario is about providing a communication platform for BIMprove system.</p>
+<h2>Models</h2>
+<model name="topics">
+<p>This model lists all the available <ref name="topic" />s, <ref name="topic_board" />s and
+<ref name="comment" />s.</p>
+</model>
+<model name="notification_protocols">
+<p>This model comprises all the defined and pre-defined <ref name="notification_protocol" />s.</p>
+</model>
+<h2>Definitions</h2>
+<def name="topic">
+<p>A topic is an issue, a problem or a communication thread.</p>
+<p>It consists of a subject, a description and the <ref name="comment" />s.</p>
+<p>A topic is associated with:</p>
+<ul>
+<li>exactly one <ref name="requester" />, </li>
+<li>zero or one <ref name="assignee" />,</li>
+<li>the creation time stamp, </li>
+<li>the dead line (as a time stamp), </li>
+<li><ref name="stage" /> and</li>
+<li>zero, one or more <ref name="label" />s. </li>
+</ul>
+<p>A topic is accompanied with <ref name="comment" />s.</p>
+</def>
+<def name="topic_board">
+<p>A topic board (called &quot;project&quot; in <ref name="BCF" />) is a collection of <ref name="topic" />s.</p>
+<p>A topic board can have different access rights as well as different semantics.</p>
+<p>For example, there is a special topic board for <ref name="truck_guidance#delivery" />s.</p>
+</def>
+<def name="requester">
+<p>The <ref name="actor_management#actor" /> who created/requested a <ref name="topic" /> to be
+focused on.</p>
+</def>
+<def name="assignee">
+<p>The <ref name="actor_management#actor" /> who is responsible for a <ref name="topic" />.</p>
+</def>
+<def name="stage">
+<p>The stage is a phase or a milestone of a <ref name="topic" />.</p>
+<p>This is usually a stage in the building life cycle.</p>
+<p>For example, &quot;planning&quot;, &quot;construction&quot; or more fine-grained like a phase in the
+<ref name="scheduling#phase_plan" />. </p>
+</def>
+<def name="label">
+<p>A label is a free-form category of a <ref name="topic" />.</p>
+</def>
+<def name="comment">
+<p>A comment introduces additional information about a topic.</p>
+<p>A <ref name="viewquery" /> can be optionally attached to a comment.</p>
+<p>Comments are usually free-form.</p>
+<p>There are also specially structured comments.
+For example, we use comments to represent the status change of a
+<ref name="truck_guidance#delivery" />.</p>
+</def>
+<def name="viewquery">
+<p>A viewquery is an encoding of the camera position, the view angle and the query from
+<scenarioref name="virtual_inspection" />.</p>
+<p>Note that the viewquery as we refer to here is <em>not</em> the <ref name="BCF_viewpoint" /> as
+usually exported in a <ref name="BCF" />.
+The <ref name="BCF_viewpoint" /> is much sparser than <ref name="viewquery" />.</p>
+</def>
+<def name="BCF_viewpoint">
+<p>This is the viewpoint as exported in a <ref name="BCF" />.</p>
+<p>This includes:</p>
+<ul>
+<li>camera position,</li>
+<li>selected objects (from <modelref name="evolving_plan#bim3d" />), and</li>
+<li>visible objects (from <modelref name="evolving_plan#bim3d" />).</li>
+</ul>
+</def>
+<def name="BCF">
+<p>The BCF is a format for structuring <ref name="topic" />s as defined by building Smart:
+https://www.buildingsmart.org/standards/bsi-standards/bim-collaboration-format-bcf/</p>
+</def>
+<def name="notifiee">
+<p>The notifiee is an <ref name="actor_management#actor" /> that is notified when there are new
+<ref name="comment" />s on a <ref name="topic" />.</p>
+</def>
+<def name="notification_protocol">
+<p>The notification protocol specifies the <ref name="notifiee" /> as well as the channels used
+for the notification.</p>
+<p>For example, notify person <code>A</code> over <code>e-mail</code> with severity <code>high</code>.
+The protocol can also include an optional trigger (<code>if late</code> <em>etc.</em>).</p>
+<p>The notification protocol is associated with a single delivery.</p>
+<p>This is a non-IFC entity and lives in <modelref name="notification_protocols" />.</p>
+</def>
+<h2>Scenario</h2>
+<p>We use <scenarioref name="virtual_inspection" />, <scenarioref name="scheduling" />,
+<scenarioref name="truck_guidance" />,
+<scenarioref name="risk_management" /> and other scenarios
+as &quot;explorers&quot; (or &quot;browsers&quot;).</p>
+<p>These &quot;explorers&quot; give us links to the instances and entities as
+<ref name="unique_resource_identification#identifier" />s.</p>
+<p><strong>References</strong>.
+We link the <ref name="unique_resource_identification#identifier" />s through <ref name="topic" />s
+to structure the communication.
+This includes both the elements from <modelref name="evolving_plan#bim3d" /> and
+<modelref name="evolving_plan#bim_extended" /> as well as our BIMprove-specific entities such as
+<ref name="risk_management#risk" />.</p>
+<p>For example, if there is a problem with a <ref name="uxv_recording#UXV" />, we can reference
+it with a  <ref name="unique_resource_identification#identifier" /> in the <ref name="topic" />'s
+subject, description of a <ref name="comment" />.</p>
+<p><strong>Management</strong>.
+BIMprove system provides an application for creating and managing the <ref name="topic" />s and
+adding the <ref name="comment" />s.</p>
+<p>If a comment is attached a <ref name="viewquery" />, the user should be able to follow it through
+to <scenarioref name="virtual_inspection" />.</p>
+<p>The topic management does not provide the modification of a <ref name="viewquery" />.
+If you need to modify a <ref name="viewquery" />, you have to use
+<scenarioref name="virtual_inspection" />.
+For example, you can use an existing <ref name="viewquery" /> as the starting point.</p>
+<p>The <ref name="topic" /> is assigned access rights based on individual
+<ref name="actor_management#actor" />s and/or <ref name="actor_management#role" />s.</p>
+<p>The <ref name="topic" /> is also optionally assigned a <ref name="notification_protocol" />. </p>
+<p>The management of <modelref name="notification_protocols" /> is part of a separate application and
+the <ref name="notification_protocol" />s can be referenced through
+<ref name="unique_resource_identification#identifier" />.</p>
+<p><strong>Topic from a task</strong>.
+The user can create a <ref name="topic" /> from an arbitrary <ref name="scheduling#task_shadow" />
+using <scenarioref name="scheduling" />.</p>
+<p>There is also a more structured task-to-topic translation for specific tasks such as
+<ref name="truck_guidance#delivery" />s.</p>
+<p><strong>Export to <ref name="BCF" /></strong>.
+The <ref name="topic" />s are exportable to <ref name="BCF" />.</p>
+<p>The export can be either to:</p>
+<ul>
+<li>a BCF file, or</li>
+<li>directly to a <a href="https://github.com/buildingSMART/BCF-API">BCF API</a>.</li>
+</ul>
+<p>Special care has to be taken to convert <ref name="viewquery" />s to <ref name="BCF_viewpoint" />s.
+For example, the query itself can be left as a string in the comment though it can not be
+included as-is in the <ref name="BCF_viewpoint" />.
+Additionally, the elements selected by the <ref name="viewquery" /> need to be converted to an
+explicit list in the <ref name="BCF_viewpoint" />.</p>
+<p><strong>Ingress of <ref name="comment" />s</strong>.
+If time permits, a nice-to-have: when a <ref name="notifiee" /> is notified,
+the <ref name="notifiee" /> can respond to a notification and the reply should be imported
+directly as a <ref name="comment" />.</p>
+<p>This is easy for e-mails (<em>e.g.</em> by including special fields in the e-mail header referencing the
+<ref name="topic" />), and a bit more involving for SMS and other channels.</p>
+<p><strong>An example workflow with a <ref name="viewquery" /></strong>.
+An example workflow for creating a <ref name="topic" /> involves:</p>
+<ol>
+<li>
+<p>Create the <ref name="topic" />, write the subject and the description.</p>
+<p>The subject and the description can include arbitrary references as
+<ref name="unique_resource_identification#identifier" />s.</p>
+</li>
+<li>
+<p>Go to <scenarioref name="virtual_inspection" /> and select the relevant elements.</p>
+<p>Use <scenarioref name="virtual_inspection" /> to create a <ref name="viewquery" /> and
+attach it automatically to the <ref name="topic" />.</p>
+</li>
+</ol>
+<p><em>The aspect sections intentionally left empty.</em></p>
+<h2>Test Cases</h2>
+<test name="property-based_test">
+<p>We automatically generate <ref name="topic" />s and assign them to
+<ref name="actor_management#actor" />s randomly.</p>
+<p>We also randomly generate <ref name="comment" />s.
+Some of the generated <ref name="comment" />s have <ref name="viewquery" />s attached.</p>
+<p>The generated data should be of expected <acceptanceref name="magnitude" />. </p>
+<p>The generated data is frozen prior to ingress (<em>e.g.</em>, before the API calls), so that we can
+reproduce the test.</p>
+<p>We test that we can:</p>
+<ul>
+<li>list the <ref name="scheduling#task" />s,</li>
+<li>list the <ref name="comment" />s,</li>
+<li>view the <ref name="viewquery" />s <em>etc.</em></li>
+</ul>
+</test>
+<h2>Acceptance Criteria</h2>
+<acceptance name="magnitude">
+<p>We need to handle thousands of <ref name="topic" />s and hundreds of
+<ref name="comment" />s per <ref name="topic" />. </p>
+</acceptance>
+</div>
+</body>
+</html>

@@ -1,23 +1,35 @@
 <html>
 <body>
 <div id='index'></div>
-<div id='main'><h2>TODO</h2>
-<p>Used by *_alert scenarios to display the safety status to the wearer of the device.</p>
-<p>Summarize what all the *_alert scenarios need.</p>
-<p>What do we do if there is no connection to the server?</p>
-<p>No data should be transmitted back to the server. </p>
-<h2>Summary</h2>
+<div id='main'><h2>Summary</h2>
+<p>This scenario covers the display of the <ref name="risk_status" /> based on various
+<ref name="risk_management#risk" />s (such as fall risks, fire risks <em>etc.</em>). </p>
 <h2>Models</h2>
+<p><em>Intentionally left empty.</em></p>
 <h2>Definitions</h2>
+<def name="alertee">
+<p>A person who needs to be alerted on his/her current risk level through the
+<ref name="smart_device" />.</p>
+<p>Modeled as an <ref name="actor_management#actor" />.</p>
+</def>
+<def name="smart_device">
+<p><level name="device">A device such as a smart watch or a smartphone informing the
+<ref name="alertee" /> about the risk status.</level></p>
+</def>
+<def name="risk_status">
+<p>The risk status represents the various <ref name="risk_management#risk" />s in conjunction with
+the location of the <ref name="alertee" />.</p>
+</def>
 <h2>Scenario</h2>
-<h3>As-planned</h3>
-<h3>As-observed</h3>
-<h3>Divergence</h3>
-<h3>Analytics</h3>
-<h3>Scheduling</h3>
+<p>This is an experimental scenario.</p>
+<p>The ideas presented here <em>should not</em> be used in safety-critical situations.</p>
 <h3>Safety</h3>
-<h2>Test Cases</h2>
-<h2>Acceptance Criteria</h2>
+<p>The program running on the <ref name="smart_device" /> keeps track of the <ref name="alertee" />'s
+location and queries whether the location is contained in one or more currently valid
+<ref name="risk_management#risk_zone" />s.</p>
+<p>Depending on the results of the query, the <ref name="risk_status" /> is updated and displayed to
+the user.</p>
+<p><em>The remaining sections intentionally left empty.</em></p>
 </div>
 </body>
 </html>

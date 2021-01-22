@@ -1,0 +1,311 @@
+<html>
+<head><meta charset="utf-8" /><script src="https://livejs.com/live.js"> </script><title>UXV Recording</title><style>body {
+    margin-top: 2em;
+    padding: 0px;
+}
+
+#main {
+    float: left;
+    width: 50em;
+    margin-left: 3%;
+    border: 1px solid black;
+    padding: 2em;
+}
+
+#index {
+    float: left;
+    width: 30%;
+    border: 1px solid black;
+    padding: 1em;
+}
+
+ul.toc {
+    list-style-type: none;
+}
+
+ul.toc li {
+    margin-bottom: 0.5em;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+a:visited {
+    color: blue;
+}
+
+a.section-anchor {
+    text-decoration: none;
+    color: black;
+}
+
+.chain-symbol {
+    display: none;
+    font-size: x-small;
+    margin-left: 0.5em;
+}
+a.section-anchor:hover + .chain-symbol {
+    display: inline-block;
+}
+
+span.phase {
+    background-color: #eefbfb;
+}
+
+span.level {
+    background-color: #eefbee;
+}
+
+pre {
+    background-color: #eeeefb;
+    padding: 1em;
+}
+</style></head><body>
+<div id="index"><a href="../ontology.html">Back to ontology</a><img src="volumetric.png" style="border: 1px solid #EEEEEE; padding: 10px;" /><h2>Table of Contents</h2><ul class="toc"><li style="padding-left: 0.00em"><a href="#section-Summary">Summary</a></li><li style="padding-left: 0.00em"><a href="#section-Models">Models</a></li><li style="padding-left: 2.20em"><a href="#model-UXVs">UXVs</a></li><li style="padding-left: 2.20em"><a href="#model-sensors">sensors</a></li><li style="padding-left: 2.20em"><a href="#model-missions">missions</a></li><li style="padding-left: 0.00em"><a href="#section-Definitions">Definitions</a></li><li style="padding-left: 2.20em"><a href="#def-UXV">UXV</a></li><li style="padding-left: 2.20em"><a href="#def-spatial_accuracy">spatial accuracy</a></li><li style="padding-left: 2.20em"><a href="#def-sensor">sensor</a></li><li style="padding-left: 2.20em"><a href="#def-station">station</a></li><li style="padding-left: 2.20em"><a href="#def-UXV_frame">UXV frame</a></li><li style="padding-left: 2.20em"><a href="#def-reference_point">reference point</a></li><li style="padding-left: 2.20em"><a href="#def-marker">marker</a></li><li style="padding-left: 2.20em"><a href="#def-localization">localization</a></li><li style="padding-left: 2.20em"><a href="#def-coordinate_conversion">coordinate conversion</a></li><li style="padding-left: 2.20em"><a href="#def-operator">operator</a></li><li style="padding-left: 2.20em"><a href="#def-point_of_interest">point of interest</a></li><li style="padding-left: 2.20em"><a href="#def-object_of_interest">object of interest</a></li><li style="padding-left: 2.20em"><a href="#def-volume_of_interest">volume of interest</a></li><li style="padding-left: 2.20em"><a href="#def-mission">mission</a></li><li style="padding-left: 2.20em"><a href="#def-live_streaming">live streaming</a></li><li style="padding-left: 2.20em"><a href="#def-navigation_map">navigation map</a></li><li style="padding-left: 2.20em"><a href="#def-focus_spot">focus spot</a></li><li style="padding-left: 0.00em"><a href="#section-Scenario">Scenario</a></li><li style="padding-left: 2.20em"><a href="#section-As-observed">As-observed</a></li><li style="padding-left: 2.20em"><a href="#section-Safety">Safety</a></li><li style="padding-left: 2.20em"><a href="#section-Test_cases">Test cases</a></li><li style="padding-left: 2.20em"><a href="#section-Acceptance_criteria">Acceptance criteria</a></li><li style="padding-left: 2.20em"><a href="#acceptance-accuracy">accuracy</a></li></ul><h2>Level Index</h2><ul><li><a href="#level-anchor-b2accd58-4bf0-4ffa-a695-740f397b0bad">machine</a></li><li><a href="#level-anchor-c0339300-c238-418e-b4d7-35c0d735f8a0">device</a></li><li><a href="#level-anchor-ce5c9643-ea78-45b3-a8bf-914138eccfab">machine</a></li><li><a href="#level-anchor-f117a469-76be-437d-883b-15d4fb6910d8">site</a></li><li><a href="#level-anchor-5a6ed529-656d-46fd-80e5-12902d3fd92d">site</a></li><li><a href="#level-anchor-eddad3ce-34aa-4452-aa33-708d66272111">machine</a></li><li><a href="#level-anchor-72ef55bd-ba2f-4113-b919-47cd72d18108">machine</a></li><li><a href="#level-anchor-d6427a55-c025-4bf1-abf6-0820273abad9">site</a></li><li><a href="#level-anchor-0c1bb94f-5d98-4cf9-a5f2-1a973973ea51">machine</a></li><li><a href="#level-anchor-4c7c004f-c4b2-4b4e-90e1-43204fc2417a">machine</a></li><li><a href="#level-anchor-fd4e4235-4ce3-47ab-923c-d724c33b0a2c">site</a></li><li><a href="#level-anchor-ab045347-030d-45d9-9a64-f64815c2344a">machine</a></li></ul></div>
+<div id="main"><h1>UXV Recording</h1><h2>Relations to Other Scenarios</h2><ul><li><a href="../risk_management/scenario.html">Risk Management</a><span> focus spots UXV Recording</span></li><li><a href="../topic_management/scenario.html">Topic Management</a><span> focus spots UXV Recording</span></li></ul><h2>Relations from Other Scenarios</h2><ul><li><span>UXV Recording observations </span><a href="../digital_reconstruction/scenario.html">Digital Reconstruction</a></li></ul>
+<h2 data-anchor="section-Summary"><a name="section-Summary" /><a class="section-anchor" href="#section-Summary">Summary</a><span class="chain-symbol">🔗</span></h2>
+<p>This scenario concerns the recording of the construction site by the <a href="#def-UXV" class="ref">UXVS</a>.</p>
+<h2 data-anchor="section-Models"><a name="section-Models" /><a class="section-anchor" href="#section-Models">Models</a><span class="chain-symbol">🔗</span></h2>
+<div class="model">
+<h3 data-anchor="model-UXVs"><a name="model-UXVs" /><a class="section-anchor" href="#model-UXVs">UXVs</a><span class="chain-symbol">🔗</span></h3>
+<p>This model captures the list of available <a href="#def-UXV" class="ref">UXVS</a> including the details such as
+available sensors.</p>
+</div>
+<div class="model">
+<h3 data-anchor="model-sensors"><a name="model-sensors" /><a class="section-anchor" href="#model-sensors">sensors</a><span class="chain-symbol">🔗</span></h3>
+<p>This model lists the <a href="#def-sensor" class="ref">sensors</a> mounted on the <a href="#def-UXV" class="ref">UXVS</a>.</p>
+</div>
+<div class="model">
+<h3 data-anchor="model-missions"><a name="model-missions" /><a class="section-anchor" href="#model-missions">missions</a><span class="chain-symbol">🔗</span></h3>
+<p>This is a model storing all the defined <a href="#def-mission" class="ref">missions</a> over all the <a href="#def-UXV" class="ref">UXVS</a>.</p>
+</div>
+<h2 data-anchor="section-Definitions"><a name="section-Definitions" /><a class="section-anchor" href="#section-Definitions">Definitions</a><span class="chain-symbol">🔗</span></h2>
+<div class="def">
+<h3 data-anchor="def-UXV"><a name="def-UXV" /><a class="section-anchor" href="#def-UXV">UXV</a><span class="chain-symbol">🔗</span></h3>
+<p><span class="level" data-text="machine">This is an unmanned vehicle (both aerial, UAV, and ground, UGV) recording
+the environment.<a id="level-anchor-b2accd58-4bf0-4ffa-a695-740f397b0bad" /><sup>machine</sup></span>  </p>
+</div>
+<div class="def">
+<h3 data-anchor="def-spatial_accuracy"><a name="def-spatial_accuracy" /><a class="section-anchor" href="#def-spatial_accuracy">spatial accuracy</a><span class="chain-symbol">🔗</span></h3>
+<p>The spatial accuracy indicates the error between the measurement and the physical world in terms
+of space.</p>
+<p>It is defined as a scalar and associated with a unit.</p>
+<p>For example, "3mm".</p>
+<p>(We have to see during the implementation whether the accuracy refers to one sigma, two sigma
+<em>etc</em>.)</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-sensor"><a name="def-sensor" /><a class="section-anchor" href="#def-sensor">sensor</a><span class="chain-symbol">🔗</span></h3>
+<p><span class="level" data-text="device">A sensor is a device mounted on a <a id="level-anchor-c0339300-c238-418e-b4d7-35c0d735f8a0" /><a href="#def-UXV" class="ref">UXV</a> used to record the
+environment.<sup>device</sup></span></p>
+<p>Each sensor has a unique identifier.</p>
+<p>The <a href="#def-spatial_accuracy" class="ref">spatial accuracy</a> of the sensor is also defined.</p>
+<p>The sensor specs live in <a href="#model-sensors" class="modelref">sensors</a>. </p>
+</div>
+<div class="def">
+<h3 data-anchor="def-station"><a name="def-station" /><a class="section-anchor" href="#def-station">station</a><span class="chain-symbol">🔗</span></h3>
+<p><span class="level" data-text="machine">A station is a separate computational unit that receives the data from the
+<a id="level-anchor-ce5c9643-ea78-45b3-a8bf-914138eccfab" /><a href="#def-UXV" class="ref">UXV</a><sup>machine</sup></span>.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-UXV_frame"><a name="def-UXV_frame" /><a class="section-anchor" href="#def-UXV_frame">UXV frame</a><span class="chain-symbol">🔗</span></h3>
+<p><span class="level" data-text="site">The UXV frame is the coordinate system of the <a id="level-anchor-f117a469-76be-437d-883b-15d4fb6910d8" /><a href="#def-UXV" class="ref">UXV</a>.<sup>site</sup></span></p>
+</div>
+<div class="def">
+<h3 data-anchor="def-reference_point"><a name="def-reference_point" /><a class="section-anchor" href="#def-reference_point">reference point</a><span class="chain-symbol">🔗</span></h3>
+<p>A reference point is a point for which we know with certainty the position in
+<a href="../evolving_plan/scenario.html#def-site_coordinate_system" class="ref">site coordinate system (from evolving_plan)</a> and in the <a href="#def-UXV_frame" class="ref">UXV frame</a>.</p>
+<p><span class="level" data-text="site">It is important that the reference point is measured with the highest precision
+possible as the remainder of the system will rely on it.<a id="level-anchor-5a6ed529-656d-46fd-80e5-12902d3fd92d" /><sup>site</sup></span></p>
+</div>
+<div class="def">
+<h3 data-anchor="def-marker"><a name="def-marker" /><a class="section-anchor" href="#def-marker">marker</a><span class="chain-symbol">🔗</span></h3>
+<p>Markers are specific objects (<em>e.g.</em>, a printed picture glued to a wall or a floor) representing
+a specific <a href="#def-reference_point" class="ref">reference point</a>.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-localization"><a name="def-localization" /><a class="section-anchor" href="#def-localization">localization</a><span class="chain-symbol">🔗</span></h3>
+<p><span class="level" data-text="machine">This is the process of determining the position of the <a id="level-anchor-eddad3ce-34aa-4452-aa33-708d66272111" /><a href="#def-UXV" class="ref">UXV</a>
+in terms of <a href="#def-UXV_frame" class="ref">UXV frame</a>.<sup>machine</sup></span></p>
+<p>Note that the <a href="#def-UXV_frame" class="ref">UXV frame</a> is defined at the beginning of the
+<a href="../digital_reconstruction/scenario.html#def-recording" class="ref">recording (from digital_reconstruction)</a>.
+This is not necessarily the <a href="../evolving_plan/scenario.html#def-site_coordinate_system" class="ref">site coordinate system (from evolving_plan)</a>,
+but the observed points need to be consistent to <a href="#def-UXV_frame" class="ref">UXV frame</a>. </p>
+</div>
+<div class="def">
+<h3 data-anchor="def-coordinate_conversion"><a name="def-coordinate_conversion" /><a class="section-anchor" href="#def-coordinate_conversion">coordinate conversion</a><span class="chain-symbol">🔗</span></h3>
+<p>This is the conversion of <a href="../digital_reconstruction/scenario.html#def-point" class="ref">points (from digital_reconstruction)</a> and
+<a href="../digital_reconstruction/scenario.html#def-image" class="ref">images (from digital_reconstruction)</a> by mapping from <a href="#def-UXV_frame" class="ref">UXV frame</a> to the
+<a href="../evolving_plan/scenario.html#def-site_coordinate_system" class="ref">site coordinate system (from evolving_plan)</a> based on observations of
+the <a href="#def-reference_point" class="ref">reference points</a>.</p>
+<p>For example, the <a href="#def-UXV" class="ref">UXV</a> needs to observe <a href="#def-reference_point" class="ref">reference points</a> and
+infer the mapping between the same <a href="#def-reference_point" class="ref">reference point</a> in <a href="#def-UXV_frame" class="ref">UXV frame</a> and
+<a href="../evolving_plan/scenario.html#def-site_coordinate_system" class="ref">site coordinate system (from evolving_plan)</a>.</p>
+<p>Note that this conversion is not referring to geo-coordinates (<em>e.g.</em>, global world coordinates),
+but the conversion between <a href="#def-UXV_frame" class="ref">UXV frame</a> and
+<a href="../evolving_plan/scenario.html#def-site_coordinate_system" class="ref">site coordinate system (from evolving_plan)</a>.
+This confusion often comes up in the discussion with the construction engineers.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-operator"><a name="def-operator" /><a class="section-anchor" href="#def-operator">operator</a><span class="chain-symbol">🔗</span></h3>
+<p>This is a person operating the <a href="#def-UXV" class="ref">UXV</a> for the safety reasons.</p>
+<p>If something goes wrong, the operator is supposed to take over.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-point_of_interest"><a name="def-point_of_interest" /><a class="section-anchor" href="#def-point_of_interest">point of interest</a><span class="chain-symbol">🔗</span></h3>
+<p>The point of interest is a point in <a href="../evolving_plan/scenario.html#def-site_coordinate_system" class="ref">site coordinate system (from evolving_plan)</a>
+that needs to be particularly recorded.</p>
+<p>The point of interest can include the field of view.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-object_of_interest"><a name="def-object_of_interest" /><a class="section-anchor" href="#def-object_of_interest">object of interest</a><span class="chain-symbol">🔗</span></h3>
+<p>The object of interest that requires a special focus during the
+<a href="../digital_reconstruction/scenario.html#def-recording" class="ref">recording (from digital_reconstruction)</a>.</p>
+<p>The object of interest can include the field of view.
+If the field of view is not defined, the field of view needs to be automatically inferred by the
+<a href="#def-UXV" class="ref">UXV</a>.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-volume_of_interest"><a name="def-volume_of_interest" /><a class="section-anchor" href="#def-volume_of_interest">volume of interest</a><span class="chain-symbol">🔗</span></h3>
+<p>The volume of interest is a cube defined in <a href="../evolving_plan/scenario.html#def-site_coordinate_system" class="ref">site coordinate system (from evolving_plan)</a>
+that we want an <a href="#def-UXV" class="ref">UXV</a> to explore.</p>
+<p>This helps the navigation of the <a href="#def-UXV" class="ref">UXV</a> so that it can plan the trajectory.</p>
+<p>For example, define the important zones such as rooms or floors.</p>
+<p>This is different to <a href="#def-point_of_interest" class="ref">point of interest</a> in way that the robot just records everything
+in the volume of interest without any specific focus.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-mission"><a name="def-mission" /><a class="section-anchor" href="#def-mission">mission</a><span class="chain-symbol">🔗</span></h3>
+<p>A mission is an execution of a <a href="../digital_reconstruction/scenario.html#def-recording" class="ref">recording (from digital_reconstruction)</a> based on a
+specific <a href="#def-UXV" class="ref">UXV</a> and given the list of <a href="#def-volume_of_interest" class="ref">volumes of interest</a>.</p>
+<p>The mission is also given the start time point and an optional end time point.</p>
+<p>The <a href="#def-sensor" class="ref">sensors</a> need to be specified per a <a href="#def-volume_of_interest" class="ref">volume of interest</a>.</p>
+<p>For each <a href="#def-volume_of_interest" class="ref">volume of interest</a>, we specify the length the recording (<em>e.g.</em>, record this
+point for 30 seconds).</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-live_streaming"><a name="def-live_streaming" /><a class="section-anchor" href="#def-live_streaming">live streaming</a><span class="chain-symbol">🔗</span></h3>
+<p>A live streaming is a real-time transmission of the sensor data to the <a href="#def-station" class="ref">station</a>.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-navigation_map"><a name="def-navigation_map" /><a class="section-anchor" href="#def-navigation_map">navigation map</a><span class="chain-symbol">🔗</span></h3>
+<p>The navigation map is a 2D representation of the environment.</p>
+<p>It is recorded by the navigation tools of the <a href="#def-UXV" class="ref">UXV</a> (which are not necessarily
+the same tools used for the recording!).</p>
+<p>The navigation map is taken care of by the robot system (include the <a href="#def-station" class="ref">station</a>),
+not by the BIMprove backend.</p>
+<p>Here is an example of a navigation map visualized as an image:</p>
+<img src="example_of_a_navigation_map.png" />
+</div>
+<div class="def">
+<h3 data-anchor="def-focus_spot"><a name="def-focus_spot" /><a class="section-anchor" href="#def-focus_spot">focus spot</a><span class="chain-symbol">🔗</span></h3>
+<p>A focus spot is a structured <a href="../topic_management/scenario.html#def-topic" class="ref">topic (from topic_management)</a> signaling to the
+<a href="#def-operator" class="ref">operator</a> what relevant spots in the construction sites need to be recorded.</p>
+<p>For example, this can be a particular spot that the <a href="../risk_management/scenario.html#def-risk_manager" class="ref">risk manager (from risk_management)</a>
+needs to have examined.</p>
+<p>The necessary <a href="#def-sensor" class="ref">sensors</a> need to be indicated in the
+<a href="../topic_management/scenario.html#def-comment" class="ref">comments (from topic_management)</a>.
+For example, it can be that we need photo cameras, very precise lasers and/or thermal camera.</p>
+<p>(We have to see in the implementation if the <a href="../topic_management/scenario.html#def-comment" class="ref">comments (from topic_management)</a> should be
+free form or structured.) </p>
+</div>
+<h2 data-anchor="section-Scenario"><a name="section-Scenario" /><a class="section-anchor" href="#section-Scenario">Scenario</a><span class="chain-symbol">🔗</span></h2>
+<h3 data-anchor="section-As-observed"><a name="section-As-observed" /><a class="section-anchor" href="#section-As-observed">As-observed</a><span class="chain-symbol">🔗</span></h3>
+<p><strong>Process</strong>.</p>
+<span class="level" data-text="machine">
+<a id="level-anchor-72ef55bd-ba2f-4113-b919-47cd72d18108" /><ul>
+<li><a href="#def-UXV" class="ref">UXV</a> needs to perform the <a href="#def-localization" class="ref">localization</a>.</li>
+<li>The <a href="#def-mission" class="ref">mission</a> is specified by the <a href="#def-operator" class="ref">operator</a></li>
+<li><a href="#def-UXV" class="ref">UXV</a> drives or flies around and records the data.</li>
+<li>The data is sent to the <a href="#def-station" class="ref">station</a>.</li>
+<li>The <a href="#def-station" class="ref">station</a> post-processes the data (<em>e.g.</em>, reconstructs the images to point
+clouds if necessary, and perform the <a href="#def-coordinate_conversion" class="ref">coordinate conversion</a>).</li>
+<li>The <a href="#def-station" class="ref">station</a> sends the post-processed data to the backend.</li>
+</ul>
+<sup>machine</sup></span>
+<p><strong>Route planning</strong>.
+There is always an <a href="#def-operator" class="ref">operator</a> supervising the
+<a href="../digital_reconstruction/scenario.html#def-recording" class="ref">recording (from digital_reconstruction)</a>.</p>
+<span class="level" data-text="site">
+<a id="level-anchor-d6427a55-c025-4bf1-abf6-0820273abad9" /><p>Users indicate indicate in the system which elements or positions need to be recorded in the
+<a href="../evolving_plan/scenario.html#model-bim3d" class="modelref">bim3d (from evolving_plan)</a> through <a href="#def-focus_spot" class="ref">focus spots</a>.</p>
+<p>For example, a <a href="../digital_reconstruction/scenario.html#def-bimmer" class="ref">bimmer (from digital_reconstruction)</a> can specify parts of the site that
+need special attention or a <a href="../risk_management/scenario.html#def-risk_manager" class="ref">risk manager (from risk_management)</a> can request a recording
+of a specific dangerous spot.</p>
+<p>Mind that these <a href="#def-focus_spot" class="ref">focus spots</a> are a bit more abstract than
+<a href="#def-point_of_interest" class="ref">point of interest</a>.
+We assume that the <a href="#def-operator" class="ref">operator</a> has much better skills to define fine-grained points.
+Hence the general users <em>describe</em> through <a href="#def-focus_spot" class="ref">focus spots</a> what they want to have
+recorded, while the <a href="#def-operator" class="ref">operator</a> plans the <a href="#def-mission" class="ref">mission</a> in more detail
+according to these <a href="#def-focus_spot" class="ref">focus spots</a>. </p>
+<sup>site</sup></span>
+<p><span class="level" data-text="machine">The <a id="level-anchor-0c1bb94f-5d98-4cf9-a5f2-1a973973ea51" /><a href="#def-operator" class="ref">operator</a> selects the available
+<a href="#def-UXV" class="ref">UXV</a> from <a href="#model-UXVs" class="modelref">UXVs</a> and defines a <a href="#def-mission" class="ref">mission</a>.<sup>machine</sup></span></p>
+<p>The mission is defined by specifying:</p>
+<ul>
+<li><a href="#def-point_of_interest" class="ref">points of interest</a>,</li>
+<li><a href="#def-volume_of_interest" class="ref">volumes of interest</a>, </li>
+<li><a href="#def-object_of_interest" class="ref">objects of interest</a>,</li>
+<li>assigning the <a href="#def-sensor" class="ref">sensors</a> to these points,</li>
+<li>time allocation <em>etc.</em></li>
+</ul>
+<span class="level" data-text="machine">
+<a id="level-anchor-4c7c004f-c4b2-4b4e-90e1-43204fc2417a" /><p>The <a href="#def-UXV" class="ref">UXV</a> is supposed to automatically navigate the <a href="#def-mission" class="ref">mission</a> based on
+the <a href="#def-navigation_map" class="ref">navigation map</a>.
+The <a href="#def-navigation_map" class="ref">navigation map</a> does not rely on <a href="../evolving_plan/scenario.html#model-bim3d" class="modelref">bim3d (from evolving_plan)</a>
+as it might not be trustworthy.
+Instead, the <a href="#def-navigation_map" class="ref">navigation map</a> is inferred from the
+<a href="../digital_reconstruction/scenario.html#model-as-built" class="modelref">as-built (from digital_reconstruction)</a>.</p>
+<sup>machine</sup></span>
+<p>(Note that the navigation based on <a href="../digital_reconstruction/scenario.html#model-as-built" class="modelref">as-built (from digital_reconstruction)</a> is still
+experimental.
+If this navigation does not work automatically, the <a href="#def-operator" class="ref">operator</a> is going to drive
+manually the robot in order to obtain the <a href="#def-navigation_map" class="ref">navigation map</a> using the
+<a href="#def-station" class="ref">station</a>.) </p>
+<p>There are two applications: <span class="level" data-text="site">one for specifying the <a id="level-anchor-fd4e4235-4ce3-47ab-923c-d724c33b0a2c" /><a href="#def-mission" class="ref">mission</a>
+(and managing the <a href="#def-UXV" class="ref">UXVS</a>)<sup>site</sup></span> and <span class="level" data-text="machine">another one for operating
+the <a id="level-anchor-ab045347-030d-45d9-9a64-f64815c2344a" /><a href="#def-mission" class="ref">mission</a><sup>machine</sup></span>.</p>
+<p>The missions are defined using the backend, while the operation of the <a href="#def-mission" class="ref">mission</a> is
+performed on the <a href="#def-station" class="ref">station</a>.</p>
+<p>The <a href="#def-station" class="ref">station</a> needs to obtain the data from the backend.</p>
+<p><em>The other aspect sections intentionally left empty.</em></p>
+<h3 data-anchor="section-Safety"><a name="section-Safety" /><a class="section-anchor" href="#section-Safety">Safety</a><span class="chain-symbol">🔗</span></h3>
+<p><strong>Protection <em>from</em> the <a href="#def-UXV" class="ref">UXV</a></strong>.
+If the <a href="#def-mission" class="ref">mission</a> can not be automatically accomplished, the <a href="#def-operator" class="ref">operator</a>
+needs to take over and finish the recording manually.</p>
+<p>For example, the obstacles are automatically detected by the <a href="#def-sensor" class="ref">sensors</a> and
+the <a href="#def-operator" class="ref">operator</a> is notified.
+A common example is that there might be a door closed and the <a href="#def-UXV" class="ref">UXV</a> can not continue.</p>
+<p><strong>Live supervision</strong>.
+In certain construction scenarios, the building operation needs to be supervised live.</p>
+<p>If the bandwidth allows, the <a href="#def-UXV" class="ref">UXV</a> can be manually navigated by the
+<a href="#def-operator" class="ref">operator</a> to the relevant point of view and the streamed data is displayed on the
+<a href="#def-station" class="ref">station</a>.</p>
+<p>Please mind the strong limitations:</p>
+<ul>
+<li>bandwidth limit,</li>
+<li>short battery life (~20 minutes!), and</li>
+<li>safety issues (as <a href="#def-UXV" class="ref">UXV</a> floats around the people).</li>
+</ul>
+<p>Mind that this is a very special nice-to-have use case for <a href="#def-UXV" class="ref">UXV</a> and is not in
+the main focus of the BIMprove project.</p>
+<p><em>The other aspect sections intentionally left empty.</em></p>
+<h3 data-anchor="section-Test_cases"><a name="section-Test_cases" /><a class="section-anchor" href="#section-Test_cases">Test cases</a><span class="chain-symbol">🔗</span></h3>
+<p>We are continuously experimenting with <a href="#def-UXV" class="ref">UXVS</a> in our labs.</p>
+<p>There will be unstructured free-form tests on the construction site.</p>
+<h3 data-anchor="section-Acceptance_criteria"><a name="section-Acceptance_criteria" /><a class="section-anchor" href="#section-Acceptance_criteria">Acceptance criteria</a><span class="chain-symbol">🔗</span></h3>
+<div class="acceptance">
+<h3 data-anchor="acceptance-accuracy"><a name="acceptance-accuracy" /><a class="section-anchor" href="#acceptance-accuracy">accuracy</a><span class="chain-symbol">🔗</span></h3>
+<p>We expect the accuracy errors to be in the range of centimeters.</p>
+<p>In some parts we won't be able to provide this accuracy.
+One issue are the outliers, but there are also systematic sources of errors.</p>
+<p>We still need to figure out the actual accuracy in the field.</p>
+<p>It would good if we could include the uncertainty in the data.
+Unfortunately, the external software does not support it.</p>
+<p>We do not have precise statistics at the moment (2021-01-22).</p>
+</div>
+</div>
+</body>
+</html>

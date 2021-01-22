@@ -1,0 +1,26 @@
+<html>
+<body>
+<div id='index'></div>
+<div id='main'><h2>Summary</h2>
+<p>This scenario covers the case when an <ref name="actor_management#actor" /> manually captures
+an <ref name="digital_reconstruction#image" /> to document the state of the construction site.</p>
+<h3>Definitions</h3>
+<def name="GPS_location">
+<p>This is the 3D location of a world as measured by the
+<a href="https://en.wikipedia.org/wiki/Global_Positioning_System">GPS</a> of the user's device. </p>
+</def>
+<h2>Scenario</h2>
+<h3>As-observed</h3>
+<p>We provide a web page that the user can update the image to.</p>
+<p>We rely on the timestamp and the <ref name="GPS_location" /> embedded in the image.</p>
+<p>We convert the <ref name="GPS_location" /> to <ref name="evolving_plan#site_coordinate_system" />.
+We assume that we pinned down the mapping between the <ref name="GPS_location" />s and
+<ref name="evolving_plan#site_coordinate_system" /> during the configuration of the system.</p>
+<p>The source of the <ref name="digital_reconstruction#image" />s are related to the
+<ref name="actor_management#actor" /> who made the <ref name="digital_reconstruction#image" />s.</p>
+<p>(There is some need for tuning in <scenarioref name="unique_resource_identification" />, but this
+is as good as it gets for a first sketch.)</p>
+<p><em>The remaining sections intentionally left empty.</em></p>
+</div>
+</body>
+</html>

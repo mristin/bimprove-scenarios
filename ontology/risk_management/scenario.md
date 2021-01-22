@@ -55,9 +55,10 @@ As <ref name="risk" /> is a non-IFC entity, it does not live in
 <level name="site">This is an <ref name="actor_management#role" /> that manages certain kinds 
 of <ref name="risk" />s.</level>
 
-For example, this can be a health & safety manager monitoring the fall risks or
-site protection manager monitoring the fire risks, but can also be a 
-construction engineer responsible for curing the concrete *etc.*
+For example, this can be a <ref name="fall_risk#health_and_safety_manager" /> monitoring 
+the <ref name="fall_risk#fall_risk" />s or <ref name="fire_risk#site_protection_manager" /> 
+monitoring the <ref name="fire_risk#fire_risk" />, but can also be a construction engineer 
+responsible for curing the concrete *etc.*
 
 </def>
 

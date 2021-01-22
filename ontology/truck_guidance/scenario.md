@@ -3,12 +3,13 @@
     "title": "Truck guidance",
     "contact": "Dag Fjeld Edvardsen <dag.fjeld.edvardsen@catenda.no>, Marko Ristin <rist@zhaw.ch>",
     "relations": [
+        { "target": "topic_management", "nature": "deliveries" }
     ],
     "volumetric": [
         {
             "aspect_from": "as-planned", "aspect_to": "scheduling",
             "phase_from": "construction", "phase_to": "construction",
-            "level_from": "zone", "level_to": "office"
+            "level_from": "machine", "level_to": "office"
         }
     ]
 }
@@ -20,27 +21,22 @@ This scenario concerns truck drivers arriving at the construction site to delive
 
 ## Models
 
-<model name="plan/main">
+<model name="logs">
 
-The as-planned BIM model provided after the planning phase and
-updated throughout the construction.
+These are the <ref name="topic_management#topic" />s corresponding to the 
+<ref name="delivery" />s.
 
-It is going to be updated as the building grows.
+The <ref name="delivery_update" />s are converted to structured 
+<ref name="topic_management#comment" />s.
 
-This is the federated model of all the individual domain models (core is Site model,
-Structural model and Electrical model).
-
-</model>
-
-<model name="observed/main">
-
-This model contains the real time delivery status.
+The <ref name="topic_management#comment" />s are appended to the 
+<ref name="topic_management#topic" /> corresponding to a <ref name="delivery" />.
 
 </model>
 
-<model name="archived/observations">
+<model name="status_labels">
 
-This keeps track of accomplished <ref name="delivery" />s.
+The list of possible labels for a delivery status.
 
 </model>
 
@@ -48,17 +44,33 @@ This keeps track of accomplished <ref name="delivery" />s.
 
 <def name="planner_role">
 
-Planner role is for all people who are allowed to change a <ref name="delivery"/>.
+Planner <ref name="actor_management#role" /> is for all people who are allowed to change a 
+<ref name="delivery"/>.
+
+</def>
+
+<def name="delivery_location" >
+
+The delivery location is the `IfcZone` where the cargo should be delivered.
 
 </def>
 
 <def name="delivery">
 
-Delivery is an `IfcTask`, which has a text, a `ScheduleStart` and `ScheduleFinish` (both `IfcTaskTime`. It can be associated with
-a location `IfcZone`. The cargo is a text property of the delivery ("10 windows, 2 doors").
+Delivery is a <ref name="topic_management#topic" /> which has a description, a `Deadline` and a 
+ `Priority`. 
 
-The delivery is assigned to a <ref name="driver"/>, a <ref name="entry_point" /> and
+The delivery can be associated optionally with a <ref name="delivery_location" />.
+
+The cargo is described as a text property of the delivery ("10 windows, 2 doors").
+
+The delivery is assigned to a <ref name="driver"/> and associated with an 
+<ref name="entry_point" />, <ref name="delivery_location" />, 
 <ref name="exit_point" /> and a <ref name="contact_person" />.
+
+The <ref name="topic_management#topic" /> follows a pre-defined format.
+
+The deliveries live in a semantically pre-defined <ref name="topic_management#topic_board" />.
 
 </def>
 
@@ -88,56 +100,104 @@ The `IfcZone` where the truck should leave through.
 
 <def name="driver">
 
-The driver is an `IfcActor`.
+The driver is an <ref name="actor_management#actor" /> who executes the <ref name="delivery" />.
 
 </def>
 
-<def name="delivery_status">
+<def name="delivery_update">
 
-Consideration for architecture: we need to introduce a custom class to represent the
-delivery status (label and depending on the label, last_location and last_observed_time).
+A structured <ref name="topic_management#comment" /> representing the update of the delivery status:
+* label (as an enum string, referring to <modelref name="status_labels" />),
+* datetime, and
+* an optional field `location` (as a GPS location).
 
-</def>
+The delivery updates live in <modelref name="logs" />.
 
-<def name="notifiee">
-
-The notifiee is an `IfcActor` that is notified when the delivery status is updated.
+The system should not allow the user to change the corresponding comment in 
+the <ref name="topic_management#topic" />.
 
 </def>
 
 ## Scenario
 
+The labels for a <ref name="delivery_update" /> are pre-defined during the system configuration
+in <modelref name="status_labels" />.
+
 ### As-planned
 
-The <ref name="planner_role"/> creates and updates the <ref name="delivery"/>s.
+The tasks are imported from external <<ref name="scheduling#last_planner_system" /> such as Visilean 
+(see <scenarioref name="scheduling" />).
+
+Since it is too difficult to enrich the task information with the delivery-relevant information
+(such as selecting the <ref name="driver" /> and the <ref name="entry_point" />), we have to provide
+an application that allows the user to add this extra information.
+
+The <ref name="planner_role"/> converts the corresponding task into a <ref name="delivery"/> 
+(a structured <ref name="topic_management#topic" />) and enriches it with the extra information.
+
+The <ref name="planner_role"/> can also update manually the status of the delivery (*e.g.*, to
+cancel it) by adding <ref name="delivery_update" />s (as structured 
+<ref name="topic_management#comment" />).
+
+The updates of the delivery status are kept track in the <modelref name="logs" />.
 
 ### As-observed
 
-The <ref name="driver"/>'s device tracks the gps location, but does not send it to the system.
+<level name="machine">
+
+The <ref name="driver"/>'s device tracks the GPS location, but does not send 
+it to the system.
+
+The location is only used to navigate the driver.
+
+</level>
 
 ### Divergence
 
-The  device will guide the <ref name="driver" /> to the location on the site where the
-<ref name="delivery" /> should take place. The <ref name="driver" /> updates the status of
-the delivery.
+<level name="machine">The  device will guide the <ref name="driver" /> to the 
+<ref name="delivery_location" />.</level> 
 
-The <ref name="notifiee" />s are notified when the status of the delivery is updated.
+<level name="machine">
+
+The <ref name="topic_management#topic" /> body includes a link 
+(authorized for the whole internet) that the <ref name="driver" /> can click on to update 
+the current location of the delivery and another link to signal that 
+the <ref name="delivery" /> arrived.
+
+The <ref name="driver" /> can choose to include his/her current GPS location 
+in the <ref name="delivery_update" /> (*e.g.*, when following the link for the arrival).  
+
+The updates of the delivery status are kept track in the 
+<modelref name="logs" />.
+
+</level>
 
 ### Analytics
 
-The KPI for delivery-in-time is updated, both delivery in number per week and variance. This is based
-on date from <modelref name="archived/observations" />.
+<level name="site">
 
-The <ref name="planner_role" /> decides under which status to archive the delivery (for KPI).
+The KPI for delivery-in-time is updated, both delivery in number per week and variance. 
+
+The KPIs are based on the data from the <modelref name="logs" />.
+
+Since <ref name="delivery" /> is a <ref name="topic_management#topic" />, many messages are 
+structured as <ref name="delivery_update" />. However, unstructured messages are also possible.
+The unstructured messages should be ignored when computing the KPIs. 
+
+The <ref name="planner_role" /> usually sets the last status of the delivery which is then used
+to determine how the <ref name="delivery" /> is counted in the KPIs (*e.g.*, "on time", "delayed" 
+*etc.*).
+
+</level>
 
 ### Scheduling
 
-Notify the <ref name="notifiee" />s if the <ref name="delivery" /> is not ready when the pickup-time
-has passed.
+The notifications regarding the unmet deadlines are handled by the 
+<scenarioref name="topic_management" />.
 
 ### Safety
 
-Intentionally left empty.
+*Intentionally left empty.*
 
 ## Test Cases
 

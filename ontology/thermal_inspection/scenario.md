@@ -3,6 +3,7 @@
     "title": "Thermal Inspection",
     "contact": "Alberto Palomero <Alberto.Palomero@hrs.ch>, Dag Fjeld Edvardsen <dag.fjeld.edvardsen@catenda.no>, Marko Ristin <rist@zhaw.ch>, Ruprecht Altenburger <altb@zhaw.ch>",
     "relations": [
+        { "target": "fire_risk", "nature": "visualization" }
     ],
     "volumetric": [
         {

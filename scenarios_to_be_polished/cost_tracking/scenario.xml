@@ -1,0 +1,30 @@
+<html>
+<body>
+<div id='index'></div>
+<div id='main'><p>In a typical larger project:
+costs are based on a tender, or internal costs</p>
+<p>Work breakdown structure (WBS) takes the whole building project into account and breaks it down
+into small tasks (and associated costs and time).</p>
+<p>There are people who work professionally in this.</p>
+<p>You break down into tasks.
+Then you look how tasks relate to each other.
+You use WBS to track costs.</p>
+<p>How is this different to phase scheduling and last planner system?
+--&gt; Last planner is a way of thinking with tools.</p>
+<p>Work breakdown structure is a methodology. This is <em>how</em> you get to your phase plan.</p>
+<p>Progress/time and cost: this is what you want to track in the building project.</p>
+<h2>Summary</h2>
+<h2>Models</h2>
+<h2>Definitions</h2>
+<h2>Scenario</h2>
+<h3>As-planned</h3>
+<h3>As-observed</h3>
+<h3>Divergence</h3>
+<h3>Analytics</h3>
+<h3>Scheduling</h3>
+<h3>Safety</h3>
+<h2>Test Cases</h2>
+<h2>Acceptance Criteria</h2>
+</div>
+</body>
+</html>

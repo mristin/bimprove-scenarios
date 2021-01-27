@@ -14,15 +14,27 @@
 }
 </rasaeco-meta>
 
+## Decision
+
+--> We do not implement a cost tracking application.
+--> We will ignore the costs at this point (2021-01-27).
+
 ## TODO
 
 Rewrite the scenario to make it more general.
 
 Add contact.
 
-For example, one salient point is the "IFC File" (in the summary), where I would have preferred that the scenario talks about the model "plan/main". Whether this model is stored as a file or not is in my opinion not relevant (it can be exported to a file if needed, but the "fileness" is not essential for this scenario).
+For example, one salient point is the "IFC File" (in the summary), where I would have preferred that 
+the scenario talks about the model "plan/main". 
+Whether this model is stored as a file or not is in my opinion not relevant (it can be exported to a 
+file if needed, but the "fileness" is not essential for this scenario).
 
-I also have some questions about the "observed/main" model. For example, isn't the cost data actually part of the "plan/main"? Or the "plan/main" contains the estimates, while the observed model contains the actual costs? Shouldn't we archive the costs and forget about the "observed/main" as the latest costs can be always derived from "archived/observations"?
+I also have some questions about the "observed/main" model. For example, isn't the cost data 
+actually part of the "plan/main"? 
+Or the "plan/main" contains the estimates, while the observed model contains the actual costs? 
+Shouldn't we archive the costs and 
+forget about the "observed/main" as the latest costs can be always derived from "archived/observations"?
 
 As far as I can tell, it's about a general IfcElement, not a particular IfcColumn?
 

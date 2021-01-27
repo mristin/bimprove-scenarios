@@ -244,9 +244,6 @@ BIMprove development efforts. Some software solutions include:
 * https://www.clearedge3d.com/products/verity/
 * https://www.imerso.com/ 
 
-TODO: add link here to divergence_detection -- this depends how we compute the divergence, 
-manually or based on as-built bim.
-
 <img src="diagram.svg" />
 
 ### Divergence

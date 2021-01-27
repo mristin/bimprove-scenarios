@@ -113,8 +113,7 @@ Mind that this is different from filtering the *elements by filtering their rela
 
 Visualizing the content of a <ref name="topic_management#topic" /> is out-of-scope of the project.
 We deem such a visualization to be confusing. 
-We expect the user to use <scenarioref name="topic_management" /> for general topic management.
-TODO: link to divergence_detection for how to create a topic when as-built and bim3d diverge. 
+We expect the user to use <scenarioref name="topic_management" /> for general topic management. 
 
 **<ref name="topic_management#viewquery" /> creation**.
 To create a <ref name="topic_management#viewquery" />, the user needs to filter in the
@@ -162,9 +161,27 @@ These observations can be filtered by:
   (*e.g.*, by selecting the bounding box over the elements and enlarging it a bit).
 
 The system should be able to display multiple overlapping observations.
+
 They can be differentiated by color tainting related to a selection of multiple time ranges. 
 For example, the points corresponding to the time range 12:00-16:00 2021-01-13 are tainted red,
 and the points corresponding to the time range 00:00-23:59 2021-01-05 are tainted blue.
+
+**Visualization considerations**.
+The system should be careful how the points are transferred to the user.
+
+A scan of a room with lasers can easily become a gigabyte, and sometimes there are even multiple
+scans of the same room.
+
+Instead of just pushing all the data to the client, the server needs to compress the 
+<modelref name="digital_reconstruction#point_cloud" /> somehow.
+
+One approach would be to only display 
+<modelref name="digital_reconstruction#reconstructed_geometry" />.
+In parallel, the system can also compress the points by melting together the points which are
+too far away (by gracefully reducing the resolution, brute-force sub-sampling, voxelization *etc.*). 
+
+Hence the backend needs to continuously talk to the client and update the set of visible points
+as well as "melt together" the points too far away and "unmelt" the points closer up.
 
 **Images**.
 Images are displayed as icons anchored at their position.
@@ -268,9 +285,84 @@ backend should provide a versatile query mechanism.)
 
 ## Test Cases
 
-TODO: discuss with Dag
+<test name="behavioral_test">
+
+We pick two testers, Tester 1 and tester 2.
+
+**Stage 1.**
+Present observations (<modelref name="digital_reconstruction#images" />, 
+<modelref name="digital_reconstruction#point_cloud" />, *etc.*) to
+Tester 1.
+
+(Change the plan behind the back of the tester in order to introduce a deviation for sure.)
+
+Present the plan (<modelref name="evolving_plan#bim3d" />, deliberately modified).
+
+The tester should find a deviation.
+
+The tester should create a <ref name="topic_management#topic" /> (this would be a new topic as
+we deliberately modified <modelref name="evolving_plan#bim3d" />).
+
+**Stage 2.**
+Pick another tester, Tester 2.
+
+We modify the plan (<modelref name="evolving_plan#bim3d" />) back to the original state.
+
+We ask Tester 2 to act on it and see if s/he resolves the <ref name="topic_management#topic" />. 
+
+</test>
+
+<test name="magnitude">
+
+We need to generate mock data to test for <acceptanceref name="plan_magnitude" /> and
+<acceptanceref name="observation_magnitude" /> (both on backend and on frontend!).
+
+</test>
+
+<test name="fuzzy_queries">
+
+We automatically generate queries and make sure that the system does not break.
+
+(We have to figure out the details during the implementation.)
+
+</test>
 
 ## Acceptance Criteria
 
-TODO: discuss with Dag what machine should be expected (as a reference configuration to be tested against); 
-    what about the volume of the point cloud, BIM etc.?
+<acceptance name="plan_magnitude">
+
+There are thousands of elements to be displayed.
+
+For each element, there might be hundreds of related <ref name="scheduling#task" />s,
+related <ref name="actor_management#actor" />s and related <ref name="topic_management#topic" />s.
+
+</acceptance>
+
+<acceptance name="observation_magnitude">
+
+A scan of a room can easily become 1 Gigabyte with many, many points.
+
+We can show point clouds in megabytes (so only a fraction), say, for a selected element or a smaller
+volume of interest.
+
+However, there needs to be the way to view the point cloud in sufficient detail.
+At the moment (2021-01-27), we do not know precisely how to do this and need to leave this 
+as an important implementation detail.
+
+</acceptance>
+
+<acceptance name="observation_selection">
+
+The system should be able to display up to three (3) 
+<ref name="digital_reconstruction#recording" />s.
+
+We don't have to present more <ref name="digital_reconstruction#recording" />s as that would be
+confusing for the user, but also very difficult to handle on the backend due to the volume of the
+data.
+
+For example, if you have more than three recordings, you would have a very large number of 
+recorded <ref name="digital_reconstruction#point" />s for a single location (*e.g.*, imagine if
+4-5 drones or robots record in parallel -- you can not present the points of *all* of them at a 
+fine-grained resolution.) 
+
+</acceptance>

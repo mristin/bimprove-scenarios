@@ -1,0 +1,41 @@
+<html>
+<body>
+<div id='index'></div>
+<div id='main'><p>Divergence: as-built vs as-planned, 3D</p>
+<p>You have 2 BIM models, <modelref name="evolving_plan#bim3d" /> and
+<modelref name="digital_reconstruction#as-built" />.</p>
+<p>We want to detect mistakes/errors.</p>
+<p>you never have the equivalence (floating point numbers).</p>
+<p>This is about the <em>automatic</em> divergence detection.</p>
+<p>Spatial tolerances. --&gt; Only geometry.</p>
+<p>We need to define the <em>tolerance</em> in the <em>context</em>.</p>
+<p>In different phases and difference disciplines, we have different <em>tolerances</em>.</p>
+<p>The <modelref name="evolving_plan#bim3d" /> is already a federation of the domain-specific
+models.</p>
+<p>Plan vs as-built</p>
+<p>We define tolerance per element.</p>
+<p>The system checks the tolerances.</p>
+<p>There are standards for tolerances.</p>
+<p>1.0000000000m</p>
+<p>0.9m</p>
+<p>We can have a default tolerance (<em>e.g.</em>, 2cm).
+We can have per-element tolerances overriding the default tolerance.</p>
+<p>Example: an inclined wall</p>
+<h2>Summary</h2>
+<p>First priority: just use manual inspection</p>
+<p>If time permits, nice-to-have: automatic divergence detection.
+We will have a rule based system, but not details yet.</p>
+<h2>Models</h2>
+<h2>Definitions</h2>
+<h2>Scenario</h2>
+<h3>As-planned</h3>
+<h3>As-observed</h3>
+<h3>Divergence</h3>
+<h3>Analytics</h3>
+<h3>Scheduling</h3>
+<h3>Safety</h3>
+<h2>Test Cases</h2>
+<h2>Acceptance Criteria</h2>
+</div>
+</body>
+</html>

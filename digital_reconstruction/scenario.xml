@@ -155,8 +155,6 @@ BIMprove development efforts. Some software solutions include:</p>
 <li>https://www.clearedge3d.com/products/verity/</li>
 <li>https://www.imerso.com/ </li>
 </ul>
-<p>TODO: add link here to divergence_detection -- this depends how we compute the divergence,
-manually or based on as-built bim.</p>
 <img src="diagram.svg" />
 <h3>Divergence</h3>
 <p>All the observations (like <ref name="image" />s and <ref name="point" /> cloud) need to be

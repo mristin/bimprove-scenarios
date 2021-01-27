@@ -63,12 +63,12 @@ pre {
     padding: 1em;
 }
 </style></head><body>
-<div id="index"><a href="../ontology.html">Back to ontology</a><img src="volumetric.png" style="border: 1px solid #EEEEEE; padding: 10px;" /><h2>Table of Contents</h2><ul class="toc"><li style="padding-left: 0.00em"><a href="#section-Summary">Summary</a></li><li style="padding-left: 0.00em"><a href="#section-Models">Models</a></li><li style="padding-left: 0.00em"><a href="#section-Definitions">Definitions</a></li><li style="padding-left: 0.00em"><a href="#section-Scenario">Scenario</a></li><li style="padding-left: 2.20em"><a href="#section-As-planned">As-planned</a></li><li style="padding-left: 2.20em"><a href="#section-As-observed">As-observed</a></li><li style="padding-left: 2.20em"><a href="#section-Divergence">Divergence</a></li><li style="padding-left: 2.20em"><a href="#section-Analytics">Analytics</a></li><li style="padding-left: 2.20em"><a href="#section-Scheduling">Scheduling</a></li><li style="padding-left: 2.20em"><a href="#section-Safety">Safety</a></li><li style="padding-left: 0.00em"><a href="#section-Test_Cases">Test Cases</a></li><li style="padding-left: 0.00em"><a href="#section-Acceptance_Criteria">Acceptance Criteria</a></li></ul><h2>Level Index</h2><ul><li><a href="#level-anchor-61623345-f719-4781-9b45-7c980d5c715a">site</a></li><li><a href="#level-anchor-ade07998-2fae-471f-a039-44b7e625fe14">office</a></li></ul></div>
+<div id="index"><a href="../ontology.html">Back to ontology</a><img src="volumetric.png" style="border: 1px solid #EEEEEE; padding: 10px;" /><h2>Table of Contents</h2><ul class="toc"><li style="padding-left: 0.00em"><a href="#section-Summary">Summary</a></li><li style="padding-left: 0.00em"><a href="#section-Models">Models</a></li><li style="padding-left: 0.00em"><a href="#section-Definitions">Definitions</a></li><li style="padding-left: 0.00em"><a href="#section-Scenario">Scenario</a></li><li style="padding-left: 2.20em"><a href="#section-As-planned">As-planned</a></li><li style="padding-left: 2.20em"><a href="#section-As-observed">As-observed</a></li><li style="padding-left: 2.20em"><a href="#section-Divergence">Divergence</a></li><li style="padding-left: 2.20em"><a href="#section-Analytics">Analytics</a></li><li style="padding-left: 2.20em"><a href="#section-Scheduling">Scheduling</a></li><li style="padding-left: 2.20em"><a href="#section-Safety">Safety</a></li><li style="padding-left: 0.00em"><a href="#section-Test_Cases">Test Cases</a></li><li style="padding-left: 2.20em"><a href="#test-behavioral_test">behavioral test</a></li><li style="padding-left: 2.20em"><a href="#test-magnitude">magnitude</a></li><li style="padding-left: 2.20em"><a href="#test-fuzzy_queries">fuzzy queries</a></li><li style="padding-left: 0.00em"><a href="#section-Acceptance_Criteria">Acceptance Criteria</a></li><li style="padding-left: 2.20em"><a href="#acceptance-plan_magnitude">plan magnitude</a></li><li style="padding-left: 2.20em"><a href="#acceptance-observation_magnitude">observation magnitude</a></li><li style="padding-left: 2.20em"><a href="#acceptance-observation_selection">observation selection</a></li></ul><h2>Level Index</h2><ul><li><a href="#level-anchor-5782eb25-d027-4374-8422-35a2e56dec7b">site</a></li><li><a href="#level-anchor-c038f061-8718-43d8-afe1-7d545415a661">office</a></li></ul></div>
 <div id="main"><h1>Virtual Inspection</h1><h2>Relations to Other Scenarios</h2><ul><li><a href="../digital_reconstruction/scenario.html">Digital Reconstruction</a><span> observations Virtual Inspection</span></li><li><a href="../evolving_plan/scenario.html">Evolving Plan</a><span> BIM Virtual Inspection</span></li></ul><h2>Relations from Other Scenarios</h2><ul><li><span>Virtual Inspection issues </span><a href="../topic_management/scenario.html">Topic Management</a></li></ul>
 <h2 data-anchor="section-Summary"><a name="section-Summary" /><a class="section-anchor" href="#section-Summary">Summary</a><span class="chain-symbol">🔗</span></h2>
 <p>This scenario is about manual virtual inspections of
-<span class="level" data-text="site">the construction site<a id="level-anchor-61623345-f719-4781-9b45-7c980d5c715a" /><sup>site</sup></span> usually from the
-<span class="level" data-text="office">site office<a id="level-anchor-ade07998-2fae-471f-a039-44b7e625fe14" /><sup>office</sup></span></p>
+<span class="level" data-text="site">the construction site<a id="level-anchor-5782eb25-d027-4374-8422-35a2e56dec7b" /><sup>site</sup></span> usually from the
+<span class="level" data-text="office">site office<a id="level-anchor-c038f061-8718-43d8-afe1-7d545415a661" /><sup>office</sup></span></p>
 <h2 data-anchor="section-Models"><a name="section-Models" /><a class="section-anchor" href="#section-Models">Models</a><span class="chain-symbol">🔗</span></h2>
 <p><em>Intentionally left empty.</em></p>
 <h2 data-anchor="section-Definitions"><a name="section-Definitions" /><a class="section-anchor" href="#section-Definitions">Definitions</a><span class="chain-symbol">🔗</span></h2>
@@ -135,8 +135,7 @@ a priority filter, status (open, candidate, resolved, +user defined <em>etc.</em
 Mind that this is different from filtering the <em>elements by filtering their related topics</em>. </p>
 <p>Visualizing the content of a <a href="../topic_management/scenario.html#def-topic" class="ref">topic (from topic_management)</a> is out-of-scope of the project.
 We deem such a visualization to be confusing.
-We expect the user to use <scenarioref name="topic_management" /> for general topic management.
-TODO: link to divergence_detection for how to create a topic when as-built and bim3d diverge. </p>
+We expect the user to use <scenarioref name="topic_management" /> for general topic management. </p>
 <p><strong><a href="../topic_management/scenario.html#def-viewquery" class="ref">viewquery (from topic_management)</a> creation</strong>.
 To create a <a href="../topic_management/scenario.html#def-viewquery" class="ref">viewquery (from topic_management)</a>, the user needs to filter in the
 relevant data (as-planned, as-observed and divergence).</p>
@@ -176,10 +175,22 @@ manual snapshot filtered by the relevant <a href="../actor_management/scenario.h
 <li>selected BIM element(s)
 (<em>e.g.</em>, by selecting the bounding box over the elements and enlarging it a bit).</li>
 </ul>
-<p>The system should be able to display multiple overlapping observations.
-They can be differentiated by color tainting related to a selection of multiple time ranges.
+<p>The system should be able to display multiple overlapping observations.</p>
+<p>They can be differentiated by color tainting related to a selection of multiple time ranges.
 For example, the points corresponding to the time range 12:00-16:00 2021-01-13 are tainted red,
 and the points corresponding to the time range 00:00-23:59 2021-01-05 are tainted blue.</p>
+<p><strong>Visualization considerations</strong>.
+The system should be careful how the points are transferred to the user.</p>
+<p>A scan of a room with lasers can easily become a gigabyte, and sometimes there are even multiple
+scans of the same room.</p>
+<p>Instead of just pushing all the data to the client, the server needs to compress the
+<a href="../digital_reconstruction/scenario.html#model-point_cloud" class="modelref">point_cloud (from digital_reconstruction)</a> somehow.</p>
+<p>One approach would be to only display
+<a href="../digital_reconstruction/scenario.html#model-reconstructed_geometry" class="modelref">reconstructed_geometry (from digital_reconstruction)</a>.
+In parallel, the system can also compress the points by melting together the points which are
+too far away (by gracefully reducing the resolution, brute-force sub-sampling, voxelization <em>etc.</em>). </p>
+<p>Hence the backend needs to continuously talk to the client and update the set of visible points
+as well as "melt together" the points too far away and "unmelt" the points closer up.</p>
 <p><strong>Images</strong>.
 Images are displayed as icons anchored at their position.</p>
 <p>The user can view individual images (<em>e.g.</em>, by clicking on their icon).</p>
@@ -276,10 +287,61 @@ backend should provide a versatile query mechanism.)</p>
 <h3 data-anchor="section-Safety"><a name="section-Safety" /><a class="section-anchor" href="#section-Safety">Safety</a><span class="chain-symbol">🔗</span></h3>
 <p><em>Intentionally left empty.</em></p>
 <h2 data-anchor="section-Test_Cases"><a name="section-Test_Cases" /><a class="section-anchor" href="#section-Test_Cases">Test Cases</a><span class="chain-symbol">🔗</span></h2>
-<p>TODO: discuss with Dag</p>
+<div class="test">
+<h3 data-anchor="test-behavioral_test"><a name="test-behavioral_test" /><a class="section-anchor" href="#test-behavioral_test">behavioral test</a><span class="chain-symbol">🔗</span></h3>
+<p>We pick two testers, Tester 1 and tester 2.</p>
+<p><strong>Stage 1.</strong>
+Present observations (<a href="../digital_reconstruction/scenario.html#model-images" class="modelref">images (from digital_reconstruction)</a>,
+<a href="../digital_reconstruction/scenario.html#model-point_cloud" class="modelref">point_cloud (from digital_reconstruction)</a>, <em>etc.</em>) to
+Tester 1.</p>
+<p>(Change the plan behind the back of the tester in order to introduce a deviation for sure.)</p>
+<p>Present the plan (<a href="../evolving_plan/scenario.html#model-bim3d" class="modelref">bim3d (from evolving_plan)</a>, deliberately modified).</p>
+<p>The tester should find a deviation.</p>
+<p>The tester should create a <a href="../topic_management/scenario.html#def-topic" class="ref">topic (from topic_management)</a> (this would be a new topic as
+we deliberately modified <a href="../evolving_plan/scenario.html#model-bim3d" class="modelref">bim3d (from evolving_plan)</a>).</p>
+<p><strong>Stage 2.</strong>
+Pick another tester, Tester 2.</p>
+<p>We modify the plan (<a href="../evolving_plan/scenario.html#model-bim3d" class="modelref">bim3d (from evolving_plan)</a>) back to the original state.</p>
+<p>We ask Tester 2 to act on it and see if s/he resolves the <a href="../topic_management/scenario.html#def-topic" class="ref">topic (from topic_management)</a>. </p>
+</div>
+<div class="test">
+<h3 data-anchor="test-magnitude"><a name="test-magnitude" /><a class="section-anchor" href="#test-magnitude">magnitude</a><span class="chain-symbol">🔗</span></h3>
+<p>We need to generate mock data to test for <a href="#acceptance-plan_magnitude" class="acceptanceref">plan_magnitude</a> and
+<a href="#acceptance-observation_magnitude" class="acceptanceref">observation_magnitude</a> (both on backend and on frontend!).</p>
+</div>
+<div class="test">
+<h3 data-anchor="test-fuzzy_queries"><a name="test-fuzzy_queries" /><a class="section-anchor" href="#test-fuzzy_queries">fuzzy queries</a><span class="chain-symbol">🔗</span></h3>
+<p>We automatically generate queries and make sure that the system does not break.</p>
+<p>(We have to figure out the details during the implementation.)</p>
+</div>
 <h2 data-anchor="section-Acceptance_Criteria"><a name="section-Acceptance_Criteria" /><a class="section-anchor" href="#section-Acceptance_Criteria">Acceptance Criteria</a><span class="chain-symbol">🔗</span></h2>
-<p>TODO: discuss with Dag what machine should be expected (as a reference configuration to be tested against);
-what about the volume of the point cloud, BIM etc.?</p>
+<div class="acceptance">
+<h3 data-anchor="acceptance-plan_magnitude"><a name="acceptance-plan_magnitude" /><a class="section-anchor" href="#acceptance-plan_magnitude">plan magnitude</a><span class="chain-symbol">🔗</span></h3>
+<p>There are thousands of elements to be displayed.</p>
+<p>For each element, there might be hundreds of related <a href="../scheduling/scenario.html#def-task" class="ref">tasks (from scheduling)</a>,
+related <a href="../actor_management/scenario.html#def-actor" class="ref">actors (from actor_management)</a> and related <a href="../topic_management/scenario.html#def-topic" class="ref">topics (from topic_management)</a>.</p>
+</div>
+<div class="acceptance">
+<h3 data-anchor="acceptance-observation_magnitude"><a name="acceptance-observation_magnitude" /><a class="section-anchor" href="#acceptance-observation_magnitude">observation magnitude</a><span class="chain-symbol">🔗</span></h3>
+<p>A scan of a room can easily become 1 Gigabyte with many, many points.</p>
+<p>We can show point clouds in megabytes (so only a fraction), say, for a selected element or a smaller
+volume of interest.</p>
+<p>However, there needs to be the way to view the point cloud in sufficient detail.
+At the moment (2021-01-27), we do not know precisely how to do this and need to leave this
+as an important implementation detail.</p>
+</div>
+<div class="acceptance">
+<h3 data-anchor="acceptance-observation_selection"><a name="acceptance-observation_selection" /><a class="section-anchor" href="#acceptance-observation_selection">observation selection</a><span class="chain-symbol">🔗</span></h3>
+<p>The system should be able to display up to three (3)
+<a href="../digital_reconstruction/scenario.html#def-recording" class="ref">recordings (from digital_reconstruction)</a>.</p>
+<p>We don't have to present more <a href="../digital_reconstruction/scenario.html#def-recording" class="ref">recordings (from digital_reconstruction)</a> as that would be
+confusing for the user, but also very difficult to handle on the backend due to the volume of the
+data.</p>
+<p>For example, if you have more than three recordings, you would have a very large number of
+recorded <a href="../digital_reconstruction/scenario.html#def-point" class="ref">points (from digital_reconstruction)</a> for a single location (<em>e.g.</em>, imagine if
+4-5 drones or robots record in parallel -- you can not present the points of <em>all</em> of them at a
+fine-grained resolution.) </p>
+</div>
 </div>
 </body>
 </html>

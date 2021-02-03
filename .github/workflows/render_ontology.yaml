@@ -17,22 +17,19 @@ jobs:
           architecture: 'x64'
 
       - name: Install dependencies
-        run: pip3 install 'rasaeco==0.0.10'
+        run: pip3 install -r requirements.txt
+
+      - name: Setup Graphviz
+        uses: ts-graphviz/setup-graphviz@v1
 
       - name: Render
         run: |
-          cp -R ontology rendering
-
-          # We need to delete .gitignore as otherwise the files will be ignored in actions-gh-pages
-          find rendering -name ".gitignore" -exec rm {} \;
-
-          pyrasaeco-render once --scenarios_dir rendering
-          cp rendering/ontology.html rendering/index.html
+          python render_once.py --output_path rendered-for-gh-pages
           pwd
-          find rendering
+          find rendered-for-gh-pages
 
       - name: Deploy to gh-pages 🚀
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: rendering
+          publish_dir: rendered-for-gh-pages

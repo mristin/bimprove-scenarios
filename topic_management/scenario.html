@@ -131,7 +131,7 @@ For example, we use comments to represent the status change of a
 <div class="def">
 <h3 data-anchor="def-viewquery"><a name="def-viewquery" /><a class="section-anchor" href="#def-viewquery">viewquery</a><span class="chain-symbol">🔗</span></h3>
 <p>A viewquery is an encoding of the camera position, the view angle and the query from
-<scenarioref name="virtual_inspection" />.</p>
+<a href="../virtual_inspection/scenario.html" class="scenarioref">"Virtual Inspection"</a>.</p>
 <p>Note that the viewquery as we refer to here is <em>not</em> the <a href="#def-BCF_viewpoint" class="ref">BCF viewpoint</a> as
 usually exported in a <a href="#def-BCF" class="ref">BCF</a>.
 The <a href="#def-BCF_viewpoint" class="ref">BCF viewpoint</a> is much sparser than <a href="#def-viewquery" class="ref">viewquery</a>.</p>
@@ -166,9 +166,9 @@ The protocol can also include an optional trigger (<code>if late</code> <em>etc.
 <p>This is a non-IFC entity and lives in <a href="#model-notification_protocols" class="modelref">notification_protocols</a>.</p>
 </div>
 <h2 data-anchor="section-Scenario"><a name="section-Scenario" /><a class="section-anchor" href="#section-Scenario">Scenario</a><span class="chain-symbol">🔗</span></h2>
-<p>We use <scenarioref name="virtual_inspection" />, <scenarioref name="scheduling" />,
-<scenarioref name="truck_guidance" />,
-<scenarioref name="risk_management" /> and other scenarios
+<p>We use <a href="../virtual_inspection/scenario.html" class="scenarioref">"Virtual Inspection"</a>, <a href="../scheduling/scenario.html" class="scenarioref">"Scheduling"</a>,
+<a href="../truck_guidance/scenario.html" class="scenarioref">"Truck guidance"</a>,
+<a href="../risk_management/scenario.html" class="scenarioref">"Risk Management"</a> and other scenarios
 as "explorers" (or "browsers").</p>
 <p>These "explorers" give us links to the instances and entities as
 <a href="../unique_resource_identification/scenario.html#def-identifier" class="ref">identifiers (from unique_resource_identification)</a>.</p>
@@ -185,10 +185,10 @@ subject, description of a <a href="#def-comment" class="ref">comment</a>.</p>
 BIMprove system provides an application for creating and managing the <a href="#def-topic" class="ref">topics</a> and
 adding the <a href="#def-comment" class="ref">comments</a>.</p>
 <p>If a comment is attached a <a href="#def-viewquery" class="ref">viewquery</a>, the user should be able to follow it through
-to <scenarioref name="virtual_inspection" />.</p>
+to <a href="../virtual_inspection/scenario.html" class="scenarioref">"Virtual Inspection"</a>.</p>
 <p>The topic management does not provide the modification of a <a href="#def-viewquery" class="ref">viewquery</a>.
 If you need to modify a <a href="#def-viewquery" class="ref">viewquery</a>, you have to use
-<scenarioref name="virtual_inspection" />.
+<a href="../virtual_inspection/scenario.html" class="scenarioref">"Virtual Inspection"</a>.
 For example, you can use an existing <a href="#def-viewquery" class="ref">viewquery</a> as the starting point.</p>
 <p>The <a href="#def-topic" class="ref">topic</a> is assigned access rights based on individual
 <a href="../actor_management/scenario.html#def-actor" class="ref">actors (from actor_management)</a> and/or <a href="../actor_management/scenario.html#def-role" class="ref">roles (from actor_management)</a>.</p>
@@ -198,7 +198,7 @@ the <a href="#def-notification_protocol" class="ref">notification protocols</a> 
 <a href="../unique_resource_identification/scenario.html#def-identifier" class="ref">identifier (from unique_resource_identification)</a>.</p>
 <p><strong>Topic from a task</strong>.
 The user can create a <a href="#def-topic" class="ref">topic</a> from an arbitrary <a href="../scheduling/scenario.html#def-task_shadow" class="ref">task shadow (from scheduling)</a>
-using <scenarioref name="scheduling" />.</p>
+using <a href="../scheduling/scenario.html" class="scenarioref">"Scheduling"</a>.</p>
 <p>There is also a more structured task-to-topic translation for specific tasks such as
 <a href="../truck_guidance/scenario.html#def-delivery" class="ref">deliveries (from truck_guidance)</a>.</p>
 <p><strong>Export to <a href="#def-BCF" class="ref">BCF</a></strong>.
@@ -228,8 +228,8 @@ An example workflow for creating a <a href="#def-topic" class="ref">topic</a> in
 <a href="../unique_resource_identification/scenario.html#def-identifier" class="ref">identifiers (from unique_resource_identification)</a>.</p>
 </li>
 <li>
-<p>Go to <scenarioref name="virtual_inspection" /> and select the relevant elements.</p>
-<p>Use <scenarioref name="virtual_inspection" /> to create a <a href="#def-viewquery" class="ref">viewquery</a> and
+<p>Go to <a href="../virtual_inspection/scenario.html" class="scenarioref">"Virtual Inspection"</a> and select the relevant elements.</p>
+<p>Use <a href="../virtual_inspection/scenario.html" class="scenarioref">"Virtual Inspection"</a> to create a <a href="#def-viewquery" class="ref">viewquery</a> and
 attach it automatically to the <a href="#def-topic" class="ref">topic</a>.</p>
 </li>
 </ol>

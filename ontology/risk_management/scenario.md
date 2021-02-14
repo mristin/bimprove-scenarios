@@ -3,7 +3,6 @@
     "title": "Risk Management",
     "contact": "Alberto Palomero <Alberto.Palomero@hrs.ch>, Dag Fjeld Edvardsen <dag.fjeld.edvardsen@catenda.no>, Manuel Menendez <manuel.menendez@vias.es>, Marko Ristin <rist@zhaw.ch>, Ruprecht Altenburger <altb@zhaw.ch>",
     "relations": [
-        { "target": "uxv_recording", "nature": "focus spots" },
         { "target": "topic_management", "nature": "issues" },
         { "target": "safety_status", "nature": "risk status" }
     ],

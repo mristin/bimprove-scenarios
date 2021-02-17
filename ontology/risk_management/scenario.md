@@ -231,7 +231,7 @@ of the <ref name="risk" />).
 **Reporting.**
 The system needs to report an overview of all the <ref name="risk" />s.
 
-The <ref name="risk" />s need to be displayed together with their  related 
+The <ref name="risk" />s need to be displayed together with their related 
 <ref name="scheduling#task" />s, if any, as a time table.
 
 For example, we can display the <ref name="risk" />s as a Gantt diagram.

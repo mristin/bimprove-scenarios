@@ -135,7 +135,7 @@ visualized in <scenarioref name="virtual_inspection" /> (<em>e.g.</em>, using th
 of the <ref name="risk" />).</p>
 <p><strong>Reporting.</strong>
 The system needs to report an overview of all the <ref name="risk" />s.</p>
-<p>The <ref name="risk" />s need to be displayed together with their  related
+<p>The <ref name="risk" />s need to be displayed together with their related
 <ref name="scheduling#task" />s, if any, as a time table.</p>
 <p>For example, we can display the <ref name="risk" />s as a Gantt diagram.
 The <ref name="risk" />s would be represented with thick bars, while the related

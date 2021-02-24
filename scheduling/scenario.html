@@ -50,11 +50,11 @@ a.section-anchor:hover + .chain-symbol {
     display: inline-block;
 }
 
-span.phase {
+span.phase, div.phase {
     background-color: #eefbfb;
 }
 
-span.level {
+span.level, div.level {
     background-color: #eefbee;
 }
 
@@ -64,7 +64,7 @@ pre {
 }
 </style></head><body>
 <div id="index"><a href="../ontology.html">Back to ontology</a><img src="volumetric.png" style="border: 1px solid #EEEEEE; padding: 10px;" /><h2>Table of Contents</h2><ul class="toc"><li style="padding-left: 0.00em"><a href="#section-Summary">Summary</a></li><li style="padding-left: 0.00em"><a href="#section-Models">Models</a></li><li style="padding-left: 2.20em"><a href="#model-last_planner_data">last_planner_data</a></li><li style="padding-left: 0.00em"><a href="#section-Definitions">Definitions</a></li><li style="padding-left: 2.20em"><a href="#def-scheduler">scheduler</a></li><li style="padding-left: 2.20em"><a href="#def-phase_plan">phase plan</a></li><li style="padding-left: 2.20em"><a href="#def-last_planner_system">last planner system</a></li><li style="padding-left: 2.20em"><a href="#def-task">task</a></li><li style="padding-left: 2.20em"><a href="#def-last_planner_task">last planner task</a></li><li style="padding-left: 2.20em"><a href="#def-task_shadow">task shadow</a></li><li style="padding-left: 0.00em"><a href="#section-Scenario">Scenario</a></li><li style="padding-left: 2.20em"><a href="#section-Scheduling">Scheduling</a></li><li style="padding-left: 0.00em"><a href="#section-Test_Cases">Test Cases</a></li><li style="padding-left: 2.20em"><a href="#test-manual_import">manual import</a></li><li style="padding-left: 2.20em"><a href="#test-live_import">live import</a></li><li style="padding-left: 2.20em"><a href="#test-magnitude">magnitude</a></li><li style="padding-left: 0.00em"><a href="#section-Acceptance_Criteria">Acceptance Criteria</a></li><li style="padding-left: 2.20em"><a href="#acceptance-magnitude">magnitude</a></li></ul></div>
-<div id="main"><h1>Scheduling</h1><h2>Relations to Other Scenarios</h2><ul><li><a href="../cost_tracking/scenario.html">Cost Tracking</a><span> inspect over-cost tasks Scheduling</span></li></ul><h2>Relations from Other Scenarios</h2><ul><li><span>Scheduling task shadows </span><a href="../evolving_plan/scenario.html">Evolving Plan</a></li></ul>
+<div id="main"><h1>Scheduling</h1><h2>Relations from Other Scenarios</h2><ul><li><a href="../cost_tracking/scenario.html">Cost Tracking</a><span> ← inspect over-cost tasks ← Scheduling</span></li></ul><h2>Relations to Other Scenarios</h2><ul><li><span>Scheduling → task shadows → </span><a href="../evolving_plan/scenario.html">Evolving Plan</a></li></ul>
 <h2 data-anchor="section-Summary"><a name="section-Summary" /><a class="section-anchor" href="#section-Summary">Summary</a><span class="chain-symbol">🔗</span></h2>
 <p>The <a href="#def-scheduler" class="ref">schedulers</a> do not want to use BIMprove system for scheduling and planning.
 This scenario therefore looks into how we integrate with the external solutions.</p>

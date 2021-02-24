@@ -50,11 +50,11 @@ a.section-anchor:hover + .chain-symbol {
     display: inline-block;
 }
 
-span.phase {
+span.phase, div.phase {
     background-color: #eefbfb;
 }
 
-span.level {
+span.level, div.level {
     background-color: #eefbee;
 }
 
@@ -63,8 +63,8 @@ pre {
     padding: 1em;
 }
 </style></head><body>
-<div id="index"><a href="../ontology.html">Back to ontology</a><img src="volumetric.png" style="border: 1px solid #EEEEEE; padding: 10px;" /><h2>Table of Contents</h2><ul class="toc"><li style="padding-left: 0.00em"><a href="#section-Summary">Summary</a></li><li style="padding-left: 0.00em"><a href="#section-Models">Models</a></li><li style="padding-left: 2.20em"><a href="#model-UXVs">UXVs</a></li><li style="padding-left: 2.20em"><a href="#model-sensors">sensors</a></li><li style="padding-left: 2.20em"><a href="#model-missions">missions</a></li><li style="padding-left: 0.00em"><a href="#section-Definitions">Definitions</a></li><li style="padding-left: 2.20em"><a href="#def-UXV">UXV</a></li><li style="padding-left: 2.20em"><a href="#def-spatial_accuracy">spatial accuracy</a></li><li style="padding-left: 2.20em"><a href="#def-sensor">sensor</a></li><li style="padding-left: 2.20em"><a href="#def-station">station</a></li><li style="padding-left: 2.20em"><a href="#def-UXV_frame">UXV frame</a></li><li style="padding-left: 2.20em"><a href="#def-reference_point">reference point</a></li><li style="padding-left: 2.20em"><a href="#def-marker">marker</a></li><li style="padding-left: 2.20em"><a href="#def-localization">localization</a></li><li style="padding-left: 2.20em"><a href="#def-coordinate_conversion">coordinate conversion</a></li><li style="padding-left: 2.20em"><a href="#def-operator">operator</a></li><li style="padding-left: 2.20em"><a href="#def-point_of_interest">point of interest</a></li><li style="padding-left: 2.20em"><a href="#def-object_of_interest">object of interest</a></li><li style="padding-left: 2.20em"><a href="#def-volume_of_interest">volume of interest</a></li><li style="padding-left: 2.20em"><a href="#def-mission">mission</a></li><li style="padding-left: 2.20em"><a href="#def-live_streaming">live streaming</a></li><li style="padding-left: 2.20em"><a href="#def-navigation_map">navigation map</a></li><li style="padding-left: 2.20em"><a href="#def-focus_spot">focus spot</a></li><li style="padding-left: 0.00em"><a href="#section-Scenario">Scenario</a></li><li style="padding-left: 2.20em"><a href="#section-As-observed">As-observed</a></li><li style="padding-left: 2.20em"><a href="#section-Safety">Safety</a></li><li style="padding-left: 2.20em"><a href="#section-Test_cases">Test cases</a></li><li style="padding-left: 2.20em"><a href="#section-Acceptance_criteria">Acceptance criteria</a></li><li style="padding-left: 2.20em"><a href="#acceptance-accuracy">accuracy</a></li></ul><h2>Level Index</h2><ul><li><a href="#level-anchor-aefb2d26-b951-44f1-a2ad-732f83819f85">machine</a></li><li><a href="#level-anchor-954c7476-3ef0-4984-81f6-71546dcb2c35">device</a></li><li><a href="#level-anchor-98538c7b-57d8-4cb7-81ee-56a3ca6e807f">machine</a></li><li><a href="#level-anchor-4a47e2cf-ca44-4ed6-b58a-4d548f004415">site</a></li><li><a href="#level-anchor-c99f0632-8460-4a84-8842-8280b1d3ca1a">site</a></li><li><a href="#level-anchor-b0099170-0536-42e5-8947-6db60d13f1f9">machine</a></li><li><a href="#level-anchor-216a5096-6a5a-4729-9eed-a85d7d7de66b">machine</a></li><li><a href="#level-anchor-d762e056-98f6-4075-8555-7b00c7921239">site</a></li><li><a href="#level-anchor-14199b82-1713-4584-ac5a-38e37272fc4d">machine</a></li><li><a href="#level-anchor-0ecca61d-2ef5-4a03-b688-6d5d6cae0684">machine</a></li><li><a href="#level-anchor-b6ab40bb-5857-4709-bdce-4a572f83aeed">site</a></li><li><a href="#level-anchor-9cad2c3b-513f-4eda-b6b7-f59c6ef35321">machine</a></li></ul></div>
-<div id="main"><h1>UXV Recording</h1><h2>Relations to Other Scenarios</h2><ul><li><a href="../topic_management/scenario.html">Topic Management</a><span> focus spots UXV Recording</span></li></ul><h2>Relations from Other Scenarios</h2><ul><li><span>UXV Recording observations </span><a href="../digital_reconstruction/scenario.html">Digital Reconstruction</a></li></ul>
+<div id="index"><a href="../ontology.html">Back to ontology</a><img src="volumetric.png" style="border: 1px solid #EEEEEE; padding: 10px;" /><h2>Table of Contents</h2><ul class="toc"><li style="padding-left: 0.00em"><a href="#section-Summary">Summary</a></li><li style="padding-left: 0.00em"><a href="#section-Models">Models</a></li><li style="padding-left: 2.20em"><a href="#model-UXVs">UXVs</a></li><li style="padding-left: 2.20em"><a href="#model-sensors">sensors</a></li><li style="padding-left: 2.20em"><a href="#model-missions">missions</a></li><li style="padding-left: 0.00em"><a href="#section-Definitions">Definitions</a></li><li style="padding-left: 2.20em"><a href="#def-UXV">UXV</a></li><li style="padding-left: 2.20em"><a href="#def-spatial_accuracy">spatial accuracy</a></li><li style="padding-left: 2.20em"><a href="#def-sensor">sensor</a></li><li style="padding-left: 2.20em"><a href="#def-station">station</a></li><li style="padding-left: 2.20em"><a href="#def-UXV_frame">UXV frame</a></li><li style="padding-left: 2.20em"><a href="#def-reference_point">reference point</a></li><li style="padding-left: 2.20em"><a href="#def-marker">marker</a></li><li style="padding-left: 2.20em"><a href="#def-localization">localization</a></li><li style="padding-left: 2.20em"><a href="#def-coordinate_conversion">coordinate conversion</a></li><li style="padding-left: 2.20em"><a href="#def-operator">operator</a></li><li style="padding-left: 2.20em"><a href="#def-point_of_interest">point of interest</a></li><li style="padding-left: 2.20em"><a href="#def-object_of_interest">object of interest</a></li><li style="padding-left: 2.20em"><a href="#def-volume_of_interest">volume of interest</a></li><li style="padding-left: 2.20em"><a href="#def-mission">mission</a></li><li style="padding-left: 2.20em"><a href="#def-live_streaming">live streaming</a></li><li style="padding-left: 2.20em"><a href="#def-navigation_map">navigation map</a></li><li style="padding-left: 2.20em"><a href="#def-focus_spot">focus spot</a></li><li style="padding-left: 0.00em"><a href="#section-Scenario">Scenario</a></li><li style="padding-left: 2.20em"><a href="#section-As-observed">As-observed</a></li><li style="padding-left: 2.20em"><a href="#section-Safety">Safety</a></li><li style="padding-left: 2.20em"><a href="#section-Test_cases">Test cases</a></li><li style="padding-left: 2.20em"><a href="#section-Acceptance_criteria">Acceptance criteria</a></li><li style="padding-left: 2.20em"><a href="#acceptance-accuracy">accuracy</a></li></ul><h2>Level Index</h2><ul><li><a href="#level-anchor-e93873a1-905b-4124-902a-1aeec1a21ce3">machine</a></li><li><a href="#level-anchor-41395e90-9512-4937-8090-53094eea4a58">device</a></li><li><a href="#level-anchor-39d96ef6-d9aa-403b-bafc-f5ffd5364243">machine</a></li><li><a href="#level-anchor-d6514196-402d-48cb-8128-b299d3852dda">site</a></li><li><a href="#level-anchor-abfc0b1e-4c63-4251-846c-99ba857584d8">site</a></li><li><a href="#level-anchor-64792b57-31aa-4ae1-99ef-92934e507d64">machine</a></li><li><a href="#level-anchor-2e5cc3b0-6fd2-4953-a5ad-d1a2d7adadf5">machine</a></li><li><a href="#level-anchor-1e4c79f5-ac68-445e-923e-ebbd754b960c">site</a></li><li><a href="#level-anchor-7148cf60-d2f9-4fb7-a4e2-39682e3c8766">machine</a></li><li><a href="#level-anchor-81aed521-29af-4f14-80d2-b26f047f4645">machine</a></li><li><a href="#level-anchor-dc72dd70-6fde-46f2-acdc-8ed6b150239f">site</a></li><li><a href="#level-anchor-2a77a4f4-92c8-466c-bec2-efd021af193b">machine</a></li></ul></div>
+<div id="main"><h1>UXV Recording</h1><h2>Relations from Other Scenarios</h2><ul><li><a href="../topic_management/scenario.html">Topic Management</a><span> ← focus spots ← UXV Recording</span></li></ul><h2>Relations to Other Scenarios</h2><ul><li><span>UXV Recording → observations → </span><a href="../digital_reconstruction/scenario.html">Digital Reconstruction</a></li></ul>
 <h2 data-anchor="section-Summary"><a name="section-Summary" /><a class="section-anchor" href="#section-Summary">Summary</a><span class="chain-symbol">🔗</span></h2>
 <p>This scenario concerns the recording of the construction site by the <a href="#def-UXV" class="ref">UXVS</a>.</p>
 <h2 data-anchor="section-Models"><a name="section-Models" /><a class="section-anchor" href="#section-Models">Models</a><span class="chain-symbol">🔗</span></h2>
@@ -85,7 +85,7 @@ available sensors.</p>
 <div class="def">
 <h3 data-anchor="def-UXV"><a name="def-UXV" /><a class="section-anchor" href="#def-UXV">UXV</a><span class="chain-symbol">🔗</span></h3>
 <p><span class="level" data-text="machine">This is an unmanned vehicle (both aerial, UAV, and ground, UGV) recording
-the environment.<a id="level-anchor-aefb2d26-b951-44f1-a2ad-732f83819f85" /><sup>machine</sup></span>  </p>
+the environment.<a id="level-anchor-e93873a1-905b-4124-902a-1aeec1a21ce3" /><sup>machine</sup></span>  </p>
 </div>
 <div class="def">
 <h3 data-anchor="def-spatial_accuracy"><a name="def-spatial_accuracy" /><a class="section-anchor" href="#def-spatial_accuracy">spatial accuracy</a><span class="chain-symbol">🔗</span></h3>
@@ -98,7 +98,7 @@ of space.</p>
 </div>
 <div class="def">
 <h3 data-anchor="def-sensor"><a name="def-sensor" /><a class="section-anchor" href="#def-sensor">sensor</a><span class="chain-symbol">🔗</span></h3>
-<p><span class="level" data-text="device">A sensor is a device mounted on a <a id="level-anchor-954c7476-3ef0-4984-81f6-71546dcb2c35" /><a href="#def-UXV" class="ref">UXV</a> used to record the
+<p><span class="level" data-text="device">A sensor is a device mounted on a <a id="level-anchor-41395e90-9512-4937-8090-53094eea4a58" /><a href="#def-UXV" class="ref">UXV</a> used to record the
 environment.<sup>device</sup></span></p>
 <p>Each sensor has a unique identifier.</p>
 <p>The <a href="#def-spatial_accuracy" class="ref">spatial accuracy</a> of the sensor is also defined.</p>
@@ -107,18 +107,18 @@ environment.<sup>device</sup></span></p>
 <div class="def">
 <h3 data-anchor="def-station"><a name="def-station" /><a class="section-anchor" href="#def-station">station</a><span class="chain-symbol">🔗</span></h3>
 <p><span class="level" data-text="machine">A station is a separate computational unit that receives the data from the
-<a id="level-anchor-98538c7b-57d8-4cb7-81ee-56a3ca6e807f" /><a href="#def-UXV" class="ref">UXV</a><sup>machine</sup></span>.</p>
+<a id="level-anchor-39d96ef6-d9aa-403b-bafc-f5ffd5364243" /><a href="#def-UXV" class="ref">UXV</a><sup>machine</sup></span>.</p>
 </div>
 <div class="def">
 <h3 data-anchor="def-UXV_frame"><a name="def-UXV_frame" /><a class="section-anchor" href="#def-UXV_frame">UXV frame</a><span class="chain-symbol">🔗</span></h3>
-<p><span class="level" data-text="site">The UXV frame is the coordinate system of the <a id="level-anchor-4a47e2cf-ca44-4ed6-b58a-4d548f004415" /><a href="#def-UXV" class="ref">UXV</a>.<sup>site</sup></span></p>
+<p><span class="level" data-text="site">The UXV frame is the coordinate system of the <a id="level-anchor-d6514196-402d-48cb-8128-b299d3852dda" /><a href="#def-UXV" class="ref">UXV</a>.<sup>site</sup></span></p>
 </div>
 <div class="def">
 <h3 data-anchor="def-reference_point"><a name="def-reference_point" /><a class="section-anchor" href="#def-reference_point">reference point</a><span class="chain-symbol">🔗</span></h3>
 <p>A reference point is a point for which we know with certainty the position in
 <a href="../evolving_plan/scenario.html#def-site_coordinate_system" class="ref">site coordinate system (from evolving_plan)</a> and in the <a href="#def-UXV_frame" class="ref">UXV frame</a>.</p>
 <p><span class="level" data-text="site">It is important that the reference point is measured with the highest precision
-possible as the remainder of the system will rely on it.<a id="level-anchor-c99f0632-8460-4a84-8842-8280b1d3ca1a" /><sup>site</sup></span></p>
+possible as the remainder of the system will rely on it.<a id="level-anchor-abfc0b1e-4c63-4251-846c-99ba857584d8" /><sup>site</sup></span></p>
 </div>
 <div class="def">
 <h3 data-anchor="def-marker"><a name="def-marker" /><a class="section-anchor" href="#def-marker">marker</a><span class="chain-symbol">🔗</span></h3>
@@ -127,7 +127,7 @@ a specific <a href="#def-reference_point" class="ref">reference point</a>.</p>
 </div>
 <div class="def">
 <h3 data-anchor="def-localization"><a name="def-localization" /><a class="section-anchor" href="#def-localization">localization</a><span class="chain-symbol">🔗</span></h3>
-<p><span class="level" data-text="machine">This is the process of determining the position of the <a id="level-anchor-b0099170-0536-42e5-8947-6db60d13f1f9" /><a href="#def-UXV" class="ref">UXV</a>
+<p><span class="level" data-text="machine">This is the process of determining the position of the <a id="level-anchor-64792b57-31aa-4ae1-99ef-92934e507d64" /><a href="#def-UXV" class="ref">UXV</a>
 in terms of <a href="#def-UXV_frame" class="ref">UXV frame</a>.<sup>machine</sup></span></p>
 <p>Note that the <a href="#def-UXV_frame" class="ref">UXV frame</a> is defined at the beginning of the
 <a href="../digital_reconstruction/scenario.html#def-recording" class="ref">recording (from digital_reconstruction)</a>.
@@ -215,7 +215,7 @@ free form or structured.) </p>
 <h3 data-anchor="section-As-observed"><a name="section-As-observed" /><a class="section-anchor" href="#section-As-observed">As-observed</a><span class="chain-symbol">🔗</span></h3>
 <p><strong>Process</strong>.</p>
 <span class="level" data-text="machine">
-<a id="level-anchor-216a5096-6a5a-4729-9eed-a85d7d7de66b" /><ul>
+<a id="level-anchor-2e5cc3b0-6fd2-4953-a5ad-d1a2d7adadf5" /><ul>
 <li><a href="#def-UXV" class="ref">UXV</a> needs to perform the <a href="#def-localization" class="ref">localization</a>.</li>
 <li>The <a href="#def-mission" class="ref">mission</a> is specified by the <a href="#def-operator" class="ref">operator</a></li>
 <li><a href="#def-UXV" class="ref">UXV</a> drives or flies around and records the data.</li>
@@ -228,8 +228,8 @@ clouds if necessary, and perform the <a href="#def-coordinate_conversion" class=
 <p><strong>Route planning</strong>.
 There is always an <a href="#def-operator" class="ref">operator</a> supervising the
 <a href="../digital_reconstruction/scenario.html#def-recording" class="ref">recording (from digital_reconstruction)</a>.</p>
-<span class="level" data-text="site">
-<a id="level-anchor-d762e056-98f6-4075-8555-7b00c7921239" /><p>Users indicate indicate in the system which elements or positions need to be recorded in the
+<div class="level" data-text="site">
+<a id="level-anchor-1e4c79f5-ac68-445e-923e-ebbd754b960c" /><p>Users indicate indicate in the system which elements or positions need to be recorded in the
 <a href="../evolving_plan/scenario.html#model-bim3d" class="modelref">bim3d (from evolving_plan)</a> through <a href="#def-focus_spot" class="ref">focus spots</a>.</p>
 <p>For example, a <a href="../digital_reconstruction/scenario.html#def-bimmer" class="ref">bimmer (from digital_reconstruction)</a> can specify parts of the site that
 need special attention or a <a href="../risk_management/scenario.html#def-risk_manager" class="ref">risk manager (from risk_management)</a> can request a recording
@@ -240,8 +240,8 @@ We assume that the <a href="#def-operator" class="ref">operator</a> has much bet
 Hence the general users <em>describe</em> through <a href="#def-focus_spot" class="ref">focus spots</a> what they want to have
 recorded, while the <a href="#def-operator" class="ref">operator</a> plans the <a href="#def-mission" class="ref">mission</a> in more detail
 according to these <a href="#def-focus_spot" class="ref">focus spots</a>. </p>
-<sup>site</sup></span>
-<p><span class="level" data-text="machine">The <a id="level-anchor-14199b82-1713-4584-ac5a-38e37272fc4d" /><a href="#def-operator" class="ref">operator</a> selects the available
+<sup>site</sup></div>
+<p><span class="level" data-text="machine">The <a id="level-anchor-7148cf60-d2f9-4fb7-a4e2-39682e3c8766" /><a href="#def-operator" class="ref">operator</a> selects the available
 <a href="#def-UXV" class="ref">UXV</a> from <a href="#model-UXVs" class="modelref">UXVs</a> and defines a <a href="#def-mission" class="ref">mission</a>.<sup>machine</sup></span></p>
 <p>The mission is defined by specifying:</p>
 <ul>
@@ -251,22 +251,22 @@ according to these <a href="#def-focus_spot" class="ref">focus spots</a>. </p>
 <li>assigning the <a href="#def-sensor" class="ref">sensors</a> to these points,</li>
 <li>time allocation <em>etc.</em></li>
 </ul>
-<span class="level" data-text="machine">
-<a id="level-anchor-0ecca61d-2ef5-4a03-b688-6d5d6cae0684" /><p>The <a href="#def-UXV" class="ref">UXV</a> is supposed to automatically navigate the <a href="#def-mission" class="ref">mission</a> based on
+<div class="level" data-text="machine">
+<a id="level-anchor-81aed521-29af-4f14-80d2-b26f047f4645" /><p>The <a href="#def-UXV" class="ref">UXV</a> is supposed to automatically navigate the <a href="#def-mission" class="ref">mission</a> based on
 the <a href="#def-navigation_map" class="ref">navigation map</a>.
 The <a href="#def-navigation_map" class="ref">navigation map</a> does not rely on <a href="../evolving_plan/scenario.html#model-bim3d" class="modelref">bim3d (from evolving_plan)</a>
 as it might not be trustworthy.
 Instead, the <a href="#def-navigation_map" class="ref">navigation map</a> is inferred from the
 <a href="../digital_reconstruction/scenario.html#model-as-built" class="modelref">as-built (from digital_reconstruction)</a>.</p>
-<sup>machine</sup></span>
+<sup>machine</sup></div>
 <p>(Note that the navigation based on <a href="../digital_reconstruction/scenario.html#model-as-built" class="modelref">as-built (from digital_reconstruction)</a> is still
 experimental.
 If this navigation does not work automatically, the <a href="#def-operator" class="ref">operator</a> is going to drive
 manually the robot in order to obtain the <a href="#def-navigation_map" class="ref">navigation map</a> using the
 <a href="#def-station" class="ref">station</a>.) </p>
-<p>There are two applications: <span class="level" data-text="site">one for specifying the <a id="level-anchor-b6ab40bb-5857-4709-bdce-4a572f83aeed" /><a href="#def-mission" class="ref">mission</a>
+<p>There are two applications: <span class="level" data-text="site">one for specifying the <a id="level-anchor-dc72dd70-6fde-46f2-acdc-8ed6b150239f" /><a href="#def-mission" class="ref">mission</a>
 (and managing the <a href="#def-UXV" class="ref">UXVS</a>)<sup>site</sup></span> and <span class="level" data-text="machine">another one for operating
-the <a id="level-anchor-9cad2c3b-513f-4eda-b6b7-f59c6ef35321" /><a href="#def-mission" class="ref">mission</a><sup>machine</sup></span>.</p>
+the <a id="level-anchor-2a77a4f4-92c8-466c-bec2-efd021af193b" /><a href="#def-mission" class="ref">mission</a><sup>machine</sup></span>.</p>
 <p>The missions are defined using the backend, while the operation of the <a href="#def-mission" class="ref">mission</a> is
 performed on the <a href="#def-station" class="ref">station</a>.</p>
 <p>The <a href="#def-station" class="ref">station</a> needs to obtain the data from the backend.</p>

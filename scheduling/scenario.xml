@@ -7,7 +7,7 @@ This scenario therefore looks into how we integrate with the external solutions.
 <h2>Models</h2>
 <model name="last_planner_data">
 <p>This is the model containing all the <ref name="last_planner_task" />s accessible
-through the external <ref name="last_planner_system" />. </p>
+through the external <ref name="last_planner_system" />.</p>
 </model>
 <h2>Definitions</h2>
 <def name="scheduler">
@@ -32,7 +32,7 @@ as a <ref name="task_shadow" /> in <modelref name="evolving_plan#bim_extended" /
 <modelref name="last_planner_data" />.</p>
 </def>
 <def name="task_shadow">
-<p>Task shadow is a <code>IfcTask</code> living in the <modelref name="evolving_plan#bim_extended" /> shadowing
+<p>Task shadow is an <code>IfcTask</code> living in the <modelref name="evolving_plan#bim_extended" /> shadowing
 the <ref name="last_planner_task" />.</p>
 </def>
 <h2>Scenario</h2>
@@ -66,7 +66,7 @@ parties to link it with the elements in <modelref name="evolving_plan#bim3d" /> 
 <modelref name="evolving_plan#bim_extended" />.</p>
 <p>In order to model the <ref name="task" />s, we have to create <ref name="task_shadow" />s and
 their relationships, as well as map the references to actors and building elements from the
-<ref name="last_planner_system" /> to <modelref name="evolving_plan#bim_extended" />.   </p>
+<ref name="last_planner_system" /> to <modelref name="evolving_plan#bim_extended" />.</p>
 <p>The data in <modelref name="last_planner_data" /> needs to be imported continuously into
 <modelref name="evolving_plan#bim_extended" /> (<em>via</em> triggers, polling or manual export/import,
 depending on what is available).</p>
@@ -74,21 +74,21 @@ depending on what is available).</p>
 <modelref name="evolving_plan#bim_extended" /> follows the steps:</p>
 <ul>
 <li>
-Create/update the <ref name="task_shadow" />s for all the <ref name="last_planner_task" />s   <ul>
+Create/update the <ref name="task_shadow" />s for all the <ref name="last_planner_task" />s<ul>
 <li>Parse the <ref name="last_planner_task" /> either directly (if possible,
-depending on the export format) or using structured text in the body </li>
+depending on the export format) or using structured text in the body</li>
 </ul>
 </li>
 <li>Map the <ref name="actor_management#actor" />s</li>
 <li>Map the references to building elements</li>
 <li>Create/update the shadows for all the relationships between the <ref name="task" />s and
-<ref name="actor_management#actor" />s </li>
+<ref name="actor_management#actor" />s</li>
 </ul>
 <p>Mind that the system should not completely overwrite the relevant data in
 <modelref name="evolving_plan#bim_extended" />, but extend it.
 This means that we assume the <ref name="evolving_plan#guid" />s to be stable throughout the
 project. (It is also tricky to handle the deletions, which is left as an important implementation
-detail.) </p>
+detail.)</p>
 <p>If the <ref name="last_planner_system" /> does not provide a mechanism to explicitly link to
 building elements, <ref name="actor_management#actor" /> and the relationships, we extract this
 information from the structured text of the <ref name="last_planner_task" /> body
@@ -126,7 +126,7 @@ information about a <ref name="task" /> coming from <scenarioref name="virtual_i
 We need to visualize the <ref name="risk_management#risk" />s (such as fall or fire risks)
 related to the <ref name="task" />s.</p>
 <p>The user should be able to follow through to examine the risk in more detail in the
-specific application through a <ref name="unique_resource_identification#identifier" />.  </p>
+specific application through a <ref name="unique_resource_identification#identifier" />.</p>
 <p><strong>Task to topic</strong>.
 The user should be provided the interface to translate a <ref name="task_shadow" /> to a
 <ref name="topic_management#topic" />.
@@ -140,9 +140,9 @@ For example, a delivery task can be automatically converted to
 (see <scenarioref name="truck_guidance" />).</p>
 <p><strong>Closing of <ref name="task" />s</strong>.
 Since we do not control the <ref name="last_planner_task" />s (we only import them),
-we can not close the <ref name="task" />s automatically. </p>
+we can not close the <ref name="task" />s automatically.</p>
 <p>The user or the system should be able to convert a <ref name="last_planner_task" /> into a
-<ref name="topic_management#topic" /> and keep track of its status using<br />
+<ref name="topic_management#topic" /> and keep track of its status using
 <ref name="topic_management#comment" />s.</p>
 <p>In many cases, if the system is tracking the status and not the user, we use structured
 <ref name="topic_management#comment" />s.
@@ -153,7 +153,7 @@ So when the delivery is terminated, we can close the <ref name="topic_management
 The <ref name="scheduler" /> needs to close the corresponding <ref name="last_planner_task" />
 in the <ref name="last_planner_system" /> manually.</p>
 <p>We emphasize here that there is only a
-<a href="https://en.wikipedia.org/wiki/Unidirectional_Data_Flow_(computer_science)">unidirectional data flow</a>: </p>
+<a href="https://en.wikipedia.org/wiki/Unidirectional_Data_Flow_(computer_science)">unidirectional data flow</a>:</p>
 <ol>
 <li><ref name="last_planner_task" /> to</li>
 <li><ref name="task_shadow" /> (<em>via</em> synchronization) to</li>
@@ -187,7 +187,7 @@ the magnitude in <acceptanceref name="magnitude" />.</p>
 <h2>Acceptance Criteria</h2>
 <acceptance name="magnitude">
 <p>We need to handle thousands of <ref name="last_planner_task" />s and thousands of
-<ref name="actor_management#actor" />s. </p>
+<ref name="actor_management#actor" />s.</p>
 </acceptance>
 </div>
 </body>

@@ -25,7 +25,7 @@
 </def>
 <def name="delivery">
 <p>Delivery is a <ref name="topic_management#topic" /> which has a description, a <code>Deadline</code> and a
-<code>Priority</code>. </p>
+<code>Priority</code>.</p>
 <p>The delivery can be associated optionally with a <ref name="delivery_location" />.</p>
 <p>The cargo is described as a text property of the delivery (&quot;10 windows, 2 doors&quot;).</p>
 <p>The delivery is assigned to a <ref name="driver"/> and associated with an
@@ -76,31 +76,29 @@ cancel it) by adding <ref name="delivery_update" />s (as structured
 <ref name="topic_management#comment" />).</p>
 <p>The updates of the delivery status are kept track in the <modelref name="logs" />.</p>
 <h3>As-observed</h3>
-<level name="machine">
-<p>The <ref name="driver"/>'s device tracks the GPS location, but does not send
-it to the system.</p>
-<p>The location is only used to navigate the driver.</p>
-</level>
+<p><level name="device">The <ref name="driver"/>'s device tracks the GPS location, but does not send
+it to the system.</level></p>
+<p><level name="machine">The location is only used to navigate the driver.</level></p>
 <h3>Divergence</h3>
 <p><level name="machine">The  device will guide the <ref name="driver" /> to the
-<ref name="delivery_location" />.</level> </p>
+<ref name="delivery_location" />.</level></p>
 <level name="machine">
 <p>The <ref name="topic_management#topic" /> body includes a link
 (authorized for the whole internet) that the <ref name="driver" /> can click on to update
 the current location of the delivery and another link to signal that
 the <ref name="delivery" /> arrived.</p>
 <p>The <ref name="driver" /> can choose to include his/her current GPS location
-in the <ref name="delivery_update" /> (<em>e.g.</em>, when following the link for the arrival).  </p>
+in the <ref name="delivery_update" /> (<em>e.g.</em>, when following the link for the arrival).</p>
 <p>The updates of the delivery status are kept track in the
 <modelref name="logs" />.</p>
 </level>
 <h3>Analytics</h3>
 <level name="site">
-<p>The KPI for delivery-in-time is updated, both delivery in number per week and variance. </p>
+<p>The KPI for delivery-in-time is updated, both delivery in number per week and variance.</p>
 <p>The KPIs are based on the data from the <modelref name="logs" />.</p>
 <p>Since <ref name="delivery" /> is a <ref name="topic_management#topic" />, many messages are
 structured as <ref name="delivery_update" />. However, unstructured messages are also possible.
-The unstructured messages should be ignored when computing the KPIs. </p>
+The unstructured messages should be ignored when computing the KPIs.</p>
 <p>The <ref name="planner_role" /> usually sets the last status of the delivery which is then used
 to determine how the <ref name="delivery" /> is counted in the KPIs (<em>e.g.</em>, &quot;on time&quot;, &quot;delayed&quot;
 <em>etc.</em>).</p>

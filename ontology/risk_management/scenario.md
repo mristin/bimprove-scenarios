@@ -5,6 +5,16 @@
     "relations": [],
     "volumetric": [
         {
+            "aspect_from": "as-planned", "aspect_to": "as-planned",
+            "phase_from": "planning", "phase_to": "planning",
+            "level_from": "site", "level_to": "site"
+        },
+        {
+            "aspect_from": "analytics", "aspect_to": "analytics",
+            "phase_from": "planning", "phase_to": "planning",
+            "level_from": "site", "level_to": "site"
+        },
+        {
             "aspect_from": "as-planned", "aspect_to": "scheduling",
             "phase_from": "construction", "phase_to": "construction",
             "level_from": "site", "level_to": "site"

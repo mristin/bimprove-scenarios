@@ -100,11 +100,11 @@ relevant part of user interface automatically. See
 
 (Note about the relationships: We need to decide how we structure them. We might allow free-form
 relationships, but they should not conflict with our internal relationships such as 
-<ref name="risk_management#assignment" />. This is something that needs to evolve during the 
+<ref name="risk_tracking#assignment" />. This is something that needs to evolve during the 
 implementation and iterations of the system.)
 
 (Note about the <ref name="role" />s: there are special pre-defined <ref name="role" />s, such as 
-<ref name="risk_management#preventive_resource" />, that have consequences in terms of information 
+<ref name="risk_tracking#preventive_resource" />, that have consequences in terms of information 
 security.
 
 How we handle this pre-defined set of these <ref name="role" />s with special semantic is left out as an 

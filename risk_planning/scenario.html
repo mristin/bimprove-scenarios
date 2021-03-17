@@ -1,0 +1,94 @@
+<html>
+<head><meta charset="utf-8" /><script src="https://livejs.com/live.js"> </script><title>Risk Planning</title><style>body {
+    margin-top: 2em;
+    padding: 0px;
+}
+
+#main {
+    float: left;
+    width: 50em;
+    margin-left: 3%;
+    border: 1px solid black;
+    padding: 2em;
+}
+
+#index {
+    float: left;
+    width: 30%;
+    border: 1px solid black;
+    padding: 1em;
+}
+
+ul.toc {
+    list-style-type: none;
+}
+
+ul.toc li {
+    margin-bottom: 0.5em;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+a:visited {
+    color: blue;
+}
+
+a.section-anchor {
+    text-decoration: none;
+    color: black;
+}
+
+.chain-symbol {
+    display: none;
+    font-size: x-small;
+    margin-left: 0.5em;
+}
+a.section-anchor:hover + .chain-symbol {
+    display: inline-block;
+}
+
+span.phase, div.phase {
+    background-color: #eefbfb;
+}
+
+span.level, div.level {
+    background-color: #eefbee;
+}
+
+pre {
+    background-color: #eeeefb;
+    padding: 1em;
+}
+</style></head><body>
+<div id="index"><a href="../ontology.html">Back to ontology</a><img src="volumetric.png" style="border: 1px solid #EEEEEE; padding: 10px;" /><h2>Table of Contents</h2><ul class="toc"><li style="padding-left: 0.00em"><a href="#section-Summary">Summary</a></li><li style="padding-left: 0.00em"><a href="#section-Scenario">Scenario</a></li><li style="padding-left: 2.20em"><a href="#section-As-planned">As-planned</a></li><li style="padding-left: 2.20em"><a href="#section-Analytics">Analytics</a></li></ul><h2>Phase Index</h2><ul><li><a href="#phase-anchor-3dd5d290-48a2-4712-a011-ac5bf19407b8">planning</a></li></ul></div>
+<div id="main"><h1>Risk Planning</h1><h2>Relations to Other Scenarios</h2><ul><li><span>Risk Planning → in planning → </span><a href="../risk_management/scenario.html">Risk Management</a></li></ul>
+<h2 data-anchor="section-Summary"><a name="section-Summary" /><a class="section-anchor" href="#section-Summary">Summary</a><span class="chain-symbol">🔗</span></h2>
+<p>This scenario is a sub-scenario of <a href="../risk_management/scenario.html" class="scenarioref">"Risk Management"</a> which considers
+how the risks are planned and identified during the planning phase (and later updated
+during the construction, but at a much slower pace).</p>
+<h2 data-anchor="section-Scenario"><a name="section-Scenario" /><a class="section-anchor" href="#section-Scenario">Scenario</a><span class="chain-symbol">🔗</span></h2>
+<h3 data-anchor="section-As-planned"><a name="section-As-planned" /><a class="section-anchor" href="#section-As-planned">As-planned</a><span class="chain-symbol">🔗</span></h3>
+<p><strong>Specification of the <a href="../risk_management/scenario.html#def-risk" class="ref">risks (from risk_management)</a></strong>.
+There should be an application so that the <a href="../risk_management/scenario.html#def-risk_manager" class="ref">risk manager (from risk_management)</a> can easily convert
+a <a href="../scheduling/scenario.html#def-task" class="ref">task (from scheduling)</a> to a <a href="../risk_management/scenario.html#def-risk" class="ref">risk (from risk_management)</a> and capture the additional
+information such as the <a href="../risk_management/scenario.html#def-risk_zone" class="ref">risk zone (from risk_management)</a>.</p>
+<p>There should be also a <a href="../risk_management/scenario.html#def-risk" class="ref">risk (from risk_management)</a> management application so that
+the <a href="../risk_management/scenario.html#def-risk_manager" class="ref">risk manager (from risk_management)</a> can also create, list and modify the <a href="../risk_management/scenario.html#def-risk" class="ref">risks (from risk_management)</a>
+(together with the <a href="../risk_management/scenario.html#def-risk_zone" class="ref">risk zones (from risk_management)</a>, time span <em>etc.</em>).</p>
+<p>Mind that a <a href="../risk_management/scenario.html#def-risk" class="ref">risk (from risk_management)</a> needs not be necessarily associated with a
+<a href="../scheduling/scenario.html#def-task" class="ref">task (from scheduling)</a>.</p>
+<p><span class="phase" data-text="planning">The <a id="phase-anchor-3dd5d290-48a2-4712-a011-ac5bf19407b8" /><a href="../risk_management/scenario.html#def-risk_manager" class="ref">risk manager (from risk_management)</a> inputs the initial set of
+<a href="../risk_management/scenario.html#def-risk" class="ref">risks (from risk_management)</a> already known during the planning.<sup>planning</sup></span></p>
+<h3 data-anchor="section-Analytics"><a name="section-Analytics" /><a class="section-anchor" href="#section-Analytics">Analytics</a><span class="chain-symbol">🔗</span></h3>
+<p>The distribution of the <a href="../risk_management/scenario.html#def-risk" class="ref">risks (from risk_management)</a> over their
+<a href="../risk_management/scenario.html#def-risk_level" class="ref">risk levels (from risk_management)</a> should be displayed along with the number of risks
+identified.</p>
+<p>We also need to display the corresponding distribution of the <a href="../scheduling/scenario.html#def-task" class="ref">tasks (from scheduling)</a> and
+their associated risks (if the <a href="../scheduling/scenario.html#def-task" class="ref">tasks (from scheduling)</a> are already available during the
+planning phase).</p>
+</div>
+</body>
+</html>

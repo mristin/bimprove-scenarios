@@ -1,0 +1,161 @@
+<html>
+<head><meta charset="utf-8" /><script src="https://livejs.com/live.js"> </script><title>Risk Tracking</title><style>body {
+    margin-top: 2em;
+    padding: 0px;
+}
+
+#main {
+    float: left;
+    width: 50em;
+    margin-left: 3%;
+    border: 1px solid black;
+    padding: 2em;
+}
+
+#index {
+    float: left;
+    width: 30%;
+    border: 1px solid black;
+    padding: 1em;
+}
+
+ul.toc {
+    list-style-type: none;
+}
+
+ul.toc li {
+    margin-bottom: 0.5em;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+a:visited {
+    color: blue;
+}
+
+a.section-anchor {
+    text-decoration: none;
+    color: black;
+}
+
+.chain-symbol {
+    display: none;
+    font-size: x-small;
+    margin-left: 0.5em;
+}
+a.section-anchor:hover + .chain-symbol {
+    display: inline-block;
+}
+
+span.phase, div.phase {
+    background-color: #eefbfb;
+}
+
+span.level, div.level {
+    background-color: #eefbee;
+}
+
+pre {
+    background-color: #eeeefb;
+    padding: 1em;
+}
+</style></head><body>
+<div id="index"><a href="../ontology.html">Back to ontology</a><img src="volumetric.png" style="border: 1px solid #EEEEEE; padding: 10px;" /><h2>Table of Contents</h2><ul class="toc"><li style="padding-left: 0.00em"><a href="#section-Summary">Summary</a></li><li style="padding-left: 0.00em"><a href="#section-Definitions">Definitions</a></li><li style="padding-left: 2.20em"><a href="#def-preventive_resource">preventive resource</a></li><li style="padding-left: 2.20em"><a href="#def-responsibility_zone">responsibility zone</a></li><li style="padding-left: 2.20em"><a href="#def-assignment">assignment</a></li><li style="padding-left: 0.00em"><a href="#section-Scenario">Scenario</a></li><li style="padding-left: 2.20em"><a href="#section-As-planned">As-planned</a></li><li style="padding-left: 2.20em"><a href="#section-As-observed">As-observed</a></li><li style="padding-left: 2.20em"><a href="#section-Divergence">Divergence</a></li><li style="padding-left: 2.20em"><a href="#section-Analytics">Analytics</a></li><li style="padding-left: 2.20em"><a href="#section-Scheduling">Scheduling</a></li><li style="padding-left: 2.20em"><a href="#section-Safety">Safety</a></li></ul><h2>Phase Index</h2><ul><li><a href="#phase-anchor-ab520851-fbe5-4e41-8db6-14d54c619fd0">construction</a></li></ul><h2>Level Index</h2><ul><li><a href="#level-anchor-123cb4c2-a216-4bd5-869a-175edfd0e9a2">zone</a></li></ul></div>
+<div id="main"><h1>Risk Tracking</h1><h2>Relations to Other Scenarios</h2><ul><li><span>Risk Tracking → in construction → </span><a href="../risk_management/scenario.html">Risk Management</a></li><li><span>Risk Tracking → issues → </span><a href="../topic_management/scenario.html">Topic Management</a></li><li><span>Risk Tracking → risk status → </span><a href="../safety_status/scenario.html">Safety Status</a></li></ul>
+<h2 data-anchor="section-Summary"><a name="section-Summary" /><a class="section-anchor" href="#section-Summary">Summary</a><span class="chain-symbol">🔗</span></h2>
+<p>This scenario is a sub-scenario of <a href="../risk_management/scenario.html" class="scenarioref">"Risk Management"</a> which considers
+how the risks are tracked, mitigated and escalated on day-to-day basis on the construction
+site.</p>
+<h2 data-anchor="section-Definitions"><a name="section-Definitions" /><a class="section-anchor" href="#section-Definitions">Definitions</a><span class="chain-symbol">🔗</span></h2>
+<div class="def">
+<h3 data-anchor="def-preventive_resource"><a name="def-preventive_resource" /><a class="section-anchor" href="#def-preventive_resource">preventive resource</a><span class="chain-symbol">🔗</span></h3>
+<p><span class="level" data-text="zone">This is an <a id="level-anchor-123cb4c2-a216-4bd5-869a-175edfd0e9a2" /><a href="../actor_management/scenario.html#def-role" class="ref">role (from actor_management)</a> that is responsible for
+one or more <a href="#def-responsibility_zone" class="ref">responsibility zones</a> on the construction site to keep track and mitigate
+the <a href="../risk_management/scenario.html#def-risk" class="ref">risks (from risk_management)</a>.<sup>zone</sup></span></p>
+<p>(Mind that a preventive resource and the <a href="../risk_management/scenario.html#def-risk_manager" class="ref">risk manager (from risk_management)</a> can be one and the same
+person in certain sites, <em>e.g.</em>, when the site is small.)</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-responsibility_zone"><a name="def-responsibility_zone" /><a class="section-anchor" href="#def-responsibility_zone">responsibility zone</a><span class="chain-symbol">🔗</span></h3>
+<p>A responsibility zone as an <code>IfcZone</code> living in the <a href="../evolving_plan/scenario.html#model-bim_extended" class="modelref">bim_extended (from evolving_plan)</a>.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-assignment"><a name="def-assignment" /><a class="section-anchor" href="#def-assignment">assignment</a><span class="chain-symbol">🔗</span></h3>
+<p>Responsibility assignment of a <a href="#def-preventive_resource" class="ref">preventive resource</a>.</p>
+<p>The assignment is a non-IFC data structure and relates the <a href="../risk_management/scenario.html#def-risk" class="ref">risks (from risk_management)</a> and
+the <a href="#def-preventive_resource" class="ref">preventive resources</a>.</p>
+</div>
+<h2 data-anchor="section-Scenario"><a name="section-Scenario" /><a class="section-anchor" href="#section-Scenario">Scenario</a><span class="chain-symbol">🔗</span></h2>
+<h3 data-anchor="section-As-planned"><a name="section-As-planned" /><a class="section-anchor" href="#section-As-planned">As-planned</a><span class="chain-symbol">🔗</span></h3>
+<p><strong>Update of the <a href="../risk_management/scenario.html#def-risk" class="ref">risks (from risk_management)</a></strong>.
+<span class="phase" data-text="construction">Both the <a id="phase-anchor-ab520851-fbe5-4e41-8db6-14d54c619fd0" /><a href="../risk_management/scenario.html#def-risk_manager" class="ref">risk manager (from risk_management)</a> and
+the <a href="#def-preventive_resource" class="ref">preventive resource</a> can insert new and change existing
+<a href="../risk_management/scenario.html#def-risk" class="ref">risks (from risk_management)</a> accordingly.<sup>construction</sup></span></p>
+<p><strong>Specification of the <a href="#def-assignment" class="ref">assignments</a></strong>.
+There needs to be a separate application so that the <a href="../risk_management/scenario.html#def-risk_manager" class="ref">risk manager (from risk_management)</a> can create, list
+and modify <a href="#def-assignment" class="ref">assignments</a> of the <a href="../risk_management/scenario.html#def-risk" class="ref">risks (from risk_management)</a> to
+the <a href="#def-preventive_resource" class="ref">preventive resources</a>.</p>
+<p>Though some <a href="../risk_management/scenario.html#def-risk" class="ref">risks (from risk_management)</a> are not necessarily spatially confined
+(<em>e.g.</em>, some risks can be abstract, such as "the workers are wearing safety helmets"),
+they are still part of an <a href="#def-assignment" class="ref">assignment</a>.
+In these cases, the <a href="#def-assignment" class="ref">assignment</a> means that a <a href="#def-preventive_resource" class="ref">preventive resource</a> is
+responsible for the unconfined <a href="../risk_management/scenario.html#def-risk" class="ref">risk (from risk_management)</a> in the given zone (<em>e.g</em>, that all workers wear a
+helmet in the given zone).</p>
+<h3 data-anchor="section-As-observed"><a name="section-As-observed" /><a class="section-anchor" href="#section-As-observed">As-observed</a><span class="chain-symbol">🔗</span></h3>
+<p>The <a href="../risk_management/scenario.html#def-risk_manager" class="ref">risk manager (from risk_management)</a> needs to create <a href="../uxv_recording/scenario.html#def-focus_spot" class="ref">focus spots (from uxv_recording)</a> in order
+to observe the necessary spots for potential new or changed risks.</p>
+<p>The <a href="../uxv_recording/scenario.html#def-focus_spot" class="ref">focus spots (from uxv_recording)</a> are observable through
+<a href="../digital_reconstruction/scenario.html#def-recording" class="ref">recordings (from digital_reconstruction)</a> and taken into account during the
+<a href="../uxv_recording/scenario.html#def-mission" class="ref">missions (from uxv_recording)</a>.</p>
+<h3 data-anchor="section-Divergence"><a name="section-Divergence" /><a class="section-anchor" href="#section-Divergence">Divergence</a><span class="chain-symbol">🔗</span></h3>
+<p>Depending on the <a href="../risk_management/scenario.html#def-risk" class="ref">risk (from risk_management)</a>, we can use <a href="../thermal_inspection/scenario.html" class="scenarioref">"Thermal Inspection"</a> and/or
+<a href="../virtual_inspection/scenario.html" class="scenarioref">"Virtual Inspection"</a> to inspect whether the risk is present or absent.</p>
+<p>For example, the <a href="#def-preventive_resource" class="ref">preventive resource</a> can check if the safety nets are still there and
+not damaged using <a href="../virtual_inspection/scenario.html" class="scenarioref">"Virtual Inspection"</a>.
+The absent, ill-placed or damaged elements are reported as a
+<a href="../topic_management/scenario.html#def-topic" class="ref">topic (from topic_management)</a> using <a href="../topic_management/scenario.html" class="scenarioref">"Topic Management"</a>.</p>
+<p>This is different to assessing or discovering a new risk (please see the
+<a href="#section-Safety">Safety section</a>).</p>
+<h3 data-anchor="section-Analytics"><a name="section-Analytics" /><a class="section-anchor" href="#section-Analytics">Analytics</a><span class="chain-symbol">🔗</span></h3>
+<p>The system allows the <a href="../risk_management/scenario.html#def-risk_manager" class="ref">risk manager (from risk_management)</a> to track the following indicators:</p>
+<ul>
+<li>Number of <a href="../topic_management/scenario.html#def-topic" class="ref">topics (from topic_management)</a> related to escalated <a href="../risk_management/scenario.html#def-risk" class="ref">risks (from risk_management)</a> of a
+certain <a href="../risk_management/scenario.html#def-risk_type" class="ref">risk type (from risk_management)</a> (<em>e.g.</em>, as a pre-defined <a href="../topic_management/scenario.html#def-label" class="ref">label (from topic_management)</a>).</li>
+</ul>
+<p>The <a href="#def-assignment" class="ref">assignments</a> should be visualized separately (<em>e.g.</em>, as a 3D or 2D geometry).</p>
+<h3 data-anchor="section-Scheduling"><a name="section-Scheduling" /><a class="section-anchor" href="#section-Scheduling">Scheduling</a><span class="chain-symbol">🔗</span></h3>
+<p>The <a href="../risk_management/scenario.html#def-risk_manager" class="ref">risk manager (from risk_management)</a> needs to inspect the <a href="../scheduling/scenario.html#def-task" class="ref">tasks (from scheduling)</a>
+in <a href="../scheduling/scenario.html" class="scenarioref">"Scheduling"</a> as the <a href="../scheduling/scenario.html#def-task_shadow" class="ref">task shadows (from scheduling)</a> are
+linked to the <a href="../risk_management/scenario.html#def-risk" class="ref">risks (from risk_management)</a>.</p>
+<h3 data-anchor="section-Safety"><a name="section-Safety" /><a class="section-anchor" href="#section-Safety">Safety</a><span class="chain-symbol">🔗</span></h3>
+<p><strong>Virtual inspection.</strong>
+The <a href="../risk_management/scenario.html#def-risk_manager" class="ref">risk manager (from risk_management)</a> filters the <a href="../scheduling/scenario.html#def-task" class="ref">tasks (from scheduling)</a> with
+an elevated risk in <a href="../virtual_inspection/scenario.html" class="scenarioref">"Virtual Inspection"</a>.</p>
+<p>The spatial and temporal relations between the <a href="../risk_management/scenario.html#def-risk_zone" class="ref">risk zones (from risk_management)</a> are then automatically
+visualized in <a href="../virtual_inspection/scenario.html" class="scenarioref">"Virtual Inspection"</a> (<em>e.g.</em>, using the temporal validity
+of the <a href="../risk_management/scenario.html#def-risk" class="ref">risk (from risk_management)</a>).</p>
+<p><strong>Reporting.</strong>
+The system needs to report an overview of all the <a href="../risk_management/scenario.html#def-risk" class="ref">risks (from risk_management)</a>.</p>
+<p>The <a href="../risk_management/scenario.html#def-risk" class="ref">risks (from risk_management)</a> need to be displayed together with their related
+<a href="../scheduling/scenario.html#def-task" class="ref">tasks (from scheduling)</a>, if any, as a time table.</p>
+<p>For example, we can display the <a href="../risk_management/scenario.html#def-risk" class="ref">risks (from risk_management)</a> as a Gantt diagram.
+The <a href="../risk_management/scenario.html#def-risk" class="ref">risks (from risk_management)</a> would be represented with thick bars, while the related
+<a href="../scheduling/scenario.html#def-task" class="ref">tasks (from scheduling)</a> would be visualized inside these bigger bars as thin bars.
+(Mind that this is just an idea and needs to be experimented with during the implementation.)</p>
+<p>The user should filter by:</p>
+<ul>
+<li><a href="../risk_management/scenario.html#def-risk_type" class="ref">risk type (from risk_management)</a> (<em>e.g.</em>, show only fire risks),</li>
+<li>time range, and</li>
+<li>spatially (by a bounding box, super-zones <em>etc.</em>; the spatial filtering takes
+<a href="../risk_management/scenario.html#def-risk_zone" class="ref">risk zones (from risk_management)</a> into account; there should be a special flag to include/exclude
+unconfined <a href="../risk_management/scenario.html#def-risk_zone" class="ref">risk zones (from risk_management)</a>).</li>
+</ul>
+<p><strong>Escalation.</strong>
+If there is a problematic <a href="../scheduling/scenario.html#def-task" class="ref">task (from scheduling)</a>,
+the <a href="../risk_management/scenario.html#def-risk_manager" class="ref">risk manager (from risk_management)</a> should create a <a href="../topic_management/scenario.html#def-topic" class="ref">topic (from topic_management)</a>.</p>
+</div>
+</body>
+</html>

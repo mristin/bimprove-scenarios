@@ -1,0 +1,94 @@
+<html>
+<body>
+<div id='index'></div>
+<div id='main'><h2>Summary</h2>
+<p>This scenario is a sub-scenario of <scenarioref name="risk_management" /> which considers
+how the risks are tracked, mitigated and escalated on day-to-day basis on the construction
+site.</p>
+<h2>Definitions</h2>
+<def name="preventive_resource">
+<p><level name="zone">This is an <ref name="actor_management#role" /> that is responsible for
+one or more <ref name="responsibility_zone" />s on the construction site to keep track and mitigate
+the <ref name="risk_management#risk" />s.</level></p>
+<p>(Mind that a preventive resource and the <ref name="risk_management#risk_manager" /> can be one and the same
+person in certain sites, <em>e.g.</em>, when the site is small.)</p>
+</def>
+<def name="responsibility_zone">
+<p>A responsibility zone as an <code>IfcZone</code> living in the <modelref name="evolving_plan#bim_extended"/>.</p>
+</def>
+<def name="assignment">
+<p>Responsibility assignment of a <ref name="preventive_resource" />.</p>
+<p>The assignment is a non-IFC data structure and relates the <ref name="risk_management#risk" />s and
+the <ref name="preventive_resource" />s.</p>
+</def>
+<h2>Scenario</h2>
+<h3>As-planned</h3>
+<p><strong>Update of the <ref name="risk_management#risk" />s</strong>.
+<phase name="construction">Both the <ref name="risk_management#risk_manager"/> and
+the <ref name="preventive_resource"/> can insert new and change existing
+<ref name="risk_management#risk"/>s accordingly.</phase></p>
+<p><strong>Specification of the <ref name="assignment" />s</strong>.
+There needs to be a separate application so that the <ref name="risk_management#risk_manager" /> can create, list
+and modify <ref name="assignment" />s of the <ref name="risk_management#risk" />s to
+the <ref name="preventive_resource" />s.</p>
+<p>Though some <ref name="risk_management#risk" />s are not necessarily spatially confined
+(<em>e.g.</em>, some risks can be abstract, such as &quot;the workers are wearing safety helmets&quot;),
+they are still part of an <ref name="assignment" />.
+In these cases, the <ref name="assignment" /> means that a <ref name="preventive_resource" /> is
+responsible for the unconfined <ref name="risk_management#risk" /> in the given zone (<em>e.g</em>, that all workers wear a
+helmet in the given zone).</p>
+<h3>As-observed</h3>
+<p>The <ref name="risk_management#risk_manager" /> needs to create <ref name="uxv_recording#focus_spot" />s in order
+to observe the necessary spots for potential new or changed risks.</p>
+<p>The <ref name="uxv_recording#focus_spot" />s are observable through
+<ref name="digital_reconstruction#recording" />s and taken into account during the
+<ref name="uxv_recording#mission" />s.</p>
+<h3>Divergence</h3>
+<p>Depending on the <ref name="risk_management#risk" />, we can use <scenarioref name="thermal_inspection" /> and/or
+<scenarioref name="virtual_inspection" /> to inspect whether the risk is present or absent.</p>
+<p>For example, the <ref name="preventive_resource" /> can check if the safety nets are still there and
+not damaged using <scenarioref name="virtual_inspection" />.
+The absent, ill-placed or damaged elements are reported as a
+<ref name="topic_management#topic" /> using <scenarioref name="topic_management" />.</p>
+<p>This is different to assessing or discovering a new risk (please see the
+<a href="#section-Safety">Safety section</a>).</p>
+<h3>Analytics</h3>
+<p>The system allows the <ref name="risk_management#risk_manager" /> to track the following indicators:</p>
+<ul>
+<li>Number of <ref name="topic_management#topic" />s related to escalated <ref name="risk_management#risk" />s of a
+certain <ref name="risk_management#risk_type" /> (<em>e.g.</em>, as a pre-defined <ref name="topic_management#label" />).</li>
+</ul>
+<p>The <ref name="assignment" />s should be visualized separately (<em>e.g.</em>, as a 3D or 2D geometry).</p>
+<h3>Scheduling</h3>
+<p>The <ref name="risk_management#risk_manager" /> needs to inspect the <ref name="scheduling#task" />s
+in <scenarioref name="scheduling" /> as the <ref name="scheduling#task_shadow" />s are
+linked to the <ref name="risk_management#risk" />s.</p>
+<h3>Safety</h3>
+<p><strong>Virtual inspection.</strong>
+The <ref name="risk_management#risk_manager" /> filters the <ref name="scheduling#task" />s with
+an elevated risk in <scenarioref name="virtual_inspection" />.</p>
+<p>The spatial and temporal relations between the <ref name="risk_management#risk_zone" />s are then automatically
+visualized in <scenarioref name="virtual_inspection" /> (<em>e.g.</em>, using the temporal validity
+of the <ref name="risk_management#risk" />).</p>
+<p><strong>Reporting.</strong>
+The system needs to report an overview of all the <ref name="risk_management#risk" />s.</p>
+<p>The <ref name="risk_management#risk" />s need to be displayed together with their related
+<ref name="scheduling#task" />s, if any, as a time table.</p>
+<p>For example, we can display the <ref name="risk_management#risk" />s as a Gantt diagram.
+The <ref name="risk_management#risk" />s would be represented with thick bars, while the related
+<ref name="scheduling#task" />s would be visualized inside these bigger bars as thin bars.
+(Mind that this is just an idea and needs to be experimented with during the implementation.)</p>
+<p>The user should filter by:</p>
+<ul>
+<li><ref name="risk_management#risk_type" /> (<em>e.g.</em>, show only fire risks),</li>
+<li>time range, and</li>
+<li>spatially (by a bounding box, super-zones <em>etc.</em>; the spatial filtering takes
+<ref name="risk_management#risk_zone" />s into account; there should be a special flag to include/exclude
+unconfined <ref name="risk_management#risk_zone" />s).</li>
+</ul>
+<p><strong>Escalation.</strong>
+If there is a problematic <ref name="scheduling#task" />,
+the <ref name="risk_management#risk_manager" /> should create a <ref name="topic_management#topic" />.</p>
+</div>
+</body>
+</html>

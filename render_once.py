@@ -54,8 +54,9 @@ def main() -> int:
         return -1
 
     svg_pth = output_path / "ontology.svg"
-    subprocess.check_call(["dot", "-Tsvg", str(output_path / "ontology.dot"),
-                           "-o", str(svg_pth)])
+    subprocess.check_call(
+        ["dot", "-Tsvg", "ontology.dot", "-o", "ontology.svg"],
+        cwd=str(output_path))
 
     ontology_svg = svg_pth.read_text()
 

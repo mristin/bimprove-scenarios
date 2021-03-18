@@ -8,7 +8,7 @@
     "volumetric": [
         {
             "aspect_from": "as-planned", "aspect_to": "analytics",
-            "phase_from": "planning", "phase_to": "demolition",
+            "phase_from": "planning", "phase_to": "construction",
             "level_from": "device", "level_to": "office"
         }
     ]

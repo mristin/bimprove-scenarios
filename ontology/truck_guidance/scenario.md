@@ -9,7 +9,7 @@
         {
             "aspect_from": "as-planned", "aspect_to": "scheduling",
             "phase_from": "construction", "phase_to": "construction",
-            "level_from": "machine", "level_to": "office"
+            "level_from": "machine/crew", "level_to": "office"
         }
     ]
 }

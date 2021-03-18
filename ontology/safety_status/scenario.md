@@ -8,7 +8,7 @@
         {
             "aspect_from": "safety", "aspect_to": "safety",
             "phase_from": "construction", "phase_to": "construction",
-            "level_from": "device", "level_to": "device"
+            "level_from": "device/person", "level_to": "device/person"
         }
     ]
 }

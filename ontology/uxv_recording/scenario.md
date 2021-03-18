@@ -9,7 +9,7 @@
         {
             "aspect_from": "as-planned", "aspect_to": "divergence",
             "phase_from": "construction", "phase_to": "construction",
-            "level_from": "machine", "level_to": "site"
+            "level_from": "machine/crew", "level_to": "site"
         }
     ]
 }

@@ -9,7 +9,7 @@
         {
             "aspect_from": "as-planned", "aspect_to": "analytics",
             "phase_from": "planning", "phase_to": "construction",
-            "level_from": "device", "level_to": "office"
+            "level_from": "device/person", "level_to": "office"
         }
     ]
 }

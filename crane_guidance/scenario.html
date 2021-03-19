@@ -1,0 +1,185 @@
+<html>
+<head><meta charset="utf-8" /><script src="https://livejs.com/live.js"> </script><title>Crane guidance</title><style>body {
+    margin-top: 2em;
+    padding: 0px;
+}
+
+#main {
+    float: left;
+    width: 50em;
+    margin-left: 3%;
+    border: 1px solid black;
+    padding: 2em;
+}
+
+#index {
+    float: left;
+    width: 30%;
+    border: 1px solid black;
+    padding: 1em;
+}
+
+ul.toc {
+    list-style-type: none;
+}
+
+ul.toc li {
+    margin-bottom: 0.5em;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+a:visited {
+    color: blue;
+}
+
+a.section-anchor {
+    text-decoration: none;
+    color: black;
+}
+
+.chain-symbol {
+    display: none;
+    font-size: x-small;
+    margin-left: 0.5em;
+}
+a.section-anchor:hover + .chain-symbol {
+    display: inline-block;
+}
+
+span.phase, div.phase {
+    background-color: #eefbfb;
+}
+
+span.level, div.level {
+    background-color: #eefbee;
+}
+
+pre {
+    background-color: #eeeefb;
+    padding: 1em;
+}
+</style></head><body>
+<div id="index"><a href="../ontology.html">Back to ontology</a><p><img src="volumetric.svg" style="border: 1px solid #EEEEEE; padding: 10px; margin: 0px;" /></p><h2>Table of Contents</h2><ul class="toc"><li style="padding-left: 0.00em"><a href="#section-Summary">Summary</a></li><li style="padding-left: 0.00em"><a href="#section-Models">Models</a></li><li style="padding-left: 2.20em"><a href="#model-crane_log">crane_log</a></li><li style="padding-left: 2.20em"><a href="#model-cranes">cranes</a></li><li style="padding-left: 0.00em"><a href="#section-Definitions">Definitions</a></li><li style="padding-left: 2.20em"><a href="#def-pickup_location">pickup location</a></li><li style="padding-left: 2.20em"><a href="#def-attaching_slinger">attaching slinger</a></li><li style="padding-left: 2.20em"><a href="#def-detaching_slinger">detaching slinger</a></li><li style="padding-left: 2.20em"><a href="#def-crane_delivery">crane delivery</a></li><li style="padding-left: 2.20em"><a href="#def-crane_operator">crane operator</a></li><li style="padding-left: 2.20em"><a href="#def-crane_supervisor">crane supervisor</a></li><li style="padding-left: 2.20em"><a href="#def-crane_coordinator">crane coordinator</a></li><li style="padding-left: 2.20em"><a href="#def-crane">crane</a></li><li style="padding-left: 2.20em"><a href="#def-crane_state">crane state</a></li><li style="padding-left: 0.00em"><a href="#section-Scenario">Scenario</a></li><li style="padding-left: 2.20em"><a href="#section-As-planned">As-planned</a></li><li style="padding-left: 2.20em"><a href="#section-As-observed">As-observed</a></li><li style="padding-left: 2.20em"><a href="#section-Divergence">Divergence</a></li><li style="padding-left: 2.20em"><a href="#section-Scheduling">Scheduling</a></li><li style="padding-left: 2.20em"><a href="#section-Safety">Safety</a></li><li style="padding-left: 2.20em"><a href="#section-Analytics">Analytics</a></li><li style="padding-left: 0.00em"><a href="#section-Test_Cases">Test Cases</a></li><li style="padding-left: 0.00em"><a href="#section-Acceptance_Criteria">Acceptance Criteria</a></li></ul><h2>Level Index</h2><ul><li><a href="#level-anchor-0fdceabb-c86e-4246-995e-547292eae2a9">site</a></li><li><a href="#level-anchor-8be17c86-05a4-4b29-a136-4d8ec3e9fe35">machine</a></li><li><a href="#level-anchor-cd7c6643-350e-4a19-ad14-ab509e62a3fb">machine</a></li><li><a href="#level-anchor-cbe7be24-8cd1-4350-8349-63ac8d143207">site</a></li><li><a href="#level-anchor-8cd8a889-0719-45dc-a211-c5d45b68da60">site</a></li><li><a href="#level-anchor-2475a354-d436-4305-8d85-f781aaeda550">machine</a></li></ul></div>
+<div id="main"><h1>Crane guidance</h1><h2>Relations to Other Scenarios</h2><ul><li><span>Crane guidance → specific → </span><a href="../on-site_logistics/scenario.html">On-site Logistics</a></li></ul>
+<h2 data-anchor="section-Summary"><a name="section-Summary" /><a class="section-anchor" href="#section-Summary">Summary</a><span class="chain-symbol">🔗</span></h2>
+<p>This scenario examines how crane operators can lift and deliver the cargo around the construction
+site.</p>
+<h2 data-anchor="section-Models"><a name="section-Models" /><a class="section-anchor" href="#section-Models">Models</a><span class="chain-symbol">🔗</span></h2>
+<div class="model">
+<h3 data-anchor="model-crane_log"><a name="model-crane_log" /><a class="section-anchor" href="#model-crane_log">crane_log</a><span class="chain-symbol">🔗</span></h3>
+<p>This log contains the observed <a href="#def-crane_state" class="ref">crane states</a> corresponding to the
+<a href="#def-crane" class="ref">cranes</a>.</p>
+</div>
+<div class="model">
+<h3 data-anchor="model-cranes"><a name="model-cranes" /><a class="section-anchor" href="#model-cranes">cranes</a><span class="chain-symbol">🔗</span></h3>
+<p>This model lists all the <a href="#def-crane" class="ref">cranes</a> available in the system.</p>
+</div>
+<h2 data-anchor="section-Definitions"><a name="section-Definitions" /><a class="section-anchor" href="#section-Definitions">Definitions</a><span class="chain-symbol">🔗</span></h2>
+<div class="def">
+<h3 data-anchor="def-pickup_location"><a name="def-pickup_location" /><a class="section-anchor" href="#def-pickup_location">pickup location</a><span class="chain-symbol">🔗</span></h3>
+<p>This is an <code>IfcZone</code> where the <a href="../on-site_logistics/scenario.html#def-delivery" class="ref">delivery (from on-site_logistics)</a> needs to be picked up.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-attaching_slinger"><a name="def-attaching_slinger" /><a class="section-anchor" href="#def-attaching_slinger">attaching slinger</a><span class="chain-symbol">🔗</span></h3>
+<p>The <a href="../actor_management/scenario.html#def-actor" class="ref">actor (from actor_management)</a> who will attach
+the <a href="../on-site_logistics/scenario.html#def-delivery" class="ref">delivery (from on-site_logistics)</a> to the crane at the <a href="#def-pickup_location" class="ref">pickup location</a>. </p>
+</div>
+<div class="def">
+<h3 data-anchor="def-detaching_slinger"><a name="def-detaching_slinger" /><a class="section-anchor" href="#def-detaching_slinger">detaching slinger</a><span class="chain-symbol">🔗</span></h3>
+<p>The <a href="../actor_management/scenario.html#def-actor" class="ref">actor (from actor_management)</a> who will take off
+the <a href="../on-site_logistics/scenario.html#def-delivery" class="ref">delivery (from on-site_logistics)</a> from the crane at
+the <a href="../on-site_logistics/scenario.html#def-delivery_location" class="ref">delivery location (from on-site_logistics)</a>. </p>
+<p>A detaching slinger can be identical with a <a href="#def-attaching_slinger" class="ref">attaching slinger</a>.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-crane_delivery"><a name="def-crane_delivery" /><a class="section-anchor" href="#def-crane_delivery">crane delivery</a><span class="chain-symbol">🔗</span></h3>
+<p>A crane delivery defines how the <a href="../on-site_logistics/scenario.html#def-delivery" class="ref">delivery (from on-site_logistics)</a> should be transported
+within the construction site by a <a href="#def-crane" class="ref">crane</a>.</p>
+<p>Each crane delivery is associated with:</p>
+<ul>
+<li>a <a href="#def-pickup_location" class="ref">pickup location</a> and
+the corresponding one or more <a href="#def-attaching_slinger" class="ref">attaching slingers</a>,</li>
+<li>the <a href="../on-site_logistics/scenario.html#def-delivery_location" class="ref">delivery location (from on-site_logistics)</a> and
+the corresponding one or more <a href="#def-detaching_slinger" class="ref">detaching slingers</a>, and</li>
+<li>the <a href="#def-crane" class="ref">crane</a>,</li>
+<li>the <a href="#def-crane_supervisor" class="ref">crane supervisor</a>, and </li>
+<li>the <a href="#def-crane_operator" class="ref">crane operator</a></li>
+</ul>
+</div>
+<div class="def">
+<h3 data-anchor="def-crane_operator"><a name="def-crane_operator" /><a class="section-anchor" href="#def-crane_operator">crane operator</a><span class="chain-symbol">🔗</span></h3>
+<p>The crane operator is an <a href="../on-site_logistics/scenario.html#def-operator" class="ref">operator (from on-site_logistics)</a> who controls the <a href="#def-crane" class="ref">crane</a>.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-crane_supervisor"><a name="def-crane_supervisor" /><a class="section-anchor" href="#def-crane_supervisor">crane supervisor</a><span class="chain-symbol">🔗</span></h3>
+<p>Crane supervisor is an <a href="../actor_management/scenario.html#def-actor" class="ref">actor (from actor_management)</a>
+who helps the <a href="#def-crane_operator" class="ref">crane operator</a> by guiding her during
+the <a href="../on-site_logistics/scenario.html#def-delivery" class="ref">delivery (from on-site_logistics)</a>.</p>
+<p>She has the final authority.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-crane_coordinator"><a name="def-crane_coordinator" /><a class="section-anchor" href="#def-crane_coordinator">crane coordinator</a><span class="chain-symbol">🔗</span></h3>
+<p>The crane coordinator is an <a href="../actor_management/scenario.html#def-actor" class="ref">actor (from actor_management)</a> who supervises that
+the <a href="#def-crane_operator" class="ref">crane operators</a> do not crash into each other.</p>
+</div>
+<div class="def">
+<h3 data-anchor="def-crane"><a name="def-crane" /><a class="section-anchor" href="#def-crane">crane</a><span class="chain-symbol">🔗</span></h3>
+<p>The crane is defined as <code>IfcTransportElement</code> and stored in <a href="#model-cranes" class="modelref">cranes</a>.</p>
+<p>Its state is tracked as <a href="#def-crane_state" class="ref">crane state</a> and stored in <a href="#model-crane_log" class="modelref">crane_log</a>. </p>
+</div>
+<div class="def">
+<h3 data-anchor="def-crane_state"><a name="def-crane_state" /><a class="section-anchor" href="#def-crane_state">crane state</a><span class="chain-symbol">🔗</span></h3>
+<p>The crane state captures the state of the crane, including:</p>
+<ul>
+<li>a timestamp of the observation,</li>
+<li>position of the trolley, and</li>
+<li>the height of the hook block (if available).</li>
+</ul>
+</div>
+<h2 data-anchor="section-Scenario"><a name="section-Scenario" /><a class="section-anchor" href="#section-Scenario">Scenario</a><span class="chain-symbol">🔗</span></h2>
+<h3 data-anchor="section-As-planned"><a name="section-As-planned" /><a class="section-anchor" href="#section-As-planned">As-planned</a><span class="chain-symbol">🔗</span></h3>
+<p><span class="level" data-text="site">The <a id="level-anchor-0fdceabb-c86e-4246-995e-547292eae2a9" /><a href="../on-site_logistics/scenario.html#def-planner_role" class="ref">planner role (from on-site_logistics)</a> specifies the
+<a href="../on-site_logistics/scenario.html#def-delivery" class="ref">deliveries (from on-site_logistics)</a> (with additional information
+defined) as <a href="#def-crane_delivery" class="ref">crane deliveries</a>.<sup>site</sup></span></p>
+<h3 data-anchor="section-As-observed"><a name="section-As-observed" /><a class="section-anchor" href="#section-As-observed">As-observed</a><span class="chain-symbol">🔗</span></h3>
+<p><span class="level" data-text="machine">The position of the crane's arm is continuously tracked
+as <a id="level-anchor-8be17c86-05a4-4b29-a136-4d8ec3e9fe35" /><a href="#def-crane_state" class="ref">crane state</a> in <a href="#model-crane_log" class="modelref">crane_log</a>.<sup>machine</sup></span></p>
+<h3 data-anchor="section-Divergence"><a name="section-Divergence" /><a class="section-anchor" href="#section-Divergence">Divergence</a><span class="chain-symbol">🔗</span></h3>
+<div class="level" data-text="machine">
+<a id="level-anchor-cd7c6643-350e-4a19-ad14-ab509e62a3fb" /><p>The  device will guide the <a href="#def-crane_operator" class="ref">crane operator</a> and the
+<a href="#def-crane_supervisor" class="ref">crane supervisor</a> to the <a href="../on-site_logistics/scenario.html#def-delivery_location" class="ref">delivery location (from on-site_logistics)</a>.</p>
+<p>Since the <a href="#def-crane_delivery" class="ref">crane delivery</a> is very dynamic, we explicitly do not provide a mechanism
+to signal the <a href="#def-attaching_slinger" class="ref">attaching slingers</a> and <a href="#def-detaching_slinger" class="ref">detaching slingers</a> when the
+<a href="#def-crane_delivery" class="ref">crane delivery</a> arrived, as these actors would have a visual contact anyhow.</p>
+<sup>machine</sup></div>
+<h3 data-anchor="section-Scheduling"><a name="section-Scheduling" /><a class="section-anchor" href="#section-Scheduling">Scheduling</a><span class="chain-symbol">🔗</span></h3>
+<div class="level" data-text="site">
+<a id="level-anchor-cbe7be24-8cd1-4350-8349-63ac8d143207" /><p>For a given time range, the <a href="../on-site_logistics/scenario.html#def-planner_role" class="ref">planner role (from on-site_logistics)</a> should be able to inspect
+the plan of the <a href="#def-crane_delivery" class="ref">crane deliveries</a> as association between the <a href="#def-crane" class="ref">cranes</a>,
+<a href="#def-crane_operator" class="ref">crane operators</a>, <a href="#def-crane_supervisor" class="ref">crane supervisors</a> and
+<a href="../scheduling/scenario.html#def-task" class="ref">tasks (from scheduling)</a> (if available). </p>
+<sup>site</sup></div>
+<h3 data-anchor="section-Safety"><a name="section-Safety" /><a class="section-anchor" href="#section-Safety">Safety</a><span class="chain-symbol">🔗</span></h3>
+<div class="level" data-text="site">
+<a id="level-anchor-8cd8a889-0719-45dc-a211-c5d45b68da60" /><p>The <a href="#def-crane_coordinator" class="ref">crane coordinator</a> ensures visually that the <a href="#def-crane_operator" class="ref">crane operators</a> do not crash.</p>
+<p>In addition, the system should warn the <a href="#def-crane_coordinator" class="ref">crane coordinator</a> if two crane arms are about
+to collide.</p>
+<sup>site</sup></div>
+<h3 data-anchor="section-Analytics"><a name="section-Analytics" /><a class="section-anchor" href="#section-Analytics">Analytics</a><span class="chain-symbol">🔗</span></h3>
+<div class="level" data-text="machine">
+<a id="level-anchor-2475a354-d436-4305-8d85-f781aaeda550" /><p>As we track the crane movements in <a href="#model-crane_log" class="modelref">crane_log</a>, the system should report the
+<a href="#def-crane" class="ref">crane</a> utilisation over time.</p>
+<p>The details are to be discussed during the implementation (<em>e.g.</em>, what time units and how we
+can measure it).</p>
+<sup>machine</sup></div>
+<h2 data-anchor="section-Test_Cases"><a name="section-Test_Cases" /><a class="section-anchor" href="#section-Test_Cases">Test Cases</a><span class="chain-symbol">🔗</span></h2>
+<p>Please see the test cases of <a href="../on-site_logistics/scenario.html" class="scenarioref">"On-site Logistics"</a>.</p>
+<h2 data-anchor="section-Acceptance_Criteria"><a name="section-Acceptance_Criteria" /><a class="section-anchor" href="#section-Acceptance_Criteria">Acceptance Criteria</a><span class="chain-symbol">🔗</span></h2>
+<p>Please see the acceptance criteria of <a href="../on-site_logistics/scenario.html" class="scenarioref">"On-site Logistics"</a>.</p>
+</div>
+</body>
+</html>

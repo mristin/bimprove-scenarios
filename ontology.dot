@@ -12,96 +12,108 @@ digraph G {
                 ><IMG SRC="cost_tracking/volumetric_thumb.svg"/></TD></TR>
             <TR><TD>Cost Tracking</TD></TR></TABLE>>]
     node2 [
+        href="crane_guidance/scenario.html", 
+        label=<<TABLE cellspacing="0" border="0" cellborder="0">
+            <TR><TD fixedsize="true" width="50" height="50"
+                ><IMG SRC="crane_guidance/volumetric_thumb.svg"/></TD></TR>
+            <TR><TD>Crane guidance</TD></TR></TABLE>>]
+    node3 [
         href="digital_reconstruction/scenario.html", 
         label=<<TABLE cellspacing="0" border="0" cellborder="0">
             <TR><TD fixedsize="true" width="50" height="50"
                 ><IMG SRC="digital_reconstruction/volumetric_thumb.svg"/></TD></TR>
             <TR><TD>Digital Reconstruction</TD></TR></TABLE>>]
-    node3 [
+    node4 [
         href="evolving_plan/scenario.html", 
         label=<<TABLE cellspacing="0" border="0" cellborder="0">
             <TR><TD fixedsize="true" width="50" height="50"
                 ><IMG SRC="evolving_plan/volumetric_thumb.svg"/></TD></TR>
             <TR><TD>Evolving Plan</TD></TR></TABLE>>]
-    node4 [
+    node5 [
         href="fall_risk/scenario.html", 
         label=<<TABLE cellspacing="0" border="0" cellborder="0">
             <TR><TD fixedsize="true" width="50" height="50"
                 ><IMG SRC="fall_risk/volumetric_thumb.svg"/></TD></TR>
             <TR><TD>Fall Risk</TD></TR></TABLE>>]
-    node5 [
+    node6 [
         href="fire_risk/scenario.html", 
         label=<<TABLE cellspacing="0" border="0" cellborder="0">
             <TR><TD fixedsize="true" width="50" height="50"
                 ><IMG SRC="fire_risk/volumetric_thumb.svg"/></TD></TR>
             <TR><TD>Fire Risk</TD></TR></TABLE>>]
-    node6 [
+    node7 [
         href="manual_snapshots/scenario.html", 
         label=<<TABLE cellspacing="0" border="0" cellborder="0">
             <TR><TD fixedsize="true" width="50" height="50"
                 ><IMG SRC="manual_snapshots/volumetric_thumb.svg"/></TD></TR>
             <TR><TD>Manual Snapshots</TD></TR></TABLE>>]
-    node7 [
+    node8 [
+        href="on-site_logistics/scenario.html", 
+        label=<<TABLE cellspacing="0" border="0" cellborder="0">
+            <TR><TD fixedsize="true" width="50" height="50"
+                ><IMG SRC="on-site_logistics/volumetric_thumb.svg"/></TD></TR>
+            <TR><TD>On-site Logistics</TD></TR></TABLE>>]
+    node9 [
         href="risk_management/scenario.html", 
         label=<<TABLE cellspacing="0" border="0" cellborder="0">
             <TR><TD fixedsize="true" width="50" height="50"
                 ><IMG SRC="risk_management/volumetric_thumb.svg"/></TD></TR>
             <TR><TD>Risk Management</TD></TR></TABLE>>]
-    node8 [
+    node10 [
         href="risk_planning/scenario.html", 
         label=<<TABLE cellspacing="0" border="0" cellborder="0">
             <TR><TD fixedsize="true" width="50" height="50"
                 ><IMG SRC="risk_planning/volumetric_thumb.svg"/></TD></TR>
             <TR><TD>Risk Planning</TD></TR></TABLE>>]
-    node9 [
+    node11 [
         href="risk_tracking/scenario.html", 
         label=<<TABLE cellspacing="0" border="0" cellborder="0">
             <TR><TD fixedsize="true" width="50" height="50"
                 ><IMG SRC="risk_tracking/volumetric_thumb.svg"/></TD></TR>
             <TR><TD>Risk Tracking</TD></TR></TABLE>>]
-    node10 [
+    node12 [
         href="safety_status/scenario.html", 
         label=<<TABLE cellspacing="0" border="0" cellborder="0">
             <TR><TD fixedsize="true" width="50" height="50"
                 ><IMG SRC="safety_status/volumetric_thumb.svg"/></TD></TR>
             <TR><TD>Safety Status</TD></TR></TABLE>>]
-    node11 [
+    node13 [
         href="scheduling/scenario.html", 
         label=<<TABLE cellspacing="0" border="0" cellborder="0">
             <TR><TD fixedsize="true" width="50" height="50"
                 ><IMG SRC="scheduling/volumetric_thumb.svg"/></TD></TR>
             <TR><TD>Scheduling</TD></TR></TABLE>>]
-    node12 [
+    node14 [
         href="thermal_inspection/scenario.html", 
         label=<<TABLE cellspacing="0" border="0" cellborder="0">
             <TR><TD fixedsize="true" width="50" height="50"
                 ><IMG SRC="thermal_inspection/volumetric_thumb.svg"/></TD></TR>
             <TR><TD>Thermal Inspection</TD></TR></TABLE>>]
-    node13 [
+    node15 [
         href="topic_management/scenario.html", 
         label=<<TABLE cellspacing="0" border="0" cellborder="0">
             <TR><TD fixedsize="true" width="50" height="50"
                 ><IMG SRC="topic_management/volumetric_thumb.svg"/></TD></TR>
             <TR><TD>Topic Management</TD></TR></TABLE>>]
-    node14 [
+    node16 [
         href="truck_guidance/scenario.html", 
         label=<<TABLE cellspacing="0" border="0" cellborder="0">
             <TR><TD fixedsize="true" width="50" height="50"
                 ><IMG SRC="truck_guidance/volumetric_thumb.svg"/></TD></TR>
             <TR><TD>Truck guidance</TD></TR></TABLE>>]
-    node15 [
+    node17 [
         href="unique_resource_identification/scenario.html", 
         label=<<TABLE cellspacing="0" border="0" cellborder="0">
             <TR><TD fixedsize="true" width="50" height="50"
                 ><IMG SRC="unique_resource_identification/volumetric_thumb.svg"/></TD></TR>
             <TR><TD>Unique Resource Identification</TD></TR></TABLE>>]
-    node16 [
+    node18 [
         href="uxv_recording/scenario.html", 
         label=<<TABLE cellspacing="0" border="0" cellborder="0">
             <TR><TD fixedsize="true" width="50" height="50"
                 ><IMG SRC="uxv_recording/volumetric_thumb.svg"/></TD></TR>
             <TR><TD>UXV Recording</TD></TR></TABLE>>]
-    node17 [
+    node19 [
         href="virtual_inspection/scenario.html", 
         label=<<TABLE cellspacing="0" border="0" cellborder="0">
             <TR><TD fixedsize="true" width="50" height="50"
@@ -109,23 +121,25 @@ digraph G {
             <TR><TD>Virtual Inspection</TD></TR></TABLE>>]
 
     
-    node0 -> node3 [label="actors"]
-    node1 -> node11 [label="inspect over-cost tasks"]
-    node2 -> node17 [label="observations"]
-    node2 -> node12 [label="observations"]
-    node3 -> node17 [label="BIM"]
-    node4 -> node7 [label="specific"]
-    node5 -> node7 [label="specific"]
-    node6 -> node2 [label="images"]
-    node8 -> node7 [label="in planning"]
-    node9 -> node7 [label="in construction"]
-    node9 -> node13 [label="issues"]
-    node9 -> node10 [label="risk status"]
-    node11 -> node3 [label="task shadows"]
-    node12 -> node5 [label="visualization"]
-    node13 -> node16 [label="focus spots"]
-    node14 -> node13 [label="deliveries"]
-    node16 -> node2 [label="observations"]
-    node17 -> node13 [label="issues"]
+    node0 -> node4 [label="actors"]
+    node1 -> node13 [label="inspect over-cost tasks"]
+    node2 -> node8 [label="specific"]
+    node3 -> node19 [label="observations"]
+    node3 -> node14 [label="observations"]
+    node4 -> node19 [label="BIM"]
+    node5 -> node9 [label="specific"]
+    node6 -> node9 [label="specific"]
+    node7 -> node3 [label="images"]
+    node8 -> node15 [label="deliveries"]
+    node10 -> node9 [label="in planning"]
+    node11 -> node9 [label="in construction"]
+    node11 -> node15 [label="issues"]
+    node11 -> node12 [label="risk status"]
+    node13 -> node4 [label="task shadows"]
+    node14 -> node6 [label="visualization"]
+    node15 -> node18 [label="focus spots"]
+    node16 -> node8 [label="specific"]
+    node18 -> node3 [label="observations"]
+    node19 -> node15 [label="issues"]
 
 }

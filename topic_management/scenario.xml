@@ -29,7 +29,7 @@
 <def name="topic_board">
 <p>A topic board (called &quot;project&quot; in <ref name="BCF" />) is a collection of <ref name="topic" />s.</p>
 <p>A topic board can have different access rights as well as different semantics.</p>
-<p>For example, there is a special topic board for <ref name="truck_guidance#delivery" />s.</p>
+<p>For example, there is a special topic board for <ref name="on-site_logistics#delivery" />s.</p>
 </def>
 <def name="requester">
 <p>The <ref name="actor_management#actor" /> who created/requested a <ref name="topic" /> to be
@@ -53,7 +53,7 @@ focused on.</p>
 <p>Comments are usually free-form.</p>
 <p>There are also specially structured comments.
 For example, we use comments to represent the status change of a
-<ref name="truck_guidance#delivery" />.</p>
+<ref name="on-site_logistics#delivery" />.</p>
 </def>
 <def name="viewquery">
 <p>A viewquery is an encoding of the camera position, the view angle and the query from
@@ -122,7 +122,7 @@ the <ref name="notification_protocol" />s can be referenced through
 The user can create a <ref name="topic" /> from an arbitrary <ref name="scheduling#task_shadow" />
 using <scenarioref name="scheduling" />.</p>
 <p>There is also a more structured task-to-topic translation for specific tasks such as
-<ref name="truck_guidance#delivery" />s.</p>
+<ref name="on-site_logistics#delivery" />s.</p>
 <p><strong>Export to <ref name="BCF" /></strong>.
 The <ref name="topic" />s are exportable to <ref name="BCF" />.</p>
 <p>The export can be either to:</p>

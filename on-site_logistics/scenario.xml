@@ -1,0 +1,102 @@
+<html>
+<body>
+<div id='index'></div>
+<div id='main'><h2>Summary</h2>
+<p>This scenario looks into how the cargo is transported to, from and within a construction site.</p>
+<h2>Models</h2>
+<model name="logs">
+<p>These are the <ref name="topic_management#topic" />s corresponding to the
+<ref name="delivery" />s.</p>
+<p>The <ref name="delivery_update" />s are converted to structured
+<ref name="topic_management#comment" />s.</p>
+<p>The <ref name="topic_management#comment" />s are appended to the
+<ref name="topic_management#topic" /> corresponding to a <ref name="delivery" />.</p>
+</model>
+<model name="status_labels">
+<p>The list of possible labels for a delivery status.</p>
+</model>
+<h2>Definitions</h2>
+<def name="planner_role">
+<p>Planner <ref name="actor_management#role" /> is for all people who are allowed to change a
+<ref name="delivery"/>.</p>
+</def>
+<def name="delivery_location" >
+<p>The delivery location is the <code>IfcZone</code> where the cargo should be delivered.</p>
+</def>
+<def name="delivery">
+<p>Delivery is a <ref name="topic_management#topic" /> which has a description, a <code>Deadline</code> and a
+<code>Priority</code>.</p>
+<p>The delivery can be associated optionally with a <ref name="delivery_location" />.</p>
+<p>The cargo is described as a text property of the delivery (&quot;10 windows, 2 doors&quot;).</p>
+<p>The delivery is assigned to an <ref name="operator"/> and associated with:</p>
+<ul>
+<li>a <ref name="delivery_location" />,</li>
+<li>a <ref name="contact_person" />, and</li>
+<li>a <ref name="scheduling#task" /> (if available).</li>
+</ul>
+<p>The <ref name="topic_management#topic" /> follows a pre-defined format.</p>
+<p>The deliveries live in a semantically pre-defined <ref name="topic_management#topic_board" />.</p>
+</def>
+<def name="contact_person">
+<p>The <ref name="actor_management#actor" /> who should be contacted if the <ref name="operator" />
+have questions.</p>
+</def>
+<def name="operator">
+<p>The operator is an <ref name="actor_management#actor" /> who executes the <ref name="delivery" />.</p>
+<p>Depending on the vehicle, this can be a truck driver or a crane operator <em>etc.</em></p>
+</def>
+<def name="delivery_update">
+<p>A structured <ref name="topic_management#comment" /> representing the update of the delivery status:</p>
+<ul>
+<li>label (as an enum string, referring to <modelref name="status_labels" />),</li>
+<li>datetime, and</li>
+<li>an optional field <code>location</code> (as a GPS location).</li>
+</ul>
+<p>The delivery updates live in <modelref name="logs" />.</p>
+<p>The system should not allow the user to change the corresponding comment in
+the <ref name="topic_management#topic" />.</p>
+</def>
+<h2>Scenario</h2>
+<p>The labels for a <ref name="delivery_update" /> are pre-defined during the system configuration
+in <modelref name="status_labels" />.</p>
+<h3>As-planned</h3>
+<p>The tasks are imported from external &lt;<ref name="scheduling#last_planner_system" /> such as Visilean
+(see <scenarioref name="scheduling" />).</p>
+<p>Since it is too difficult to enrich the task information with the delivery-relevant information
+(such as selecting the <ref name="operator" /> and the <ref name="delivery_location" />),
+we have to provide an application that allows the user to add this extra information.</p>
+<p>The <ref name="planner_role"/> converts the corresponding task into a <ref name="delivery"/>
+(a structured <ref name="topic_management#topic" />) and enriches it with the extra information.</p>
+<p>The <ref name="planner_role"/> can also update manually the status of the delivery (<em>e.g.</em>, to
+cancel it) by adding <ref name="delivery_update" />s (as structured
+<ref name="topic_management#comment" />).</p>
+<p>The updates of the delivery status are kept track in the <modelref name="logs" />.</p>
+<h3>Analytics</h3>
+<level name="site">
+<p>The KPI for delivery-in-time is updated, both delivery in number per week and variance.</p>
+<p>The KPIs are based on the data from the <modelref name="logs" />.</p>
+<p>Since <ref name="delivery" /> is a <ref name="topic_management#topic" />, many messages are
+structured as <ref name="delivery_update" />. However, unstructured messages are also possible.
+The unstructured messages should be ignored when computing the KPIs.</p>
+<p>The <ref name="planner_role" /> usually sets the last status of the delivery which is then used
+to determine how the <ref name="delivery" /> is counted in the KPIs (<em>e.g.</em>, &quot;on time&quot;, &quot;delayed&quot;
+<em>etc.</em>).</p>
+</level>
+<h3>Scheduling</h3>
+<p>The notifications regarding the unmet deadlines are handled by the
+<scenarioref name="topic_management" />.</p>
+<h2>Test Cases</h2>
+<test name="navigation_correct_on_examples">
+<p>To be discussed. What is the easiest way to record a couple of scenarios so that we can
+repeatedly and automatically test them?</p>
+</test>
+<h2>Acceptance Criteria</h2>
+<p>To be discussed.
+What are the practically accepted refresh rates for the navigation?
+How much polling will be involved -- how many requests per second will the system face
+in low, normal and high usage?</p>
+<p>What is the acceptable delay with sending out the messages? Can this be a bottleneck? How many
+messages per second in low, normal and high usage?</p>
+</div>
+</body>
+</html>

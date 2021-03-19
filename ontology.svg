@@ -19,19 +19,19 @@
 </a>
 </g>
 </g>
-<!-- node3 -->
-<g id="node4" class="node">
-<title>node3</title>
-<g id="a_node4"><a xlink:href="evolving_plan/scenario.html" xlink:title="&lt;TABLE&gt;">
+<!-- node4 -->
+<g id="node5" class="node">
+<title>node4</title>
+<g id="a_node5"><a xlink:href="evolving_plan/scenario.html" xlink:title="&lt;TABLE&gt;">
 <ellipse fill="none" stroke="black" cx="145.02" cy="-1173.71" rx="84.29" ry="54.39"/>
 <image xlink:href="evolving_plan/volumetric_thumb.svg" width="46px" height="46px" preserveAspectRatio="xMinYMin meet" x="122.516" y="-1205.71"/>
 <text text-anchor="start" x="96.02" y="-1144.51" font-family="Times,serif" font-size="14.00">Evolving Plan</text>
 </a>
 </g>
 </g>
-<!-- node0&#45;&gt;node3 -->
+<!-- node0&#45;&gt;node4 -->
 <g id="edge1" class="edge">
-<title>node0&#45;&gt;node3</title>
+<title>node0&#45;&gt;node4</title>
 <path fill="none" stroke="black" d="M122.53,-1279.15C125.39,-1265.83 128.5,-1251.43 131.45,-1237.7"/>
 <polygon fill="black" stroke="black" points="134.89,-1238.35 133.57,-1227.84 128.05,-1236.88 134.89,-1238.35"/>
 <text text-anchor="middle" x="152.52" y="-1249.96" font-family="Times,serif" font-size="14.00">actors</text>
@@ -46,19 +46,19 @@
 </a>
 </g>
 </g>
-<!-- node11 -->
-<g id="node12" class="node">
-<title>node11</title>
-<g id="a_node12"><a xlink:href="scheduling/scenario.html" xlink:title="&lt;TABLE&gt;">
+<!-- node13 -->
+<g id="node14" class="node">
+<title>node13</title>
+<g id="a_node14"><a xlink:href="scheduling/scenario.html" xlink:title="&lt;TABLE&gt;">
 <ellipse fill="none" stroke="black" cx="311.02" cy="-1333.6" rx="70.92" ry="54.39"/>
 <image xlink:href="scheduling/volumetric_thumb.svg" width="46px" height="46px" preserveAspectRatio="xMinYMin meet" x="288.016" y="-1365.6"/>
 <text text-anchor="start" x="271.02" y="-1304.4" font-family="Times,serif" font-size="14.00">Scheduling</text>
 </a>
 </g>
 </g>
-<!-- node1&#45;&gt;node11 -->
+<!-- node1&#45;&gt;node13 -->
 <g id="edge2" class="edge">
-<title>node1&#45;&gt;node11</title>
+<title>node1&#45;&gt;node13</title>
 <path fill="none" stroke="black" d="M311.02,-1439.04C311.02,-1425.99 311.02,-1411.91 311.02,-1398.43"/>
 <polygon fill="black" stroke="black" points="314.52,-1398.27 311.02,-1388.27 307.52,-1398.27 314.52,-1398.27"/>
 <text text-anchor="middle" x="393.02" y="-1409.85" font-family="Times,serif" font-size="14.00">inspect over&#45;cost tasks</text>
@@ -66,254 +66,288 @@
 <!-- node2 -->
 <g id="node3" class="node">
 <title>node2</title>
-<g id="a_node3"><a xlink:href="digital_reconstruction/scenario.html" xlink:title="&lt;TABLE&gt;">
+<g id="a_node3"><a xlink:href="crane_guidance/scenario.html" xlink:title="&lt;TABLE&gt;">
+<ellipse fill="none" stroke="black" cx="556.02" cy="-1173.71" rx="93.18" ry="54.39"/>
+<image xlink:href="crane_guidance/volumetric_thumb.svg" width="46px" height="46px" preserveAspectRatio="xMinYMin meet" x="533.016" y="-1205.71"/>
+<text text-anchor="start" x="500.02" y="-1144.51" font-family="Times,serif" font-size="14.00">Crane guidance</text>
+</a>
+</g>
+</g>
+<!-- node8 -->
+<g id="node9" class="node">
+<title>node8</title>
+<g id="a_node9"><a xlink:href="on-site_logistics/scenario.html" xlink:title="&lt;TABLE&gt;">
+<ellipse fill="none" stroke="black" cx="367.02" cy="-1013.81" rx="98.99" ry="54.39"/>
+<image xlink:href="on-site_logistics/volumetric_thumb.svg" width="46px" height="46px" preserveAspectRatio="xMinYMin meet" x="344.016" y="-1045.81"/>
+<text text-anchor="start" x="307.02" y="-984.61" font-family="Times,serif" font-size="14.00">On&#45;site Logistics</text>
+</a>
+</g>
+</g>
+<!-- node2&#45;&gt;node8 -->
+<g id="edge3" class="edge">
+<title>node2&#45;&gt;node8</title>
+<path fill="none" stroke="black" d="M503.37,-1128.73C480.11,-1109.29 452.61,-1086.32 428.42,-1066.11"/>
+<polygon fill="black" stroke="black" points="430.61,-1063.38 420.69,-1059.66 426.12,-1068.75 430.61,-1063.38"/>
+<text text-anchor="middle" x="494.02" y="-1090.06" font-family="Times,serif" font-size="14.00">specific</text>
+</g>
+<!-- node3 -->
+<g id="node4" class="node">
+<title>node3</title>
+<g id="a_node4"><a xlink:href="digital_reconstruction/scenario.html" xlink:title="&lt;TABLE&gt;">
 <ellipse fill="none" stroke="black" cx="261.02" cy="-534.13" rx="127.97" ry="54.39"/>
 <image xlink:href="digital_reconstruction/volumetric_thumb.svg" width="46px" height="46px" preserveAspectRatio="xMinYMin meet" x="238.516" y="-566.131"/>
 <text text-anchor="start" x="181.02" y="-504.93" font-family="Times,serif" font-size="14.00">Digital Reconstruction</text>
 </a>
 </g>
 </g>
-<!-- node12 -->
-<g id="node13" class="node">
-<title>node12</title>
-<g id="a_node13"><a xlink:href="thermal_inspection/scenario.html" xlink:title="&lt;TABLE&gt;">
+<!-- node14 -->
+<g id="node15" class="node">
+<title>node14</title>
+<g id="a_node15"><a xlink:href="thermal_inspection/scenario.html" xlink:title="&lt;TABLE&gt;">
 <ellipse fill="none" stroke="black" cx="220.02" cy="-374.24" rx="112.36" ry="54.39"/>
 <image xlink:href="thermal_inspection/volumetric_thumb.svg" width="46px" height="46px" preserveAspectRatio="xMinYMin meet" x="197.516" y="-406.236"/>
 <text text-anchor="start" x="151.02" y="-345.04" font-family="Times,serif" font-size="14.00">Thermal Inspection</text>
 </a>
 </g>
 </g>
-<!-- node2&#45;&gt;node12 -->
-<g id="edge4" class="edge">
-<title>node2&#45;&gt;node12</title>
+<!-- node3&#45;&gt;node14 -->
+<g id="edge5" class="edge">
+<title>node3&#45;&gt;node14</title>
 <path fill="none" stroke="black" d="M247.14,-479.67C243.68,-466.36 239.94,-451.95 236.37,-438.22"/>
 <polygon fill="black" stroke="black" points="239.71,-437.17 233.81,-428.37 232.94,-438.93 239.71,-437.17"/>
 <text text-anchor="middle" x="287.02" y="-450.48" font-family="Times,serif" font-size="14.00">observations</text>
 </g>
-<!-- node17 -->
-<g id="node18" class="node">
-<title>node17</title>
-<g id="a_node18"><a xlink:href="virtual_inspection/scenario.html" xlink:title="&lt;TABLE&gt;">
+<!-- node19 -->
+<g id="node20" class="node">
+<title>node19</title>
+<g id="a_node20"><a xlink:href="virtual_inspection/scenario.html" xlink:title="&lt;TABLE&gt;">
 <ellipse fill="none" stroke="black" cx="145.02" cy="-1013.81" rx="104.8" ry="54.39"/>
 <image xlink:href="virtual_inspection/volumetric_thumb.svg" width="46px" height="46px" preserveAspectRatio="xMinYMin meet" x="122.016" y="-1045.81"/>
 <text text-anchor="start" x="81.02" y="-984.61" font-family="Times,serif" font-size="14.00">Virtual Inspection</text>
 </a>
 </g>
 </g>
-<!-- node2&#45;&gt;node17 -->
-<g id="edge3" class="edge">
-<title>node2&#45;&gt;node17</title>
+<!-- node3&#45;&gt;node19 -->
+<g id="edge4" class="edge">
+<title>node3&#45;&gt;node19</title>
 <path fill="none" stroke="black" d="M203.5,-582.98C187.89,-599.22 172.87,-618.6 164.02,-639.58 121.07,-741.25 126.81,-872.61 135.49,-949.3"/>
 <polygon fill="black" stroke="black" points="132.03,-949.78 136.68,-959.29 138.98,-948.95 132.03,-949.78"/>
 <text text-anchor="middle" x="180.02" y="-770.27" font-family="Times,serif" font-size="14.00">observations</text>
 </g>
-<!-- node3&#45;&gt;node17 -->
-<g id="edge5" class="edge">
-<title>node3&#45;&gt;node17</title>
+<!-- node4&#45;&gt;node19 -->
+<g id="edge6" class="edge">
+<title>node4&#45;&gt;node19</title>
 <path fill="none" stroke="black" d="M145.02,-1119.25C145.02,-1106.21 145.02,-1092.12 145.02,-1078.64"/>
 <polygon fill="black" stroke="black" points="148.52,-1078.48 145.02,-1068.48 141.52,-1078.48 148.52,-1078.48"/>
 <text text-anchor="middle" x="160.52" y="-1090.06" font-family="Times,serif" font-size="14.00">BIM</text>
 </g>
-<!-- node4 -->
-<g id="node5" class="node">
-<title>node4</title>
-<g id="a_node5"><a xlink:href="fall_risk/scenario.html" xlink:title="&lt;TABLE&gt;">
+<!-- node5 -->
+<g id="node6" class="node">
+<title>node5</title>
+<g id="a_node6"><a xlink:href="fall_risk/scenario.html" xlink:title="&lt;TABLE&gt;">
 <ellipse fill="none" stroke="black" cx="346.02" cy="-214.34" rx="57.97" ry="54.39"/>
 <image xlink:href="fall_risk/volumetric_thumb.svg" width="46px" height="46px" preserveAspectRatio="xMinYMin meet" x="323.016" y="-246.342"/>
 <text text-anchor="start" x="315.02" y="-185.14" font-family="Times,serif" font-size="14.00">Fall Risk</text>
 </a>
 </g>
 </g>
-<!-- node7 -->
-<g id="node8" class="node">
-<title>node7</title>
-<g id="a_node8"><a xlink:href="risk_management/scenario.html" xlink:title="&lt;TABLE&gt;">
+<!-- node9 -->
+<g id="node10" class="node">
+<title>node9</title>
+<g id="a_node10"><a xlink:href="risk_management/scenario.html" xlink:title="&lt;TABLE&gt;">
 <ellipse fill="none" stroke="black" cx="426.02" cy="-54.45" rx="106.13" ry="54.39"/>
 <image xlink:href="risk_management/volumetric_thumb.svg" width="46px" height="46px" preserveAspectRatio="xMinYMin meet" x="403.016" y="-86.4472"/>
 <text text-anchor="start" x="361.02" y="-25.25" font-family="Times,serif" font-size="14.00">Risk Management</text>
 </a>
 </g>
 </g>
-<!-- node4&#45;&gt;node7 -->
-<g id="edge6" class="edge">
-<title>node4&#45;&gt;node7</title>
+<!-- node5&#45;&gt;node9 -->
+<g id="edge7" class="edge">
+<title>node5&#45;&gt;node9</title>
 <path fill="none" stroke="black" d="M370.67,-164.68C378.39,-149.45 387,-132.46 395.09,-116.49"/>
 <polygon fill="black" stroke="black" points="398.38,-117.74 399.78,-107.23 392.14,-114.57 398.38,-117.74"/>
 <text text-anchor="middle" x="415.02" y="-130.69" font-family="Times,serif" font-size="14.00">specific</text>
 </g>
-<!-- node5 -->
-<g id="node6" class="node">
-<title>node5</title>
-<g id="a_node6"><a xlink:href="fire_risk/scenario.html" xlink:title="&lt;TABLE&gt;">
+<!-- node6 -->
+<g id="node7" class="node">
+<title>node6</title>
+<g id="a_node7"><a xlink:href="fire_risk/scenario.html" xlink:title="&lt;TABLE&gt;">
 <ellipse fill="none" stroke="black" cx="210.02" cy="-214.34" rx="60.21" ry="54.39"/>
 <image xlink:href="fire_risk/volumetric_thumb.svg" width="46px" height="46px" preserveAspectRatio="xMinYMin meet" x="187.516" y="-246.342"/>
 <text text-anchor="start" x="178.02" y="-185.14" font-family="Times,serif" font-size="14.00">Fire Risk</text>
 </a>
 </g>
 </g>
-<!-- node5&#45;&gt;node7 -->
-<g id="edge7" class="edge">
-<title>node5&#45;&gt;node7</title>
+<!-- node6&#45;&gt;node9 -->
+<g id="edge8" class="edge">
+<title>node6&#45;&gt;node9</title>
 <path fill="none" stroke="black" d="M255.12,-178.03C263.04,-171.93 271.24,-165.69 279.02,-159.89 303.6,-141.56 330.89,-121.97 355.22,-104.76"/>
 <polygon fill="black" stroke="black" points="357.54,-107.41 363.69,-98.78 353.5,-101.69 357.54,-107.41"/>
 <text text-anchor="middle" x="350.02" y="-130.69" font-family="Times,serif" font-size="14.00">specific</text>
 </g>
-<!-- node6 -->
-<g id="node7" class="node">
-<title>node6</title>
-<g id="a_node7"><a xlink:href="manual_snapshots/scenario.html" xlink:title="&lt;TABLE&gt;">
+<!-- node7 -->
+<g id="node8" class="node">
+<title>node7</title>
+<g id="a_node8"><a xlink:href="manual_snapshots/scenario.html" xlink:title="&lt;TABLE&gt;">
 <ellipse fill="none" stroke="black" cx="481.02" cy="-694.02" rx="108.38" ry="54.39"/>
 <image xlink:href="manual_snapshots/volumetric_thumb.svg" width="46px" height="46px" preserveAspectRatio="xMinYMin meet" x="458.516" y="-726.025"/>
 <text text-anchor="start" x="415.02" y="-664.82" font-family="Times,serif" font-size="14.00">Manual Snapshots</text>
 </a>
 </g>
 </g>
-<!-- node6&#45;&gt;node2 -->
-<g id="edge8" class="edge">
-<title>node6&#45;&gt;node2</title>
+<!-- node7&#45;&gt;node3 -->
+<g id="edge9" class="edge">
+<title>node7&#45;&gt;node3</title>
 <path fill="none" stroke="black" d="M419.73,-649.04C393,-629.86 361.46,-607.22 333.57,-587.2"/>
 <polygon fill="black" stroke="black" points="335.59,-584.34 325.42,-581.36 331.51,-590.03 335.59,-584.34"/>
 <text text-anchor="middle" x="403.02" y="-610.38" font-family="Times,serif" font-size="14.00">images</text>
 </g>
-<!-- node8 -->
-<g id="node9" class="node">
-<title>node8</title>
-<g id="a_node9"><a xlink:href="risk_planning/scenario.html" xlink:title="&lt;TABLE&gt;">
+<!-- node15 -->
+<g id="node16" class="node">
+<title>node15</title>
+<g id="a_node16"><a xlink:href="topic_management/scenario.html" xlink:title="&lt;TABLE&gt;">
+<ellipse fill="none" stroke="black" cx="323.02" cy="-853.92" rx="110.12" ry="54.39"/>
+<image xlink:href="topic_management/volumetric_thumb.svg" width="46px" height="46px" preserveAspectRatio="xMinYMin meet" x="300.016" y="-885.919"/>
+<text text-anchor="start" x="255.02" y="-824.72" font-family="Times,serif" font-size="14.00">Topic Management</text>
+</a>
+</g>
+</g>
+<!-- node8&#45;&gt;node15 -->
+<g id="edge10" class="edge">
+<title>node8&#45;&gt;node15</title>
+<path fill="none" stroke="black" d="M352.24,-959.8C348.51,-946.39 344.46,-931.86 340.6,-918"/>
+<polygon fill="black" stroke="black" points="343.88,-916.76 337.83,-908.06 337.14,-918.64 343.88,-916.76"/>
+<text text-anchor="middle" x="381.02" y="-930.17" font-family="Times,serif" font-size="14.00">deliveries</text>
+</g>
+<!-- node10 -->
+<g id="node11" class="node">
+<title>node10</title>
+<g id="a_node11"><a xlink:href="risk_planning/scenario.html" xlink:title="&lt;TABLE&gt;">
 <ellipse fill="none" stroke="black" cx="506.02" cy="-214.34" rx="84.29" ry="54.39"/>
 <image xlink:href="risk_planning/volumetric_thumb.svg" width="46px" height="46px" preserveAspectRatio="xMinYMin meet" x="483.516" y="-246.342"/>
 <text text-anchor="start" x="457.02" y="-185.14" font-family="Times,serif" font-size="14.00">Risk Planning</text>
 </a>
 </g>
 </g>
-<!-- node8&#45;&gt;node7 -->
-<g id="edge9" class="edge">
-<title>node8&#45;&gt;node7</title>
+<!-- node10&#45;&gt;node9 -->
+<g id="edge11" class="edge">
+<title>node10&#45;&gt;node9</title>
 <path fill="none" stroke="black" d="M480.04,-162.08C472.67,-147.54 464.58,-131.56 456.95,-116.5"/>
 <polygon fill="black" stroke="black" points="459.91,-114.6 452.27,-107.26 453.67,-117.77 459.91,-114.6"/>
 <text text-anchor="middle" x="508.52" y="-130.69" font-family="Times,serif" font-size="14.00">in planning</text>
 </g>
-<!-- node9 -->
-<g id="node10" class="node">
-<title>node9</title>
-<g id="a_node10"><a xlink:href="risk_tracking/scenario.html" xlink:title="&lt;TABLE&gt;">
+<!-- node11 -->
+<g id="node12" class="node">
+<title>node11</title>
+<g id="a_node12"><a xlink:href="risk_tracking/scenario.html" xlink:title="&lt;TABLE&gt;">
 <ellipse fill="none" stroke="black" cx="618.02" cy="-1013.81" rx="83.38" ry="54.39"/>
 <image xlink:href="risk_tracking/volumetric_thumb.svg" width="46px" height="46px" preserveAspectRatio="xMinYMin meet" x="595.016" y="-1045.81"/>
 <text text-anchor="start" x="569.02" y="-984.61" font-family="Times,serif" font-size="14.00">Risk Tracking</text>
 </a>
 </g>
 </g>
-<!-- node9&#45;&gt;node7 -->
-<g id="edge10" class="edge">
-<title>node9&#45;&gt;node7</title>
+<!-- node11&#45;&gt;node9 -->
+<g id="edge12" class="edge">
+<title>node11&#45;&gt;node9</title>
 <path fill="none" stroke="black" d="M618.02,-959.1C618.02,-928.56 618.02,-889.6 618.02,-854.92 618.02,-854.92 618.02,-854.92 618.02,-213.34 618.02,-157.27 568.57,-117.45 519.86,-91.82"/>
 <polygon fill="black" stroke="black" points="521.29,-88.62 510.79,-87.2 518.11,-94.86 521.29,-88.62"/>
 <text text-anchor="middle" x="672.02" y="-530.43" font-family="Times,serif" font-size="14.00">in construction</text>
 </g>
-<!-- node10 -->
-<g id="node11" class="node">
-<title>node10</title>
-<g id="a_node11"><a xlink:href="safety_status/scenario.html" xlink:title="&lt;TABLE&gt;">
+<!-- node12 -->
+<g id="node13" class="node">
+<title>node12</title>
+<g id="a_node13"><a xlink:href="safety_status/scenario.html" xlink:title="&lt;TABLE&gt;">
 <ellipse fill="none" stroke="black" cx="729.02" cy="-853.92" rx="82.96" ry="54.39"/>
 <image xlink:href="safety_status/volumetric_thumb.svg" width="46px" height="46px" preserveAspectRatio="xMinYMin meet" x="706.516" y="-885.919"/>
 <text text-anchor="start" x="681.02" y="-824.72" font-family="Times,serif" font-size="14.00">Safety Status</text>
 </a>
 </g>
 </g>
-<!-- node9&#45;&gt;node10 -->
-<g id="edge12" class="edge">
-<title>node9&#45;&gt;node10</title>
+<!-- node11&#45;&gt;node12 -->
+<g id="edge14" class="edge">
+<title>node11&#45;&gt;node12</title>
 <path fill="none" stroke="black" d="M652.23,-964.15C663.83,-947.64 676.9,-929.05 688.92,-911.95"/>
 <polygon fill="black" stroke="black" points="691.84,-913.89 694.73,-903.69 686.11,-909.86 691.84,-913.89"/>
 <text text-anchor="middle" x="714.02" y="-930.17" font-family="Times,serif" font-size="14.00">risk status</text>
 </g>
-<!-- node13 -->
-<g id="node14" class="node">
-<title>node13</title>
-<g id="a_node14"><a xlink:href="topic_management/scenario.html" xlink:title="&lt;TABLE&gt;">
-<ellipse fill="none" stroke="black" cx="336.02" cy="-853.92" rx="110.12" ry="54.39"/>
-<image xlink:href="topic_management/volumetric_thumb.svg" width="46px" height="46px" preserveAspectRatio="xMinYMin meet" x="313.016" y="-885.919"/>
-<text text-anchor="start" x="268.02" y="-824.72" font-family="Times,serif" font-size="14.00">Topic Management</text>
-</a>
-</g>
-</g>
-<!-- node9&#45;&gt;node13 -->
-<g id="edge11" class="edge">
-<title>node9&#45;&gt;node13</title>
-<path fill="none" stroke="black" d="M555.43,-977.77C514.67,-954.95 461.09,-924.95 417.08,-900.31"/>
-<polygon fill="black" stroke="black" points="418.57,-897.13 408.13,-895.3 415.15,-903.24 418.57,-897.13"/>
-<text text-anchor="middle" x="507.52" y="-930.17" font-family="Times,serif" font-size="14.00">issues</text>
-</g>
-<!-- node11&#45;&gt;node3 -->
+<!-- node11&#45;&gt;node15 -->
 <g id="edge13" class="edge">
-<title>node11&#45;&gt;node3</title>
+<title>node11&#45;&gt;node15</title>
+<path fill="none" stroke="black" d="M554.01,-978.55C510.54,-955.29 452.66,-924.31 405.72,-899.18"/>
+<polygon fill="black" stroke="black" points="407.25,-896.03 396.78,-894.4 403.95,-902.21 407.25,-896.03"/>
+<text text-anchor="middle" x="501.52" y="-930.17" font-family="Times,serif" font-size="14.00">issues</text>
+</g>
+<!-- node13&#45;&gt;node4 -->
+<g id="edge15" class="edge">
+<title>node13&#45;&gt;node4</title>
 <path fill="none" stroke="black" d="M266.97,-1290.7C246.17,-1270.92 221.15,-1247.13 199.2,-1226.25"/>
 <polygon fill="black" stroke="black" points="201.55,-1223.65 191.89,-1219.29 196.72,-1228.72 201.55,-1223.65"/>
 <text text-anchor="middle" x="280.52" y="-1249.96" font-family="Times,serif" font-size="14.00">task shadows</text>
 </g>
-<!-- node12&#45;&gt;node5 -->
-<g id="edge14" class="edge">
-<title>node12&#45;&gt;node5</title>
+<!-- node14&#45;&gt;node6 -->
+<g id="edge16" class="edge">
+<title>node14&#45;&gt;node6</title>
 <path fill="none" stroke="black" d="M216.63,-319.78C215.8,-306.66 214.9,-292.49 214.04,-278.95"/>
 <polygon fill="black" stroke="black" points="217.52,-278.5 213.4,-268.74 210.54,-278.94 217.52,-278.5"/>
 <text text-anchor="middle" x="260.52" y="-290.59" font-family="Times,serif" font-size="14.00">visualization</text>
 </g>
-<!-- node16 -->
-<g id="node17" class="node">
-<title>node16</title>
-<g id="a_node17"><a xlink:href="uxv_recording/scenario.html" xlink:title="&lt;TABLE&gt;">
+<!-- node18 -->
+<g id="node19" class="node">
+<title>node18</title>
+<g id="a_node19"><a xlink:href="uxv_recording/scenario.html" xlink:title="&lt;TABLE&gt;">
 <ellipse fill="none" stroke="black" cx="264.02" cy="-694.02" rx="91.43" ry="54.39"/>
 <image xlink:href="uxv_recording/volumetric_thumb.svg" width="46px" height="46px" preserveAspectRatio="xMinYMin meet" x="241.516" y="-726.025"/>
 <text text-anchor="start" x="210.02" y="-664.82" font-family="Times,serif" font-size="14.00">UXV Recording</text>
 </a>
 </g>
 </g>
-<!-- node13&#45;&gt;node16 -->
-<g id="edge15" class="edge">
-<title>node13&#45;&gt;node16</title>
-<path fill="none" stroke="black" d="M312.04,-800.34C305.6,-786.21 298.57,-770.81 291.94,-756.26"/>
-<polygon fill="black" stroke="black" points="294.97,-754.48 287.64,-746.83 288.61,-757.39 294.97,-754.48"/>
-<text text-anchor="middle" x="342.52" y="-770.27" font-family="Times,serif" font-size="14.00">focus spots</text>
+<!-- node15&#45;&gt;node18 -->
+<g id="edge17" class="edge">
+<title>node15&#45;&gt;node18</title>
+<path fill="none" stroke="black" d="M303.21,-799.9C298.06,-786.15 292.48,-771.21 287.19,-757.03"/>
+<polygon fill="black" stroke="black" points="290.35,-755.51 283.57,-747.36 283.8,-757.96 290.35,-755.51"/>
+<text text-anchor="middle" x="335.52" y="-770.27" font-family="Times,serif" font-size="14.00">focus spots</text>
 </g>
-<!-- node14 -->
-<g id="node15" class="node">
-<title>node14</title>
-<g id="a_node15"><a xlink:href="truck_guidance/scenario.html" xlink:title="&lt;TABLE&gt;">
-<ellipse fill="none" stroke="black" cx="360.02" cy="-1013.81" rx="91.85" ry="54.39"/>
-<image xlink:href="truck_guidance/volumetric_thumb.svg" width="46px" height="46px" preserveAspectRatio="xMinYMin meet" x="337.016" y="-1045.81"/>
-<text text-anchor="start" x="305.02" y="-984.61" font-family="Times,serif" font-size="14.00">Truck guidance</text>
+<!-- node16 -->
+<g id="node17" class="node">
+<title>node16</title>
+<g id="a_node17"><a xlink:href="truck_guidance/scenario.html" xlink:title="&lt;TABLE&gt;">
+<ellipse fill="none" stroke="black" cx="353.02" cy="-1173.71" rx="91.85" ry="54.39"/>
+<image xlink:href="truck_guidance/volumetric_thumb.svg" width="46px" height="46px" preserveAspectRatio="xMinYMin meet" x="330.016" y="-1205.71"/>
+<text text-anchor="start" x="298.02" y="-1144.51" font-family="Times,serif" font-size="14.00">Truck guidance</text>
 </a>
 </g>
 </g>
-<!-- node14&#45;&gt;node13 -->
-<g id="edge16" class="edge">
-<title>node14&#45;&gt;node13</title>
-<path fill="none" stroke="black" d="M351.89,-959.36C349.9,-946.24 347.74,-932.07 345.68,-918.53"/>
-<polygon fill="black" stroke="black" points="349.1,-917.68 344.13,-908.32 342.18,-918.73 349.1,-917.68"/>
-<text text-anchor="middle" x="383.02" y="-930.17" font-family="Times,serif" font-size="14.00">deliveries</text>
+<!-- node16&#45;&gt;node8 -->
+<g id="edge18" class="edge">
+<title>node16&#45;&gt;node8</title>
+<path fill="none" stroke="black" d="M357.76,-1119.25C358.92,-1106.13 360.18,-1091.96 361.38,-1078.42"/>
+<polygon fill="black" stroke="black" points="364.88,-1078.48 362.28,-1068.21 357.91,-1077.87 364.88,-1078.48"/>
+<text text-anchor="middle" x="387.02" y="-1090.06" font-family="Times,serif" font-size="14.00">specific</text>
 </g>
-<!-- node15 -->
-<g id="node16" class="node">
-<title>node15</title>
-<g id="a_node16"><a xlink:href="unique_resource_identification/scenario.html" xlink:title="&lt;TABLE&gt;">
+<!-- node17 -->
+<g id="node18" class="node">
+<title>node17</title>
+<g id="a_node18"><a xlink:href="unique_resource_identification/scenario.html" xlink:title="&lt;TABLE&gt;">
 <ellipse fill="none" stroke="black" cx="585.02" cy="-1493.5" rx="171.24" ry="54.39"/>
 <image xlink:href="unique_resource_identification/volumetric_thumb.svg" width="46px" height="46px" preserveAspectRatio="xMinYMin meet" x="562.016" y="-1525.5"/>
 <text text-anchor="start" x="474.02" y="-1464.3" font-family="Times,serif" font-size="14.00">Unique Resource Identification</text>
 </a>
 </g>
 </g>
-<!-- node16&#45;&gt;node2 -->
-<g id="edge17" class="edge">
-<title>node16&#45;&gt;node2</title>
+<!-- node18&#45;&gt;node3 -->
+<g id="edge19" class="edge">
+<title>node18&#45;&gt;node3</title>
 <path fill="none" stroke="black" d="M263,-639.57C262.75,-626.52 262.48,-612.44 262.23,-598.96"/>
 <polygon fill="black" stroke="black" points="265.72,-598.73 262.04,-588.8 258.73,-598.86 265.72,-598.73"/>
 <text text-anchor="middle" x="308.02" y="-610.38" font-family="Times,serif" font-size="14.00">observations</text>
 </g>
-<!-- node17&#45;&gt;node13 -->
-<g id="edge18" class="edge">
-<title>node17&#45;&gt;node13</title>
-<path fill="none" stroke="black" d="M200,-967.36C222.58,-948.69 248.86,-926.97 272.27,-907.62"/>
-<polygon fill="black" stroke="black" points="274.61,-910.22 280.09,-901.15 270.15,-904.83 274.61,-910.22"/>
-<text text-anchor="middle" x="268.52" y="-930.17" font-family="Times,serif" font-size="14.00">issues</text>
+<!-- node19&#45;&gt;node15 -->
+<g id="edge20" class="edge">
+<title>node19&#45;&gt;node15</title>
+<path fill="none" stroke="black" d="M197.46,-966.29C217.83,-948.23 241.29,-927.42 262.37,-908.71"/>
+<polygon fill="black" stroke="black" points="264.87,-911.18 270.02,-901.93 260.22,-905.94 264.87,-911.18"/>
+<text text-anchor="middle" x="261.52" y="-930.17" font-family="Times,serif" font-size="14.00">issues</text>
 </g>
 </g>
 </svg>

@@ -8,7 +8,7 @@
         {
             "aspect_from": "as-planned", "aspect_to": "analytics",
             "phase_from": "planning", "phase_to": "construction",
-            "level_from": "device", "level_to": "office"
+            "level_from": "device/person", "level_to": "office"
         }
     ]
 }
@@ -37,7 +37,7 @@ concepts, or information resources such web pages and books.
 ## Scenario
 
 Our system supports many non-IFC entities (such as <ref name="risk_management#risk" /> and
-<ref name="truck_guidance#delivery_update" />).
+<ref name="on-site_logistics#delivery_update" />).
 
 Since we shadow these entities as references in BIM through 
 <ref name="evolving_plan#non_ifc_entity" />, they need an <ref name="identifier" />.

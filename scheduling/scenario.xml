@@ -136,8 +136,8 @@ the <ref name="topic_management#topic" />, but can not be fed back
 to the <ref name="last_planner_system" />.</p>
 <p>There are also more structured options available in the system.
 For example, a delivery task can be automatically converted to
-<ref name="truck_guidance#delivery" /> as a <ref name="topic_management#topic" />
-(see <scenarioref name="truck_guidance" />).</p>
+<ref name="on-site_logistics#delivery" /> as a <ref name="topic_management#topic" />
+(see <scenarioref name="on-site_logistics" />).</p>
 <p><strong>Closing of <ref name="task" />s</strong>.
 Since we do not control the <ref name="last_planner_task" />s (we only import them),
 we can not close the <ref name="task" />s automatically.</p>
@@ -146,7 +146,7 @@ we can not close the <ref name="task" />s automatically.</p>
 <ref name="topic_management#comment" />s.</p>
 <p>In many cases, if the system is tracking the status and not the user, we use structured
 <ref name="topic_management#comment" />s.
-For example, the task corresponding to a <ref name="truck_guidance#delivery" /> is converted to a
+For example, the task corresponding to a <ref name="on-site_logistics#delivery" /> is converted to a
 <ref name="topic_management#topic" />.
 So when the delivery is terminated, we can close the <ref name="topic_management#topic" />
 (which we control), but we can only notify the <ref name="scheduler" />.
@@ -157,8 +157,8 @@ in the <ref name="last_planner_system" /> manually.</p>
 <ol>
 <li><ref name="last_planner_task" /> to</li>
 <li><ref name="task_shadow" /> (<em>via</em> synchronization) to</li>
-<li><ref name="truck_guidance#delivery" /> (<em>via</em> conversion) to</li>
-<li>delivery closed (<em>via</em> <ref name="truck_guidance#delivery_update" />) to</li>
+<li><ref name="on-site_logistics#delivery" /> (<em>via</em> conversion) to</li>
+<li>delivery closed (<em>via</em> <ref name="on-site_logistics#delivery_update" />) to</li>
 <li><ref name="last_planner_task" /> closed (manually <em>via</em> <ref name="last_planner_system" />) to</li>
 <li><ref name="task_shadow" /> closed (<em>via</em> synchronization).</li>
 </ol>

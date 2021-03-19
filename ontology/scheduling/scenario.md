@@ -198,8 +198,8 @@ to the <ref name="last_planner_system" />.
 
 There are also more structured options available in the system.
 For example, a delivery task can be automatically converted to
-<ref name="truck_guidance#delivery" /> as a <ref name="topic_management#topic" />
-(see <scenarioref name="truck_guidance" />).
+<ref name="on-site_logistics#delivery" /> as a <ref name="topic_management#topic" />
+(see <scenarioref name="on-site_logistics" />).
 
 **Closing of <ref name="task" />s**.
 Since we do not control the <ref name="last_planner_task" />s (we only import them),
@@ -211,7 +211,7 @@ The user or the system should be able to convert a <ref name="last_planner_task"
 
 In many cases, if the system is tracking the status and not the user, we use structured
 <ref name="topic_management#comment" />s.
-For example, the task corresponding to a <ref name="truck_guidance#delivery" /> is converted to a
+For example, the task corresponding to a <ref name="on-site_logistics#delivery" /> is converted to a
 <ref name="topic_management#topic" />.
 So when the delivery is terminated, we can close the <ref name="topic_management#topic" />
 (which we control), but we can only notify the <ref name="scheduler" />.
@@ -222,8 +222,8 @@ We emphasize here that there is only a
 [unidirectional data flow](https://en.wikipedia.org/wiki/Unidirectional_Data_Flow_(computer_science)):
 1) <ref name="last_planner_task" /> to
 2) <ref name="task_shadow" /> (*via* synchronization) to
-3) <ref name="truck_guidance#delivery" /> (*via* conversion) to
-4) delivery closed (*via* <ref name="truck_guidance#delivery_update" />) to
+3) <ref name="on-site_logistics#delivery" /> (*via* conversion) to
+4) delivery closed (*via* <ref name="on-site_logistics#delivery_update" />) to
 5) <ref name="last_planner_task" /> closed (manually *via* <ref name="last_planner_system" />) to
 6) <ref name="task_shadow" /> closed (*via* synchronization).
 

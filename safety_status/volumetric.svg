@@ -7,7 +7,7 @@
   <rdf:RDF xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2021-03-19T16:44:32.198407</dc:date>
+    <dc:date>2021-03-22T07:25:01.219420</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -335,37 +335,37 @@ L 359.495561 102.326427
   </g>
   <g id="axes_1">
    <g id="Poly3DCollection_1">
-    <path clip-path="url(#p2276a103b2)" d="M 172.663161 159.689992 
+    <path clip-path="url(#pb93b79cc14)" d="M 172.663161 159.689992 
 L 172.239841 143.899328 
 L 198.533516 151.419068 
 L 198.794381 167.308999 
 z
 " style="fill:#0d324b;stroke:#000000;"/>
-    <path clip-path="url(#p2276a103b2)" d="M 160.327699 153.223291 
+    <path clip-path="url(#pb93b79cc14)" d="M 160.327699 153.223291 
 L 172.239841 143.899328 
 L 172.663161 159.689992 
 L 160.83145 169.136906 
 z
 " style="fill:#1b699f;stroke:#000000;"/>
-    <path clip-path="url(#p2276a103b2)" d="M 172.663161 159.689992 
+    <path clip-path="url(#pb93b79cc14)" d="M 172.663161 159.689992 
 L 198.794381 167.308999 
 L 187.155514 176.933476 
 L 160.83145 169.136906 
 z
 " style="fill:#113f60;stroke:#000000;"/>
-    <path clip-path="url(#p2276a103b2)" d="M 160.327699 153.223291 
+    <path clip-path="url(#pb93b79cc14)" d="M 160.327699 153.223291 
 L 186.816603 160.91941 
 L 198.533516 151.419068 
 L 172.239841 143.899328 
 z
 " style="fill:#185b8a;stroke:#000000;"/>
-    <path clip-path="url(#p2276a103b2)" d="M 187.155514 176.933476 
+    <path clip-path="url(#pb93b79cc14)" d="M 187.155514 176.933476 
 L 198.794381 167.308999 
 L 198.533516 151.419068 
 L 186.816603 160.91941 
 z
 " style="fill:#0d324b;stroke:#000000;"/>
-    <path clip-path="url(#p2276a103b2)" d="M 187.155514 176.933476 
+    <path clip-path="url(#pb93b79cc14)" d="M 187.155514 176.933476 
 L 186.816603 160.91941 
 L 160.327699 153.223291 
 L 160.83145 169.136906 
@@ -1136,7 +1136,7 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="p2276a103b2">
+  <clipPath id="pb93b79cc14">
    <rect height="266.112" width="266.112" x="103.104" y="41.472"/>
   </clipPath>
  </defs>

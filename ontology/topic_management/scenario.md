@@ -60,7 +60,7 @@ A topic board (called "project" in <ref name="BCF" />) is a collection of <ref n
 
 A topic board can have different access rights as well as different semantics.
 
-For example, there is a special topic board for <ref name="on-site_logistics#delivery" />s.
+For example, there is a special topic board for <ref name="logistics#delivery" />s.
 
 </def>
 
@@ -104,7 +104,7 @@ Comments are usually free-form.
 
 There are also specially structured comments.
 For example, we use comments to represent the status change of a 
-<ref name="on-site_logistics#delivery" />.
+<ref name="logistics#delivery" />.
 
 </def>
 
@@ -205,7 +205,7 @@ The user can create a <ref name="topic" /> from an arbitrary <ref name="scheduli
 using <scenarioref name="scheduling" />.
 
 There is also a more structured task-to-topic translation for specific tasks such as
-<ref name="on-site_logistics#delivery" />s.
+<ref name="logistics#delivery" />s.
 
 **Export to <ref name="BCF" />**.
 The <ref name="topic" />s are exportable to <ref name="BCF" />.

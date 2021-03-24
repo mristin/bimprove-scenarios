@@ -37,7 +37,7 @@ concepts, or information resources such web pages and books.
 ## Scenario
 
 Our system supports many non-IFC entities (such as <ref name="risk_management#risk" /> and
-<ref name="on-site_logistics#delivery_update" />).
+<ref name="logistics#delivery_update" />).
 
 Since we shadow these entities as references in BIM through 
 <ref name="evolving_plan#non_ifc_entity" />, they need an <ref name="identifier" />.

@@ -3,7 +3,7 @@
     "title": "Truck guidance",
     "contact": "Dag Fjeld Edvardsen <dag.fjeld.edvardsen@catenda.no>, Marko Ristin <rist@zhaw.ch>",
     "relations": [
-        { "target": "on-site_logistics", "nature": "specific" }
+        { "target": "logistics", "nature": "specific" }
     ],
     "volumetric": [
         {
@@ -24,7 +24,7 @@
 
 This scenario concerns truck drivers arriving at the construction site to deliver cargo.
 
-This is a specification of the <scenarioref name="on-site_logistics" /> where the cargo is
+This is a specification of the <scenarioref name="logistics" /> where the cargo is
 delivered by trucks.
 
 ## Models
@@ -53,7 +53,7 @@ The `IfcZone` where the truck should leave through.
 
 <def name="truck_delivery">
 
-A truck delivery defines how the <ref name="on-site_logistics#delivery" /> should be brought on
+A truck delivery defines how the <ref name="logistics#delivery" /> should be brought on
 the construction site by the truck.
 
 Each truck delivery is associated with the <ref name="entry_point" /> and <ref name="exit_point" />
@@ -63,7 +63,7 @@ so that other entrances and exits do not get congested.
 
 <def name="driver">
 
-The driver is a more specific <ref name="on-site_logistics#operator" /> for 
+The driver is a more specific <ref name="logistics#operator" /> for 
 <ref name="truck_delivery" />s.
 
 </def>
@@ -72,7 +72,7 @@ The driver is a more specific <ref name="on-site_logistics#operator" /> for
 
 ### As-planned
 
-<level name="site">The <ref name="on-site_logistics#delivery" />s are specified with additional information
+<level name="site">The <ref name="logistics#delivery" />s are specified with additional information
 defined as <ref name="truck_delivery" />s.</level>
 
 ### As-observed
@@ -89,27 +89,27 @@ The location is only used to navigate the driver.
 ### Divergence
 
 <level name="machine">The  device will guide the <ref name="driver" /> to the
-<ref name="on-site_logistics#delivery_location" />.</level>
+<ref name="logistics#delivery_location" />.</level>
 
 <level name="machine">
 
 The <ref name="topic_management#topic" /> body includes a link
 (authorized for the whole internet) that the <ref name="driver" /> can click on to update
 the current location of the delivery and another link to signal that
-the <ref name="on-site_logistics#delivery" /> arrived.
+the <ref name="logistics#delivery" /> arrived.
 
 The <ref name="driver" /> can choose to include his/her current GPS location
-in the <ref name="on-site_logistics#delivery_update" /> (*e.g.*, when following the link for the arrival).
+in the <ref name="logistics#delivery_update" /> (*e.g.*, when following the link for the arrival).
 
 The updates of the delivery status are kept track in the
-<modelref name="on-site_logistics#logs" />.
+<modelref name="logistics#logs" />.
 
 </level>
 
 ## Test Cases
 
-Please see the test cases of <scenarioref name="on-site_logistics" />.
+Please see the test cases of <scenarioref name="logistics" />.
 
 ## Acceptance Criteria
 
-Please see the acceptance criteria of <scenarioref name="on-site_logistics" />.
+Please see the acceptance criteria of <scenarioref name="logistics" />.

@@ -63,11 +63,11 @@ pre {
     padding: 1em;
 }
 </style></head><body>
-<div id="index"><a href="../ontology.html">Back to ontology</a><p><img src="volumetric.svg" style="border: 1px solid #EEEEEE; padding: 10px; margin: 0px;" /></p><h2>Table of Contents</h2><ul class="toc"><li style="padding-left: 0.00em"><a href="#section-Summary">Summary</a></li><li style="padding-left: 0.00em"><a href="#section-Models">Models</a></li><li style="padding-left: 0.00em"><a href="#section-Definitions">Definitions</a></li><li style="padding-left: 2.20em"><a href="#def-pickup_person">pickup person</a></li><li style="padding-left: 2.20em"><a href="#def-entry_point">entry point</a></li><li style="padding-left: 2.20em"><a href="#def-exit_point">exit point</a></li><li style="padding-left: 2.20em"><a href="#def-truck_delivery">truck delivery</a></li><li style="padding-left: 2.20em"><a href="#def-driver">driver</a></li><li style="padding-left: 0.00em"><a href="#section-Scenario">Scenario</a></li><li style="padding-left: 2.20em"><a href="#section-As-planned">As-planned</a></li><li style="padding-left: 2.20em"><a href="#section-As-observed">As-observed</a></li><li style="padding-left: 2.20em"><a href="#section-Divergence">Divergence</a></li><li style="padding-left: 0.00em"><a href="#section-Test_Cases">Test Cases</a></li><li style="padding-left: 0.00em"><a href="#section-Acceptance_Criteria">Acceptance Criteria</a></li></ul><h2>Level Index</h2><ul><li><a href="#level-anchor-71ede7d1-5df5-4cb6-99fa-9ba3326ca9ed">site</a></li><li><a href="#level-anchor-d712a221-7767-4db4-af17-4b39bf64954b">machine</a></li><li><a href="#level-anchor-f5db2957-df61-4fe2-ad97-3be8243373af">machine</a></li><li><a href="#level-anchor-90ff9391-5594-4407-9aaf-01628e9f2fda">machine</a></li></ul></div>
-<div id="main"><h1>Truck guidance</h1><h2>Relations to Other Scenarios</h2><ul><li><span>Truck guidance → specific → </span><a href="../on-site_logistics/scenario.html">On-site Logistics</a></li></ul>
+<div id="index"><a href="../ontology.html">Back to ontology</a><p><img src="volumetric.svg" style="border: 1px solid #EEEEEE; padding: 10px; margin: 0px;" /></p><h2>Table of Contents</h2><ul class="toc"><li style="padding-left: 0.00em"><a href="#section-Summary">Summary</a></li><li style="padding-left: 0.00em"><a href="#section-Models">Models</a></li><li style="padding-left: 0.00em"><a href="#section-Definitions">Definitions</a></li><li style="padding-left: 2.20em"><a href="#def-pickup_person">pickup person</a></li><li style="padding-left: 2.20em"><a href="#def-entry_point">entry point</a></li><li style="padding-left: 2.20em"><a href="#def-exit_point">exit point</a></li><li style="padding-left: 2.20em"><a href="#def-truck_delivery">truck delivery</a></li><li style="padding-left: 2.20em"><a href="#def-driver">driver</a></li><li style="padding-left: 0.00em"><a href="#section-Scenario">Scenario</a></li><li style="padding-left: 2.20em"><a href="#section-As-planned">As-planned</a></li><li style="padding-left: 2.20em"><a href="#section-As-observed">As-observed</a></li><li style="padding-left: 2.20em"><a href="#section-Divergence">Divergence</a></li><li style="padding-left: 0.00em"><a href="#section-Test_Cases">Test Cases</a></li><li style="padding-left: 0.00em"><a href="#section-Acceptance_Criteria">Acceptance Criteria</a></li></ul><h2>Level Index</h2><ul><li><a href="#level-anchor-6289ad83-5aad-4563-ba5f-57497cf93c94">site</a></li><li><a href="#level-anchor-53bca069-676e-489d-96a2-2850196ce462">machine</a></li><li><a href="#level-anchor-4b41ce85-b4fe-4fa8-9c1c-d7f4597b917f">machine</a></li><li><a href="#level-anchor-9fdce473-3162-47de-802e-30a5a5097267">machine</a></li></ul></div>
+<div id="main"><h1>Truck guidance</h1><h2>Relations to Other Scenarios</h2><ul><li><span>Truck guidance → specific → </span><a href="../logistics/scenario.html">Logistics</a></li></ul>
 <h2 data-anchor="section-Summary"><a name="section-Summary" /><a class="section-anchor" href="#section-Summary">Summary</a><span class="chain-symbol">🔗</span></h2>
 <p>This scenario concerns truck drivers arriving at the construction site to deliver cargo.</p>
-<p>This is a specification of the <a href="../on-site_logistics/scenario.html" class="scenarioref">"On-site Logistics"</a> where the cargo is
+<p>This is a specification of the <a href="../logistics/scenario.html" class="scenarioref">"Logistics"</a> where the cargo is
 delivered by trucks.</p>
 <h2 data-anchor="section-Models"><a name="section-Models" /><a class="section-anchor" href="#section-Models">Models</a><span class="chain-symbol">🔗</span></h2>
 <p><em>Intentionally left empty.</em></p>
@@ -86,43 +86,43 @@ delivered by trucks.</p>
 </div>
 <div class="def">
 <h3 data-anchor="def-truck_delivery"><a name="def-truck_delivery" /><a class="section-anchor" href="#def-truck_delivery">truck delivery</a><span class="chain-symbol">🔗</span></h3>
-<p>A truck delivery defines how the <a href="../on-site_logistics/scenario.html#def-delivery" class="ref">delivery (from on-site_logistics)</a> should be brought on
+<p>A truck delivery defines how the <a href="../logistics/scenario.html#def-delivery" class="ref">delivery (from logistics)</a> should be brought on
 the construction site by the truck.</p>
 <p>Each truck delivery is associated with the <a href="#def-entry_point" class="ref">entry point</a> and <a href="#def-exit_point" class="ref">exit point</a>
 so that other entrances and exits do not get congested. </p>
 </div>
 <div class="def">
 <h3 data-anchor="def-driver"><a name="def-driver" /><a class="section-anchor" href="#def-driver">driver</a><span class="chain-symbol">🔗</span></h3>
-<p>The driver is a more specific <a href="../on-site_logistics/scenario.html#def-operator" class="ref">operator (from on-site_logistics)</a> for
+<p>The driver is a more specific <a href="../logistics/scenario.html#def-operator" class="ref">operator (from logistics)</a> for
 <a href="#def-truck_delivery" class="ref">truck deliveries</a>.</p>
 </div>
 <h2 data-anchor="section-Scenario"><a name="section-Scenario" /><a class="section-anchor" href="#section-Scenario">Scenario</a><span class="chain-symbol">🔗</span></h2>
 <h3 data-anchor="section-As-planned"><a name="section-As-planned" /><a class="section-anchor" href="#section-As-planned">As-planned</a><span class="chain-symbol">🔗</span></h3>
-<p><span class="level" data-text="site">The <a id="level-anchor-71ede7d1-5df5-4cb6-99fa-9ba3326ca9ed" /><a href="../on-site_logistics/scenario.html#def-delivery" class="ref">deliveries (from on-site_logistics)</a> are specified with additional information
+<p><span class="level" data-text="site">The <a id="level-anchor-6289ad83-5aad-4563-ba5f-57497cf93c94" /><a href="../logistics/scenario.html#def-delivery" class="ref">deliveries (from logistics)</a> are specified with additional information
 defined as <a href="#def-truck_delivery" class="ref">truck deliveries</a>.<sup>site</sup></span></p>
 <h3 data-anchor="section-As-observed"><a name="section-As-observed" /><a class="section-anchor" href="#section-As-observed">As-observed</a><span class="chain-symbol">🔗</span></h3>
 <div class="level" data-text="machine">
-<a id="level-anchor-d712a221-7767-4db4-af17-4b39bf64954b" /><p>The <a href="#def-driver" class="ref">driver</a>'s device tracks the GPS location, but does not send
+<a id="level-anchor-53bca069-676e-489d-96a2-2850196ce462" /><p>The <a href="#def-driver" class="ref">driver</a>'s device tracks the GPS location, but does not send
 it to the system.</p>
 <p>The location is only used to navigate the driver.</p>
 <sup>machine</sup></div>
 <h3 data-anchor="section-Divergence"><a name="section-Divergence" /><a class="section-anchor" href="#section-Divergence">Divergence</a><span class="chain-symbol">🔗</span></h3>
-<p><span class="level" data-text="machine">The  device will guide the <a id="level-anchor-f5db2957-df61-4fe2-ad97-3be8243373af" /><a href="#def-driver" class="ref">driver</a> to the
-<a href="../on-site_logistics/scenario.html#def-delivery_location" class="ref">delivery location (from on-site_logistics)</a>.<sup>machine</sup></span></p>
+<p><span class="level" data-text="machine">The  device will guide the <a id="level-anchor-4b41ce85-b4fe-4fa8-9c1c-d7f4597b917f" /><a href="#def-driver" class="ref">driver</a> to the
+<a href="../logistics/scenario.html#def-delivery_location" class="ref">delivery location (from logistics)</a>.<sup>machine</sup></span></p>
 <div class="level" data-text="machine">
-<a id="level-anchor-90ff9391-5594-4407-9aaf-01628e9f2fda" /><p>The <a href="../topic_management/scenario.html#def-topic" class="ref">topic (from topic_management)</a> body includes a link
+<a id="level-anchor-9fdce473-3162-47de-802e-30a5a5097267" /><p>The <a href="../topic_management/scenario.html#def-topic" class="ref">topic (from topic_management)</a> body includes a link
 (authorized for the whole internet) that the <a href="#def-driver" class="ref">driver</a> can click on to update
 the current location of the delivery and another link to signal that
-the <a href="../on-site_logistics/scenario.html#def-delivery" class="ref">delivery (from on-site_logistics)</a> arrived.</p>
+the <a href="../logistics/scenario.html#def-delivery" class="ref">delivery (from logistics)</a> arrived.</p>
 <p>The <a href="#def-driver" class="ref">driver</a> can choose to include his/her current GPS location
-in the <a href="../on-site_logistics/scenario.html#def-delivery_update" class="ref">delivery update (from on-site_logistics)</a> (<em>e.g.</em>, when following the link for the arrival).</p>
+in the <a href="../logistics/scenario.html#def-delivery_update" class="ref">delivery update (from logistics)</a> (<em>e.g.</em>, when following the link for the arrival).</p>
 <p>The updates of the delivery status are kept track in the
-<a href="../on-site_logistics/scenario.html#model-logs" class="modelref">logs (from on-site_logistics)</a>.</p>
+<a href="../logistics/scenario.html#model-logs" class="modelref">logs (from logistics)</a>.</p>
 <sup>machine</sup></div>
 <h2 data-anchor="section-Test_Cases"><a name="section-Test_Cases" /><a class="section-anchor" href="#section-Test_Cases">Test Cases</a><span class="chain-symbol">🔗</span></h2>
-<p>Please see the test cases of <a href="../on-site_logistics/scenario.html" class="scenarioref">"On-site Logistics"</a>.</p>
+<p>Please see the test cases of <a href="../logistics/scenario.html" class="scenarioref">"Logistics"</a>.</p>
 <h2 data-anchor="section-Acceptance_Criteria"><a name="section-Acceptance_Criteria" /><a class="section-anchor" href="#section-Acceptance_Criteria">Acceptance Criteria</a><span class="chain-symbol">🔗</span></h2>
-<p>Please see the acceptance criteria of <a href="../on-site_logistics/scenario.html" class="scenarioref">"On-site Logistics"</a>.</p>
+<p>Please see the acceptance criteria of <a href="../logistics/scenario.html" class="scenarioref">"Logistics"</a>.</p>
 </div>
 </body>
 </html>

@@ -3,7 +3,7 @@
     "title": "Crane guidance",
     "contact": "Dag Fjeld Edvardsen <dag.fjeld.edvardsen@catenda.no>, Marko Ristin <rist@zhaw.ch>",
     "relations": [
-        { "target": "on-site_logistics", "nature": "specific" }
+        { "target": "logistics", "nature": "specific" }
     ],
     "volumetric": [
         {
@@ -59,22 +59,22 @@ This model lists all the <ref name="crane" />s available in the system.
 
 <def name="pickup_location">
 
-This is an `IfcZone` where the <ref name="on-site_logistics#delivery" /> needs to be picked up.
+This is an `IfcZone` where the <ref name="logistics#delivery" /> needs to be picked up.
 
 </def>
 
 <def name="attaching_slinger">
 
 The <ref name="actor_management#actor" /> who will attach 
-the <ref name="on-site_logistics#delivery" /> to the crane at the <ref name="pickup_location" />. 
+the <ref name="logistics#delivery" /> to the crane at the <ref name="pickup_location" />. 
 
 </def>
 
 <def name="detaching_slinger">
 
 The <ref name="actor_management#actor" /> who will take off 
-the <ref name="on-site_logistics#delivery" /> from the crane at 
-the <ref name="on-site_logistics#delivery_location" />. 
+the <ref name="logistics#delivery" /> from the crane at 
+the <ref name="logistics#delivery_location" />. 
 
 A detaching slinger can be identical with a <ref name="attaching_slinger" />.
 
@@ -82,13 +82,13 @@ A detaching slinger can be identical with a <ref name="attaching_slinger" />.
 
 <def name="crane_delivery">
 
-A crane delivery defines how the <ref name="on-site_logistics#delivery" /> should be transported
+A crane delivery defines how the <ref name="logistics#delivery" /> should be transported
 within the construction site by a <ref name="crane" />.
 
 Each crane delivery is associated with:
 * a <ref name="pickup_location" /> and 
   the corresponding one or more <ref name="attaching_slinger" />s,
-* the <ref name="on-site_logistics#delivery_location" /> and 
+* the <ref name="logistics#delivery_location" /> and 
   the corresponding one or more <ref name="detaching_slinger" />s, and
 * the <ref name="crane" />,
 * the <ref name="crane_supervisor" />, and 
@@ -98,7 +98,7 @@ Each crane delivery is associated with:
 
 <def name="crane_operator">
 
-The crane operator is an <ref name="on-site_logistics#operator" /> who controls the <ref name="crane" />.
+The crane operator is an <ref name="logistics#operator" /> who controls the <ref name="crane" />.
 
 </def>
 
@@ -106,7 +106,7 @@ The crane operator is an <ref name="on-site_logistics#operator" /> who controls 
 
 Crane supervisor is an <ref name="actor_management#actor" /> 
 who helps the <ref name="crane_operator" /> by guiding her during 
-the <ref name="on-site_logistics#delivery" />.
+the <ref name="logistics#delivery" />.
 
 She has the final authority.
 
@@ -140,8 +140,8 @@ The crane state captures the state of the crane, including:
 
 ### As-planned
 
-<level name="site">The <ref name="on-site_logistics#planner_role" /> specifies the 
-<ref name="on-site_logistics#delivery" />s (with additional information
+<level name="site">The <ref name="logistics#planner_role" /> specifies the 
+<ref name="logistics#delivery" />s (with additional information
 defined) as <ref name="crane_delivery" />s.</level>
 
 ### As-observed
@@ -154,7 +154,7 @@ as <ref name="crane_state" /> in <modelref name="crane_log" />.</level>
 <level name="machine">
 
 The  device will guide the <ref name="crane_operator" /> and the 
-<ref name="crane_supervisor" /> to the <ref name="on-site_logistics#delivery_location" />.
+<ref name="crane_supervisor" /> to the <ref name="logistics#delivery_location" />.
 
 Since the <ref name="crane_delivery" /> is very dynamic, we explicitly do not provide a mechanism
 to signal the <ref name="attaching_slinger" />s and <ref name="detaching_slinger" />s when the
@@ -166,7 +166,7 @@ to signal the <ref name="attaching_slinger" />s and <ref name="detaching_slinger
 
 <level name="site">
 
-For a given time range, the <ref name="on-site_logistics#planner_role" /> should be able to inspect
+For a given time range, the <ref name="logistics#planner_role" /> should be able to inspect
 the plan of the <ref name="crane_delivery" />s as association between the <ref name="crane" />s,
 <ref name="crane_operator" />s, <ref name="crane_supervisor" />s and 
 <ref name="scheduling#task" />s (if available). 
@@ -199,8 +199,8 @@ can measure it).
 
 ## Test Cases
 
-Please see the test cases of <scenarioref name="on-site_logistics" />.
+Please see the test cases of <scenarioref name="logistics" />.
 
 ## Acceptance Criteria
 
-Please see the acceptance criteria of <scenarioref name="on-site_logistics" />.
+Please see the acceptance criteria of <scenarioref name="logistics" />.

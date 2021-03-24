@@ -14,7 +14,7 @@ concepts, or information resources such web pages and books.</p>
 </def>
 <h2>Scenario</h2>
 <p>Our system supports many non-IFC entities (such as <ref name="risk_management#risk" /> and
-<ref name="on-site_logistics#delivery_update" />).</p>
+<ref name="logistics#delivery_update" />).</p>
 <p>Since we shadow these entities as references in BIM through
 <ref name="evolving_plan#non_ifc_entity" />, they need an <ref name="identifier" />.</p>
 <p>We propose the following schema for identification:</p>

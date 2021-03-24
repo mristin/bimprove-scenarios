@@ -42,17 +42,17 @@ digraph G {
                 ><IMG SRC="fire_risk/volumetric_thumb.svg"/></TD></TR>
             <TR><TD>Fire Risk</TD></TR></TABLE>>]
     node7 [
+        href="logistics/scenario.html", 
+        label=<<TABLE cellspacing="0" border="0" cellborder="0">
+            <TR><TD fixedsize="true" width="50" height="50"
+                ><IMG SRC="logistics/volumetric_thumb.svg"/></TD></TR>
+            <TR><TD>Logistics</TD></TR></TABLE>>]
+    node8 [
         href="manual_snapshots/scenario.html", 
         label=<<TABLE cellspacing="0" border="0" cellborder="0">
             <TR><TD fixedsize="true" width="50" height="50"
                 ><IMG SRC="manual_snapshots/volumetric_thumb.svg"/></TD></TR>
             <TR><TD>Manual Snapshots</TD></TR></TABLE>>]
-    node8 [
-        href="on-site_logistics/scenario.html", 
-        label=<<TABLE cellspacing="0" border="0" cellborder="0">
-            <TR><TD fixedsize="true" width="50" height="50"
-                ><IMG SRC="on-site_logistics/volumetric_thumb.svg"/></TD></TR>
-            <TR><TD>On-site Logistics</TD></TR></TABLE>>]
     node9 [
         href="risk_management/scenario.html", 
         label=<<TABLE cellspacing="0" border="0" cellborder="0">
@@ -123,14 +123,14 @@ digraph G {
     
     node0 -> node4 [label="actors"]
     node1 -> node13 [label="inspect over-cost tasks"]
-    node2 -> node8 [label="specific"]
+    node2 -> node7 [label="specific"]
     node3 -> node19 [label="observations"]
     node3 -> node14 [label="observations"]
     node4 -> node19 [label="BIM"]
     node5 -> node9 [label="specific"]
     node6 -> node9 [label="specific"]
-    node7 -> node3 [label="images"]
-    node8 -> node15 [label="deliveries"]
+    node7 -> node15 [label="deliveries"]
+    node8 -> node3 [label="images"]
     node10 -> node9 [label="in planning"]
     node11 -> node9 [label="in construction"]
     node11 -> node15 [label="issues"]
@@ -138,7 +138,7 @@ digraph G {
     node13 -> node4 [label="task shadows"]
     node14 -> node6 [label="visualization"]
     node15 -> node18 [label="focus spots"]
-    node16 -> node8 [label="specific"]
+    node16 -> node7 [label="specific"]
     node18 -> node3 [label="observations"]
     node19 -> node15 [label="issues"]
 

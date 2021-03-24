@@ -3,7 +3,7 @@
 <div id='index'></div>
 <div id='main'><h2>Summary</h2>
 <p>This scenario concerns truck drivers arriving at the construction site to deliver cargo.</p>
-<p>This is a specification of the <scenarioref name="on-site_logistics" /> where the cargo is
+<p>This is a specification of the <scenarioref name="logistics" /> where the cargo is
 delivered by trucks.</p>
 <h2>Models</h2>
 <p><em>Intentionally left empty.</em></p>
@@ -18,18 +18,18 @@ delivered by trucks.</p>
 <p>The <code>IfcZone</code> where the truck should leave through.</p>
 </def>
 <def name="truck_delivery">
-<p>A truck delivery defines how the <ref name="on-site_logistics#delivery" /> should be brought on
+<p>A truck delivery defines how the <ref name="logistics#delivery" /> should be brought on
 the construction site by the truck.</p>
 <p>Each truck delivery is associated with the <ref name="entry_point" /> and <ref name="exit_point" />
 so that other entrances and exits do not get congested. </p>
 </def>
 <def name="driver">
-<p>The driver is a more specific <ref name="on-site_logistics#operator" /> for
+<p>The driver is a more specific <ref name="logistics#operator" /> for
 <ref name="truck_delivery" />s.</p>
 </def>
 <h2>Scenario</h2>
 <h3>As-planned</h3>
-<p><level name="site">The <ref name="on-site_logistics#delivery" />s are specified with additional information
+<p><level name="site">The <ref name="logistics#delivery" />s are specified with additional information
 defined as <ref name="truck_delivery" />s.</level></p>
 <h3>As-observed</h3>
 <level name="machine">
@@ -39,21 +39,21 @@ it to the system.</p>
 </level>
 <h3>Divergence</h3>
 <p><level name="machine">The  device will guide the <ref name="driver" /> to the
-<ref name="on-site_logistics#delivery_location" />.</level></p>
+<ref name="logistics#delivery_location" />.</level></p>
 <level name="machine">
 <p>The <ref name="topic_management#topic" /> body includes a link
 (authorized for the whole internet) that the <ref name="driver" /> can click on to update
 the current location of the delivery and another link to signal that
-the <ref name="on-site_logistics#delivery" /> arrived.</p>
+the <ref name="logistics#delivery" /> arrived.</p>
 <p>The <ref name="driver" /> can choose to include his/her current GPS location
-in the <ref name="on-site_logistics#delivery_update" /> (<em>e.g.</em>, when following the link for the arrival).</p>
+in the <ref name="logistics#delivery_update" /> (<em>e.g.</em>, when following the link for the arrival).</p>
 <p>The updates of the delivery status are kept track in the
-<modelref name="on-site_logistics#logs" />.</p>
+<modelref name="logistics#logs" />.</p>
 </level>
 <h2>Test Cases</h2>
-<p>Please see the test cases of <scenarioref name="on-site_logistics" />.</p>
+<p>Please see the test cases of <scenarioref name="logistics" />.</p>
 <h2>Acceptance Criteria</h2>
-<p>Please see the acceptance criteria of <scenarioref name="on-site_logistics" />.</p>
+<p>Please see the acceptance criteria of <scenarioref name="logistics" />.</p>
 </div>
 </body>
 </html>

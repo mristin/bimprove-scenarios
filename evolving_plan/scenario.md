@@ -149,7 +149,7 @@ As these revisions are costly and official, they are not frequently done.
 
 The <ref name="extension_update" /> of the internal <modelref name="bim_extended" /> 
 occurs much more frequently than the official <ref name="revision" />s. 
-For example, when a new <ref name="on-site_logistics#delivery" /> is inserted into the system.
+For example, when a new <ref name="logistics#delivery" /> is inserted into the system.
 
 **Inconsistencies.** 
 On every <ref name="revision" />, there might be inconsistency introduced between 
@@ -176,7 +176,7 @@ For example, you should not give the same <ref name="guid" /> to a wall and to a
 
 **Non-IFC entities**.
 Our system supports many non-IFC entities (such as <ref name="risk_management#risk" /> and
-<ref name="on-site_logistics#delivery_update" />).
+<ref name="logistics#delivery_update" />).
 
 In order to make these entities referencable by IFC entities, every <ref name="non_ifc_entity" />
 needs to be shadowed in <modelref name="bim_extended" /> as an `IfcExternalReference`.

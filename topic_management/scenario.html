@@ -64,7 +64,7 @@ pre {
 }
 </style></head><body>
 <div id="index"><a href="../ontology.html">Back to ontology</a><p><img src="volumetric.svg" style="border: 1px solid #EEEEEE; padding: 10px; margin: 0px;" /></p><h2>Table of Contents</h2><ul class="toc"><li style="padding-left: 0.00em"><a href="#section-Summary">Summary</a></li><li style="padding-left: 0.00em"><a href="#section-Models">Models</a></li><li style="padding-left: 2.20em"><a href="#model-topics">topics</a></li><li style="padding-left: 2.20em"><a href="#model-notification_protocols">notification_protocols</a></li><li style="padding-left: 0.00em"><a href="#section-Definitions">Definitions</a></li><li style="padding-left: 2.20em"><a href="#def-topic">topic</a></li><li style="padding-left: 2.20em"><a href="#def-topic_board">topic board</a></li><li style="padding-left: 2.20em"><a href="#def-requester">requester</a></li><li style="padding-left: 2.20em"><a href="#def-assignee">assignee</a></li><li style="padding-left: 2.20em"><a href="#def-stage">stage</a></li><li style="padding-left: 2.20em"><a href="#def-label">label</a></li><li style="padding-left: 2.20em"><a href="#def-comment">comment</a></li><li style="padding-left: 2.20em"><a href="#def-viewquery">viewquery</a></li><li style="padding-left: 2.20em"><a href="#def-BCF_viewpoint">BCF viewpoint</a></li><li style="padding-left: 2.20em"><a href="#def-BCF">BCF</a></li><li style="padding-left: 2.20em"><a href="#def-notifiee">notifiee</a></li><li style="padding-left: 2.20em"><a href="#def-notification_protocol">notification protocol</a></li><li style="padding-left: 0.00em"><a href="#section-Scenario">Scenario</a></li><li style="padding-left: 0.00em"><a href="#section-Test_Cases">Test Cases</a></li><li style="padding-left: 2.20em"><a href="#test-property-based_test">property-based test</a></li><li style="padding-left: 0.00em"><a href="#section-Acceptance_Criteria">Acceptance Criteria</a></li><li style="padding-left: 2.20em"><a href="#acceptance-magnitude">magnitude</a></li></ul></div>
-<div id="main"><h1>Topic Management</h1><h2>Relations from Other Scenarios</h2><ul><li><a href="../on-site_logistics/scenario.html">On-site Logistics</a><span> ← deliveries ← Topic Management</span></li><li><a href="../risk_tracking/scenario.html">Risk Tracking</a><span> ← issues ← Topic Management</span></li><li><a href="../virtual_inspection/scenario.html">Virtual Inspection</a><span> ← issues ← Topic Management</span></li></ul><h2>Relations to Other Scenarios</h2><ul><li><span>Topic Management → focus spots → </span><a href="../uxv_recording/scenario.html">UXV Recording</a></li></ul>
+<div id="main"><h1>Topic Management</h1><h2>Relations from Other Scenarios</h2><ul><li><a href="../logistics/scenario.html">Logistics</a><span> ← deliveries ← Topic Management</span></li><li><a href="../risk_tracking/scenario.html">Risk Tracking</a><span> ← issues ← Topic Management</span></li><li><a href="../virtual_inspection/scenario.html">Virtual Inspection</a><span> ← issues ← Topic Management</span></li></ul><h2>Relations to Other Scenarios</h2><ul><li><span>Topic Management → focus spots → </span><a href="../uxv_recording/scenario.html">UXV Recording</a></li></ul>
 <h2 data-anchor="section-Summary"><a name="section-Summary" /><a class="section-anchor" href="#section-Summary">Summary</a><span class="chain-symbol">🔗</span></h2>
 <p>This scenario is about providing a communication platform for BIMprove system.</p>
 <h2 data-anchor="section-Models"><a name="section-Models" /><a class="section-anchor" href="#section-Models">Models</a><span class="chain-symbol">🔗</span></h2>
@@ -97,7 +97,7 @@ pre {
 <h3 data-anchor="def-topic_board"><a name="def-topic_board" /><a class="section-anchor" href="#def-topic_board">topic board</a><span class="chain-symbol">🔗</span></h3>
 <p>A topic board (called "project" in <a href="#def-BCF" class="ref">BCF</a>) is a collection of <a href="#def-topic" class="ref">topics</a>.</p>
 <p>A topic board can have different access rights as well as different semantics.</p>
-<p>For example, there is a special topic board for <a href="../on-site_logistics/scenario.html#def-delivery" class="ref">deliveries (from on-site_logistics)</a>.</p>
+<p>For example, there is a special topic board for <a href="../logistics/scenario.html#def-delivery" class="ref">deliveries (from logistics)</a>.</p>
 </div>
 <div class="def">
 <h3 data-anchor="def-requester"><a name="def-requester" /><a class="section-anchor" href="#def-requester">requester</a><span class="chain-symbol">🔗</span></h3>
@@ -126,7 +126,7 @@ focused on.</p>
 <p>Comments are usually free-form.</p>
 <p>There are also specially structured comments.
 For example, we use comments to represent the status change of a
-<a href="../on-site_logistics/scenario.html#def-delivery" class="ref">delivery (from on-site_logistics)</a>.</p>
+<a href="../logistics/scenario.html#def-delivery" class="ref">delivery (from logistics)</a>.</p>
 </div>
 <div class="def">
 <h3 data-anchor="def-viewquery"><a name="def-viewquery" /><a class="section-anchor" href="#def-viewquery">viewquery</a><span class="chain-symbol">🔗</span></h3>
@@ -200,7 +200,7 @@ the <a href="#def-notification_protocol" class="ref">notification protocols</a> 
 The user can create a <a href="#def-topic" class="ref">topic</a> from an arbitrary <a href="../scheduling/scenario.html#def-task_shadow" class="ref">task shadow (from scheduling)</a>
 using <a href="../scheduling/scenario.html" class="scenarioref">"Scheduling"</a>.</p>
 <p>There is also a more structured task-to-topic translation for specific tasks such as
-<a href="../on-site_logistics/scenario.html#def-delivery" class="ref">deliveries (from on-site_logistics)</a>.</p>
+<a href="../logistics/scenario.html#def-delivery" class="ref">deliveries (from logistics)</a>.</p>
 <p><strong>Export to <a href="#def-BCF" class="ref">BCF</a></strong>.
 The <a href="#def-topic" class="ref">topics</a> are exportable to <a href="#def-BCF" class="ref">BCF</a>.</p>
 <p>The export can be either to:</p>

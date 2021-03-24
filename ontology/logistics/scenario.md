@@ -1,6 +1,6 @@
 <rasaeco-meta>
 {
-    "title": "On-site Logistics",
+    "title": "Logistics",
     "contact": "Dag Fjeld Edvardsen <dag.fjeld.edvardsen@catenda.no>, Marko Ristin <rist@zhaw.ch>",
     "relations": [
         { "target": "topic_management", "nature": "deliveries" }
